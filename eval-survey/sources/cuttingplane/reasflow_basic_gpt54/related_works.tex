@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Cutting Plane Methods for Mixed Integer Programming}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Classical Cutting Plane Theory and Gomory-Type Foundations}
+
+Classical cutting-plane research established the polyhedral view of mixed-integer programming (MIP): strengthen the LP relaxation by adding valid inequalities that cut off fractional optima while preserving all integer-feasible points. The foundational starting point is Gomory's seminal fractional cutting-plane method \citep{Gomory_1958}, which established finite cutting-plane convergence for pure integer programs and shaped subsequent tableau-based approaches. Early analyses of Gomory-style methods clarified both their foundational role and their practical fragility. In particular, \citet{Balas_2010} and \citet{Zanette_2009} revisit pure cutting-plane schemes and show that finite convergence does not preclude behavior that is effectively enumerative or highly sensitive to degeneracy. Beyond tableau cuts, Chv\'atal--Gomory closure theory generalized rounding from basis rows to formulation-level aggregation \citep{Cook_1990, unknown2020generalized, Dash_2021, Caprara_1996, Bonami_2006}, while optimization over early closures was further studied by \citet{Fischetti_2006}. For mixed-integer sets, the strength of Gomory mixed-integer cuts was linked to group relaxations by \citet{Dash_2007}, and stronger group-based viewpoints were developed through cyclic and infinite-group models \citep{Fischetti_2006, Kianfar_2008}. Related polyhedral analyses of cut strength and dominance also appear in \citet{Skutella_2010} and \citet{Deza_1992}. Collectively, this literature reveals a \emph{structural gap}: classical row-wise rounding captures only a narrow slice of the underlying mixed-integer geometry, even when closure theory guarantees stronger inequalities in principle.
+
+\subsection{Lift-and-Project, Disjunctive Cuts, and Structured Strengthening}
+
+To overcome the locality of tableau-based cuts, later work recast integrality as explicit disjunctions and derived cuts by lifting, convexifying, and projecting. Foundational disjunctive and intersection-cut perspectives were developed by \citet{Balas_1972}, \citet{Bell_1975}, and \citet{Owen_2001}, while implementable lift-and-project procedures for binary and general-integer settings were introduced by \citet{Balas_1993} and \citet{Ceria_1998}. Split, triangle, and quadrilateral cuts were comparatively analyzed by \citet{Basu_2009}, and facet generation from simple disjunctions was studied by \citet{Sen_1986}. Multi-row strengthening and lifting were advanced by \citet{Dey_2010}, while asymmetric and two-dimensional lattice-free constructions were characterized by \citet{Dash_2011}; split rank limits for intersection cuts were examined by \citet{Dey_2009}. Explicit rounding-based strengthening includes MIR and bounded variants \citep{Atamt_rk_2009, Atamt_rk_2008}, valid inequalities from simple mixed-integer sets \citep{Dash_2005, Bienstock_2010}, lifted flow-cover inequalities \citep{unknown2000lifted}, exact separation for mixed-integer knapsack cuts \citep{Fukasawa_2009}, and classical mixing inequalities for structured mixed-integer sets \citep{Gunluk_2001}. More general strengthening through lifting and projection was explored in linear, conic, and nonlinear settings \citep{Richard_2008, Atamt_rk_2009, Castro_2021, Nguyen_2017, Saxena_2010, Tawarmalani_2010}. This body of work exposes both a \emph{computational gap} and a \emph{theoretical gap}: richer structured disjunctions are often much stronger than classical cuts, but separation, rank behavior, and representation-dependent strength remain only partially understood.
+
+\subsection{Modern Cut Generation, Computational Integration, and Branch-and-Bound}
+
+Modern solvers integrate cuts within branch-and-bound rather than treating cutting planes as a standalone paradigm. Complexity comparisons between branching and cutting underscore that neither dominates uniformly and that performance depends on how cuts are scheduled, filtered, and combined with search \citep{unknown2022complexity, D_r_2001}. This has motivated work on stabilization and cutting-plane management, including analytic-center and multi-cut methods \citep{Atkinson_1995, Kiwiel_1996, Nesterov_1995, Ye_1996, Elzinga_1975, Gondzio_1998}. Decomposition-based and large-scale integrations further broaden this picture, including primal cutting-plane and hybrid master-subproblem frameworks \citep{Rosat_2017, Young_1975, Sen_2005, unknown2020loose}. Application-driven branch-and-cut success has been demonstrated in routing and global optimization \citep{Baldacci_2007, Tawarmalani_2005}, while semidefinite and bilinear variants show that stronger relaxations can help but substantially raise integration cost \citep{Fischer_2005, Sherali_1980, Konno_1976, unknown2020outer, Nohra_2021}. Strong formulation viewpoints \citep{Wolsey_2003} and convergence analyses in nonconvex global optimization \citep{Tuy_1988, Sen_1985} reinforce the same lesson. From the perspective of branch-and-cut implementation, the central unresolved issue is not merely whether stronger cuts exist, but how to generate them from algebraically meaningful disjunctions whose separation remains scalable and whose rank implications can be characterized in advance. Overall, prior work has developed powerful cut families and sophisticated integration mechanisms, but it still leaves open how to systematically generate \emph{strengthened cutting planes via structured disjunctions} that close the structural gap of classical row cuts, the computational gap of expensive disjunctive separation, and the theoretical gap between closure strength and branch-and-cut effectiveness.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

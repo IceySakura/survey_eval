@@ -1,0 +1,77 @@
+# =============================================================================
+# 批量流水线说明（默认由 `python batch_run/run_batch.py` 驱动）
+#
+# 1) 生成：`run_generation.py` 对每个 (task × variant) 调用 `run_one.py`，
+#    在 agentscope-survey / base-survey 里生成 related_works.tex + references.bib，
+#    并复制到 `eval-survey/sources/{task}/{variant_name}/`。
+# 2) 评测：`run_batch.py` 对每个 (task × eval_models[]) 调用 `eval.evaluator`，
+#    汇总为 `batch_run/results/batch_eval_summary_*.csv` 与 manifest JSON。
+#
+# 前置：每个 task 在 `eval-survey/sources/{task}/survey_plan.md` 必须存在。
+# =============================================================================
+
+# 打分模型消融：传给 eval.evaluator --eval-model
+# 可用别名（见 eval-survey/eval/evaluator.py EVAL_MODEL_MAP）：
+#   dpsk, gpt4o, gpt51, gpt54, sonnet4.6；也可直接写真实 model id
+eval_models:
+  - gpt51
+  - sonnet4.6
+  - dpsk
+
+# 任务列表（与 eval-survey/sources/ 下子目录名一致）
+tasks:
+  - sudamuon
+  - sfedavg
+  - subspacescaffold
+
+# 生成变体：每个变体在 sources 下对应独立子目录 {variant.name}
+# - agent: reasflow → agentscope-survey（CLI --auto），base → base-survey
+# - model: 写入各 survey 的 etc/config.yaml 中 agents.survey[*].model，并传给 run_one --model
+# - config: 文档用；reasflow 批量路径固定 survey_auto（CLI --auto）
+variants:
+  - name: reasflow_gpt51
+    agent: reasflow
+    config: survey_auto
+    model: gpt-5.1
+
+  - name: reasflow_gpt54
+    agent: reasflow
+    config: survey_auto
+    model: gpt-5.4
+  
+  - name: reasflow_dpsk
+    agent: reasflow
+    config: survey_auto
+    model: deepseek-v3.2
+  
+  - name: reasflow_sonnet4.6
+    agent: reasflow
+    config: survey_auto
+    # AIHubMix 上需用真实 model id（别名 sonnet4.6 会 400）
+    model: claude-sonnet-4-6
+
+  - name: base_gpt51
+    agent: base
+    config: survey
+    model: gpt-5.1
+
+  - name: base_gpt54
+    agent: base
+    config: survey
+    model: gpt-5.4
+
+  - name: base_dpsk
+    agent: base
+    config: survey
+    model: deepseek-v3.2
+
+  - name: base_sonnet4.6
+    agent: base
+    config: survey
+    model: claude-sonnet-4-6
+
+# 路径配置（相对于 paper_gen/；生成/复制逻辑主要用 eval_sources）
+paths:
+  agentscope_survey: agentscope-survey
+  base_survey: base-survey
+  eval_sources: eval-survey/sources

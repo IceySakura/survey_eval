@@ -1,0 +1,78 @@
+# Related Works 评测系统配置
+
+# -----------------------------------------------------------------------------
+# 评测 LLM 端点（eval/utils/llm_client.py）
+#   - use_aihubmix_for_all_models: true → 所有打分模型（gpt51/dpsk/sonnet 等）统一走
+#     AIHUBMIX_*（Codex 不可用时用此项）。
+#   - false → 按模型分流：GPT 系优先 CODEX_*，DeepSeek/Claude 等走 AIHUBMIX_*。
+# 环境变量 EVAL_USE_AIHUBMIX=1 与 yaml 中 use_aihubmix_for_all_models 等效（优先）。
+# -----------------------------------------------------------------------------
+
+eval_api:
+  use_aihubmix_for_all_models: true
+  # HubMix 上 chat/completions 一般为非流式；若网关报错可改为 true
+  aihubmix_stream: false
+  rate_limit_seconds: 1.2
+  request_retries: 6
+  connect_timeout: 30
+  read_timeout: 180
+  codex_base_url: ""
+  codex_api_key: ""
+  aihubmix_base_url: ""
+  aihubmix_api_key: ""
+
+# API 配置（仅当上面未命中 Codex/HubMix 时的兜底，或旧脚本直接用 LLMClient 无 model_override）
+api:
+  base_url: https://api.openai.com/v1
+  api_key: ""
+
+# LLM 模型配置
+llm:
+  model: gpt-4o
+  temperature: 0.3
+  max_tokens: 4096
+
+# 评测配置
+evaluation:
+  # 客观评测（维度1 内容准确性、维度2 引用相关性）每篇文章独立打分
+  objective:
+    # 抽样配置（None 表示全部评估）
+    sample_size: 15       # 维度1/2 抽样数量，推荐 15-20
+    seed: 42              # 随机种子，保证可复现
+    citation_relevance:
+      enabled: true
+      weight: 1.0
+    content_accuracy:
+      enabled: true
+      weight: 1.0
+      max_papers_to_verify: 15  # 最多验证的论文数量（避免太慢）
+
+  # 主观评测（维度3、4）AB对称比较
+  comparative:
+    instruction_following:
+      enabled: true
+    writing_quality:
+      enabled: true
+
+# 文献搜索配置
+literature:
+  # Google Scholar 速率限制
+  google_scholar:
+    rate_limit: 10.0
+    max_retries: 3
+  # Semantic Scholar API
+  semantic_scholar:
+    api_url: https://api.semanticscholar.org/graph/v1
+    rate_limit: 3.5
+    max_retries: 3
+
+# 论文下载配置
+paper_fetcher:
+  cache_dir: cache
+  max_chars: 50000  # PDF 提取的最大字符数
+
+# 输出配置
+output:
+  results_dir: results
+  json_file: eval_result.json
+  markdown_file: eval_report.md

@@ -1,0 +1,17 @@
+max_iters: 500
+api:
+  base_url: https://api.openai.com/v1
+  api_key: ''
+agents:
+  survey:
+    model: gpt-5.1
+    api_type: openai
+    temperature: 0.7
+    max_tokens: 16384
+    stream: true
+compression:
+  enabled: true
+  model: gpt-4o-mini
+  max_context_tokens: 200000
+  compress_threshold: 0.7
+  preserve_threshold: 0.3

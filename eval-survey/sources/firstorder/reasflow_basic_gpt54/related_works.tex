@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\begin{document}
+
+\section{Related Work}
+
+\subsection{Subgradient Methods and Classical Convergence Theory}
+
+Classical convergence theory for first-order methods in nonsmooth convex optimization was built around subgradient recursions, feasibility-preserving projections, and stability arguments rather than around a unified composite formalism. The practical viability of subgradient optimization for difficult dual and Lagrangian formulations was established early by \citet{held1974validation}. Subsequent analyses refined projected subgradient methods in Hilbert and non-Euclidean settings, clarifying how geometry and distance generating functions affect convergence behavior \citep{alber1998projected,auslender2007projected}. In parallel, aggregate and bundle-inspired constructions improved robustness by combining subgradient information with stabilization mechanisms, with \citet{kiwiel1983aggregate} providing a particularly influential aggregate subgradient framework. Primal--dual viewpoints further extended the classical picture and delivered optimal first-order guarantees for broad convex classes \citep{nedic2007primaldual}. More recent refinements connected error bounds, weak sharp minima, and growth conditions to sharper complexity characterizations for subgradient-type schemes \citep{burke1999linear,kiwiel2001quasiconvex,renegar2019faster}.
+
+Despite these advances, the classical literature typically treats smooth, nonsmooth, constrained, and composite problems through separate proof templates. As a result, convergence guarantees often rely on globally bounded subgradients, globally Lipschitz structure, or exact oracle assumptions, and they do not directly explain how rates should interpolate across different smoothness regimes. This leaves a persistent unification gap, a relaxed-assumptions gap, and a rate-tightness gap when one moves to modern composite first-order methods.
+
+\subsection{Proximal and Splitting Methods}
+
+A second major line of work reframed structured optimization through proximal regularization, monotone inclusions, and operator splitting. For composite nonsmooth problems, descent-based formulations such as \citet{burke1985descent} already highlighted the importance of separating smooth and nonsmooth structure within a single algorithmic template. Finite-termination phenomena for proximal algorithms were studied in the late 1980s and early 1990s \citep{ferris1991finite}, while \citet{eckstein1992douglas} established the now-standard connection between Douglas--Rachford splitting and the proximal point algorithm. That perspective was subsequently broadened by projective and related splitting schemes \citep{eckstein2007projective,fukushima1996primal}, as well as by block-coordinate and incremental proximal-gradient variants for large-scale nonconvex composite problems \citep{necoara2021block}. On the convergence-analysis side, \citet{attouch2013convergence} provided a highly influential template based on sufficient decrease and relative-error conditions for semi-algebraic and tame objectives, and proximal perturbation ideas improved robustness in semismooth settings \citep{billups2000robustness}.
+
+These works substantially narrowed the gap between algorithm classes by providing common operator-theoretic and variational interpretations. However, their guarantees still depend strongly on structural assumptions such as maximal monotonicity, KL-type geometry, semi-algebraicity, or other regularity conditions that are not always available in composite models with weaker local smoothness. Moreover, the relationship between splitting parameters, local model accuracy, and globally meaningful complexity bounds remains only partially understood. Hence proximal and splitting methods bring important partial unification, but they do not yet provide a fully general convergence framework under relaxed smoothness assumptions.
+
+\subsection{Modern Complexity and Acceleration}
+
+Recent literature has shifted the emphasis from asymptotic convergence to explicit complexity bounds, rate comparisons, and lower-bound benchmarks. A key development is the error-bound-based analysis of first-order descent methods by \citet{bolte2016errorbounds}, which makes precise how regularity conditions translate into linear or sublinear complexity statements beyond the strongly convex setting. Robustness questions were also studied through deterministic perturbations, for example in the analysis of noisy subgradient oracles by \citet{nedic2009noise}. On the acceleration side, \citet{nesterov2007accelerating} highlighted how regularization-based acceleration sharpens complexity guarantees and helps connect algorithm design to rate-optimality considerations. Complexity analyses for coordinate and block-coordinate methods further exposed the dependence of achievable rates on update order and problem structure, from block coordinate descent guarantees \citep{hong2016iteration} to worst-case separations between cyclic and randomized rules \citep{sun2019worstcase}. Complementary lower-bound results for saddle-point and primal--dual settings help benchmark what first-order methods can achieve in structured nonsmooth problems \citep{ouyang2019lower}.
+
+Taken together, these modern results deepen our understanding of attainable rates, but they also make the central gap more visible. Existing analyses remain fragmented across smooth, weakly smooth, nonsmooth, and composite settings; many rate statements still depend on global Lipschitz continuity, bounded subgradients, or highly specific regularity conditions; and matching upper and lower bounds for composite first-order methods under relaxed assumptions are still incomplete. In particular, the literature still lacks a single convergence language that simultaneously explains classical subgradient behavior, proximal and splitting dynamics, and modern complexity bounds for composite problems under weaker local smoothness models. This is precisely the unification, relaxed-assumptions, and rate-tightness gap that motivates current work on unified convergence frameworks for composite first-order optimization.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

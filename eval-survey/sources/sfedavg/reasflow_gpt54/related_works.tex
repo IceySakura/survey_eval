@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Memory-Efficient and Communication-Efficient Federated Learning}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Federated Learning Foundations under Data and System Heterogeneity}
+
+FedAvg established the local-update-and-average template that made communication a first-class concern in cross-device learning \citep{mcmahan2017communication}, while early theory showed that under non-IID data and partial participation its convergence degrades through a communication--drift trade-off \citep{li2019convergence}. Subsequent analyses sharpened this picture by proving linear-speedup-style guarantees for FedAvg under partial participation and by unifying convex and overparameterized regimes \citep{Yang2021AchievingLS, qu2023unified}, but these results still rely on controlled sampling or idealized assumptions. Heterogeneity-aware stabilization methods then emerged through control variates, momentum, and proximal regularization: \citet{karimireddy2020scaffold} directly correct client drift, \citet{Cheng2023MomentumBN} show momentum can substantially relax heterogeneity assumptions, and composite/proximal variants extend stabilization to structured objectives \citep{Zhou2025FedCanonNC, zhang2025convex}. Related regularization and continual-learning ideas also appear in FedCurv \citep{shoham2019overcoming}. 
+
+Beyond data heterogeneity, practical FL must handle uneven availability, compute, and model structure. Time-varying participation can bias the objective itself \citep{xiang2023towards}; computation-aware aggregation and weighted training address unequal local budgets \citep{Zhang2022CCFedAvgCC, daning2017weighted}; and heterogeneous architectures require explicit alignment mechanisms \citep{Yu2020HeterogeneousFL}. Personalization and representation-learning views further argue that one global model may be intrinsically insufficient under strong client diversity \citep{reguieg2023comparative, collins2022fedavg, su2023non, wang2024federated}, while overparameterized analyses suggest width can partly mitigate heterogeneity in idealized regimes \citep{jian2025widening}. Collectively, this literature explains heterogeneity and its remedies well, but many of the strongest methods rely on persistent client-side states---control variates, momentum, curvature statistics, or personalized modules---without treating client memory as a primary design constraint.
+
+\subsection{Communication-Efficient Federated and Decentralized Optimization}
+
+Communication-efficient learning proceeds along three main axes: shrinking messages, reducing synchronization, and redesigning topology. Early structured and sketched update schemes compressed client messages directly \citep{konevcny2016federated}, and later unified analyses studied local SGD with quantization or sparsification under heterogeneous data \citep{Haddadpour2020FederatedLW, Condat2024LoCoDLCD}. Error-feedback and compressed control-variate methods recover convergence under aggressive compression, including in vertical FL and SCAFFOLD-style variants \citep{Valdeira2024CommunicationefficientVF, Huang2023StochasticCA}. At the same time, these gains typically require residual buffers or auxiliary correction states. Communication can also be reduced by improving each roundâs optimization quality, as in communication-efficient global sharpness-aware training \citep{caldarola2025beyond}, or by supporting asynchronous composite optimization \citep{Tran-Dinh2021FedDRR}. 
+
+A parallel line replaces the server bottleneck with decentralized, gossip, and tracking-based schemes. Segmented gossip, local exact diffusion, periodic global averaging, and topology-aware decentralized SGD show that communication efficiency depends not only on bits per message but also on mixing speed and network structure \citep{hu2019decentralized, Alghunaim2023LocalEF, chen2021accelerating, Sato2020NetworkDensityControlledDP, zhou2022defta, koloskova2021improved}. Bias-corrected decentralized momentum and fully first-order decentralized methods further tighten the optimization side of this trade-off \citep{Hu2025ABD, Wen2024ACA}, while related gradient-tracking and variance-reduction ideas also appear in decentralized multi-agent optimization outside standard FL \citep{jiang2022mdpgt, Chen2022DecentralizedNP, horvath2023stochastic}. Workload balancing and decentralized-versus-centralized comparisons add a systems perspective \citep{mohammadabadi2024communication, lian2017can}. However, even near-optimal communication schemes generally achieve their savings by storing residuals, trackers, dual variables, or momentum, so communication efficiency is rarely memory-efficient by construction.
+
+\subsection{Memory-Efficient Federated Learning and the Open Gap toward Unified Efficiency}
+
+Memory-efficient FL attacks a different bottleneck: optimizer state, trainable parameters, activations, and auxiliary correction memory on the client. A prominent direction restricts updates to low-dimensional structure. FedSub projects local training into subspaces and uses low-dimensional dual variables to control drift \citep{zhang2025efficient}; FedLoRU communicates accumulated low-rank updates \citep{Park2024CommunicationEfficientFL}; and federated composite optimization highlights that structured constraints alter aggregation geometry rather than merely compressing messages \citep{yuan2020federated}. In parameter-efficient adaptation, federated LoRA must additionally handle misaligned initialization, heterogeneous ranks, and drift during low-rank local training \citep{Zhou2025ILoRAFL}, while personalized MoE-style federation reduces communication by aggregating only shared components \citep{liuflex}. Optimizer-side structured methods similarly trade faster progress for more stateful local geometry, including matrix-orthogonalized and bias-corrected LMO-based FL \citep{liu2025fedmuon, Takezawa2025FedMuonFL}. Related optimizer advances outside FL further illustrate that memory can either grow through extra moving averages or be shifted across outer-loop states \citep{Pagliardini2024TheAO, kallusky2025snoo}. 
+
+Complementary architectural techniques reduce activation or state pressure, such as batch-size-independent normalization and resource-aware topology or workload adaptation \citep{wu2018group, mohammadabadi2024communication, hu2019decentralized, Sato2020NetworkDensityControlledDP, zhou2022defta}. Yet the central limitation remains sharp: existing work does not provide a unified framework that jointly handles heterogeneity correction, compressed communication, and memory-constrained local training. In particular, the literature lacks a satisfactory drift-correction theory for subspace-constrained or non-Euclidean local steps, and convergence theory under simultaneous memory and communication constraints in heterogeneous FL is still missing.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

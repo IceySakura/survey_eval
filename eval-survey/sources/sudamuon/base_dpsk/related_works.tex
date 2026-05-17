@@ -1,0 +1,53 @@
+\section{Related Work}
+
+Our work, SUDA-Muon, bridges two distinct but rapidly evolving research areas: \emph{matrix-aware optimizers} and \emph{decentralized optimization with heterogeneity correction}. This section reviews the key developments in both domains and identifies the critical gaps that motivate our unified framework.
+
+\subsection{Muon and Matrix-Aware Optimizers}
+
+Modern deep learning architectures---Transformers, MLPs, and their variants---are fundamentally composed of matrix-structured parameters. Traditional Euclidean optimizers (SGD, Adam, AdamW) treat these parameters as vectors, ignoring the inherent matrix geometry. This oversight has spurred the development of \emph{matrix-aware} optimizers that respect the operator structure of neural network weights.
+
+The \textbf{Muon optimizer} \cite{jordanmuon} represents a paradigm shift in this direction. Instead of using the raw gradient $\nabla f(W)$, Muon computes a \emph{polarized direction} via the matrix sign operator:
+\[
+\operatorname{msgn}(W) = \operatorname{sgn}(\nabla f(W)),
+\]
+where $\operatorname{sgn}(\cdot)$ denotes the matrix sign function. This operator can be computed exactly via singular value decomposition (SVD) or approximated efficiently via Newton-Schulz iterations \cite{amsel2025polar, grishina2025accelerating}. The resulting update is scale-invariant and aligns with the operator geometry, leading to empirically superior convergence in training large-scale models \cite{huang2025limuon, he2025lowrank}.
+
+Recent theoretical analyses have established non-convex convergence guarantees for Muon in centralized settings \cite{sato2025convergence}. These works prove that Muon converges to stationary points under standard smoothness assumptions, with rates comparable to or better than Euclidean counterparts. However, \textbf{all existing guarantees are limited to single-node or centralized environments}. The extension of Muon to decentralized networks---where multiple agents collaboratively optimize---remains unexplored from a theoretical perspective.
+
+Parallel developments include Riemannian optimization frameworks on matrix manifolds \cite{chen2021decentralized, wang2024proximal}. While these methods respect geometric constraints (e.g., orthogonality on the Stiefel manifold), they typically rely on Riemannian gradients rather than the polarized updates of Muon. The \textbf{Broximal Point Method} \cite{gruntkowska2025non} offers an idealized geometry-aware framework but, like Muon, lacks decentralized extensions.
+
+\subsection{Decentralized Optimization and Heterogeneity Correction}
+
+Decentralized Parallel SGD (DPSGD) eliminates the parameter-server bottleneck by allowing agents to communicate only with neighbors via a mixing matrix $W$. However, under Non-IID data distributions, DPSGD suffers from \emph{client drift}: local updates diverge due to data heterogeneity, preventing consensus on the global optimum.
+
+A rich literature has emerged to correct this drift using \emph{tracking} or \emph{primal-dual} mechanisms. Three principal families are:
+\begin{itemize}
+    \item \textbf{EXTRA} \cite{shi2015extra}: Introduces an extra correction term to eliminate the bias caused by heterogeneity, achieving exact convergence with constant step-sizes.
+    \item \textbf{Exact Diffusion (ED) / D$^2$} \cite{alghunaim2023local}: A primal-dual formulation that provably removes heterogeneity influence, enabling network-topology-independent convergence rates under certain conditions \cite{yuan2021removing}.
+    \item \textbf{Gradient Tracking (GT)} \cite{song2021optimal}: Maintains a tracking variable that estimates the global gradient, effectively compensating for local gradient discrepancies.
+\end{itemize}
+
+These methods share a common goal---to \emph{decouple} the effects of data heterogeneity from network topology---but employ distinct algorithmic structures. The \textbf{SUDA framework} \cite{yuan2021unified} provides an elegant unification: it expresses EXTRA, ED, and GT as instances of a single primal-dual recursion parameterized by low-degree polynomials of the mixing matrix. SUDA's analysis reveals that, when heterogeneity is corrected, \textbf{network topology only affects higher-order terms} in the convergence bound, a phenomenon termed \emph{topology separation}.
+
+Recent advancements have extended these ideas to various settings: compressed communication \cite{liao2022compressed, huang2023cedas}, bilevel optimization \cite{zhu2024sparkle}, Riemannian manifolds \cite{wu2025riemannian, chen2025quantized}, and adaptive schemes \cite{yuan2025achieving}. However, \textbf{all these frameworks assume Euclidean gradients}. They cannot accommodate the nonlinear matrix orthogonalization required by Muon, which fundamentally alters the local update structure.
+
+\subsection{Decentralized Muon: Existing Attempts and Gaps}
+
+The pioneering work \textbf{DeMuon} \cite{he2025demuon} represents the first attempt to decentralize Muon. It combines gradient tracking with Muon's Newton-Schulz iterations, demonstrating empirical improvements over decentralized Adam on graph-based tasks. While DeMuon opens a new research direction, it exposes several critical limitations that motivate our work:
+
+\paragraph{Algorithmic Constraint} DeMuon is tied exclusively to the \emph{gradient tracking} communication template. This design choice precludes the integration of other powerful schemes like Exact Diffusion or EXTRA, which may offer better theoretical properties or practical performance under specific network conditions. A \textbf{unified perspective}---one that accommodates multiple heterogeneity-correction strategies within a matrix-aware optimizer---is absent.
+
+\paragraph{Theoretical Constraint} DeMuon's analysis does not exploit the refined, topology-separated convergence phenomena characteristic of SUDA-style frameworks. Consequently, its convergence bounds likely retain strong dependence on network spectral gap $\lambda$, missing the opportunity to prove that \textbf{Muon's benefits can be preserved even in poorly connected graphs}.
+
+\paragraph{The Linear Speedup Problem} A hallmark of decentralized SGD is \emph{asymptotic linear speedup}: the convergence rate scales with the network size $N$, enabling faster training with more agents. This property has been established for Euclidean methods \cite{yuan2025achieving}, but \textbf{its extension to serverless Muon is deeply underexplored}. The interplay between Muon's nonlinear local polarization and network averaging could either enhance or hinder speedup, a question that remains open.
+
+\subsection{Our Contribution: SUDA-Muon}
+
+SUDA-Muon addresses these gaps by:
+\begin{itemize}
+    \item Providing a \textbf{unified algorithmic framework} that integrates Muon with the SUDA family (EXTRA, ED, GT), allowing practitioners to select the heterogeneity-correction scheme best suited to their network.
+    \item Establishing \textbf{refined convergence guarantees} that separate network topology from data heterogeneity effects, demonstrating that Muon's geometric advantages persist in decentralized settings.
+    \item Investigating the \textbf{linear speedup property} for decentralized Muon, revealing conditions under which matrix-aware optimization can harness network scaling.
+\end{itemize}
+
+By bridging matrix-aware optimization and decentralized learning, SUDA-Muon not only advances both fields but also opens new avenues for efficient, geometry-respecting training of large models across distributed, heterogeneous environments.

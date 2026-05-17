@@ -1,0 +1,28 @@
+# 检索线路对比实验配置
+# 对比 basic (纯 FAISS) vs enhanced (domain-first + reranking) 两条检索线路
+# 生成/评测模型: gpt-5.4, API: llmmelon
+
+eval_models:
+  - gpt54
+
+tasks:
+  - cuttingplane
+  - firstorder
+
+variants:
+  - name: reasflow_basic_gpt54
+    agent: reasflow
+    config: survey_auto
+    model: gpt-5.4
+    retrieval_mode: basic
+
+  - name: reasflow_enhanced_gpt54
+    agent: reasflow
+    config: survey_auto
+    model: gpt-5.4
+    retrieval_mode: enhanced
+
+paths:
+  agentscope_survey: agentscope-survey
+  base_survey: base-survey
+  eval_sources: eval-survey/sources

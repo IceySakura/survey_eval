@@ -1,0 +1,179 @@
+% =============================================================================
+%  Related Work — SUDA-Muon
+%  Target venues: ICML / NeurIPS / ICLR
+%  Sections:
+%    1. Muon and Matrix-Aware Optimizers
+%    2. Decentralized Optimization & Heterogeneity Correction
+%    3. Decentralized Muon (The Gap)
+% =============================================================================
+
+\section{Related Work}
+\label{sec:related_work}
+
+% ---------------------------------------------------------------------------
+\subsection{Muon and Matrix-Aware Optimizers}
+\label{subsec:muon}
+
+Modern deep learning architectures—Transformers, MLPs, and their variants—are
+parameterized almost entirely by \emph{matrix-structured} weight tensors.
+Classical first-order methods such as SGD~\citep{nedic2009distributed} and
+Adam~\citep{kingma2014adam} treat every parameter entry symmetrically, ignoring
+the intrinsic operator geometry of these matrices.  A growing body of work
+argues that \emph{matrix-aware} update rules, which respect the spectral
+structure of weight matrices, yield substantially faster convergence and better
+generalization.
+
+\paragraph{Muon.}
+The Muon optimizer~\citep{jordan2024muon} replaces the raw stochastic gradient
+$G$ with its \emph{polar factor} (matrix sign)
+$\operatorname{msgn}(G) = UV^{\top}$, where $G = U\Sigma V^{\top}$ is the
+singular value decomposition.  This \emph{scale-invariant} update aligns the
+descent direction with the geometry of the operator norm rather than the
+Euclidean norm.  In practice, the polar factor is approximated via a small
+number of Newton--Schulz iterations, avoiding the cost of a full
+SVD~\citep{amsel2025polar, grishina2025chebyshev}.
+\citet{liu2025muon_scalable} demonstrate that Muon, augmented with weight decay
+and per-layer learning-rate adjustment, scales to billion-parameter language
+model pre-training, matching or surpassing AdamW across a wide range of model
+sizes.
+
+\paragraph{Theoretical foundations.}
+Several recent works have placed Muon on firm theoretical ground.
+\citet{li2025note} show that Muon converges at the rate
+$\mathcal{O}(1/\sqrt{T})$ for non-convex stochastic objectives under standard
+assumptions, establishing it as a provably valid optimizer.
+\citet{chen2025muon_spectral} prove that Muon implicitly solves a
+spectral-norm-constrained trust-region subproblem at each step, providing a
+clean geometric interpretation.
+\citet{kovalev2025gradient} offer a complementary analysis via non-Euclidean
+trust-region theory, showing that orthogonalized gradient steps are optimal
+under an operator-norm ball constraint.
+\citet{polargrad2025} unify Muon and related methods (Shampoo, SOAP) under the
+\emph{PolarGrad} preconditioning framework, elucidating the shared algebraic
+structure.
+
+\paragraph{Extensions and variants.}
+The Gluon optimizer~\citep{riabinin2025gluon} bridges the gap between the
+theoretical LMO (Linear Minimization Oracle) perspective and practical
+implementation by deriving corrected step-size schedules for Muon-type methods.
+Dion~\citep{ahn2025dion} extends orthonormalized updates to the sharded-weight
+regime of large-scale distributed training, reducing the communication overhead
+of dense matrix operations.
+\citet{pethick2025norm} study a broader family of norm-constrained LMO-based
+optimizers, characterizing their convergence under unified assumptions.
+Despite this rapid progress, \emph{all} existing theoretical analyses assume a
+\textbf{centralized} or \textbf{single-node} setting.  The question of how
+Muon's non-linear polarization interacts with a peer-to-peer communication
+topology is left open.
+
+% ---------------------------------------------------------------------------
+\subsection{Decentralized Optimization and Heterogeneity Correction}
+\label{subsec:decentralized}
+
+\paragraph{Decentralized SGD.}
+Decentralized Parallel SGD (D-PSGD)~\citep{lian2017can} avoids the
+communication bottleneck of a central parameter server by having each agent
+average its iterate with neighbors over a fixed mixing matrix.
+\citet{lian2017can} show that D-PSGD achieves \emph{linear speedup} in the
+number of agents $N$: the dominant $\mathcal{O}(1/\sqrt{NT})$ term matches
+centralized mini-batch SGD, while the network-topology penalty appears only in
+lower-order terms.  This result has been generalized to time-varying graphs,
+partial participation, and other practical settings~\citep{koloskova2020unified}.
+The practical importance of decentralized training at scale is underscored by
+work on training foundation models without a central
+server~\citep{yuan2022decentralized}.
+
+\paragraph{The client-drift problem.}
+When agents hold heterogeneous (Non-IID) data, pure D-PSGD suffers from
+\emph{client drift}: local gradients are biased toward each agent's own
+distribution, causing iterates to diverge from the global optimum.
+\citet{tang2018d2} quantify this bias in the $\mathrm{D}^2$ algorithm and show
+that it can dominate the convergence error.
+\citet{yuan2021removing} demonstrate that data heterogeneity effectively
+inflates the apparent spectral gap of the mixing matrix, masking the true
+topology dependence of D-SGD.
+
+\paragraph{Heterogeneity-correction methods.}
+A rich literature has developed exact, bias-free decentralized algorithms.
+EXTRA~\citep{shi2015extra} introduces a \emph{difference of mixing matrices}
+correction that cancels the gradient bias at fixed step-sizes, achieving exact
+convergence for smooth convex objectives.
+Exact Diffusion / $\mathrm{D}^2$~\citep{tang2018d2} reinterprets this
+correction through an augmented Lagrangian lens, connecting decentralized
+methods to primal-dual splitting.
+Gradient Tracking (GT)~\citep{pu2020distributed} maintains a local estimate of
+the global gradient average and updates it in tandem with the primal variable;
+\citet{xin2020improved} establish $\mathcal{O}(1/\sqrt{NT})$ non-convex
+convergence for stochastic GT.
+
+\paragraph{Unified primal-dual framework (SUDA).}
+\citet{alghunaim2022unified} show that EXTRA, Exact Diffusion, and Gradient
+Tracking are all special instances of a single \emph{primal-dual recursion}
+parameterized by low-degree polynomials of the mixing matrix.  This SUDA
+(Stochastic Unified Decentralized Algorithm) framework yields a \emph{refined}
+convergence analysis in which data heterogeneity affects only higher-order
+terms, so the leading $\mathcal{O}(1/\sqrt{NT})$ rate is topology-independent
+and matches centralized SGD.  Critically, SUDA is designed for \emph{Euclidean}
+gradient updates; accommodating the non-linear matrix orthogonalization
+required by Muon demands a non-trivial extension.
+
+\paragraph{Decentralized Riemannian optimization.}
+Decentralized optimization over the Stiefel manifold has been studied
+by~\citet{chen2021decentralized}, who combine Riemannian gradient steps with
+gossip averaging and establish convergence for smooth non-convex objectives.
+While Muon's update can be viewed as a retraction onto the Stiefel manifold
+(via the polar factor), the stochastic, large-scale regime of LLM training
+and the need for a unified multi-scheme analysis go beyond the scope of
+existing Riemannian decentralized methods.
+
+% ---------------------------------------------------------------------------
+\subsection{Decentralized Muon and the Motivating Gaps}
+\label{subsec:demuon}
+
+\paragraph{DeMuon: the pioneering work.}
+DeMuon~\citep{he2025demuon} is the first algorithm to extend Muon to a
+decentralized graph.  It combines \emph{gradient tracking} with Newton--Schulz
+orthogonalization: each agent tracks the global gradient average, applies the
+matrix sign operator locally, and then mixes iterates with neighbors.
+DeMuon establishes convergence for non-convex stochastic objectives and
+demonstrates empirical gains over decentralized Adam on matrix-structured tasks.
+
+\paragraph{Gap 1 — Algorithmic rigidity.}
+DeMuon is tied to a \emph{single} communication template: gradient tracking.
+It cannot, without redesign, incorporate other powerful heterogeneity-correction
+schemes such as EXTRA or Exact Diffusion.  The SUDA framework shows that
+different polynomial choices of the mixing matrix can yield superior practical
+performance on specific network topologies; a Muon variant that is locked to
+one choice foregoes these benefits.  Our work introduces a \emph{unified}
+primal-dual perspective that accommodates any SUDA-compatible communication
+template.
+
+\paragraph{Gap 2 — Topology-separated analysis.}
+Existing analyses for decentralized Muon (and for DeMuon in particular) do not
+exploit the refined, topology-separated convergence structure established by
+SUDA-style frameworks.  Concretely, the leading convergence term in DeMuon's
+analysis mixes the spectral gap of the network with the data heterogeneity
+constant, preventing a clean separation between optimization difficulty and
+network quality.  SUDA-Muon, by contrast, recovers a rate where the network
+penalty appears \emph{only} in higher-order terms, matching the topology
+sensitivity of centralized Muon.
+
+\paragraph{Gap 3 — Linear speedup.}
+Linear speedup—the property that adding $N$ agents reduces the dominant error
+term by a factor of $N$—is a cornerstone guarantee of decentralized SGD
+\citep{lian2017can, koloskova2020unified}.  It has also been established for
+centralized Muon~\citep{li2025note}.  However, whether a \emph{serverless}
+Muon algorithm can achieve asymptotic linear speedup in $N$ remained unknown
+prior to our work.  The non-linearity of the polar-factor operator complicates
+the standard noise-averaging argument, and DeMuon's analysis does not resolve
+this question.  SUDA-Muon is the first decentralized Muon algorithm with a
+provable $\mathcal{O}(1/\sqrt{NT})$ linear-speedup guarantee.
+
+\paragraph{Related distributed matrix optimizers.}
+Concurrent work on distributed orthonormalized updates includes
+Dion~\citep{ahn2025dion}, which focuses on the data-parallel (centralized
+server) setting with sharded weights, and the low-rank orthogonalization
+framework of~\citet{he2025lowrank}, which targets foundation-model fine-tuning
+rather than serverless decentralized training.  Neither provides the
+topology-separated convergence theory or the multi-scheme unification that
+motivates SUDA-Muon.

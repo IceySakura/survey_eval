@@ -1,0 +1,27 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# eval caches (rebuilt on run)
+eval-survey/eval/cache/
+eval_survey_new/eval/cache/
+
+# logs / local runs (optional noise)
+*.log
+batch_run/logs/
+base-survey/logs/
+
+# OS
+.DS_Store
+Thumbs.db

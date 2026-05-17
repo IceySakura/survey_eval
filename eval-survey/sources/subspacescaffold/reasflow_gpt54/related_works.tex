@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Communication-Efficient Federated Learning with Subspace Learning and Variance Reduction}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Federated Learning under Heterogeneity: Foundations, Client Drift, and Corrective Mechanisms}
+
+FedAvg established the standard local-training paradigm for communication-efficient FL \citep{mcmahan2017communication}, and its behavior under heterogeneous data and partial participation has since been analyzed extensively \citep{li2019convergence, Yang2021AchievingLS, qu2023unified}. These works show the core trade-off: more local computation reduces synchronization, but amplifies client drift when local objectives differ. Participation heterogeneity further distorts the effective objective, as shown by \citet{xiang2023towards}, while systems-aware variants such as CC-FedAvg address compute heterogeneity rather than statistical drift directly \citep{Zhang2022CCFedAvgCC}. Empirical studies under controlled non-IID splits reinforce this sensitivity \citep{reguieg2023comparative}, and representation-learning analyses suggest that local updates can induce useful shared structure, though under stylized assumptions \citep{collins2022fedavg}.
+
+A first line of correction regularizes local optimization. FedProx-style analyses show that proximal objectives can improve robustness under imbalance and distribution shift \citep{su2023non}, and related regularized methods include curvature-based stabilization \citep{shoham2019overcoming}, global sharpness-aware training \citep{caldarola2025beyond}, and composite federated optimization with proximal server-side operations \citep{Zhou2025FedCanonNC, yuan2020federated}. A stronger line targets drift explicitly through variance reduction. SCAFFOLD introduces client and server control variates to debias local updates under heterogeneity and sampling \citep{karimireddy2020scaffold}, while \citet{Huang2023StochasticCA} extend this perspective to communication-compressed settings. Momentum can complement both FedAvg and SCAFFOLD \citep{Cheng2023MomentumBN}, and structure-aware local optimizers such as FedMuon improve local progress but do not remove the need for heterogeneity correction \citep{liu2025fedmuon}. Overall, the most principled drift-correction methods still rely on persistent full-dimensional state.
+
+\subsection{Communication Compression in Federated Learning: Quantization, Sparsification, and Error Feedback}
+
+Compression reduces payload size through quantization, sparsification, or structured operators. Generic analyses of local training with unbiased compression \citep{Condat2024LoCoDLCD} and compressed decentralized optimization \citep{Koloskova2019DecentralizedSO} clarify the role of compressor distortion, while subspace-constrained quantization shows that structural constraints can alter the communication--optimization trade-off \citep{Nassif2022QuantizationFD}. Classical biased and unbiased compressors include deep gradient sparsification \citep{lin2017deep}, DIANA-style quantized variance reduction \citep{horvath2023stochastic}, and adaptive compression policies \citep{Tyagi2023GraVACAC}. Related tracking analyses in decentralized learning further motivate historical correction when communication is lossy \citep{koloskova2021improved}, and adjacent first-order decentralized work studies communication reduction under more structured objectives \citep{Wen2024ACA}.
+
+In FL, however, compression acts on updates already biased by local training. This is why error-feedback and residual correction are central for biased compressors \citep{Richtarik2021EF21AN, Fatkhullin2023MomentumPI, Gruntkowska2025ErrorFF}. Compressed SCAFFOLD variants make this interaction explicit by combining drift correction with quantization or sparsification \citep{Huang2023StochasticCA}. Yet these methods still retain dense residuals or control states, so reduced communication need not imply reduced memory. This distinction matters in large-model regimes, where optimizer and auxiliary states dominate resource usage \citep{Rajbhandari2019ZeROMO, kaplan2020scaling}. Optimizer design offers partial relief---for instance through decoupled weight decay \citep{loshchilov2017decoupled} or richer EMA schemes \citep{Pagliardini2024TheAO}---but such methods typically add rather than remove state. Hence, communication compression alone does not resolve the memory burden of heterogeneity-aware FL.
+
+\subsection{Subspace Learning for Communication- and Memory-Efficient Federated Optimization}
+
+Subspace and low-rank methods instead reduce the dimension of the trainable and communicated object itself. FedSub constrains local optimization to a low-dimensional projected space and maintains low-dimensional dual variables, yielding simultaneous communication and memory savings \citep{zhang2025efficient}. FedLoRU uses accumulated low-rank client updates and links low-rank structure to implicit regularization under heterogeneity \citep{Park2024CommunicationEfficientFL}. Federated LoRA-style adaptation further exploits low-rank parameterization for large models; in particular, ILoRA addresses rank heterogeneity, initialization misalignment, and aggregation instability in low-rank federated tuning \citep{Zhou2025ILoRAFL}. These approaches are closely related to memory-efficient optimization beyond FL, including APOLLO, LDAdam, and GaLore, which show that low-dimensional gradient structure can substantially reduce optimizer-state costs \citep{zhu2024apollo, Robert2024LDAdamAO, Zhao2024GaLoreML}.
+
+This literature highlights the key gap motivating our method. Existing subspace approaches are effective when optimization can remain in a fixed or coordinated low-dimensional representation, but they are not naturally compatible with SCAFFOLD-like variance reduction once subspaces evolve over time. Control variates require a stable coordinate system across rounds \citep{karimireddy2020scaffold}, whereas dynamic low-rank or projection updates change the meaning of stored historical states \citep{Robert2024LDAdamAO, Zhao2024GaLoreML, Zhou2025ILoRAFL}. By contrast, ambient-space compression preserves coordinates and can therefore use error feedback, albeit with dense memory \citep{Richtarik2021EF21AN, Huang2023StochasticCA}. Our work targets precisely this unresolved intersection: communication-efficient subspace learning with variance reduction that remains well defined when the active subspace changes.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

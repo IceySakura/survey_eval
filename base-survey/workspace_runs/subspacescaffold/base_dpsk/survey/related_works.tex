@@ -1,0 +1,55 @@
+\section{Related Work}
+
+Our work builds upon three major research directions in federated learning: (1) federated learning algorithms for handling data heterogeneity, (2) communication compression techniques, and (3) subspace learning methods. We review each area and identify the key gap that motivates our Subspace-SCAFFOLD approach.
+
+\subsection{Federated Learning Algorithms for Data Heterogeneity}
+
+The seminal Federated Averaging (FedAvg) algorithm \cite{mcmahan2016fedavg} established the foundation for decentralized model training while preserving data privacy. FedAvg performs multiple local training steps on clients before averaging their updates at the server, significantly reducing communication rounds compared to naive distributed SGD. However, FedAvg suffers from \emph{client drift} under non-IID data distributions \cite{zhao2018non-iid}, where clients' local models diverge from the global optimum due to heterogeneous gradient directions.
+
+To address client drift, variance reduction techniques have been developed. SCAFFOLD \cite{karimireddy2019scaffold} introduces control variates to correct gradient directions, maintaining a server-side correction term $c$ and client-side correction terms $c_i$. The algorithm updates:
+\[
+x_i^{t+1} = x_i^t - \eta (g_i^t - c_i + c)
+\]
+where $g_i^t$ is the local gradient, and $c_i, c$ are correction terms that reduce variance across clients. FedProx adds proximal regularization to constrain client updates \cite{li2019challenges}. These methods significantly improve convergence under heterogeneity but require storing auxiliary variables ($c_i \in \mathbb{R}^d$) for each client, creating substantial memory overhead for large models.
+
+Other approaches include FedSWA \cite{liu2025fedswa} which employs momentum-based stochastic controlled weight averaging, and methods focusing on partial participation scenarios \cite{wang2025enhancing}. Recent surveys \cite{kairouz2019advances,rodio2025facets} comprehensively discuss the many facets of variance reduction in FL. However, all these methods operate in the full parameter space $\mathbb{R}^d$, making them incompatible with subspace approaches that fundamentally change the optimization landscape.
+
+\subsection{Communication Compression Techniques}
+
+Communication overhead remains a critical bottleneck in federated learning \cite{konecný2016communication}. Two primary compression strategies have emerged: \emph{quantization} (reducing bit-width) and \emph{sparsification} (transmitting only top-$k$ gradients).
+
+Quantization methods \cite{oh2024air,marnissi2024adaptive} reduce the precision of transmitted values from 32-bit floats to lower bit representations. Sparsification techniques \cite{jin2023channelaware,lu2025fedht} selectively transmit only the most significant gradient components. Joint approaches \cite{su2023joint,wu2023combination} combine both strategies for enhanced compression. Over-the-air computation with sparse one-bit quantization \cite{oh2024air} and channel-aware sparsification \cite{jin2023channelaware} further optimize wireless FL deployments.
+
+A fundamental challenge with biased compressors (like top-$k$ sparsification) is that they introduce compression error that accumulates over time. Error Feedback (EF) \cite{safaryan2020uncertainty} addresses this by accumulating the compression error $\epsilon_t$ and adding it to future updates:
+\[
+\epsilon_{t+1} = \epsilon_t + (g_t - C(g_t))
+\]
+where $C(\cdot)$ is the compression operator. EF preserves convergence but requires storing error vectors $\epsilon_t \in \mathbb{R}^d$, exacerbating the memory bottleneck \cite{li2023errorfeedback}. Recent EF variants include EFSkip \cite{bao2025efskip} for linear speedup under arbitrary heterogeneity, SA-PEF \cite{redie2026sa-pef} with step-ahead partial error feedback, and FedSparQ \cite{medjadji2025fedsparq} combining adaptive sparse quantization with EF.
+
+The uncertainty principle for communication compression \cite{safaryan2020uncertainty} establishes theoretical limits on compressors, while decentralized learning with arbitrary compression \cite{koloskova2019decentralized} extends these techniques to peer-to-peer settings. Vertical FL with compressed error feedback \cite{valdeira2025vertical} addresses cross-feature learning scenarios. However, EF's $\mathbb{R}^d$ memory requirement fundamentally conflicts with subspace methods that operate in reduced dimensions.
+
+\subsection{Subspace Learning Methods}
+
+Subspace learning addresses the triple challenge of computation, communication, and memory efficiency by constraining optimization to low-dimensional subspaces. Gradient Low-Rank Projection (GaLore) \cite{zhao2024galore} leverages the inherent low-rank structure of weight gradients, projecting them onto low-rank subspaces to reduce optimizer states memory. GaLore 2 \cite{su2025galore2} extends this to large-scale LLM pre-training.
+
+In federated learning, FedSub \cite{zhang2025fedsub} introduces an efficient subspace algorithm for heterogeneous data, constraining updates to carefully chosen subspaces. FedLoRU \cite{park2024fedlru} explores communication-efficient federated low-rank updates and their connection to implicit regularization. ILoRA \cite{zhou2025ilora} addresses federated learning with low-rank adaptation for heterogeneous client aggregation, tackling initialization-induced instability and rank incompatibility.
+
+LoRA-based approaches \cite{sun2024improvinglora} have been adapted for privacy-preserving FL, while subspace alignment methods \cite{peng2026subspacealignment} rethink LoRA for data heterogeneous FL. Backdoor defense via isolated subspace training \cite{huang2023lockdown} demonstrates security applications. These methods simultaneously reduce compute, communication, and memory overhead by operating in $r$-dimensional subspaces where $r \ll d$.
+
+However, existing subspace methods face a critical limitation when combined with variance reduction techniques like SCAFFOLD. When the optimization subspace switches (e.g., due to subspace rotation or rank adaptation), historical control variate accumulation becomes invalid. The correction terms $c_i, c$ in SCAFFOLD are defined in $\mathbb{R}^d$ and cannot be directly projected onto new subspaces without losing their corrective power. This incompatibility creates the key gap our work addresses.
+
+\subsection{The Gap: Subspace-Variance Reduction Incompatibility}
+
+Our analysis reveals a fundamental incompatibility between subspace methods and variance reduction techniques. Consider SCAFFOLD operating in subspace $S_t$ at time $t$:
+\[
+c_i^{t} \in S_t, \quad c^{t} \in S_t
+\]
+If at time $t+1$ the subspace switches to $S_{t+1}$ (due to subspace adaptation), the historical correction terms $c_i^{t}, c^{t}$ are no longer valid in $S_{t+1}$. Projecting them onto $S_{t+1}$ loses their variance reduction capability because:
+\[
+\text{Proj}_{S_{t+1}}(c_i^{t}) \neq c_i^{t}
+\]
+This subspace-switching problem is exacerbated in methods like GaLore where subspaces evolve during training, and in FedLoRU where low-rank subspaces may change with client participation.
+
+Similarly, Error Feedback's accumulation vector $\epsilon_t \in \mathbb{R}^d$ cannot be properly maintained when switching between subspaces. The compression error accumulated in subspace $S_t$ does not directly translate to subspace $S_{t+1}$, leading to loss of error correction.
+
+This gap motivates Subspace-SCAFFOLD, which introduces subspace-aware variance reduction that maintains correction validity across subspace transitions. Our approach ensures that control variates and error feedback vectors remain effective even when the optimization subspace adapts, bridging the previously incompatible research directions.

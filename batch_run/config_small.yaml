@@ -1,0 +1,35 @@
+# 小规模批量评测配置（用于快速健康检查）
+
+eval_models:
+  - gpt51
+  - gpt54
+
+tasks:
+  - sfedavg
+
+variants:
+  - name: reasflow_gpt51
+    agent: reasflow
+    config: survey_auto
+    model: gpt-5.1
+
+  - name: reasflow_gpt54
+    agent: reasflow
+    config: survey_auto
+    model: gpt-5.4
+
+  - name: base_gpt51
+    agent: base
+    config: survey
+    model: gpt-5.1
+
+  - name: base_gpt54
+    agent: base
+    config: survey
+    model: gpt-5.4
+
+paths:
+  agentscope_survey: agentscope-survey
+  base_survey: base-survey
+  eval_sources: eval-survey/sources
+

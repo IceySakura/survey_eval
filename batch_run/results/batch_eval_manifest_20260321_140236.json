@@ -1,0 +1,10 @@
+{
+  "runs": [
+    {
+      "task": "subspacescaffold",
+      "eval_model": "sonnet4.6",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_subspacescaffold_sonnet4.6_20260321_143556.json",
+      "skipped": false
+    }
+  ]
+}

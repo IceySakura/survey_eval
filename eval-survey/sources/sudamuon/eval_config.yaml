@@ -1,0 +1,9 @@
+# sudamuon 任务级评测配置
+
+# 不抽样，全量评估
+# no_sample: true
+
+# 已知有效但无法被 S2/arXiv 确认的引用（如 blog、技术报告）
+# 这些引用不会被判为捏造，引用相关性按正常流程评估
+valid_non_academic_citations:
+  - jordan2024muon  # Muon 官方 blog，未在学术库收录

@@ -1,0 +1,281 @@
+% =============================================================================
+%  references.bib  —  SUDA-Muon Related Work bibliography
+%  Compiled from Semantic Scholar / arXiv metadata
+% =============================================================================
+
+% ---------------------------------------------------------------------------
+%  1. Muon and Matrix-Aware Optimizers
+% ---------------------------------------------------------------------------
+
+@misc{jordan2024muon,
+  author       = {Kosson, Atli and Jordan, Keller and Bernstein, Jeremy
+                  and Azizzadenesheli, Kamyar and Anandkumar, Anima},
+  title        = {{Muon}: Momentum Orthogonalized by {Newton-Schulz}},
+  year         = {2024},
+  howpublished = {Blog post / GitHub release,
+                  \url{https://github.com/KellerJordan/Muon}},
+  note         = {Original public release of the Muon optimizer}
+}
+
+@article{liu2025muon_scalable,
+  author       = {Liu, Jingyuan and Su, Jianling and Yao, Xingcheng
+                  and Jiang, Zhejun and Lai, Guokun and others},
+  title        = {Muon is Scalable for {LLM} Training},
+  journal      = {arXiv preprint arXiv:2502.16982},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2502.16982}
+}
+
+@article{li2025note,
+  author       = {Li, Jiaxiang and Hong, Mingyi},
+  title        = {A Note on the Convergence of {Muon}},
+  journal      = {arXiv preprint arXiv:2502.02900},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2502.02900}
+}
+
+@article{chen2025muon_spectral,
+  author       = {Chen, Lizhang and Li, Jonathan and Liu, Qiang},
+  title        = {Muon Optimizes Under Spectral Norm Constraints},
+  journal      = {arXiv preprint arXiv:2506.15054},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2506.15054}
+}
+
+@article{kovalev2025gradient,
+  author       = {Kovalev, Dmitry},
+  title        = {Understanding Gradient Orthogonalization for Deep Learning
+                  via Non-{Euclidean} Trust-Region Optimization},
+  journal      = {arXiv preprint arXiv:2503.12645},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2503.12645}
+}
+
+@article{polargrad2025,
+  author       = {Lau, Tim Tsz-Kit and Long, Qi and Su, Weijie J.},
+  title        = {{PolarGrad}: A Class of Matrix-Gradient Optimizers from a
+                  Unifying Preconditioning Perspective},
+  journal      = {arXiv preprint arXiv:2505.21799},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2505.21799}
+}
+
+@article{amsel2025polar,
+  author       = {Amsel, Noah and Persson, David and Musco, Christopher
+                  and Gower, Robert M.},
+  title        = {The Polar Express: Optimal Matrix Sign Methods and Their
+                  Application to the {Muon} Algorithm},
+  journal      = {arXiv preprint arXiv:2505.16932},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2505.16932}
+}
+
+@article{grishina2025chebyshev,
+  author       = {Grishina, Ekaterina and Smirnov, Matvey and Rakhuba, Maxim},
+  title        = {Accelerating {Newton-Schulz} Iteration for Orthogonalization
+                  via {Chebyshev}-type Polynomials},
+  journal      = {arXiv preprint arXiv:2506.10935},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2506.10935}
+}
+
+@article{riabinin2025gluon,
+  author       = {Riabinin, Artem and Shulgin, Egor and Gruntkowska, Kaja
+                  and Richt\'{a}rik, Peter},
+  title        = {Gluon: Making {Muon} \& {Scion} Great Again!
+                  (Bridging Theory and Practice of {LMO}-based Optimizers
+                  for {LLMs})},
+  journal      = {arXiv preprint arXiv:2505.13416},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2505.13416}
+}
+
+@article{ahn2025dion,
+  author       = {Ahn, Kwangjun and Xu, Byron and Abreu, Natalie
+                  and Fan, Yi and Magakyan, Gagik and others},
+  title        = {Dion: Distributed Orthonormalized Updates},
+  journal      = {arXiv preprint arXiv:2504.05295},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2504.05295}
+}
+
+@article{pethick2025norm,
+  author       = {Pethick, Thomas and Xie, Wanyun and Antonakopoulos, Kimon
+                  and others},
+  title        = {Training Deep Learning Models with Norm-Constrained {LMOs}},
+  journal      = {arXiv preprint},
+  year         = {2025}
+}
+
+@article{he2025lowrank,
+  author       = {He, Chuan and Deng, Zhanwang and Lu, Zhaosong},
+  title        = {Low-Rank Orthogonalization for Large-Scale Matrix Optimization
+                  with Applications to Foundation Model Training},
+  journal      = {arXiv preprint},
+  year         = {2025}
+}
+
+@inproceedings{kingma2014adam,
+  author       = {Kingma, Diederik P. and Ba, Jimmy},
+  title        = {Adam: A Method for Stochastic Optimization},
+  booktitle    = {International Conference on Learning Representations (ICLR)},
+  year         = {2015},
+  url          = {https://arxiv.org/abs/1412.6980}
+}
+
+% ---------------------------------------------------------------------------
+%  2. Decentralized Optimization and Heterogeneity Correction
+% ---------------------------------------------------------------------------
+
+@inproceedings{lian2017can,
+  author       = {Lian, Xiangru and Zhang, Ce and Zhang, Huan
+                  and Hsieh, Cho-Jui and Zhang, Wei and Liu, Ji},
+  title        = {Can Decentralized Algorithms Outperform Centralized
+                  Algorithms? {A} Case Study for Decentralized Parallel
+                  Stochastic Gradient Descent},
+  booktitle    = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year         = {2017},
+  url          = {https://arxiv.org/abs/1705.09056}
+}
+
+@article{shi2015extra,
+  author       = {Shi, Wei and Ling, Qing and Wu, Gang and Yin, Wotao},
+  title        = {{EXTRA}: An Exact First-Order Algorithm for Decentralized
+                  Consensus Optimization},
+  journal      = {SIAM Journal on Optimization},
+  volume       = {25},
+  number       = {2},
+  pages        = {944--966},
+  year         = {2015},
+  doi          = {10.1137/14096668X}
+}
+
+@inproceedings{tang2018d2,
+  author       = {Tang, Hanlin and Lian, Xiangru and Yan, Ming
+                  and Zhang, Ce and Liu, Ji},
+  title        = {{D\textsuperscript{2}}: Decentralized Training over
+                  Decentralized Data},
+  booktitle    = {International Conference on Machine Learning (ICML)},
+  year         = {2018},
+  url          = {https://arxiv.org/abs/1803.07068}
+}
+
+@article{pu2020distributed,
+  author       = {Pu, Shi and Nedi\'{c}, Angelia},
+  title        = {Distributed Stochastic Gradient Tracking Methods},
+  journal      = {Mathematical Programming},
+  volume       = {187},
+  pages        = {409--457},
+  year         = {2020},
+  doi          = {10.1007/s10107-020-01487-0}
+}
+
+@article{xin2020improved,
+  author       = {Xin, Ran and Khan, Usman A. and Kar, Soummya},
+  title        = {An Improved Convergence Analysis for Decentralized Online
+                  Stochastic Non-Convex Optimization},
+  journal      = {IEEE Transactions on Signal Processing},
+  volume       = {69},
+  pages        = {1842--1858},
+  year         = {2021},
+  doi          = {10.1109/TSP.2021.3062553}
+}
+
+@inproceedings{koloskova2020unified,
+  author       = {Koloskova, Anastasia and Loizou, Nicolas and Boreiri, Sadra
+                  and Jaggi, Martin and Stich, Sebastian U.},
+  title        = {A Unified Theory of Decentralized {SGD} with Changing
+                  Topology and Local Updates},
+  booktitle    = {International Conference on Machine Learning (ICML)},
+  year         = {2020},
+  url          = {https://arxiv.org/abs/2003.10422}
+}
+
+@article{alghunaim2022unified,
+  author       = {Alghunaim, Sulaiman A. and Yuan, Kun},
+  title        = {A Unified and Refined Convergence Analysis for Non-Convex
+                  Decentralized Learning},
+  journal      = {IEEE Transactions on Signal Processing},
+  volume       = {70},
+  pages        = {3264--3279},
+  year         = {2022},
+  doi          = {10.1109/TSP.2022.3184770}
+}
+
+@article{yuan2021removing,
+  author       = {Yuan, Kun and Alghunaim, Sulaiman A. and Huang, Xinmeng},
+  title        = {Removing Data Heterogeneity Influence Enhances Network
+                  Topology Dependence of Decentralized {SGD}},
+  journal      = {Journal of Machine Learning Research},
+  volume       = {24},
+  number       = {1},
+  pages        = {1--53},
+  year         = {2023},
+  url          = {https://arxiv.org/abs/2105.08023}
+}
+
+@article{nedic2009distributed,
+  author       = {Nedi\'{c}, Angelia and Ozdaglar, Asuman},
+  title        = {Distributed Subgradient Methods for Multi-Agent Optimization},
+  journal      = {IEEE Transactions on Automatic Control},
+  volume       = {54},
+  number       = {1},
+  pages        = {48--61},
+  year         = {2009},
+  doi          = {10.1109/TAC.2008.2009515}
+}
+
+@inproceedings{chen2021decentralized,
+  author       = {Chen, Shixiang and Garc\'{i}a, Alfredo and Hong, Mingyi
+                  and Shahrampour, Shahin},
+  title        = {Decentralized {Riemannian} Gradient Descent on the
+                  {Stiefel} Manifold},
+  booktitle    = {International Conference on Machine Learning (ICML)},
+  year         = {2021},
+  url          = {https://arxiv.org/abs/2102.07091}
+}
+
+@inproceedings{yuan2022decentralized,
+  author       = {Yuan, Binhang and He, Yongjun and Davis, Jared
+                  and Zhang, Tianyi and Dao, Tri and others},
+  title        = {Decentralized Training of Foundation Models in Heterogeneous
+                  Environments},
+  booktitle    = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year         = {2022},
+  url          = {https://arxiv.org/abs/2206.01288}
+}
+
+% ---------------------------------------------------------------------------
+%  3. Decentralized Muon (The Gap)
+% ---------------------------------------------------------------------------
+
+@article{he2025demuon,
+  author       = {He, Chuan and Ren, Shuyi and Mao, Jingwei
+                  and Larsson, Erik G.},
+  title        = {{DeMuon}: A Decentralized {Muon} for Matrix Optimization
+                  over Graphs},
+  journal      = {arXiv preprint arXiv:2510.01377},
+  year         = {2025},
+  url          = {https://arxiv.org/abs/2510.01377}
+}
+
+% ---------------------------------------------------------------------------
+%  4. Additional Supporting References
+% ---------------------------------------------------------------------------
+
+@inproceedings{nguyen2022performance,
+  author       = {Nguyen, Edward Duc Hien and Alghunaim, Sulaiman A.
+                  and Yuan, Kun and Uribe, C\'{e}sar A.},
+  title        = {On the Performance of Gradient Tracking with Local Updates},
+  booktitle    = {IEEE Conference on Decision and Control (CDC)},
+  year         = {2023},
+  doi          = {10.1109/CDC49753.2023.10383873}
+}
+
+@article{yu2021decentralized,
+  author       = {Shuhua, Yu and Jakovetić, Dušan and Kar, Soummya},
+  title        = {Decentralized Nonconvex Optimization under Heavy-Tailed
+                  Noise: Normalization and Optimal Convergence},
+  journal      = {arXiv preprint},
+  year         = {2025}
+}

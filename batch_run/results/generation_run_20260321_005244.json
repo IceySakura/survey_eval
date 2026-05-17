@@ -1,0 +1,196 @@
+{
+  "jobs": [
+    {
+      "task": "sudamuon",
+      "variant": "reasflow_gpt51",
+      "model": "gpt-5.1",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sudamuon__reasflow_gpt51__20260320_213612.log",
+      "elapsed_s": 718.48
+    },
+    {
+      "task": "sudamuon",
+      "variant": "reasflow_gpt54",
+      "model": "gpt-5.4",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sudamuon__reasflow_gpt54__20260320_214810.log",
+      "elapsed_s": 570.3
+    },
+    {
+      "task": "sudamuon",
+      "variant": "reasflow_dpsk",
+      "model": "deepseek-v3.2",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sudamuon__reasflow_dpsk__20260320_215740.log",
+      "elapsed_s": 900.11
+    },
+    {
+      "task": "sudamuon",
+      "variant": "reasflow_sonnet4.6",
+      "model": "claude-sonnet-4-6",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sudamuon__reasflow_sonnet4.6__20260320_221240.log",
+      "elapsed_s": 492.34
+    },
+    {
+      "task": "sudamuon",
+      "variant": "base_gpt51",
+      "model": "gpt-5.1",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sudamuon__base_gpt51__20260320_222053.log",
+      "elapsed_s": 238.54
+    },
+    {
+      "task": "sudamuon",
+      "variant": "base_gpt54",
+      "model": "gpt-5.4",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sudamuon__base_gpt54__20260320_222451.log",
+      "elapsed_s": 293.33
+    },
+    {
+      "task": "sudamuon",
+      "variant": "base_dpsk",
+      "model": "deepseek-v3.2",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sudamuon__base_dpsk__20260320_222945.log",
+      "elapsed_s": 290.6
+    },
+    {
+      "task": "sudamuon",
+      "variant": "base_sonnet4.6",
+      "model": "claude-sonnet-4-6",
+      "returncode": 1,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sudamuon__base_sonnet4.6__20260320_223435.log",
+      "elapsed_s": 296.66
+    },
+    {
+      "task": "sfedavg",
+      "variant": "reasflow_gpt51",
+      "model": "gpt-5.1",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sfedavg__reasflow_gpt51__20260320_223932.log",
+      "elapsed_s": 750.08
+    },
+    {
+      "task": "sfedavg",
+      "variant": "reasflow_gpt54",
+      "model": "gpt-5.4",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sfedavg__reasflow_gpt54__20260320_225202.log",
+      "elapsed_s": 691.74
+    },
+    {
+      "task": "sfedavg",
+      "variant": "reasflow_dpsk",
+      "model": "deepseek-v3.2",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sfedavg__reasflow_dpsk__20260320_230334.log",
+      "elapsed_s": 584.73
+    },
+    {
+      "task": "sfedavg",
+      "variant": "reasflow_sonnet4.6",
+      "model": "claude-sonnet-4-6",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sfedavg__reasflow_sonnet4.6__20260320_231319.log",
+      "elapsed_s": 606.34
+    },
+    {
+      "task": "sfedavg",
+      "variant": "base_gpt51",
+      "model": "gpt-5.1",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sfedavg__base_gpt51__20260320_232325.log",
+      "elapsed_s": 337.05
+    },
+    {
+      "task": "sfedavg",
+      "variant": "base_gpt54",
+      "model": "gpt-5.4",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sfedavg__base_gpt54__20260320_232902.log",
+      "elapsed_s": 318.46
+    },
+    {
+      "task": "sfedavg",
+      "variant": "base_dpsk",
+      "model": "deepseek-v3.2",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sfedavg__base_dpsk__20260320_233420.log",
+      "elapsed_s": 307.1
+    },
+    {
+      "task": "sfedavg",
+      "variant": "base_sonnet4.6",
+      "model": "claude-sonnet-4-6",
+      "returncode": 1,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_sfedavg__base_sonnet4.6__20260320_233927.log",
+      "elapsed_s": 336.45
+    },
+    {
+      "task": "subspacescaffold",
+      "variant": "reasflow_gpt51",
+      "model": "gpt-5.1",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_subspacescaffold__reasflow_gpt51__20260320_234504.log",
+      "elapsed_s": 586.41
+    },
+    {
+      "task": "subspacescaffold",
+      "variant": "reasflow_gpt54",
+      "model": "gpt-5.4",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_subspacescaffold__reasflow_gpt54__20260320_235450.log",
+      "elapsed_s": 597.36
+    },
+    {
+      "task": "subspacescaffold",
+      "variant": "reasflow_dpsk",
+      "model": "deepseek-v3.2",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_subspacescaffold__reasflow_dpsk__20260321_000448.log",
+      "elapsed_s": 718.23
+    },
+    {
+      "task": "subspacescaffold",
+      "variant": "reasflow_sonnet4.6",
+      "model": "claude-sonnet-4-6",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_subspacescaffold__reasflow_sonnet4.6__20260321_001646.log",
+      "elapsed_s": 900.11
+    },
+    {
+      "task": "subspacescaffold",
+      "variant": "base_gpt51",
+      "model": "gpt-5.1",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_subspacescaffold__base_gpt51__20260321_003146.log",
+      "elapsed_s": 263.25
+    },
+    {
+      "task": "subspacescaffold",
+      "variant": "base_gpt54",
+      "model": "gpt-5.4",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_subspacescaffold__base_gpt54__20260321_003609.log",
+      "elapsed_s": 325.95
+    },
+    {
+      "task": "subspacescaffold",
+      "variant": "base_dpsk",
+      "model": "deepseek-v3.2",
+      "returncode": 0,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_subspacescaffold__base_dpsk__20260321_004135.log",
+      "elapsed_s": 318.81
+    },
+    {
+      "task": "subspacescaffold",
+      "variant": "base_sonnet4.6",
+      "model": "claude-sonnet-4-6",
+      "returncode": 1,
+      "log_path": "/home/iceysakura/1/pylab/paper_gen/batch_run/logs/gen_subspacescaffold__base_sonnet4.6__20260321_004654.log",
+      "elapsed_s": 349.9
+    }
+  ]
+}

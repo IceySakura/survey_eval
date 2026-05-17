@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Convergence Analysis of First-Order Optimization Methods}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\section{Related Work}
+
+\subsection{Subgradient Methods and Classical Convergence Theory}
+Classical convergence analysis for nonsmooth convex optimization begins with projected and generalized subgradient schemes, whose proofs rely on convexity, projection geometry, and quasi-Fej\'er recursions rather than smooth descent lemmas \citep{Alber_1998, Kim_1991, Br_nnlund_1995, Goffin_1977}. Polyak-type stepsizes and approximate target-value rules refined this theory, while non-Euclidean projections extended it to variational inequalities and mirror-style geometries \citep{Allen_1987, Auslender_2007}. Closely related lines studied inexact, aggregate, and level-based variants, including primal-dual inexact updates, aggregate subgradient stabilization, and level methods \citep{unknown1996primal, Kiwiel_1983, unknown1998convergence}. Additional extensions treated quasiconvex and early nonconvex settings, as well as stationarity-oriented analyses for locally Lipschitz problems \citep{Kiwiel_2001, Mifflin_1984, Mifflin_1990, Lemarechal_1982}. Bundle, Bregman-proximal, and approximate-iteration viewpoints further broadened the classical landscape \citep{Eckstein_1998, unknown1998bundle, Kiwiel_1995}, while activity identification and active-set ideas linked convergence to local structure \citep{Fl_m_1992, Panier_1987, Tseng_2007}. These works established robust asymptotic convergence under weak assumptions, but they remained fragmented across oracle models and geometries, relied heavily on bounded subgradients and diminishing stepsizes, and typically yielded best-iterate or ergodic guarantees rather than a unified composite theory under relaxed smoothness assumptions.
+
+\subsection{Proximal, Splitting, and Unified Variational Frameworks under Relaxed Smoothness}
+The proximal viewpoint unified constrained optimization, regularization, and monotone inclusions by treating nonsmooth structure through resolvents and proximal maps \citep{unknown2018monotone}. Forward--backward splitting became the canonical template for composite problems, while incremental proximal methods extended this framework to large-scale decomposable objectives \citep{Bertsekas_2011}. Non-Euclidean projected and Bregman-proximal methods showed that convergence can be organized around geometry-dependent distances rather than Euclidean quadratics \citep{Auslender_2007, Eckstein_1998, unknown1998bundle}. Model-based and bundle-style methods further generalized proximal descent by allowing inexact local surrogates, level stabilization, and cutting-plane models \citep{unknown2019nonsmooth, Kiwiel_1995, unknown2019multiproximal, Chen_1994}. Composite Newton and Gauss--Newton variants demonstrated that richer local models can preserve proximal structure while improving local behavior \citep{unknown2022globally, Qi_1997, unknown2001convergence, Miller_2005, Billups_2000}. Recent nonconvex block and aggregated proximal schemes extended these ideas to nonsmooth nonconvex problems \citep{unknown2021block}, and KL-based analyses supplied whole-sequence convergence under tame geometry \citep{Attouch_2007}. Yet the literature still exhibits a clear unification gap: Euclidean proximal-gradient, Bregman/mirror methods, bundle-model frameworks, and Newton-type composite schemes are usually analyzed separately. It also leaves a relaxed-assumptions gap, since many results still depend on global Lipschitz smoothness or method-specific surrogates, and a rate-tightness gap, because residual definitions and guarantees vary across geometries and inexactness models.
+
+\subsection{Modern Complexity, Acceleration, and Tight Convergence Rates}
+Modern work shifted the focus from asymptotic convergence to explicit complexity, acceleration, and local rate improvement. For constrained and saddle formulations, primal-dual subgradient and first-order methods provided ergodic complexity guarantees and primal recovery mechanisms \citep{Nesterov_2007, Sen_1986, unknown1999ergodic, _nnheim_2016, Lan_2009, unknown2019iteration}. Error bounds, weak sharpness, linear regularity, and strong KKT conditions explained when first-order schemes become linearly convergent despite the absence of global strong convexity \citep{unknown1999strong, C_novas_2009, unknown1999linear, unknown2019new, Zhou_2017, Tseng_2010, Zheng_2009, Burke_2005}. Related analyses connected H\"olderian growth and structured convex surrogates to faster rates \citep{unknown2019faster, Tseng_2010}. For nonconvex and weakly smooth settings, Lyapunov and dynamical perspectives clarified stationarity and stability of extragradient, inertial, and ODE-inspired methods \citep{Goudou_2007, unknown2026lyapunov, Lu_2021}. At the same time, non-Lipschitz composite and complementarity-type models, folded-concave penalties, and conservative-field viewpoints showed that standard gradient-mapping analyses are often insufficient under singular or generalized structure \citep{unknown2001convex, unknown2019mathematical, Liu_2017, unknown2020conservative}. Lower-complexity and benchmark comparisons, including asynchronous limits, high-order evaluation complexity, accelerated proximal-point ideas, and structured nonconvex phase retrieval, sharpened what is and is not achievable with first-order information \citep{unknown2020fully, Cartis_2010, unknown2021accelerated, unknown2019gradient, unknown2020high}. Overall, prior work provides many sharp special-case results, but not a single theory that simultaneously unifies composite first-order methods, admits relaxed smoothness assumptions, and delivers rate-tight guarantees across convex and structured nonconvex regimes.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

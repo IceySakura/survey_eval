@@ -1,0 +1,2605 @@
+{
+  "evaluation_time": "2026-03-21T11:51:52.270572",
+  "task": "sudamuon",
+  "eval_model": "gpt51",
+  "articles": [
+    "base_dpsk",
+    "base_gpt51",
+    "base_gpt54",
+    "base_sonnet4.6",
+    "reasflow_dpsk",
+    "reasflow_gpt51",
+    "reasflow_gpt54",
+    "reasflow_sonnet4.6"
+  ],
+  "dimensions_evaluated": [
+    1,
+    2
+  ],
+  "objective_scores": {
+    "base_dpsk": {
+      "content_accuracy": {
+        "article_name": "base_dpsk",
+        "score": 7.96,
+        "total_citations": 21,
+        "verified_citations": 15,
+        "fulltext_verified": 14,
+        "semantic_scholar_verified": 1,
+        "failed_count": 0,
+        "hallucination_count": 6,
+        "hallucinations": [
+          {
+            "key": "huang2025limuon",
+            "title": "LiMuon: Light and Fast Muon Optimizer for Large Models",
+            "arxiv_id": "2509.14562",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 相关描述中指出“Leading to empirically superior convergence in training large-scale models \\cite{huang2025limuon, he2025lowrank}”。LiMuon 论文确实是 Muon 类优化器（针对矩阵结构参数，利用随机 SVD 和动量型方差缩减）并在 DistilGPT2 和 ViT 等大模型上进行实证实验，展示了在训练效率上的优势，这与“用于大规模模型训练，具有经验上更优收敛表现”的整体表述在方向上是相符的。然而，该段前文提到的“via SVD or approximated efficiently via Newton–Schulz iterations”更对应利用极分解/矩阵函数的 Muon 变体，LiMuon 文中使用的是随机 SVD，并未涉及 Newton–Schulz 近似，因此如果读者将这两句连在一起理解为：LiMuon 具体是通过极分解或 Newton–Schulz 近似实现更新并因此取得更好收敛，则属于对 LiMuon 方法细节的误导。描述在大方向（矩阵结构、几何对齐、在大模型上的经验优势）上部分吻合，但在实现方式上有混淆，足以误导对该论文具体方法的理解，因此评为 1。"
+          },
+          {
+            "key": "jordanmuon",
+            "title": "Muon: A Matrix-Aware Optimizer for Deep Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "zhu2024sparkle",
+            "title": "SPARKLE: A Unified Single-Loop Primal-Dual Framework for Decentralized Bilevel Optimization",
+            "arxiv_id": "2411.14166",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 该句将一系列文献归为在其设定下实现了“network topology only affects higher-order terms in the convergence bound（拓扑分离）”这一现象的工作，并把 SPARKLE 作为其中之一进行引用。实际上，SPARKLE 论文提出的是一个单环原始-对偶框架，用于去中心化双层优化，主要贡献在于：可灵活嵌入多种异质性校正策略（如 EXTRA、Exact Diffusion、gradient tracking）、允许上下层采用不同去中心化策略，并给出统一的收敛性分析和与现有方法相比的最优/近最优收敛率。论文强调的是不同去中心化策略在双层问题中的适用性及收敛率对比，并指出 EXTRA/Exact Diffusion 更适合双层优化，也未在摘要和引言中提出或命名“拓扑分离”现象，更未声称网络拓扑仅影响高阶项。若该 related works 段落是在讨论具有拓扑分离性质的算法族，则将 SPARKLE 纳入这一类是实质性误导：SPARKLE 的收敛界并未以“拓扑仅影响高阶项”为核心结构或显式结论。因此，该描述就 SPARKLE 而言属于误导性概括。"
+          },
+          {
+            "key": "yuan2021removing",
+            "title": "Removing Data Heterogeneity Influence Enhances Network Topology Dependence of Decentralized SGD",
+            "arxiv_id": "2105.08023",
+            "accuracy_level": 1,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "原文系统性研究的是 D2 / Exact-diffusion 在去除数据异质性影响后，其收敛过程对网络拓扑的依赖如何减弱，并给出在不同凸性设定下的非渐近收敛率，结论是“拓扑依赖被显著减弱/得到最优（最弱）拓扑依赖”，而不是“网络拓扑无关的收敛率”。Related Works 中把该文概括为“使得在某些条件下达到网络拓扑无关的收敛速率”属于实质性夸大和曲解：论文中仍然存在对 (1−β) 的依赖，只是阶数优化，而非完全消除网络拓扑影响。因此会误导读者对该论文贡献的理解。"
+          },
+          {
+            "key": "alghunaim2023local",
+            "title": "Local Exact-Diffusion for Decentralized Optimization and Learning",
+            "arxiv_id": "2302.00620",
+            "accuracy_level": 1,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "被引用论文提出的是 Local Exact-Diffusion (LED)，是对 Exact Diffusion 方法在本地更新场景下的扩展与分析，并非原始的 Exact Diffusion / D^2 方法本身。原文中确实将 LED 与 Exact Diffusion 等方法联系起来并在集中化情形下恢复已有最优收敛界，但并没有把自身作为“Exact Diffusion / D^2 的原始 primal-dual 提法”，也没有以该名义系统提出去除异质性影响的 primal-dual 机制。将这篇论文直接标注为“Exact Diffusion (ED) / D^2：A primal-dual formulation that provably removes heterogeneity influence...” 会误导读者，以为该论文是提出 ED/D^2 的原始工作，而非对其推广、统一和分析。因此属于对论文贡献的实质性误导。"
+          },
+          {
+            "key": "huang2023cedas",
+            "title": "CEDAS: A Compressed Decentralized Stochastic Gradient Method With Improved Convergence",
+            "arxiv_id": "2301.05872",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 被引用论文 CEDAS 主要研究的是在去中心化随机梯度方法中引入通信压缩，并在光滑强凸与非凸情形下给出收敛率与 transient time 的精细上界，这些上界中对网络拓扑（通过 mixing matrix 的谱间隙 1−λ2）有明确且主导的依赖，例如 O(n C^3 / (1−λ2)^2) 和 O(n^3 C^6 / (1−λ2)^4)。文中并未提出或证明类似“拓扑分离”（topology separation）的现象，也没有得到‘网络拓扑只影响高阶项’这一类型的结论。相反，网络拓扑在其主收敛界中扮演显著角色。因此，将该论文归入“当异质性被校正后，网络拓扑仅影响收敛上界中的高阶项”的范畴，会误导读者对该论文理论结论的理解，属于对论文贡献和结论的实质性误述。"
+          }
+        ],
+        "details": [
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "arxiv_id": "2510.01377",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "huang2025limuon",
+            "title": "LiMuon: Light and Fast Muon Optimizer for Large Models",
+            "arxiv_id": "2509.14562",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 相关描述中指出“Leading to empirically superior convergence in training large-scale models \\cite{huang2025limuon, he2025lowrank}”。LiMuon 论文确实是 Muon 类优化器（针对矩阵结构参数，利用随机 SVD 和动量型方差缩减）并在 DistilGPT2 和 ViT 等大模型上进行实证实验，展示了在训练效率上的优势，这与“用于大规模模型训练，具有经验上更优收敛表现”的整体表述在方向上是相符的。然而，该段前文提到的“via SVD or approximated efficiently via Newton–Schulz iterations”更对应利用极分解/矩阵函数的 Muon 变体，LiMuon 文中使用的是随机 SVD，并未涉及 Newton–Schulz 近似，因此如果读者将这两句连在一起理解为：LiMuon 具体是通过极分解或 Newton–Schulz 近似实现更新并因此取得更好收敛，则属于对 LiMuon 方法细节的误导。描述在大方向（矩阵结构、几何对齐、在大模型上的经验优势）上部分吻合，但在实现方式上有混淆，足以误导对该论文具体方法的理解，因此评为 1。"
+          },
+          {
+            "key": "jordanmuon",
+            "title": "Muon: A Matrix-Aware Optimizer for Deep Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "gruntkowska2025non",
+            "title": "Non-Euclidean Broximal Point Method: A Blueprint for Geometry-Aware Optimization",
+            "arxiv_id": "2510.00823",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "wang2024proximal",
+            "title": "A Decentralized Proximal Gradient Tracking Algorithm for Composite Optimization on Riemannian Manifolds",
+            "arxiv_id": "2401.11573",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhu2024sparkle",
+            "title": "SPARKLE: A Unified Single-Loop Primal-Dual Framework for Decentralized Bilevel Optimization",
+            "arxiv_id": "2411.14166",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 该句将一系列文献归为在其设定下实现了“network topology only affects higher-order terms in the convergence bound（拓扑分离）”这一现象的工作，并把 SPARKLE 作为其中之一进行引用。实际上，SPARKLE 论文提出的是一个单环原始-对偶框架，用于去中心化双层优化，主要贡献在于：可灵活嵌入多种异质性校正策略（如 EXTRA、Exact Diffusion、gradient tracking）、允许上下层采用不同去中心化策略，并给出统一的收敛性分析和与现有方法相比的最优/近最优收敛率。论文强调的是不同去中心化策略在双层问题中的适用性及收敛率对比，并指出 EXTRA/Exact Diffusion 更适合双层优化，也未在摘要和引言中提出或命名“拓扑分离”现象，更未声称网络拓扑仅影响高阶项。若该 related works 段落是在讨论具有拓扑分离性质的算法族，则将 SPARKLE 纳入这一类是实质性误导：SPARKLE 的收敛界并未以“拓扑仅影响高阶项”为核心结构或显式结论。因此，该描述就 SPARKLE 而言属于误导性概括。"
+          },
+          {
+            "key": "grishina2025accelerating",
+            "title": "Accelerating Newton-Schulz Iteration for Orthogonalization via Chebyshev-type Polynomials",
+            "arxiv_id": "2506.10935",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "yuan2021removing",
+            "title": "Removing Data Heterogeneity Influence Enhances Network Topology Dependence of Decentralized SGD",
+            "arxiv_id": "2105.08023",
+            "accuracy_level": 1,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "原文系统性研究的是 D2 / Exact-diffusion 在去除数据异质性影响后，其收敛过程对网络拓扑的依赖如何减弱，并给出在不同凸性设定下的非渐近收敛率，结论是“拓扑依赖被显著减弱/得到最优（最弱）拓扑依赖”，而不是“网络拓扑无关的收敛率”。Related Works 中把该文概括为“使得在某些条件下达到网络拓扑无关的收敛速率”属于实质性夸大和曲解：论文中仍然存在对 (1−β) 的依赖，只是阶数优化，而非完全消除网络拓扑影响。因此会误导读者对该论文贡献的理解。"
+          },
+          {
+            "key": "amsel2025polar",
+            "title": "The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm",
+            "arxiv_id": "2505.16932",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "alghunaim2023local",
+            "title": "Local Exact-Diffusion for Decentralized Optimization and Learning",
+            "arxiv_id": "2302.00620",
+            "accuracy_level": 1,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "被引用论文提出的是 Local Exact-Diffusion (LED)，是对 Exact Diffusion 方法在本地更新场景下的扩展与分析，并非原始的 Exact Diffusion / D^2 方法本身。原文中确实将 LED 与 Exact Diffusion 等方法联系起来并在集中化情形下恢复已有最优收敛界，但并没有把自身作为“Exact Diffusion / D^2 的原始 primal-dual 提法”，也没有以该名义系统提出去除异质性影响的 primal-dual 机制。将这篇论文直接标注为“Exact Diffusion (ED) / D^2：A primal-dual formulation that provably removes heterogeneity influence...” 会误导读者，以为该论文是提出 ED/D^2 的原始工作，而非对其推广、统一和分析。因此属于对论文贡献的实质性误导。"
+          },
+          {
+            "key": "wu2025riemannian",
+            "title": "Riemannian EXTRA: Communication-efficient decentralized optimization over compact submanifolds with data heterogeneity",
+            "arxiv_id": "2505.15537",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "song2021optimal",
+            "title": "Optimal gradient tracking for decentralized optimization",
+            "arxiv_id": "2110.05282",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "chen2021decentralized",
+            "title": "Decentralized Riemannian Gradient Descent on the Stiefel Manifold",
+            "arxiv_id": "2102.07091",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "chen2025quantized",
+            "title": "Decentralized Optimization on Compact Submanifolds by Quantized Riemannian Gradient Tracking",
+            "arxiv_id": "2506.07351",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "huang2023cedas",
+            "title": "CEDAS: A Compressed Decentralized Stochastic Gradient Method With Improved Convergence",
+            "arxiv_id": "2301.05872",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 被引用论文 CEDAS 主要研究的是在去中心化随机梯度方法中引入通信压缩，并在光滑强凸与非凸情形下给出收敛率与 transient time 的精细上界，这些上界中对网络拓扑（通过 mixing matrix 的谱间隙 1−λ2）有明确且主导的依赖，例如 O(n C^3 / (1−λ2)^2) 和 O(n^3 C^6 / (1−λ2)^4)。文中并未提出或证明类似“拓扑分离”（topology separation）的现象，也没有得到‘网络拓扑只影响高阶项’这一类型的结论。相反，网络拓扑在其主收敛界中扮演显著角色。因此，将该论文归入“当异质性被校正后，网络拓扑仅影响收敛上界中的高阶项”的范畴，会误导读者对该论文理论结论的理解，属于对论文贡献和结论的实质性误述。"
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "base_dpsk",
+        "score": 4.77,
+        "total_citations": 20,
+        "evaluated_citations": 15,
+        "fabricated_count": 1,
+        "key_refs_total": 7,
+        "key_refs_covered": 3,
+        "coverage_rate": 0.429,
+        "citation_count_bonus": 1.5,
+        "key_coverage": [
+          {
+            "key_ref": "Muon Optimizer (Jordan et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表包含多篇与 Muon 相关的后续/扩展工作（huang2025limuon, sato2025convergence, amsel2025polar 等），但未出现原始 Muon Optimizer 论文（Jordan et al., 2024）或其明显等价版本。"
+          },
+          {
+            "key_ref": "Convergence of Muon (Shen et al., 2025)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "虽然有 sato2025convergence 和其他关于 Muon 收敛与实现的论文，但没有署名 Shen 等人 2025 的收敛性工作或其可辨认替代。"
+          },
+          {
+            "key_ref": "Decentralized Parallel SGD (Lian et al., NeurIPS 2017)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中有多篇关于去中心化 SGD、GT、压缩等的工作，但没有 Lian et al., NeurIPS 2017 经典 DPSGD 论文或其版本。"
+          },
+          {
+            "key_ref": "EXTRA (Shi et al., SIAM 2015)",
+            "covered": true,
+            "matched_cite_key": "shi2015extra",
+            "note": "EXTRA 原始论文已以 shi2015extra 明确出现。"
+          },
+          {
+            "key_ref": "Exact Diffusion / D^2 (Yuan et al., 2017 / Tang et al., 2018)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "有 alghunaim2023local（Local Exact-Diffusion）等相关后续工作，但未包含最初提出 Exact Diffusion / D^2 的 Yuan et al. (2017) 或 Tang et al. (2018) 论文。"
+          },
+          {
+            "key_ref": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (Alghunaim et al., IEEE TAC 2022)",
+            "covered": true,
+            "matched_cite_key": "yuan2021unified",
+            "note": "Plan 中提到的统一与精细分析工作在引用列表中以 yuan2021unified 出现（题目一致：A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning），应为同一篇或等价版本。"
+          },
+          {
+            "key_ref": "DeMuon (He et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "he2025demuon",
+            "note": "DeMuon 已以 he2025demuon 明确出现。"
+          }
+        ],
+        "highly_relevant": 2,
+        "weakly_relevant": 12,
+        "irrelevant": 1,
+        "details": [
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 第3部分“Decentralized Muon (The Gap)”中明确点名的关键参考文献（DeMuon, He et al., 2025），代表了将 Muon 扩展到分布式图结构的首个尝试，也是本文提出 SUDA-Muon 时需要对比和超越的直接前作，其算法与理论局限性正构成本研究的主要动机，因此属于强相关核心工作。"
+          },
+          {
+            "key": "huang2025limuon",
+            "title": "LiMuon: Light and Fast Muon Optimizer for Large Models",
+            "relevance": 1,
+            "reason": "该文是对 Muon 的轻量化与加速实现（侧重降低矩阵极化/msgn 的代价和适配大模型），属于 Muon 优化器发展脉络的相邻工作，但 Plan 中关注的是 Muon 的理论收敛性质及其在去中心化/分布式场景下的扩展与通信结构统一。LiMuon 并未涉及去中心化优化、SUDA 式统一框架或线性加速等核心问题，因此可作为 Muon 实践层面的补充背景引用，但并非 Plan 中强调的核心代表性工作。"
+          },
+          {
+            "key": "jordanmuon",
+            "title": "Muon: A Matrix-Aware Optimizer for Deep Learning",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "gruntkowska2025non",
+            "title": "Non-Euclidean Broximal Point Method: A Blueprint for Geometry-Aware Optimization",
+            "relevance": 1,
+            "reason": "该文关注一般 Banach/非欧几里得空间上的几何感知近端点方法，为非欧几里得优化提供统一蓝图，与 Plan 中“Muon 和矩阵感知优化器”的几何视角有一定理念上的相似（都强调超越欧氏几何、利用结构化几何信息），但并未专门针对矩阵算子几何（如 msgn、SVD/NS 极化）、也未涉及去中心化通信结构、SUDA 框架或 Muon/DeMuon 本身。因此可作为更广义的几何优化背景工作，属于相邻技术，适合在 Related Work 中简要提及，但不是 Plan 中强调的核心代表性文献。"
+          },
+          {
+            "key": "wang2024proximal",
+            "title": "A Decentralized Proximal Gradient Tracking Algorithm for Composite Optimization on Riemannian Manifolds",
+            "relevance": 1,
+            "reason": "该文研究的是“Riemann 流形上的分布式复合优化 + 近端梯度跟踪”，与 Plan 中的核心主题（矩阵极化的 Muon 优化器、SUDA 框架下的去中心化 Euclidean SGD、以及 DeMuon 式的矩阵极化去中心化算法）并不直接重合：它不涉及 Muon、矩阵 sign 极化，也不属于 SUDA/EXTRA/Exact Diffusion 这一统一框架的代表性工作。但它属于“去中心化 + 非欧几里得几何（流形）+ 梯度跟踪”的相邻方向，体现了在非欧空间中做去中心化与梯度跟踪的一般思路，可作为更广义的背景工作被顺带提及，因此判为弱相关而非完全无关。"
+          },
+          {
+            "key": "zhu2024sparkle",
+            "title": "SPARKLE: A Unified Single-Loop Primal-Dual Framework for Decentralized Bilevel Optimization",
+            "relevance": 1,
+            "reason": "该文提出的是去中心化双层优化的单循环原始-对偶统一框架，属于去中心化优化及统一框架类工作，与 Plan 中第二部分的“去中心化优化 & 统一视角（SUDA）”在方法论上有一定相似性（单循环原始-对偶、统一不同算法范式）。但它主要针对双层问题而非标准单层非凸学习，也未涉及矩阵感知优化器或 Muon/DeMuon，因此与本稿核心主题（矩阵极化 + SUDA 式统一框架 + 线性加速性质）是相邻而非直接核心，放在更广泛背景中引用是合理的，故评为弱相关。"
+          },
+          {
+            "key": "grishina2025accelerating",
+            "title": "Accelerating Newton-Schulz Iteration for Orthogonalization via Chebyshev-type Polynomials",
+            "relevance": 1,
+            "reason": "该论文研究如何通过 Chebyshev 型多项式加速用于正交化的 Newton–Schulz 迭代，本质上是提高矩阵正交化/极分解运算效率的数值线性代数方法。Plan 中的 Muon 优化器正是依赖矩阵 sign/极分解运算（可用 Newton–Schulz 实现），因此该工作与“Muon and Matrix-Aware Optimizers”部分在算子实现层面存在技术交叉，可视为 Muon 中 msgn 运算的高效近似手段。但 Plan 的核心是去中心化优化框架、异质性校正与去中心化 Muon 的理论与算法设计，该引用既不在 Key References 中，也未直接触及去中心化或 SUDA/DeMuon 等核心问题，因此属于相邻技术背景，弱相关。"
+          },
+          {
+            "key": "yuan2021removing",
+            "title": "Removing Data Heterogeneity Influence Enhances Network Topology Dependence of Decentralized SGD",
+            "relevance": 1,
+            "reason": "该文关注在去除数据异质性影响后，去中心化 SGD 的收敛性能会更强地依赖网络拓扑，与 Plan 中第二部分“Decentralized Optimization & Heterogeneity Correction”以及第三部分中讨论的‘网络拓扑影响被细化分离’有一定交叉，属于对网络拓扑作用的更细致分析。但它既未被列为关键文献，也不是 SUDA/EXTRA/Exact Diffusion/GT 等统一框架或代表性算法本身，且与 Muon 或矩阵极化优化无直接关系，因此更适合作为扩展背景而非核心支撑工作，判为弱相关。"
+          },
+          {
+            "key": "amsel2025polar",
+            "title": "The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm",
+            "relevance": 2,
+            "reason": "该文直接研究 Muon 算法核心算子——矩阵符号函数（matrix sign）的最优计算方法，属于“Muon and Matrix-Aware Optimizers”这一 Section 的中心技术范畴，是对 Muon 极其关键的优化原语（msgn/SVD/Newton–Schulz）的专门工作。它为 Muon 的实现与效率提供方法论基础，紧密契合 Plan 中对矩阵感知优化器及其几何属性的讨论，因此应视为强相关背景文献。"
+          },
+          {
+            "key": "alghunaim2023local",
+            "title": "Local Exact-Diffusion for Decentralized Optimization and Learning",
+            "relevance": 1,
+            "reason": "该文属于去中心化优化中 Exact Diffusion 家族的后续拓展，研究方向与 Plan 第 2 部分“Decentralized Optimization & Heterogeneity Correction”高度相邻，但 Plan 中列为关键代表工作的，是更早的 Exact Diffusion / D^2 及其统一分析（Yuan et al., Tang et al., Alghunaim et al. 2022）。本论文作为 Local Exact-Diffusion 的后续工作，适合作为更广泛上下文的补充引用，但并非 Plan 中点名或必须凸显的核心基石文献，因此评为弱相关。"
+          },
+          {
+            "key": "wu2025riemannian",
+            "title": "Riemannian EXTRA: Communication-efficient decentralized optimization over compact submanifolds with data heterogeneity",
+            "relevance": 1,
+            "reason": "该文研究的是在黎曼流形（紧致子流形）上的分散式优化，将 EXTRA 扩展到流形场景，并考虑数据异质性。从 Plan 来看：一方面，它与 Section 2 中的“EXTRA + 数据异质性 + 分布式优化”高度邻近，属于同一类去中心化优化与异质性校正方法，因此放在更广泛背景中是合理的；另一方面，Plan 的核心是欧氏空间下的 SUDA 统一框架与 Muon 这类矩阵极化优化器的结合，并未涉及流形优化或 Riemannian EXTRA，也未将其列为关键代表工作。因此它是相邻方向的背景文献，而非核心或直接激发本工作的关键引用，评分为弱相关（1）。"
+          },
+          {
+            "key": "song2021optimal",
+            "title": "Optimal gradient tracking for decentralized optimization",
+            "relevance": 1,
+            "reason": "该文针对去中心化优化中的 gradient tracking 方法给出最优收敛分析，属于去中心化优化与异质性校正方向中“gradient tracking”这一子类的代表性工作。但在 Plan 中，被点名作为基准的是 EXTRA、Exact Diffusion、D² 和统一分析框架（如 SUDA、Alghunaim 2022），而非单独的 GT 最优性结果。该论文与第二部分“Decentralized Optimization & Heterogeneity Correction”技术上有交叉，可作为拓展性引用，但并非 Plan 中强调的核心或直接激发本文动机的关键文献，因此评为弱相关。"
+          },
+          {
+            "key": "chen2021decentralized",
+            "title": "Decentralized Riemannian Gradient Descent on the Stiefel Manifold",
+            "relevance": 1,
+            "reason": "该文研究的是去中心化 Riemannian 梯度下降，特别是在 Stiefel 流形上的约束优化，与本 Plan 中“矩阵结构参数”“非欧几里得几何”以及去中心化优化有一定交叉，属于相邻方向。但它聚焦于经典流形约束优化而非 Muon 所用的矩阵极化 / sign 方向，也未涉及 SUDA 式通信-校正统一框架或线性加速分析。因此可以作为更广泛“几何感知、去中心化优化”的背景引用，但不是 Plan 所强调的核心代表工作。"
+          },
+          {
+            "key": "chen2025quantized",
+            "title": "Decentralized Optimization on Compact Submanifolds by Quantized Riemannian Gradient Tracking",
+            "relevance": 1,
+            "reason": "该文涉及“去中心化 + 梯度追踪 + 量化 + 流形约束（Riemannian/子流形）”这一类问题，与 Plan 中第二部分的 Decentralized Optimization 与 Gradient Tracking 方向存在交叉，因此可作为去中心化非欧几里得优化的扩展背景。但 Plan 重点在于欧氏空间下的 SUDA 框架、EXTRA/Exact Diffusion/GT 这类异质性校正方法，以及 Muon 这类矩阵极化优化器的去中心化扩展；该文不涉及 Muon、矩阵极化或 SUDA 式拓扑分离分析，也不是 Key References 或直接动机工作。因此属于相邻但非核心的相关工作，更适合作为广义背景引用，故评为弱相关（1）。"
+          },
+          {
+            "key": "huang2023cedas",
+            "title": "CEDAS: A Compressed Decentralized Stochastic Gradient Method With Improved Convergence",
+            "relevance": 1,
+            "reason": "CEDAS 研究的是带有梯度压缩的去中心化随机梯度方法，属于去中心化优化与通信效率方向，与 Plan 中第 2 部分“去中心化优化与异质性修正”在范式（DPSGD 类方法、网络拓扑影响）上有一定交集，作为更广泛的去中心化 SGD 文献背景可以被提及。但它既不涉及矩阵感知优化器/Muon，也不属于 SUDA/EXTRA/Exact Diffusion/GT 这一条异质性修正与统一分析主线，更未触及去中心化 Muon 或线性加速问题，因此不是本 Plan 所强调的核心代表性工作。"
+          }
+        ]
+      }
+    },
+    "base_gpt51": {
+      "content_accuracy": {
+        "article_name": "base_gpt51",
+        "score": 5.0,
+        "total_citations": 0,
+        "verified_citations": 0,
+        "fulltext_verified": 0,
+        "semantic_scholar_verified": 0,
+        "failed_count": 0,
+        "hallucination_count": 0,
+        "hallucinations": [],
+        "details": []
+      },
+      "citation_relevance": {
+        "article_name": "base_gpt51",
+        "score": 1.0,
+        "total_citations": 0,
+        "evaluated_citations": 0,
+        "fabricated_count": 0,
+        "key_refs_total": 7,
+        "key_refs_covered": 0,
+        "coverage_rate": 0.0,
+        "citation_count_bonus": 0.0,
+        "key_coverage": [
+          {
+            "key_ref": "Muon Optimizer (Jordan et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未提供任何实际引用列表，无法在现有信息中找到该文献或等价替代。"
+          },
+          {
+            "key_ref": "Convergence of Muon (Shen et al., 2025)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未提供任何实际引用列表，无法在现有信息中找到该文献或等价替代。"
+          },
+          {
+            "key_ref": "Decentralized Parallel SGD (Lian et al., NeurIPS 2017)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未提供任何实际引用列表，无法在现有信息中找到该文献或等价替代。"
+          },
+          {
+            "key_ref": "EXTRA (Shi et al., SIAM 2015)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未提供任何实际引用列表，无法在现有信息中找到该文献或等价替代。"
+          },
+          {
+            "key_ref": "Exact Diffusion / D^2 (Yuan et al., 2017 / Tang et al., 2018)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未提供任何实际引用列表，无法在现有信息中找到该两篇论文或等价替代。"
+          },
+          {
+            "key_ref": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (Alghunaim et al., IEEE TAC 2022)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未提供任何实际引用列表，无法在现有信息中找到该文献或等价替代。"
+          },
+          {
+            "key_ref": "DeMuon (He et al., 2025)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未提供任何实际引用列表，无法在现有信息中找到该文献或等价替代。"
+          }
+        ],
+        "highly_relevant": 0,
+        "weakly_relevant": 0,
+        "irrelevant": 0,
+        "details": []
+      }
+    },
+    "base_gpt54": {
+      "content_accuracy": {
+        "article_name": "base_gpt54",
+        "score": 8.63,
+        "total_citations": 38,
+        "verified_citations": 15,
+        "fulltext_verified": 14,
+        "semantic_scholar_verified": 1,
+        "failed_count": 0,
+        "hallucination_count": 4,
+        "hallucinations": [
+          {
+            "key": "sfyraki2025lionsmuons",
+            "title": "Lions and Muons: Optimization via Stochastic Frank-Wolfe",
+            "arxiv_id": "2506.04192",
+            "accuracy_level": 0,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "被引论文 sfyraki2025lionsmuons 研究的是将 Lion 与 Muon 这类优化器统一为随机 Frank–Wolfe（投影‑free）方法，并给出相应的收敛性分析及在重尾噪声下的鲁棒变体，属于对深度学习优化器的 Frank–Wolfe 视角和理论扩展。Related Works 中这组文献被概括为：在谱范数约束、收敛性、低秩或多项式近似、以及基于线性最小化或预条件化视角的统一分析等方面对“orthogonalized updates”家族进行理论和算法跟进。原文摘录中并未涉及谱范数约束、正交化更新、低秩或多项式近似，也没有以“orthogonalized updates”为主题；其“unifying view”是通过 Stochastic Frank–Wolfe，而不是通过线性最小化或预条件化去解释某种正交化更新家族。因此，把该论文归类为关于 orthogonalized updates 的统一线性最小化/预条件化视角，是实质性错配，不能视为对该论文内容的合理部分概括。"
+          },
+          {
+            "key": "bernstein2024oldoptimizer",
+            "title": "Old Optimizer, New Norm: An Anthology",
+            "arxiv_id": "2409.20325",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 被引论文《Old Optimizer, New Norm: An Anthology》主要贡献是：在关闭 EMA 后，从一阶陡降/范数几何的角度统一理解 Adam、Shampoo、Prodigy，并据此提出为不同网络张量指定不同算子范数的设计空间。论文并未提出或分析以矩阵符号函数（matrix sign operator）为基础的“极化方向”、也没有引入 Muon 类似的矩阵正交化优化器，更没有将“raw gradient 替换为基于矩阵 sign 的 polarized direction”的具体方法。因此，将该文与“Muon replaces the raw gradient by a polarized direction based on the matrix sign operator”这一家族并列，暗示其属于同一类‘矩阵正交化’方法，是对论文方法和贡献的实质性误述，可能会误导读者对其算法性质的理解。"
+          },
+          {
+            "key": "li2025note",
+            "title": "A Note on the Convergence of Muon",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          }
+        ],
+        "details": [
+          {
+            "key": "kovalev2025gradientorth",
+            "title": "Understanding Gradient Orthogonalization for Deep Learning via Non-Euclidean Trust-Region Optimization",
+            "arxiv_id": "2503.12645",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "arxiv_id": "1802.09568",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "grishina2025chebyshev",
+            "title": "Accelerating Newton-Schulz Iteration for Orthogonalization via Chebyshev-type Polynomials",
+            "arxiv_id": "2506.10935",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "sfyraki2025lionsmuons",
+            "title": "Lions and Muons: Optimization via Stochastic Frank-Wolfe",
+            "arxiv_id": "2506.04192",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "被引论文 sfyraki2025lionsmuons 研究的是将 Lion 与 Muon 这类优化器统一为随机 Frank–Wolfe（投影‑free）方法，并给出相应的收敛性分析及在重尾噪声下的鲁棒变体，属于对深度学习优化器的 Frank–Wolfe 视角和理论扩展。Related Works 中这组文献被概括为：在谱范数约束、收敛性、低秩或多项式近似、以及基于线性最小化或预条件化视角的统一分析等方面对“orthogonalized updates”家族进行理论和算法跟进。原文摘录中并未涉及谱范数约束、正交化更新、低秩或多项式近似，也没有以“orthogonalized updates”为主题；其“unifying view”是通过 Stochastic Frank–Wolfe，而不是通过线性最小化或预条件化去解释某种正交化更新家族。因此，把该论文归类为关于 orthogonalized updates 的统一线性最小化/预条件化视角，是实质性错配，不能视为对该论文内容的合理部分概括。"
+          },
+          {
+            "key": "lau2025polargrad",
+            "title": "PolarGrad: A Class of Matrix-Gradient Optimizers from a Unifying Preconditioning Perspective",
+            "arxiv_id": "2505.21799",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "bernstein2024oldoptimizer",
+            "title": "Old Optimizer, New Norm: An Anthology",
+            "arxiv_id": "2409.20325",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 被引论文《Old Optimizer, New Norm: An Anthology》主要贡献是：在关闭 EMA 后，从一阶陡降/范数几何的角度统一理解 Adam、Shampoo、Prodigy，并据此提出为不同网络张量指定不同算子范数的设计空间。论文并未提出或分析以矩阵符号函数（matrix sign operator）为基础的“极化方向”、也没有引入 Muon 类似的矩阵正交化优化器，更没有将“raw gradient 替换为基于矩阵 sign 的 polarized direction”的具体方法。因此，将该文与“Muon replaces the raw gradient by a polarized direction based on the matrix sign operator”这一家族并列，暗示其属于同一类‘矩阵正交化’方法，是对论文方法和贡献的实质性误述，可能会误导读者对其算法性质的理解。"
+          },
+          {
+            "key": "polar_express_2025",
+            "title": "The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm",
+            "arxiv_id": "2505.16932",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "shi2015extra",
+            "title": "EXTRA: An Exact First-Order Algorithm for Decentralized Consensus Optimization",
+            "arxiv_id": "1404.6264",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "nedic2017diging",
+            "title": "Achieving Geometric Convergence for Distributed Optimization Over Time-Varying Graphs",
+            "arxiv_id": "1607.03218",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "xin2021topologyindependent",
+            "title": "A Stochastic Proximal Gradient Framework for Decentralized Non-Convex Composite Optimization: Topology-Independent Sample Complexity and Communication Efficiency",
+            "arxiv_id": "2110.01594",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "arxiv_id": "2510.01377",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "shazeer2018adafactor",
+            "title": "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost",
+            "arxiv_id": "1804.04235",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "lian2017dpsgd",
+            "title": "Can Decentralized Algorithms Outperform Centralized Algorithms? A Case Study for Decentralized Parallel Stochastic Gradient Descent",
+            "arxiv_id": "1705.09056",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 该论文确实研究去中心化并行SGD在通信/计算权衡上的优势，表明去中心化（gossip式）方法可以缓解中心节点瓶颈，并在某些网络条件下获得显著加速，这与“peer-to-peer learning can remove central bottlenecks and achieve attractive communication/computation trade-offs”这一部分是相符的。然而，该论文采用的是数据在各节点间均匀划分的标准假设，并未系统讨论“under data heterogeneity, local iterates drift apart and consensus errors bias optimization”这一核心挑战，也没有把共识误差在非IID/异质数据情形下的偏置效应作为主要结论来分析。因此，把这篇论文作为直接证据说明数据异质性导致迭代偏离和优化偏置，属于对其贡献的轻度过度概括和错置，可能让读者误以为论文专门研究异质数据下的偏差问题。整体而言，通信/计算权衡部分描述准确，但关于数据异质性和偏置效应的部分并未得到该论文的直接支持。"
+          },
+          {
+            "key": "li2025note",
+            "title": "A Note on the Convergence of Muon",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "ahn2025dion",
+            "title": "Dion: Distributed Orthonormalized Updates",
+            "arxiv_id": "2504.05295",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "base_gpt54",
+        "score": 8.5,
+        "total_citations": 36,
+        "evaluated_citations": 15,
+        "fabricated_count": 2,
+        "key_refs_total": 7,
+        "key_refs_covered": 5,
+        "coverage_rate": 0.714,
+        "citation_count_bonus": 2.7,
+        "key_coverage": [
+          {
+            "key_ref": "Muon Optimizer (Jordan et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中包含多篇与 Muon 相关的论文（polar_express_2025, liu2025muonscalable, shah2025practicalefficiency, chen2025spectralnorm, lau2025polargrad, he2025lowrank 等），但没有明显对应“Muon Optimizer (Jordan et al., 2024)”这篇最初提出 Muon 算法的基准论文或其等价版本。"
+          },
+          {
+            "key_ref": "Convergence of Muon (Shen et al., 2025)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未找到作者为 Shen、年份为 2025 的 Muon 收敛性理论论文或明显等价替代；polar_express_2025 等虽涉及矩阵符号与 Muon，但与写作计划中明确点名的“Shen et al., 2025”不匹配。"
+          },
+          {
+            "key_ref": "Decentralized Parallel SGD (Lian et al., NeurIPS 2017)",
+            "covered": true,
+            "matched_cite_key": "lian2017dpsgd",
+            "note": "lian2017dpsgd 正是 Lian 等人在 2017 年提出的 Decentralized Parallel SGD 工作，对应计划中的关键文献。"
+          },
+          {
+            "key_ref": "EXTRA (Shi et al., SIAM 2015)",
+            "covered": true,
+            "matched_cite_key": "shi2015extra",
+            "note": "shi2015extra 对应 Shi 等人在 SIAM 2015 发表的 EXTRA 算法论文。"
+          },
+          {
+            "key_ref": "Exact Diffusion / D$^2$ (Yuan et al., 2017 / Tang et al., 2018)",
+            "covered": true,
+            "matched_cite_key": "tang2018d2 / yuan2019exactdiffusion",
+            "note": "tang2018d2 对应 D^2，yuan2019exactdiffusion 对应 Exact Diffusion；虽然年份比计划中标注稍有差异，但显然是同一系列工作。"
+          },
+          {
+            "key_ref": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (Alghunaim et al., IEEE TAC 2022)",
+            "covered": true,
+            "matched_cite_key": "alghunaim2022unified",
+            "note": "alghunaim2022unified 即为 Alghunaim 等人关于非凸分布式学习统一精细分析的 IEEE TAC 论文。"
+          },
+          {
+            "key_ref": "DeMuon (He et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "he2025demuon",
+            "note": "he2025demuon 即为 DeMuon: A Decentralized Muon for Matrix Optimization over Graphs，对应计划中的关键去中心化 Muon 工作。"
+          }
+        ],
+        "highly_relevant": 6,
+        "weakly_relevant": 7,
+        "irrelevant": 2,
+        "details": [
+          {
+            "key": "kovalev2025gradientorth",
+            "title": "Understanding Gradient Orthogonalization for Deep Learning via Non-Euclidean Trust-Region Optimization",
+            "relevance": 1,
+            "reason": "该文研究的是通过非欧几里得信赖域方法来理解/实现梯度正交化，与本 Plan 中的“Muon 及矩阵感知优化器”在概念上有交叉（都是非欧几里得几何/正交化思路的优化方法），属于相邻技术背景。但 Plan 中并未将其列为关键参考文献，也未将非欧几里得信赖域方向作为核心主线，更没有涉及去中心化或 SUDA 框架，因此更适合作为扩展背景而非核心引用，评为弱相关。"
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "relevance": 1,
+            "reason": "Shampoo 是一种针对深度学习中矩阵/张量参数结构的预条件优化方法，属于与 Muon 同一大类的“矩阵/张量结构感知优化器”。它与 Plan 第 1 部分“Muon and Matrix-Aware Optimizers”的主题有技术交叉，可作为更广泛背景中另一类矩阵感知优化方法来对比 Muon 的设计与优势。但 Shampoo 未被列为关键引用，也与去中心化优化、SUDA 框架或去中心化 Muon 的特定理论/算法问题无直接关联，因此更适合作为相邻技术的背景工作，相关性属弱相关。"
+          },
+          {
+            "key": "grishina2025chebyshev",
+            "title": "Accelerating Newton-Schulz Iteration for Orthogonalization via Chebyshev-type Polynomials",
+            "relevance": 1,
+            "reason": "该文工作研究如何通过 Chebyshev 型多项式加速 Newton–Schulz 迭代以进行矩阵正交化，与 Muon 中使用的 Newton–Schulz 近似矩阵 sign/极分解在数值方法上存在直接交叉，属于“矩阵感知优化器”中实现 msign 的相邻技术。但 Plan 中并未将此类数值线性代数加速方法作为核心引用或关键研究方向，也不是去中心化或 SUDA 框架的代表性工作，因此更适合作为实现层面的补充背景，评分为弱相关而非强相关。"
+          },
+          {
+            "key": "sfyraki2025lionsmuons",
+            "title": "Lions and Muons: Optimization via Stochastic Frank-Wolfe",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "lau2025polargrad",
+            "title": "PolarGrad: A Class of Matrix-Gradient Optimizers from a Unifying Preconditioning Perspective",
+            "relevance": 2,
+            "reason": "该文系统研究一类基于矩阵极分解/极性变换的“矩阵梯度优化器”，从统一的预条件视角刻画和推广 Muon 类型的矩阵感知优化方法。它与 Plan 中第 1 节“Muon and Matrix-Aware Optimizers”的核心主题高度契合：同属利用矩阵结构与极性/符号算子来获得尺度不变、与算子几何对齐的更新方向，是 Muon 的直接同类与理论推广工作。尽管未在 Key References 中显式列出，但作为最近提出的同类方法，在 Related Work 中用来对比和完善对矩阵感知优化器家族的背景是高度合理且有助于强化动机，因此评为强相关。"
+          },
+          {
+            "key": "bernstein2024oldoptimizer",
+            "title": "Old Optimizer, New Norm: An Anthology",
+            "relevance": 1,
+            "reason": "该论文讨论的是在既有优化算法（如SGD/Adam等）下更换/重新理解范数或度量空间的视角，属于“优化算法与几何结构关系”的相邻主题，与 Plan 中的核心方向（Muon 的矩阵极化与矩阵几何、去中心化优化与 SUDA 统一框架、DeMuon 等）有一定概念交叉，但并非 Muon 或矩阵 sign 算子、也不是去中心化/异质性修正或线性加速分析的代表性工作。可作为更广泛优化背景的引用，但并不在 Plan 强调的关键脉络中。"
+          },
+          {
+            "key": "polar_express_2025",
+            "title": "The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm",
+            "relevance": 2,
+            "reason": "该论文专注于矩阵符号函数（matrix sign）及其在 Muon 算法中的最优实现，这与 Plan 第 1 部分“Muon and Matrix-Aware Optimizers”高度契合。Plan 明确指出 Muon 的核心在于用矩阵符号算子（msgn）极化梯度，并通过 SVD 或 Newton–Schulz 近似来计算；该论文正是研究这一核心算子的数值方法与性质，因此直接属于“Muon 优化器及其矩阵结构几何”的代表性工作。虽然它未被列为 Key Reference，但在 Related Work 中作为 Muon 算子实现与理论背景的补充是强相关且自然的。"
+          },
+          {
+            "key": "shi2015extra",
+            "title": "EXTRA: An Exact First-Order Algorithm for Decentralized Consensus Optimization",
+            "relevance": 2,
+            "reason": "该文献正是 Plan 中在 Section 2『Decentralized Optimization & Heterogeneity Correction』所列出的关键参考之一（EXTRA），代表了去中心化一阶优化与误差校正类方法的核心工作，是 SUDA 统一分析框架要涵盖和对比的典型算法，因此与本研究动机和背景高度契合，属强相关。"
+          },
+          {
+            "key": "nedic2017diging",
+            "title": "Achieving Geometric Convergence for Distributed Optimization Over Time-Varying Graphs",
+            "relevance": 1,
+            "reason": "该文属于分布式/去中心化优化中的经典收敛性研究，与 Plan 中第2部分“Decentralized Optimization & Heterogeneity Correction”在大方向上相关（都是去中心化优化与网络拓扑、收敛速率相关的理论），可作为更广泛背景的一部分。但它主要关注时间变化图上的梯度法几何收敛，不是Plan中强调的EXTRA/Exact Diffusion/GT/SUDA一类“异质性校正”和统一分析框架的代表性工作，也未涉及Muon或矩阵极化，因此与核心动机和关键引用有交叉但并非核心，评为弱相关。"
+          },
+          {
+            "key": "xin2021topologyindependent",
+            "title": "A Stochastic Proximal Gradient Framework for Decentralized Non-Convex Composite Optimization: Topology-Independent Sample Complexity and Communication Efficiency",
+            "relevance": 1,
+            "reason": "该文属于去中心化非凸优化领域，关注随机近端梯度框架下的拓扑无关样本复杂度与通信效率，和 Plan 中第2部分“Decentralized Optimization & Heterogeneity Correction”在总体技术方向上是相邻且有交叉的（同属去中心化/分布式非凸优化与拓扑相关性分析）。但其核心是近端/复合优化与样本复杂度，而非 Plan 中重点强调的 SUDA 风格的统一 primal-dual 结构、基于 mixing matrix 低阶多项式的分析，亦与 Muon 或矩阵极化、Decentralized Muon 及线性加速问题没有直接对应关系，因此更适合作为广义背景文献而非核心代表性工作。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "relevance": 2,
+            "reason": "该文正是 Plan 中在 Section 3 明确点名的关键工作 DeMuon（He et al., 2025），是“Decentralized Muon”方向的首个代表性方法，用于说明现有去中心化 Muon 设计的局限性（单一通信模板、缺乏 SUDA 式拓扑分离分析及线性加速结论），直接构成本研究 SUDA-Muon 的核心动机，因此与本 Related Work 的主题强相关。"
+          },
+          {
+            "key": "shazeer2018adafactor",
+            "title": "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost",
+            "relevance": 1,
+            "reason": "Adafactor 是一种针对大规模神经网络的自适应优化器，强调矩阵结构参数的内存友好型二阶近似更新，因此与“矩阵结构参数的优化”有一定交集，可作为更广泛背景下传统/自适应优化方法的代表之一。但它既不是 Muon 或矩阵极化类优化器，也与去中心化优化、SUDA 框架或去中心化 Muon 的线性加速与拓扑分离分析无直接关系，因此只属于相邻背景工作，相关性为弱相关。"
+          },
+          {
+            "key": "lian2017dpsgd",
+            "title": "Can Decentralized Algorithms Outperform Centralized Algorithms? A Case Study for Decentralized Parallel Stochastic Gradient Descent",
+            "relevance": 2,
+            "reason": "该文正是 Plan 中第二部分“Decentralized Parallel SGD (Lian et al., NeurIPS 2017)”点名的代表性工作，也是去中心化 SGD 及其线性加速性质的经典来源，直接构成我们讨论去中心化优化与线性 speedup 问题的核心背景，因此属于强相关。"
+          },
+          {
+            "key": "li2025note",
+            "title": "A Note on the Convergence of Muon",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "ahn2025dion",
+            "title": "Dion: Distributed Orthonormalized Updates",
+            "relevance": 2,
+            "reason": "Dion 研究的是在分布式/去中心化环境下对模型更新做正交化（orthonormalized updates），本质上是将矩阵结构与分布式优化结合的工作，与 Plan 中“Decentralized Muon (matrix-aware, polarized/orthogonalized updates in decentralized graphs)”的核心问题高度契合。它既属于矩阵感知优化器在分布式场景下的直接相关研究，也可视为与 DeMuon 同类的“去中心化矩阵极化/正交化更新”的代表性尝试，可用来对比通信模板、非线性局部变换与网络平均的相互作用，因此是强相关。"
+          }
+        ]
+      }
+    },
+    "base_sonnet4.6": {
+      "content_accuracy": {
+        "article_name": "base_sonnet4.6",
+        "score": 9.2,
+        "total_citations": 25,
+        "verified_citations": 15,
+        "fulltext_verified": 13,
+        "semantic_scholar_verified": 2,
+        "failed_count": 0,
+        "hallucination_count": 3,
+        "hallucinations": [
+          {
+            "key": "nedic2009distributed",
+            "title": "Distributed Subgradient Methods for Multi-Agent Optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Distributed Subgradient Methods for Multi-Agent Optimization。LLM: 候选 0 的标题与作者及年份均与 Bib 条目完全一致，显然是同一篇论文；该候选未提供 arXiv ID。"
+          },
+          {
+            "key": "chen2025muon_spectral",
+            "title": "Muon Optimizes Under Spectral Norm Constraints",
+            "arxiv_id": "2506.15054",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文的核心结论是：在将 Muon 置于 Lion-K 框架下并选择适当的凸映射（核范数）时，可将其理解为在带有 decoupled weight decay 的情形下，隐式地求解一个带有谱范数约束的优化问题（整体训练过程满足某种谱范数约束，且分析给出的是全局的收敛与约束性质，以及 KKT 点收敛等）。\n\nRelated Works 中的表述为：\"prove that Muon implicitly solves a spectral-norm-constrained trust-region subproblem at each step\"。这一说法有两点偏差：\n1. 原文强调的是 Muon 与 Lion-K 等价，从而整个算法可视为在一个带谱范数约束的优化问题上进行迭代，并证明其收敛到相应的 KKT 点，而非明确提出“在每一步都在精确求解一个 trust-region 子问题”。论文中更偏向于从 Lyapunov 函数与约束优化视角刻画整体动态，而不是逐步形式化为“每步的 trust-region 子问题求解器”。\n2. “trust-region subproblem at each step” 是一种更强且更具体的优化解释，会让读者误以为作者以信赖域方法的标准形式构造并求解每一步的子问题，这与论文现有表述存在概念上的夸大/偏差。\n\n因此，该描述虽抓住了“隐式谱范数约束优化”的核心思想，但用“trust-region subproblem at each step”来概括有一定误导性，属于轻微的概念性误述，并非完全错误。"
+          },
+          {
+            "key": "he2025lowrank",
+            "title": "Low-Rank Orthogonalization for Large-Scale Matrix Optimization with Applications to Foundation Model Training",
+            "arxiv_id": "2509.11983",
+            "accuracy_level": 1,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述中说 He 等人的 low-rank orthogonalization 工作“targets foundation-model fine-tuning（针对大模型微调）”，而原文摘要与引言明确表述其主要应用是 foundation model training / GPT-2 和 LLaMA 的 pretraining（预训练），并未将问题设定为微调场景，因此把它描述为专门面向 fine-tuning 是对工作主要应用场景的实质性误述；同时，原文也未强调特定的分布式/去中心化训练设置，只是一般性的优化与实验框架。该偏差会误导读者对论文贡献的应用对象和场景的理解。"
+          }
+        ],
+        "details": [
+          {
+            "key": "xin2020improved",
+            "title": "An Improved Convergence Analysis for Decentralized Online Stochastic Non-Convex Optimization",
+            "arxiv_id": "2008.04195",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "amsel2025polar",
+            "title": "The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm",
+            "arxiv_id": "2505.16932",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "nedic2009distributed",
+            "title": "Distributed Subgradient Methods for Multi-Agent Optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Distributed Subgradient Methods for Multi-Agent Optimization。LLM: 候选 0 的标题与作者及年份均与 Bib 条目完全一致，显然是同一篇论文；该候选未提供 arXiv ID。"
+          },
+          {
+            "key": "kovalev2025gradient",
+            "title": "Understanding Gradient Orthogonalization for Deep Learning via Non-Euclidean Trust-Region Optimization",
+            "arxiv_id": "2503.12645",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "chen2025muon_spectral",
+            "title": "Muon Optimizes Under Spectral Norm Constraints",
+            "arxiv_id": "2506.15054",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文的核心结论是：在将 Muon 置于 Lion-K 框架下并选择适当的凸映射（核范数）时，可将其理解为在带有 decoupled weight decay 的情形下，隐式地求解一个带有谱范数约束的优化问题（整体训练过程满足某种谱范数约束，且分析给出的是全局的收敛与约束性质，以及 KKT 点收敛等）。\n\nRelated Works 中的表述为：\"prove that Muon implicitly solves a spectral-norm-constrained trust-region subproblem at each step\"。这一说法有两点偏差：\n1. 原文强调的是 Muon 与 Lion-K 等价，从而整个算法可视为在一个带谱范数约束的优化问题上进行迭代，并证明其收敛到相应的 KKT 点，而非明确提出“在每一步都在精确求解一个 trust-region 子问题”。论文中更偏向于从 Lyapunov 函数与约束优化视角刻画整体动态，而不是逐步形式化为“每步的 trust-region 子问题求解器”。\n2. “trust-region subproblem at each step” 是一种更强且更具体的优化解释，会让读者误以为作者以信赖域方法的标准形式构造并求解每一步的子问题，这与论文现有表述存在概念上的夸大/偏差。\n\n因此，该描述虽抓住了“隐式谱范数约束优化”的核心思想，但用“trust-region subproblem at each step”来概括有一定误导性，属于轻微的概念性误述，并非完全错误。"
+          },
+          {
+            "key": "he2025lowrank",
+            "title": "Low-Rank Orthogonalization for Large-Scale Matrix Optimization with Applications to Foundation Model Training",
+            "arxiv_id": "2509.11983",
+            "accuracy_level": 1,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述中说 He 等人的 low-rank orthogonalization 工作“targets foundation-model fine-tuning（针对大模型微调）”，而原文摘要与引言明确表述其主要应用是 foundation model training / GPT-2 和 LLaMA 的 pretraining（预训练），并未将问题设定为微调场景，因此把它描述为专门面向 fine-tuning 是对工作主要应用场景的实质性误述；同时，原文也未强调特定的分布式/去中心化训练设置，只是一般性的优化与实验框架。该偏差会误导读者对论文贡献的应用对象和场景的理解。"
+          },
+          {
+            "key": "grishina2025chebyshev",
+            "title": "Accelerating Newton-Schulz Iteration for Orthogonalization via Chebyshev-type Polynomials",
+            "arxiv_id": "2506.10935",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "arxiv_id": "2510.01377",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "jordan2024muon",
+            "title": "Muon: Momentum Orthogonalized by Newton-Schulz",
+            "arxiv_id": "",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "已知有效引用（blog/技术报告等），S2 无候选"
+          },
+          {
+            "key": "lian2017can",
+            "title": "Can Decentralized Algorithms Outperform Centralized Algorithms? A Case Study for Decentralized Parallel Stochastic Gradient Descent",
+            "arxiv_id": "1705.09056",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "chen2021decentralized",
+            "title": "Decentralized Riemannian Gradient Descent on the Stiefel Manifold",
+            "arxiv_id": "2102.07091",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "koloskova2020unified",
+            "title": "A Unified Theory of Decentralized SGD with Changing Topology and Local Updates",
+            "arxiv_id": "2003.10422",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "exaggeration",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 引用的两处说法都是在强调 Koloskova et al. (2020) 中关于去中心化 SGD 的线性加速特性和对网络拓扑敏感度的性质。\n\n1）“network-topology penalty appears only in lower-order terms”/“only in higher-order terms”这一类表述带有一定夸张色彩。原文确实给出了统一的收敛上界，其中主导项与集中式 mini-batch SGD 相匹配，网络相关项在某些设置下可以视为次要项，但他们并未以如此强烈的‘仅出现在高阶项’的语气作为统一结论去强调所有情形。相关描述更像是作者对统一理论某些特例的总结，而不是 Koloskova 论文中明确而普适的主张。\n\n2）“Linear speedup … is a cornerstone guarantee of decentralized SGD \\citep{lian2017can, koloskova2020unified}”存在一定概括性和夸大。Koloskova et al. 确实在其框架中涵盖了局部更新、去中心化 SGD 等，并在若干假设（如平滑性、适当的步长、足够迭代次数等）下得到与集中式 mini-batch SGD 可比的收敛速率，包含接近线性加速的情形，但他们并没有将“线性 speedup”作为对所有去中心化 SGD 的普适‘基石保证’来宣称。\n\n总体而言，该引用并非完全错误：Koloskova et al. 的确提供了统一理论，包含在多代理下可以获得与集中式 mini-batch 可比的主导项收敛率以及在一定意义上的线性加速，因此能支持描述中“线性加速/与集中式匹配主导项”的合理部分。但对于‘网络项只出现在高阶项’和‘线性加速是基石保证’这类措辞存在一定程度的夸大。"
+          },
+          {
+            "key": "kingma2014adam",
+            "title": "Adam: A Method for Stochastic Optimization",
+            "arxiv_id": "1412.6980",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "yuan2021removing",
+            "title": "Removing Data Heterogeneity Influence Enhances Network Topology Dependence of Decentralized SGD",
+            "arxiv_id": "2105.08023",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "ahn2025dion",
+            "title": "Dion: Distributed Orthonormalized Updates",
+            "arxiv_id": "2504.05295",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "base_sonnet4.6",
+        "score": 8.68,
+        "total_citations": 25,
+        "evaluated_citations": 15,
+        "fabricated_count": 0,
+        "key_refs_total": 7,
+        "key_refs_covered": 6,
+        "coverage_rate": 0.857,
+        "citation_count_bonus": 1.875,
+        "key_coverage": [
+          {
+            "key_ref": "Muon Optimizer (Jordan et al., 2024)",
+            "covered": true,
+            "matched_cite_key": "jordan2024muon",
+            "note": "Muon: Momentum Orthogonalized by Newton-Schulz (2024) 与计划中的 Muon Optimizer 一致。"
+          },
+          {
+            "key_ref": "Convergence of Muon (Shen et al., 2025)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未出现 Shen 等人的收敛性论文，也未见明显等价替代；现有与收敛相关的是 li2025note、chen2025muon_spectral 等，但作者与标题均不同。"
+          },
+          {
+            "key_ref": "Decentralized Parallel SGD (Lian et al., NeurIPS 2017)",
+            "covered": true,
+            "matched_cite_key": "lian2017can",
+            "note": "Can Decentralized Algorithms Outperform Centralized Algorithms? A Case Study for Decentralized Parallel Stochastic Gradient Descent (2017) 即 Lian 等人的 DPSGD 论文。"
+          },
+          {
+            "key_ref": "EXTRA (Shi et al., SIAM 2015)",
+            "covered": true,
+            "matched_cite_key": "shi2015extra",
+            "note": "EXTRA: An Exact First-Order Algorithm for Decentralized Consensus Optimization (2015) 即 Shi 等人的 EXTRA。"
+          },
+          {
+            "key_ref": "Exact Diffusion / D$^2$ (Yuan et al., 2017 / Tang et al., 2018)",
+            "covered": true,
+            "matched_cite_key": "tang2018d2",
+            "note": "tang2018d2 对应 D$^2$/Exact Diffusion 线路文献；Yuan 等人的 2017 版未单独出现，但核心方法已通过 Tang 2018 覆盖。"
+          },
+          {
+            "key_ref": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (Alghunaim et al., IEEE TAC 2022)",
+            "covered": true,
+            "matched_cite_key": "alghunaim2022unified",
+            "note": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (2022) 已在引用中出现。"
+          },
+          {
+            "key_ref": "DeMuon (He et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "he2025demuon",
+            "note": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs (2025) 即计划中提到的 DeMuon。"
+          }
+        ],
+        "highly_relevant": 6,
+        "weakly_relevant": 9,
+        "irrelevant": 0,
+        "details": [
+          {
+            "key": "xin2020improved",
+            "title": "An Improved Convergence Analysis for Decentralized Online Stochastic Non-Convex Optimization",
+            "relevance": 1,
+            "reason": "该论文属于分布式/去中心化非凸随机优化的理论分析工作，与 Plan 中的“Decentralized Optimization & Heterogeneity Correction”大方向相邻，属于更广义的去中心化非凸收敛分析文献。但它既不在 Plan 指定的关键引用列表中，也未像 EXTRA/Exact Diffusion/GT/SUDA 那样作为统一框架或代表性异质性校正方法被强调；与 Muon 或矩阵感知优化也无直接关联。因此可作为更宽泛背景文献提及，但对本篇围绕 SUDA-Muon 的核心论述并非关键，评分为弱相关。"
+          },
+          {
+            "key": "amsel2025polar",
+            "title": "The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm",
+            "relevance": 2,
+            "reason": "该文专注于矩阵符号函数的最优计算方法及其在 Muon 算法中的应用，直接属于 Plan 第 1 部分“Muon and Matrix-Aware Optimizers”的核心技术范畴。尽管不在列出的 Key References 清单中，但它深入研究了 Muon 所依赖的 matrix sign 运算及其数值实现，对理解和改进 Muon 更新方向的计算具有直接背景意义，因此在 Related Work 中应作为与 Muon 优化器内核紧密相关的代表性工作引用，相关性可判为强相关。"
+          },
+          {
+            "key": "nedic2009distributed",
+            "title": "Distributed Subgradient Methods for Multi-Agent Optimization",
+            "relevance": 1,
+            "reason": "该文是分布式次梯度方法与多智能体优化的早期经典工作，为去中心化优化与共识型算法提供基础理论背景，但它针对的是一般分布式凸优化/共识框架，并未涉及 Plan 中强调的非欧几里得矩阵优化（如 Muon）、SUDA 式统一框架或异构性校正下的精细拓扑分离分析。因此更适合作为去中心化优化的历史背景引用，而非本稿核心方向的代表性文献，故评为弱相关。"
+          },
+          {
+            "key": "kovalev2025gradient",
+            "title": "Understanding Gradient Orthogonalization for Deep Learning via Non-Euclidean Trust-Region Optimization",
+            "relevance": 1,
+            "reason": "该工作研究的是基于非欧几里得信赖域的梯度正交化优化，与 Plan 中的“矩阵感知优化器 / Muon”在思想上存在一定交叉：都关注偏离标准欧氏梯度、利用非欧几里得几何或正交化来改进深度学习优化。但该论文既不属于 Plan 中列出的关键参考文献，也未被明确描述为 Muon 或矩阵符号算子 (msgn) 相关的代表性工作；此外，它与去中心化优化、SUDA 框架或 DeMuon 等核心内容没有直接联系。因此可作为更广泛背景下的相邻技术被简要提及，但不是本篇 Related Work 的核心支柱。"
+          },
+          {
+            "key": "chen2025muon_spectral",
+            "title": "Muon Optimizes Under Spectral Norm Constraints",
+            "relevance": 1,
+            "reason": "该论文研究的是在谱范数约束下的 Muon 优化器，属于 Muon 及矩阵结构优化这一方向，与 Plan 的 Section 1（Muon and Matrix-Aware Optimizers）的主题有交集，因此放在更广泛背景中是合理的。但它既不在 Plan 指定的 Key References 中，也未被描述为触发本工作的核心动机；从题目来看更偏向约束优化场景，而非 Plan 中强调的非凸收敛理论、去中心化扩展或通信模板统一视角，因此与本文核心贡献的契合度有限，判为弱相关。"
+          },
+          {
+            "key": "he2025lowrank",
+            "title": "Low-Rank Orthogonalization for Large-Scale Matrix Optimization with Applications to Foundation Model Training",
+            "relevance": 1,
+            "reason": "该文聚焦于大规模矩阵优化中的低秩正交化，用于提升基础模型训练效率，属于“矩阵结构参数+正交化/极分解类更新”的相邻方向，与 Plan 中的 Muon 和矩阵感知优化器在关注矩阵几何与正交化方面有一定交叉。但从 Plan 看，该文既不属于列出的关键引用，也未被作为 Muon、去中心化优化或 DeMuon/SUDA 框架的直接代表或动机性工作；其核心贡献是低秩近似与算法加速，而非 msign 极化或去中心化通信/线性加速分析，因此应视为背景类的相邻技术，可在 Related Work 中简要提及但不是核心，评分为弱相关（1）。"
+          },
+          {
+            "key": "grishina2025chebyshev",
+            "title": "Accelerating Newton-Schulz Iteration for Orthogonalization via Chebyshev-type Polynomials",
+            "relevance": 1,
+            "reason": "该文关注如何利用 Chebyshev 型多项式加速 Newton–Schulz 迭代进行矩阵正交化，这与 Muon 中使用 Newton–Schulz 近似 matrix sign/正交化的技术细节高度相邻，是“Matrix-aware” Muon 实现层面的加速方法，在介绍 Muon 的数值实现与近似 msgn 算法时可以作为补充引用。但它既不属于 Plan 中列出的关键参考文献，也不涉及去中心化优化、SUDA 框架或 DeMuon 等核心问题，因此仅属相邻技术背景，相关性为弱相关。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中第 3 部分“Decentralized Muon (The Gap)”里点名的代表性工作（DeMuon，He et al., 2025），被视为将 Muon 扩展到去中心化图上的首个尝试，也是本文拟要克服的算法和理论局限的直接对象，属于 Plan 明确列出的 Key References，故评为强相关。"
+          },
+          {
+            "key": "jordan2024muon",
+            "title": "Muon: Momentum Orthogonalized by Newton-Schulz",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中第1部分“Muon and Matrix-Aware Optimizers”里所指的 Muon 优化器的代表性工作（Key References 中的“Muon Optimizer (Jordan et al., 2024)”应为该类工作），核心贡献是利用 Newton–Schulz 迭代实现矩阵 sign 运算以构造尺度不变的矩阵感知更新，与 Plan 所述的矩阵结构参数、msgn 极化方向等高度契合，是本研究动机和方法的直接背景工作，因此属强相关。"
+          },
+          {
+            "key": "lian2017can",
+            "title": "Can Decentralized Algorithms Outperform Centralized Algorithms? A Case Study for Decentralized Parallel Stochastic Gradient Descent",
+            "relevance": 2,
+            "reason": "该文正是 Plan 中在 Decentralized Optimization & Heterogeneity Correction 部分点名的关键参考文献之一（Decentralized Parallel SGD, Lian et al., NeurIPS 2017），直接代表去中心化并行 SGD 及其线性加速性质，是本工作讨论“线性 speedup 问题”和去中心化 SGD 背景的核心基础，因此属于强相关。"
+          },
+          {
+            "key": "chen2021decentralized",
+            "title": "Decentralized Riemannian Gradient Descent on the Stiefel Manifold",
+            "relevance": 1,
+            "reason": "该文研究的是在 Stiefel 流形上的去中心化黎曼梯度下降，属于“带几何结构的去中心化优化”方向，与 Plan 中的两个核心主题——(1) Muon 等矩阵感知优化器的极化/矩阵符号算子，(2) SUDA 框架下的去中心化欧式梯度与异质性校正——并不直接重合。它没有涉及 Muon、矩阵符号极化，也未讨论 SUDA/EXTRA/Exact Diffusion/GT 等统一框架。但其在“去中心化 + 非欧式几何（流形优化）”这一点上与我们研究的‘去中心化 Muon（矩阵几何）’存在一定方法论上的相邻性，可作为更广泛背景中“去中心化非欧式/流形优化”的代表性例子，因此属于弱相关而非完全无关。"
+          },
+          {
+            "key": "koloskova2020unified",
+            "title": "A Unified Theory of Decentralized SGD with Changing Topology and Local Updates",
+            "relevance": 1,
+            "reason": "该文系统研究了去中心化SGD在动态拓扑和本地多步更新下的收敛性质，属于去中心化优化及其理论分析的重要代表之一，与 Plan 中第2部分“Decentralized Optimization & Heterogeneity Correction”在去中心化SGD、网络拓扑影响、线性加速等议题上有交叉。但它既不在给定的 Key References 列表中，也未聚焦于SUDA式统一框架、矩阵极化/Muon或针对异构性的EXTRA/Exact Diffusion/GT方向，因此更适合作为更广泛背景文献，而非Plan核心线上的代表工作，故评为弱相关（1分）。"
+          },
+          {
+            "key": "kingma2014adam",
+            "title": "Adam: A Method for Stochastic Optimization",
+            "relevance": 1,
+            "reason": "Adam 是最典型、最广泛使用的欧几里得一阶自适应优化器之一，与 Plan 中第 1 部分“Muon and Matrix-Aware Optimizers”形成对比（Muon 旨在改进传统如 SGD/Adam 这类优化器对矩阵结构的忽视）。因此它作为背景和对照方法在 Related Work 中是合理且自然的引用，但并非矩阵感知优化或去中心化优化的核心代表工作，也不在 Plan 列出的关键文献中，故评为弱相关。"
+          },
+          {
+            "key": "yuan2021removing",
+            "title": "Removing Data Heterogeneity Influence Enhances Network Topology Dependence of Decentralized SGD",
+            "relevance": 2,
+            "reason": "该文聚焦于去除数据异质性影响后，分析去中心化 SGD 收敛速率对网络拓扑的依赖性，与 Plan 第2部分“Decentralized Optimization & Heterogeneity Correction”以及第3部分对“拓扑分离的精细收敛分析”和“线性加速”问题高度契合。作者之一 Alghunaim 也是 Plan 中明确列为关键参考（SUDA/统一分析）的核心作者，论文直接讨论在非 IID/异质性处理后网络拓扑影响如何显性化，这正是我们在 SUDA-style 分析里想要利用和拓展的思想，因此属于强相关背景工作。"
+          },
+          {
+            "key": "ahn2025dion",
+            "title": "Dion: Distributed Orthonormalized Updates",
+            "relevance": 2,
+            "reason": "Dion 研究的是“Distributed Orthonormalized Updates”，即在分布式/去中心化环境下对更新方向进行正交化或归一化，这与本 Plan 中的“Decentralized Muon”高度契合：Muon 的核心也是通过矩阵极化 / 正交化算子（msgn）对梯度进行非线性矩阵变换。Dion 在分布式场景下处理非线性、归一化更新方向的通信与收敛问题，直接对应 Plan 中第三部分所强调的“将矩阵感知优化器扩展到去中心化图上的难点”（通信模板、异步与拓扑影响、线性加速性等）。因此它属于 Decentralized Muon 方向的直接相关且代表性的工作，可视为与 DeMuon 同类的背景工作，强相关。"
+          }
+        ]
+      }
+    },
+    "reasflow_dpsk": {
+      "content_accuracy": {
+        "article_name": "reasflow_dpsk",
+        "score": 10.0,
+        "total_citations": 47,
+        "verified_citations": 15,
+        "fulltext_verified": 15,
+        "semantic_scholar_verified": 0,
+        "failed_count": 0,
+        "hallucination_count": 3,
+        "hallucinations": [],
+        "details": [
+          {
+            "key": "Gruntkowska2025ErrorFF",
+            "title": "Error Feedback for Muon and Friends",
+            "arxiv_id": "2510.00643",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Pagliardini2024TheAO",
+            "title": "The AdEMAMix Optimizer: Better, Faster, Older",
+            "arxiv_id": "2409.03137",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "shen2025convergence",
+            "title": "On the Convergence Analysis of Muon",
+            "arxiv_id": "2505.23737",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 相关工作中两处对该文的描述有轻微偏差：\n1）“which orthogonalizes updates”这一表述略有简化和模糊。原论文讨论的是 Muon 针对矩阵参数，对梯度做正交化处理后再更新参数，描述为“orthogonalizes the gradients/updates for matrix-structured parameters”会更精确，但目前说法仍在合理范畴内。\n2）“their theoretical guarantees often assume convexity or specific structures \\citep{shen2025convergence, neymeyr2012geometric}”中，将本论文归入“假设凸性”的一类理论工作并不准确。从已给内容看，论文关注 Muon 在具有低秩和近似分块对角 Hessian 结构场景下的收敛分析，并不只是（或主要）建立在标准凸性假设上。将其简单归为“理论保证常假设凸性”的代表会在理论假设层面误导读者，但仍与论文主题（收敛分析、结构性假设）相关，不属于完全不相干的捏造。"
+          },
+          {
+            "key": "Lian2017AsynchronousDP",
+            "title": "Asynchronous Decentralized Parallel Stochastic Gradient Descent",
+            "arxiv_id": "1710.06952",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "xin2021improved",
+            "title": "An improved convergence analysis for decentralized online stochastic non-convex optimization",
+            "arxiv_id": "2008.04195",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Liu2023DecentralizedGT",
+            "title": "Decentralized Gradient Tracking with Local Steps",
+            "arxiv_id": "2301.01313",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Li2022BlackBL",
+            "title": "Black Box Lie Group Preconditioners for SGD",
+            "arxiv_id": "2211.04422",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "bernstein2024old",
+            "title": "Old Optimizer, New Norm: An Anthology",
+            "arxiv_id": "2409.20325",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "He2024AdjacentLD",
+            "title": "Adjacent Leader Decentralized Stochastic Gradient Descent",
+            "arxiv_id": "2405.11389",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 该描述把被引一组论文概括为：在去中心化环境中能很好处理异构性和通信问题，但收敛率仍受网络条件限制、且难以与复杂的预条件子更新集成。He2024AdjacentLD（即本论文）确实是一种去中心化优化方法，关注网络拓扑和通信开销，对应“处理通信”的部分是合理的；文中也讨论通信约束环境下的性能和收敛问题，因此“收敛率受网络条件影响”的概括在宽泛意义上可被视为成立。但本论文并未涉及矩阵结构模型或矩阵预条件器，更没有讨论与复杂预条件子更新的集成问题；也未专门系统化地分析“异构性”处理（如数据/算力异构）作为核心贡献。因此，该描述中关于“处理异构性”“与复杂预条件子整合仍是开放挑战”等表述并非本论文的内容，是对其范围的轻度泛化/外推，但不至于完全误导读者对该论文主线（去中心化SGD拓扑与通信改进）的理解。综上，存在轻微失实的综合性概括，但仍有部分（网络条件影响、通信与收敛的权衡）可由本论文支持。"
+          },
+          {
+            "key": "wang2025conda",
+            "title": "Conda: Column-Normalized Adam for Training Large Language Models Faster",
+            "arxiv_id": "2509.24218",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Ying2021ExponentialGI",
+            "title": "Exponential Graph is Provably Efficient for Decentralized Deep Training",
+            "arxiv_id": "2110.13363",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "tveit2025muon",
+            "title": "Muon Optimizer Accelerates Grokking",
+            "arxiv_id": "2504.16041",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Alghunaim2023LocalEF",
+            "title": "Local Exact-Diffusion for Decentralized Optimization and Learning",
+            "arxiv_id": "2302.00620",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 被引用论文提出的是 Local Exact-Diffusion (LED) 这一去中心化优化算法，核心是通过 exact diffusion 形式的矩阵加权/预条件迭代提升去中心化局部更新方法的收敛率，并在凸与非凸随机设定下给出理论收敛界，说明在去中心化网络中可获得优于以往方法的收敛速率。描述中“matrix preconditioning can accelerate convergence in distributed settings”这一点是与论文内容相符的，论文确实可以被视为利用合适的加权/混合矩阵（可解释为一种预条件）来改善分布式/去中心化收敛。但原论文主要关注的是去中心化优化算法与其理论收敛性，并未从“压缩通信”或“内存高效优化器”等角度进行讨论，因此把该文放在与 LDAdam 等“内存高效优化器”“低维子空间自适应更新”框架下有一定语义偏差。不过这部分偏差不至于完全误导对该论文核心贡献的理解，且在多文献联合引用下，该论文至少支持“矩阵预条件能加速分布式优化收敛”这一合理子结论。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "arxiv_id": "2510.01377",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Tang2018D2DT",
+            "title": "D^2: Decentralized Training over Decentralized Data",
+            "arxiv_id": "1803.07068",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_dpsk",
+        "score": 8.53,
+        "total_citations": 47,
+        "evaluated_citations": 15,
+        "fabricated_count": 0,
+        "key_refs_total": 7,
+        "key_refs_covered": 5,
+        "coverage_rate": 0.714,
+        "citation_count_bonus": 3.0,
+        "key_coverage": [
+          {
+            "key_ref": "Muon Optimizer (Jordan et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中有多篇 Muon 相关工作（如 tveit2025muon, liu2025muon, wang2025muon 等），但没有标明为 Muon 原始提出者 Jordan et al., 2024 的论文或等价版本。"
+          },
+          {
+            "key_ref": "Convergence of Muon (Shen et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "shen2025convergence",
+            "note": "与计划中的 Shen et al., 2025 收敛性分析完全对应。"
+          },
+          {
+            "key_ref": "Decentralized Parallel SGD (Lian et al., NeurIPS 2017)",
+            "covered": true,
+            "matched_cite_key": "Lian2017AsynchronousDP",
+            "note": "Lian et al. 2017 的去中心化并行 SGD 工作已被引用（异步版本，但为同一核心工作/作者组合）。"
+          },
+          {
+            "key_ref": "EXTRA (Shi et al., SIAM 2015)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未出现 Shi et al. 2015 EXTRA 或等价的版本/统一综述，缺失经典 EXTRA 文献。"
+          },
+          {
+            "key_ref": "Exact Diffusion / D$^2$ (Yuan et al., 2017 / Tang et al., 2018)",
+            "covered": true,
+            "matched_cite_key": "Tang2018D2DT",
+            "note": "D^2 (Tang et al., 2018) 已被引用；Exact Diffusion (Yuan et al.) 本身不在列表中，但 D^2 作为关键代表方法已覆盖计划要求的一部分。"
+          },
+          {
+            "key_ref": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (Alghunaim et al., IEEE TAC 2022)",
+            "covered": true,
+            "matched_cite_key": "alghunaim2022unified",
+            "note": "Alghunaim et al. 的统一与精细分析论文已以 arXiv/年份标注形式出现，对应计划中的统一 SUDA 分析参考。"
+          },
+          {
+            "key_ref": "DeMuon (He et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "he2025demuon",
+            "note": "DeMuon 去中心化 Muon 工作已被直接引用。"
+          }
+        ],
+        "highly_relevant": 4,
+        "weakly_relevant": 10,
+        "irrelevant": 1,
+        "details": [
+          {
+            "key": "Gruntkowska2025ErrorFF",
+            "title": "Error Feedback for Muon and Friends",
+            "relevance": 1,
+            "reason": "该工作针对 Muon 等矩阵感知优化器加入误差反馈机制，属于围绕 Muon 的相邻技术扩展。它与 Plan 第 1 部分的“矩阵感知优化器（Muon）”在方法和应用对象上高度交叉，因此在 Related Work 中提及是合理的。但从 Plan 的核心焦点来看：我们主要关心的是（1）Muon 的基础收敛理论与矩阵极化方向本身，（2）去中心化/异质性校正框架（SUDA、EXTRA、ED、GT 等），以及（3）Muon 在去中心化图上的扩展（如 DeMuon）和线性加速问题。误差反馈机制并未直接涉及去中心化通信结构、SUDA 式统一分析或线性加速性质，因此不是本 Plan 所定义的核心代表性工作或直接动机来源，故评为弱相关。"
+          },
+          {
+            "key": "Pagliardini2024TheAO",
+            "title": "The AdEMAMix Optimizer: Better, Faster, Older",
+            "relevance": 1,
+            "reason": "AdEMAMix 是一种改进型一阶优化器，主要贡献在于对 Adam/EMA 类方法的经验改进与加速，并未涉及矩阵结构下的msgn极化、Muon框架、去中心化/联邦优化或SUDA式的拓扑分离分析等本 Plan 的核心主题。因此它不是核心代表工作，也不直接激发本文的研究动机。但作为更广义“优化算法”背景中的相邻技术，在概述现代一阶优化器多样性时可以弱相关性地被提及，故评为1分。"
+          },
+          {
+            "key": "shen2025convergence",
+            "title": "On the Convergence Analysis of Muon",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中 Section 1 所强调的 Muon 收敛性理论工作之一，并被列为 Key References（“Convergence of Muon (Shen et al., 2025)”）。其研究主题直接针对单机 Muon 的非凸收敛分析，正是本文从“集中式 Muon”扩展到“去中心化 Muon”时的关键背景与动机来源，因此属于强相关引用。"
+          },
+          {
+            "key": "Lian2017AsynchronousDP",
+            "title": "Asynchronous Decentralized Parallel Stochastic Gradient Descent",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中第二部分“Decentralized Parallel SGD (Lian et al., NeurIPS 2017)”所指的代表性工作之一，直接属于关键参考文献列表中点名的去中心化并行 SGD 基础文献，对说明去中心化优化背景及其线性加速特性至关重要，因此是强相关。"
+          },
+          {
+            "key": "xin2021improved",
+            "title": "An improved convergence analysis for decentralized online stochastic non-convex optimization",
+            "relevance": 1,
+            "reason": "该文属于去中心化在线随机非凸优化的收敛分析工作，主题与 Plan 中的“Decentralized Optimization & Heterogeneity Correction”部分在去中心化非凸收敛分析这一层面上有交叉，但它既不是 SUDA/ED/EXTRA/GT 等代表性框架，也未涉及矩阵感知优化器或 Muon，更未出现在 Plan 的 Key References 中。因此可作为更广泛的背景文献，属于相邻技术的弱相关引用，而非核心代表性工作。"
+          },
+          {
+            "key": "Liu2023DecentralizedGT",
+            "title": "Decentralized Gradient Tracking with Local Steps",
+            "relevance": 1,
+            "reason": "该文研究的是带本地多步的去中心化梯度追踪方法，属于去中心化优化与梯度追踪/heterogeneity correction 这一大类，与 Plan 中第二部分“Decentralized Optimization & Heterogeneity Correction”在技术路线（DPSGD + gradient tracking）上有交叉，因此可以作为更广泛背景的一篇 GT 变体文献。但它既不在 Plan 明确列出的关键引用中，也没有针对 SUDA 式统一框架、矩阵极化/Muon 或 DeMuon 的特定讨论，因此与本文强调的核心三条主线并非直接代表性工作，只能算作弱相关。"
+          },
+          {
+            "key": "Li2022BlackBL",
+            "title": "Black Box Lie Group Preconditioners for SGD",
+            "relevance": 1,
+            "reason": "该文提出基于李群结构的黑盒预条件技术，从几何角度改造 SGD，关注利用参数空间的群/流形结构改进优化方向，与 Plan 中“矩阵/算子几何感知优化器（Muon）”在思想上有一定相似性（都是非欧式结构感知的优化方法），属于相邻技术。但它既不是 Plan 中列出的关键引用，也没有专门讨论 Muon、矩阵符号算子、去中心化并行 SGD 或 SUDA/ED/EXTRA 等框架，也不涉及去中心化线性加速等问题，因此对本工作（SUDA-Muon）的核心动机和技术点不是直接代表性工作，仅适合作为更广泛几何优化背景的弱相关文献。"
+          },
+          {
+            "key": "bernstein2024old",
+            "title": "Old Optimizer, New Norm: An Anthology",
+            "relevance": 0,
+            "reason": "从题目和已知信息看，该文主要是对传统优化器及其范数变体的综述/分析，聚焦于“old optimizer, new norm”这一更广泛的优化视角。Plan 中的核心方向是：矩阵结构感知优化器 Muon 及其矩阵符号算子、去中心化/分布式非凸优化（EXTRA、Exact Diffusion、SUDA 等）以及专门的去中心化 Muon 扩展（DeMuon）。该论文既未在 Key References 中出现，也与矩阵极化/矩阵符号算子、去中心化通信结构统一分析或线性加速性质等核心问题没有直接对应关系，最多属于非常宽泛的优化背景，按本 Plan 的标准不应被计入相关工作，因此判为不相关。"
+          },
+          {
+            "key": "He2024AdjacentLD",
+            "title": "Adjacent Leader Decentralized Stochastic Gradient Descent",
+            "relevance": 1,
+            "reason": "该文属于去中心化随机梯度下降（DPSGD）方向，引入了特殊的“Adjacent Leader”通信/拓扑结构以改善去中心化训练性能，属于 Plan 中第二部分“Decentralized Optimization & Heterogeneity Correction”的相邻技术背景：同为去中心化 SGD，但并非 EXTRA/Exact Diffusion/GT/SUDA 这一主线代表性框架，也与 Muon 或矩阵极化无直接关联。因此可作为更广泛去中心化优化背景中的补充引用，但不是 Plan 所强调的核心或直接动机工作。"
+          },
+          {
+            "key": "wang2025conda",
+            "title": "Conda: Column-Normalized Adam for Training Large Language Models Faster",
+            "relevance": 1,
+            "reason": "Conda 提出对列进行归一化的 Adam，用于更高效地训练大模型，属于参数维度或矩阵结构上进行归一化/重参数化的自适应优化方法，与“矩阵感知优化器（如 Muon）”在关注参数矩阵结构这一点上有一定交叉。但 Conda 仍基于传统 Adam 风格的欧几里得梯度与自适应缩放，并未使用矩阵极化、矩阵符号算子或与 Muon 类似的非线性正交化机制；同时论文也不涉及去中心化优化、异质性校正或 SUDA/DeMuon 等通信-校正框架。因此，它可作为“广义的矩阵结构感知/列归一化优化器”的旁支背景工作，在 Related Work 中提及尚算合理，但与本 Plan 中的核心三大方向均非直接代表性或关键激发工作，仅属弱相关。"
+          },
+          {
+            "key": "Ying2021ExponentialGI",
+            "title": "Exponential Graph is Provably Efficient for Decentralized Deep Training",
+            "relevance": 1,
+            "reason": "该文关注的是去中心化深度训练中通信拓扑（尤其是 exponential graph）的效率与加速性质，属于去中心化优化/分布式训练的相邻工作，与 Plan 第2部分“Decentralized Optimization & Heterogeneity Correction”在分布式/去中心化训练及线性加速讨论上有一定交叉。但其核心贡献在于拓扑设计与通信复杂度分析，而非针对 SUDA 所强调的异质性校正（EXTRA、Exact Diffusion、Gradient Tracking 等）或矩阵感知优化器/Muon 的非线性极化结构，因此不是核心代表性工作，也未在 Plan 中被点名，是合理的背景拓扑类引用，相关性为弱相关。"
+          },
+          {
+            "key": "tveit2025muon",
+            "title": "Muon Optimizer Accelerates Grokking",
+            "relevance": 1,
+            "reason": "该论文围绕 Muon 优化器在 grokking 任务上的经验性加速效果展开，属于“Muon 及其应用”这一方向，与 Plan 中第 1 节的 Muon 和矩阵感知优化器主题有交叉，因此在 Related Work 中可作为补充应用背景引用。但它既不在 Plan 列出的关键参考文献之中，也未涉及理论收敛、矩阵极化几何分析，更未触及去中心化或 SUDA 相关框架，与 Plan 中第 2、3 节关于去中心化优化与异质性校正、以及去中心化 Muon 的理论/算法缺口并不直接相关，因此只能算作弱相关。"
+          },
+          {
+            "key": "Alghunaim2023LocalEF",
+            "title": "Local Exact-Diffusion for Decentralized Optimization and Learning",
+            "relevance": 1,
+            "reason": "该文聚焦于 Exact Diffusion 类算法的局部变体，是去中心化优化与拓扑相关分析的相邻工作，但 Plan 中作为关键参考的是 Alghunaim 等人 2022 年在 TAC 上的“Unified and Refined Convergence Analysis”，强调 SUDA 式统一框架与拓扑分离分析。本篇 2023 年的 Local Exact-Diffusion 并未在 Plan 中被点名，也不是 Muon 或 SUDA 统一框架的直接代表，因此更适合作为去中心化优化背景中的相邻文献或补充引用，而非核心动机工作。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中第三部分“Decentralized Muon (The Gap)”所点名的关键工作（DeMuon，He et al., 2025），被明确列为 Key References，并且是将 Muon 拓展到去中心化图上的首个代表性尝试，其局限性直接构成本文 SUDA-Muon 工作的研究动机，因此与本 Related Works 段落的核心论述高度契合，属强相关。"
+          },
+          {
+            "key": "Tang2018D2DT",
+            "title": "D^2: Decentralized Training over Decentralized Data",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中在 Section 2“Decentralized Optimization & Heterogeneity Correction”里点名的 Exact Diffusion / D^2 代表性工作之一，也是 Key References 列表中明确列出的核心文献，用于说明去中心化优化中通过 D^2 纠正异质性与网络拓扑相关性的经典方法，因此与本研究的 SUDA-Muon 动机和背景高度契合。"
+          }
+        ]
+      }
+    },
+    "reasflow_gpt51": {
+      "content_accuracy": {
+        "article_name": "reasflow_gpt51",
+        "score": 9.33,
+        "total_citations": 64,
+        "verified_citations": 15,
+        "fulltext_verified": 15,
+        "semantic_scholar_verified": 0,
+        "failed_count": 0,
+        "hallucination_count": 6,
+        "hallucinations": [
+          {
+            "key": "Yang2015LearningW",
+            "title": "Learning with ^0-Graph: ^0-Induced Sparse Subspace Clustering",
+            "arxiv_id": "1510.08520",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "当前句子只给出了一个非常概括性的归类：'Related perspectives from sparse subspace clustering and local-training formulations \\citep{Yang2015LearningW, ...}'。Yang2015 论文确实是关于 sparse subspace clustering 的方法（提出 ℓ0-graph，用于构造稀疏相似图并进行子空间聚类），因此把它归为 sparse subspace clustering 的相关视角是基本正确的。\n\n但该论文并未涉及联邦学习中的 client drift 或 local-training formulation（如本地多步更新、局部训练导致的偏移等），也没有分布式或去中心化控制的模型框架；其重点是单机环境下的子空间聚类理论与算法。因此，如果读者从这句话中理解为 Yang2015 在“局部训练公式化”或联邦/分散学习方面提供了直接的建模视角，就属于一定程度的误导。\n\n综合来看：\n1）作为对“sparse subspace clustering”的引用是准确的；\n2）将其与“local-training formulations”并列，会让人误以为论文涉及本地训练/分布式优化视角，这与实际内容存在偏差，但不是完全无关或凭空捏造。\n故评为轻微偏差（2，misrepresentation）。"
+          },
+          {
+            "key": "Hinton2022TheFA",
+            "title": "The Forward-Forward Algorithm: Some Preliminary Investigations",
+            "arxiv_id": "2212.13345",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 引用中将 Hinton (2022) 与 “sparse subspace clustering and local-training formulations” 并列，暗示该文提供了与稀疏子空间聚类或联邦/本地训练相关的视角。但《The Forward-Forward Algorithm》是一篇提出前向–前向算法、探讨其作为大脑学习机制替代反向传播可行性的工作，核心内容是局部正/负样本前向学习规则，与稀疏子空间聚类或分布式/联邦本地训练并无直接关联。即使在多文献联合引用的语境下，Hinton (2022) 也不支持“sparse subspace clustering 和 local-training formulations”这类表述中的任何合理部分，因此属于对论文性质和贡献方向的实质性误读。"
+          },
+          {
+            "key": "Shi2013OnTL",
+            "title": "On the Linear Convergence of the ADMM in Decentralized Consensus Optimization",
+            "arxiv_id": "1307.5561",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] Shi 2013 这篇论文研究的是在分布式共识优化场景下，将 ADMM 应用于带强凸局部目标的去中心化共识问题，并给出线性收敛率的理论分析。它确实是关于“去中心化 ADMM”的工作，但论文的核心贡献在于收敛性与收敛速率的证明，而非通过“修改梯度和混合算子（gradient and mixing operators）”来实现 exact consensus。文中采用的是基于变量复制和约束的标准 ADMM 形式，而不是像 EXTRA 那样显式修改梯度更新和加权矩阵。因此，将 Shi 2013 与 EXTRA、dual averaging 一起概括为“通过修改梯度和 mixing operators 实现 exact consensus”的描述，会让读者误以为该文提出了类似 EXTRA 的改动机制，这是对方法机制的实质性误述。该文确实分析了去中心化 ADMM 在凸（更准确地说是强凸）情形下可达到精确共识，但不是通过描述中所说的那种具体技术手段实现。"
+          },
+          {
+            "key": "Takezawa2025ScalableDL",
+            "title": "Scalable Decentralized Learning with Teleportation",
+            "arxiv_id": "2501.15259",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 该论文确实提出了一种名为 TELEPORTATION 的去中心化训练方法，通过只激活部分节点并从之前的活跃节点拉取参数、在小拓扑上做 gossip，从而缓解大规模网络中因稀疏通信导致的收敛退化，并提高训练稳定性与精度。但 Related Works 中的表述存在两点不准确：\n1) 论文中并未涉及或推导“stability-based generalization bounds”（基于稳定性的泛化界），主要是收敛率/优化分析与实验结果，没有从算法稳定性角度给出泛化理论；\n2) 文中理论与实验强调的是在给定拓扑下通过激活子集节点并利用可与任意节点通信的能力，缓解大规模拓扑的收敛率退化，而不是形式化意义上的“decouple performance from poor topologies”（从差拓扑中完全解耦性能）。因此，将该论文归入“tighten stability-based generalization bounds and decouple performance from poor topologies”的综合概括，会对其理论贡献产生实质性误导。该论文仅支持“teleportation-style designs改善去中心化学习在大规模拓扑下的收敛/性能”这一较弱、偏优化层面的说法。"
+          }
+        ],
+        "details": [
+          {
+            "key": "Yang2015LearningW",
+            "title": "Learning with ^0-Graph: ^0-Induced Sparse Subspace Clustering",
+            "arxiv_id": "1510.08520",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "当前句子只给出了一个非常概括性的归类：'Related perspectives from sparse subspace clustering and local-training formulations \\citep{Yang2015LearningW, ...}'。Yang2015 论文确实是关于 sparse subspace clustering 的方法（提出 ℓ0-graph，用于构造稀疏相似图并进行子空间聚类），因此把它归为 sparse subspace clustering 的相关视角是基本正确的。\n\n但该论文并未涉及联邦学习中的 client drift 或 local-training formulation（如本地多步更新、局部训练导致的偏移等），也没有分布式或去中心化控制的模型框架；其重点是单机环境下的子空间聚类理论与算法。因此，如果读者从这句话中理解为 Yang2015 在“局部训练公式化”或联邦/分散学习方面提供了直接的建模视角，就属于一定程度的误导。\n\n综合来看：\n1）作为对“sparse subspace clustering”的引用是准确的；\n2）将其与“local-training formulations”并列，会让人误以为论文涉及本地训练/分布式优化视角，这与实际内容存在偏差，但不是完全无关或凭空捏造。\n故评为轻微偏差（2，misrepresentation）。"
+          },
+          {
+            "key": "Lian2017AsynchronousDP",
+            "title": "Asynchronous Decentralized Parallel Stochastic Gradient Descent",
+            "arxiv_id": "1710.06952",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Wadehra2023ExactSD",
+            "title": "Exact Subspace Diffusion for Decentralized Multitask Learning",
+            "arxiv_id": "2304.07358",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "wang2025muon",
+            "title": "Muon Outperforms Adam in Tail-End Associative Memory Learning",
+            "arxiv_id": "2509.26030",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Hinton2022TheFA",
+            "title": "The Forward-Forward Algorithm: Some Preliminary Investigations",
+            "arxiv_id": "2212.13345",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 引用中将 Hinton (2022) 与 “sparse subspace clustering and local-training formulations” 并列，暗示该文提供了与稀疏子空间聚类或联邦/本地训练相关的视角。但《The Forward-Forward Algorithm》是一篇提出前向–前向算法、探讨其作为大脑学习机制替代反向传播可行性的工作，核心内容是局部正/负样本前向学习规则，与稀疏子空间聚类或分布式/联邦本地训练并无直接关联。即使在多文献联合引用的语境下，Hinton (2022) 也不支持“sparse subspace clustering 和 local-training formulations”这类表述中的任何合理部分，因此属于对论文性质和贡献方向的实质性误读。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "arxiv_id": "2510.01377",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "stich2018sparsified",
+            "title": "Sparsified SGD with Memory",
+            "arxiv_id": "1809.07599",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Takezawa2025FedMuonFL",
+            "title": "FedMuon: Federated Learning with Bias-corrected LMO-based Optimization",
+            "arxiv_id": "2509.26337",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Renggli2018SparCMLHS",
+            "title": "SparCML: High-Performance Sparse Communication for Machine Learning",
+            "arxiv_id": "1802.08021",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Shi2013OnTL",
+            "title": "On the Linear Convergence of the ADMM in Decentralized Consensus Optimization",
+            "arxiv_id": "1307.5561",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] Shi 2013 这篇论文研究的是在分布式共识优化场景下，将 ADMM 应用于带强凸局部目标的去中心化共识问题，并给出线性收敛率的理论分析。它确实是关于“去中心化 ADMM”的工作，但论文的核心贡献在于收敛性与收敛速率的证明，而非通过“修改梯度和混合算子（gradient and mixing operators）”来实现 exact consensus。文中采用的是基于变量复制和约束的标准 ADMM 形式，而不是像 EXTRA 那样显式修改梯度更新和加权矩阵。因此，将 Shi 2013 与 EXTRA、dual averaging 一起概括为“通过修改梯度和 mixing operators 实现 exact consensus”的描述，会让读者误以为该文提出了类似 EXTRA 的改动机制，这是对方法机制的实质性误述。该文确实分析了去中心化 ADMM 在凸（更准确地说是强凸）情形下可达到精确共识，但不是通过描述中所说的那种具体技术手段实现。"
+          },
+          {
+            "key": "Takezawa2025ScalableDL",
+            "title": "Scalable Decentralized Learning with Teleportation",
+            "arxiv_id": "2501.15259",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 该论文确实提出了一种名为 TELEPORTATION 的去中心化训练方法，通过只激活部分节点并从之前的活跃节点拉取参数、在小拓扑上做 gossip，从而缓解大规模网络中因稀疏通信导致的收敛退化，并提高训练稳定性与精度。但 Related Works 中的表述存在两点不准确：\n1) 论文中并未涉及或推导“stability-based generalization bounds”（基于稳定性的泛化界），主要是收敛率/优化分析与实验结果，没有从算法稳定性角度给出泛化理论；\n2) 文中理论与实验强调的是在给定拓扑下通过激活子集节点并利用可与任意节点通信的能力，缓解大规模拓扑的收敛率退化，而不是形式化意义上的“decouple performance from poor topologies”（从差拓扑中完全解耦性能）。因此，将该论文归入“tighten stability-based generalization bounds and decouple performance from poor topologies”的综合概括，会对其理论贡献产生实质性误导。该论文仅支持“teleportation-style designs改善去中心化学习在大规模拓扑下的收敛/性能”这一较弱、偏优化层面的说法。"
+          },
+          {
+            "key": "wu2018group",
+            "title": "Group Normalization",
+            "arxiv_id": "1803.08494",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] Wu & He (2018) 提出 Group Normalization，系统分析了在不同 batch size 下 BN 与 GN 的性能差异，对网络训练中的归一化几何结构（如按通道分组的统计量）有一定讨论，但论文主要是一个归一化方法的提出与实证工作，并未从“表示学习和泛化的几何与谱（geometry and spectrum）”角度进行系统或理论性的研究，也没有谱分析相关内容。将该文与“implicit associative-memory regularization, grokking dynamics”等理论性/谱几何性工作并列，概括为都在强调 geometry 和 spectrum 对表示学习与泛化的重要性，属于轻微的概念性拔高和泛化，但不至于与论文内容完全不符，因此评为轻微偏差。"
+          },
+          {
+            "key": "daily2018gossipgrad",
+            "title": "GossipGraD: Scalable Deep Learning using Gossip Communication based Asynchronous Gradient Descent",
+            "arxiv_id": "1803.05880",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Gruntkowska2025ErrorFF",
+            "title": "Error Feedback for Muon and Friends",
+            "arxiv_id": "2510.00643",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "arxiv_id": "1802.09568",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 第一处引用中：\"Classical tensor-aware preconditioners such as Shampoo and memory-efficient Adafactor already exploit matrix/tensor structure \\citep{gupta2018shampoo, shazeer2018adafactor}\"。Shampoo 论文明确提出一个结构感知的张量预条件器，通过为每个维度维护预条件矩阵并利用矩阵/张量结构来降低复杂度，这与“tensor-aware preconditioner”“exploit matrix/tensor structure”的描述是准确的。\n\n第二处：\"Push–Pull, accelerated methods over time-varying graphs, and DSGD-CECA refine spectral dependence and communication complexity \\citep{Pu2018PushPullGM, Rogozin2021AnAM, Ding2023DSGDCECADS, Rogozin2021AnAM, gupta2018shampoo}\"。Gupta et al. (Shampoo) 并不是去中心化优化/共识算法，也没有讨论图上的谱性质或通信复杂度，而是单机的随机优化和深度学习训练算法。因此，在这组文献中把 gupta2018shampoo 作为“refine spectral dependence and communication complexity”的支持文献，是对该论文工作范围的实质性误述。整体看，该论文对第一处描述提供了合理支持，但在第二处被错误归类到去中心化/图优化方法中，会误导读者对论文性质的理解，故评为 level 2。"
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_gpt51",
+        "score": 7.27,
+        "total_citations": 64,
+        "evaluated_citations": 15,
+        "fabricated_count": 0,
+        "key_refs_total": 7,
+        "key_refs_covered": 4,
+        "coverage_rate": 0.571,
+        "citation_count_bonus": 3.0,
+        "key_coverage": [
+          {
+            "key_ref": "Muon Optimizer (Jordan et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中有多篇 Muon 相关论文（wang2025muon, liu2025muon, tveit2025muon 等），但没有标明为 Jordan et al., 2024 的原始 Muon 优化器工作或明显等价版本。"
+          },
+          {
+            "key_ref": "Convergence of Muon (Shen et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "shen2025convergence",
+            "note": "shen2025convergence: On the Convergence Analysis of Muon (2025) 与计划中的 Shen et al., 2025 完全对应。"
+          },
+          {
+            "key_ref": "Decentralized Parallel SGD (Lian et al., NeurIPS 2017)",
+            "covered": true,
+            "matched_cite_key": "lian2017can",
+            "note": "lian2017can: Can Decentralized Algorithms Outperform Centralized Algorithms? A Case Study for Decentralized Parallel Stochastic Gradient Descent (2017) 即 NeurIPS 2017 的 DPSGD 经典论文。"
+          },
+          {
+            "key_ref": "EXTRA (Shi et al., SIAM 2015)",
+            "covered": true,
+            "matched_cite_key": "shi2015extra",
+            "note": "shi2015extra: EXTRA: An Exact First-Order Algorithm for Decentralized Consensus Optimization (2014) 为 EXTRA 原始工作（部分文献信息标 2014/2015，属同一论文）。"
+          },
+          {
+            "key_ref": "Exact Diffusion / D$^2$ (Yuan et al., 2017 / Tang et al., 2018)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中包含多篇扩展或变体（如 Wu2025RiemannianEC 等）但没有 Yuan et al. 的 Exact Diffusion 或 Tang et al. 的 D^2 原始论文或明显等价版本。"
+          },
+          {
+            "key_ref": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (Alghunaim et al., IEEE TAC 2022)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未在引用列表中发现 Alghunaim et al., 2022 或带有类似标题的统一/精细化收敛分析论文。"
+          },
+          {
+            "key_ref": "DeMuon (He et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "he2025demuon",
+            "note": "he2025demuon: DeMuon: A Decentralized Muon for Matrix Optimization over Graphs (2025) 与计划中的 DeMuon 完全对应。"
+          }
+        ],
+        "highly_relevant": 2,
+        "weakly_relevant": 10,
+        "irrelevant": 3,
+        "details": [
+          {
+            "key": "Yang2015LearningW",
+            "title": "Learning with ^0-Graph: ^0-Induced Sparse Subspace Clustering",
+            "relevance": 0,
+            "reason": "该论文研究的是 ^0-graph 诱导的稀疏子空间聚类方法，属于图学习/子空间聚类方向，与 Plan 中围绕的矩阵感知优化器（如 Muon）、分布式/去中心化优化、异质性校正（EXTRA、Exact Diffusion、SUDA 框架）以及去中心化 Muon 等主题没有直接关联，也未涉及优化算法或去中心化训练的理论分析，难以作为本工作动机或背景的一部分。"
+          },
+          {
+            "key": "Lian2017AsynchronousDP",
+            "title": "Asynchronous Decentralized Parallel Stochastic Gradient Descent",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中第2部分“Decentralized Optimization & Heterogeneity Correction”要讨论的去中心化并行 SGD 的代表性工作之一，并且已在 Key References 中以 “Decentralized Parallel SGD (Lian et al., NeurIPS 2017)” 被点名，是刻画去中心化 SGD 性能和线性加速性质的经典基线，对后文关于 SUDA 框架和 Decentralized Muon 的动机（尤其是线性 speedup 讨论）具有直接背景意义，因此属强相关。"
+          },
+          {
+            "key": "Wadehra2023ExactSD",
+            "title": "Exact Subspace Diffusion for Decentralized Multitask Learning",
+            "relevance": 1,
+            "reason": "该文聚焦于去中心化多任务学习中的 Exact Subspace Diffusion 方法，属于扩展/变体意义上的 diffusion / exact diffusion 体系，与 Plan 第2部分“Decentralized Optimization & Heterogeneity Correction”在方法论上有一定交叉（使用扩散型/跟踪型递推，处理网络拓扑与任务差异）。但其核心目标是多任务与子空间建模，而非 Plan 中强调的单任务非凸去中心化优化、SUDA 统一框架或 Muon 的矩阵极化及线性加速问题，因此更适合作为去中心化扩散方法的旁支参考而非核心代表性工作，相关性为弱相关。"
+          },
+          {
+            "key": "wang2025muon",
+            "title": "Muon Outperforms Adam in Tail-End Associative Memory Learning",
+            "relevance": 1,
+            "reason": "该文具体研究 Muon 在尾部联想记忆任务中相对 Adam 的经验性能，属于 Muon 优化器应用/实证层面的工作。Plan 的核心在于：(1) Muon 的理论与方法本身（Jordan et al., Shen et al.）；(2) 去中心化优化与 SUDA 这类统一框架；(3) 去中心化 Muon（如 DeMuon）及其线性加速与拓扑分离分析。该引用既不在 Key References 列表中，也不涉及去中心化或 SUDA 式统一分析，但作为说明 Muon 在实际任务中有效性的补充背景仍有一定合理性，因此判为弱相关。"
+          },
+          {
+            "key": "Hinton2022TheFA",
+            "title": "The Forward-Forward Algorithm: Some Preliminary Investigations",
+            "relevance": 0,
+            "reason": "该论文提出的是用于训练神经网络的 Forward-Forward 算法，关注前向传播替代反向传播的训练机制，与 Plan 中聚焦的矩阵几何感知优化器（Muon）、去中心化优化/异质性校正框架（EXTRA、Exact Diffusion、SUDA）、以及去中心化 Muon 的通信-校正结构和线性加速性分析等主题没有直接关联，也非相邻的去中心化或矩阵优化技术，因此在本篇 Related Work 语境下属于无关引用。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中第 3 部分“Decentralized Muon (The Gap)”里点名的关键工作（DeMuon, He et al., 2025），也是给出初步去中心化 Muon 方案的直接前作，其局限性（只绑定于 gradient tracking 通信范式、缺乏 SUDA 式拓扑分离分析、线性加速性质未知）正是本文提出 SUDA-Muon 的主要动机来源，因此属于强相关核心引用。"
+          },
+          {
+            "key": "stich2018sparsified",
+            "title": "Sparsified SGD with Memory",
+            "relevance": 1,
+            "reason": "该文研究的是带记忆的梯度稀疏通信以加速分布式/并行 SGD，属于分布式优化与通信压缩方向，与 Plan 中的“去中心化优化”有一定交集，但其重点在于随机稀疏化与误差补偿，而非 Plan 核心的：矩阵几何感知优化器（如 Muon）、SUDA 式的拓扑分离分析或去中心化 Muon 的线性加速性质。因此更适合作为分布式/通信效率背景的扩展引用，而非核心代表性或直接动机工作。"
+          },
+          {
+            "key": "Takezawa2025FedMuonFL",
+            "title": "FedMuon: Federated Learning with Bias-corrected LMO-based Optimization",
+            "relevance": 1,
+            "reason": "该文将 Muon 类/LMO-based 优化器引入联邦学习（带中心服务器的 PS 架构），与 Plan 中强调的去中心化（无服务器）SUDA-Muon 不同，且未出现在既定 Key References 中。它在“Muon 优化器在分布式场景中的推广”这一点上与主题有一定交叉，可作为更广泛背景下的相邻工作，但并未直接涉及去中心化图结构下的 SUDA/EXTRA/ED 型通信模板统一或线性加速等核心问题，因此归为弱相关。"
+          },
+          {
+            "key": "Renggli2018SparCMLHS",
+            "title": "SparCML: High-Performance Sparse Communication for Machine Learning",
+            "relevance": 1,
+            "reason": "SparCML 主要研究大规模分布式训练中的稀疏通信与高性能实现，属于通信效率/系统层面的并行优化工作。它与本 Plan 中的去中心化优化、异质性校正（EXTRA、Exact Diffusion、Gradient Tracking、SUDA）和矩阵极化/Muon 类优化器并非同一理论主线，但同属“分布式/并行训练”大背景，在讨论去中心化训练的通信开销或实践部署时可以作为补充性引用。因此与主题有一定交叉但不属核心，判为弱相关。"
+          },
+          {
+            "key": "Shi2013OnTL",
+            "title": "On the Linear Convergence of the ADMM in Decentralized Consensus Optimization",
+            "relevance": 1,
+            "reason": "该文研究的是去中心化共识优化中 ADMM 的线性收敛性质，属于去中心化优化框架下的代表性算法之一，但本 Plan 重点突出的是基于（随机）梯度的去中心化学习方法及其异质性校正框架（DPSGD、EXTRA、Exact Diffusion、Gradient Tracking、SUDA），并未围绕 ADMM 展开。该工作可作为更广泛去中心化优化背景中的相邻技术，在 Related Work 中可简要提及，但并非 Plan 中强调的核心代表文献，因此评为弱相关。"
+          },
+          {
+            "key": "Takezawa2025ScalableDL",
+            "title": "Scalable Decentralized Learning with Teleportation",
+            "relevance": 1,
+            "reason": "该文研究的是可扩展的去中心化学习，并通过“teleportation”等机制改进去中心化通信/混合结构，属于去中心化优化与通信拓扑设计的相邻工作，与 Plan 第2部分“Decentralized Optimization & Heterogeneity Correction”在总体问题设定（去中心化学习、网络拓扑影响收敛和扩展性）上有交叉。但它既不是 Plan 指定的关键引用，也不属于 EXTRA/Exact Diffusion/Gradient Tracking/SUDA 等核心异质性校正框架，也与 Muon 或矩阵极化无直接关系，因此更适合作为广义背景文献而非核心支撑，故判为弱相关。"
+          },
+          {
+            "key": "wu2018group",
+            "title": "Group Normalization",
+            "relevance": 0,
+            "reason": "Group Normalization 主要针对深度网络中的特征归一化与稳定训练问题，与 Plan 中关注的去中心化优化算法、矩阵感知型优化器（如 Muon）、SUDA 统一框架以及去中心化 Muon 的收敛与线性加速分析并无直接联系。它不涉及去中心化通信结构、异质性修正、矩阵极化或梯度跟踪等主题，因此不属于本 Related Work 需重点讨论的核心或相邻方向。"
+          },
+          {
+            "key": "daily2018gossipgrad",
+            "title": "GossipGraD: Scalable Deep Learning using Gossip Communication based Asynchronous Gradient Descent",
+            "relevance": 1,
+            "reason": "该文研究的是基于 gossip 的去中心化/异步并行 SGD，用于大规模深度学习训练，属于“去中心化优化与通信拓扑”这一更广泛背景的一部分，因此与 Plan 中第 2 部分（Decentralized Optimization）在问题设定和通信范式上有交集。但它既不属于 Plan 列出的关键参考，也未涉及异质性纠正（EXTRA、Exact Diffusion、GT、SUDA 等），更没有矩阵几何或 Muon/DeMuon 相关内容，只能作为去中心化训练的外围背景工作来引用，故评为弱相关。"
+          },
+          {
+            "key": "Gruntkowska2025ErrorFF",
+            "title": "Error Feedback for Muon and Friends",
+            "relevance": 1,
+            "reason": "该文直接面向 Muon 优化器（Plan 第 1 部分的核心对象），研究其在误差反馈/压缩等情形下的鲁棒性或收敛特性，属于对 Muon 及其变体的扩展工作，因此与“Muon and Matrix-Aware Optimizers”板块有技术交叉，作为背景文献在 Related Work 中提及是合理的。但 Plan 聚焦单机 Muon 的基本收敛理论与其向去中心化场景（SUDA、DeMuon 等）延展的缺口，并未将误差反馈或通信压缩列为关键方向，也没有把该类工作作为直接动机或关键参照。因此它不是 Plan 核心论述链条中的代表性工作，相关性评为弱相关（1 分）。"
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "relevance": 1,
+            "reason": "Shampoo 是针对深度学习中张量/矩阵参数的预条件二阶优化方法，属于广义的 matrix-aware / curvature-aware 优化器，与 Plan 第 1 部分（Muon 和矩阵结构优化）在“利用矩阵结构改进优化”的大方向上有交集。但它仍基于欧氏梯度加线性预条件，而非 Muon 所关注的矩阵符号极化与尺度不变更新，也未涉及去中心化或 SUDA/DeMuon 等通信-校正结构。因此可作为更广泛背景中另一类矩阵感知优化器提及，属于相邻技术，相关性为弱相关。"
+          }
+        ]
+      }
+    },
+    "reasflow_gpt54": {
+      "content_accuracy": {
+        "article_name": "reasflow_gpt54",
+        "score": 9.83,
+        "total_citations": 40,
+        "verified_citations": 15,
+        "fulltext_verified": 15,
+        "semantic_scholar_verified": 0,
+        "failed_count": 0,
+        "hallucination_count": 2,
+        "hallucinations": [
+          {
+            "key": "adam2014method",
+            "title": "Adam: A Method for Stochastic Optimization",
+            "arxiv_id": "1412.6980",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 引用中将 Adam 归入“norm-based reinterpretations of first-order methods，cast Adam-like updates as steepest descent under different geometries”的工作线索。但 Kingma & Ba (2014) 主要是提出基于一阶矩和二阶矩自适应估计的优化算法，并未从黎曼几何、不同范数或‘steepest descent under different geometries’的视角对 Adam 进行重新解释，也没有将其表述为在非欧氏几何下的最陡下降法。论文确实讨论了与其他自适应方法（如 AdaGrad、RMSProp）的联系及一些理论收敛性质，但不是以“norm-based reinterpretation”的形式展开。因此，把该论文作为“norm-based reinterpretations”这一说法的直接支持存在实质性偏差。"
+          }
+        ],
+        "details": [
+          {
+            "key": "shen2025convergence",
+            "title": "On the Convergence Analysis of Muon",
+            "arxiv_id": "2505.23737",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "shazeer2018adafactor",
+            "title": "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost",
+            "arxiv_id": "1804.04235",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "duchi2011dual",
+            "title": "Dual Averaging for Distributed Optimization: Convergence Analysis and Network Scaling",
+            "arxiv_id": "1005.2012",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Robert2024LDAdamAO",
+            "title": "LDAdam: Adaptive Optimization from Low-Dimensional Gradient Statistics",
+            "arxiv_id": "2410.16103",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Zhao2024GaLoreML",
+            "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+            "arxiv_id": "2403.03507",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "liu2025muon",
+            "title": "Muon is Scalable for LLM Training",
+            "arxiv_id": "2502.16982",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Pan2023TowardUW",
+            "title": "Toward Understanding Why Adam Converges Faster Than SGD for Transformers",
+            "arxiv_id": "2306.00204",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "adam2014method",
+            "title": "Adam: A Method for Stochastic Optimization",
+            "arxiv_id": "1412.6980",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 引用中将 Adam 归入“norm-based reinterpretations of first-order methods，cast Adam-like updates as steepest descent under different geometries”的工作线索。但 Kingma & Ba (2014) 主要是提出基于一阶矩和二阶矩自适应估计的优化算法，并未从黎曼几何、不同范数或‘steepest descent under different geometries’的视角对 Adam 进行重新解释，也没有将其表述为在非欧氏几何下的最陡下降法。论文确实讨论了与其他自适应方法（如 AdaGrad、RMSProp）的联系及一些理论收敛性质，但不是以“norm-based reinterpretation”的形式展开。因此，把该论文作为“norm-based reinterpretations”这一说法的直接支持存在实质性偏差。"
+          },
+          {
+            "key": "mohammadabadi2024communication",
+            "title": "Communication-Efficient Training Workload Balancing for Decentralized Multi-Agent Learning",
+            "arxiv_id": "2405.00839",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "wu2018group",
+            "title": "Group Normalization",
+            "arxiv_id": "1803.08494",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 被引段落说：\"Empirical contexts ranging from transformer architectures to downstream reasoning or normalization-sensitive transfer have also been used to probe optimizer behavior \\citep{Vaswani2017AttentionIA, Cobbe2021TrainingVT, wu2018group}.\" 其中 wu2018group（Group Normalization）确实属于对归一化方法在不同任务（分类、检测、分割、视频等）中的表现进行系统实证评估的工作，可以合理被视为“normalization-sensitive transfer”的经验背景；但该论文并没有研究或“probe optimizer behavior”，也未涉及下游推理任务或 transformer 架构。这里将其归入“用于探究优化器行为的经验场景”存在概念上的轻度错配，不过在多文献联合引用下，可理解为三篇文献共同覆盖“transformer / reasoning / normalization-sensitive transfer”这三类经验情境，因此误差对整体语境影响有限。"
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "arxiv_id": "1802.09568",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "wang2025conda",
+            "title": "Conda: Column-Normalized Adam for Training Large Language Models Faster",
+            "arxiv_id": "2509.24218",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Vogels2019PowerSGDPL",
+            "title": "",
+            "arxiv_id": "1905.13727",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "arxiv_id": "2510.01377",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhu2024apollo",
+            "title": "APOLLO: SGD-like Memory, AdamW-level Performance",
+            "arxiv_id": "2412.05270",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_gpt54",
+        "score": 5.27,
+        "total_citations": 40,
+        "evaluated_citations": 15,
+        "fabricated_count": 0,
+        "key_refs_total": 7,
+        "key_refs_covered": 2,
+        "coverage_rate": 0.286,
+        "citation_count_bonus": 3.0,
+        "key_coverage": [
+          {
+            "key_ref": "Muon Optimizer (Jordan et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中有多篇 Muon 相关工作（如 liu2025muon, wang2025muon, tveit2025muon, Gruntkowska2025ErrorFF, Th'erien2025MuLoCoMI, Takezawa2025FedMuonFL, liu2025fedmuon），但没有明确标注为 Muon 原始提出者（Jordan et al., 2024）的论文或等价版本。原始 Muon 论文缺失。"
+          },
+          {
+            "key_ref": "Convergence of Muon (Shen et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "shen2025convergence",
+            "note": "与 Plan 中的收敛性分析工作完全匹配：On the Convergence Analysis of Muon (2025)。"
+          },
+          {
+            "key_ref": "Decentralized Parallel SGD (Lian et al., NeurIPS 2017)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未在引用列表中找到 Lian et al., NeurIPS 2017 或其等价版本；仅出现 duchi2011dual 等较早的分布式优化工作，以及其他去中心化/压缩相关论文，但不包含 DPSGD 的经典文献。"
+          },
+          {
+            "key_ref": "EXTRA (Shi et al., SIAM 2015)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未出现 Shi 等人的 EXTRA 论文或其 SIAM 期刊/会议版本的任何明显引用。"
+          },
+          {
+            "key_ref": "Exact Diffusion / D$^2$ (Yuan et al., 2017 / Tang et al., 2018)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未见 Yuan 等或 Tang 等关于 Exact Diffusion / D$^2$ 的条目。"
+          },
+          {
+            "key_ref": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (Alghunaim et al., IEEE TAC 2022)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未出现 Alghunaim 等人在 IEEE TAC 2022 上的统一收敛分析论文或任何明显等价版本。"
+          },
+          {
+            "key_ref": "DeMuon (He et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "he2025demuon",
+            "note": "与 Plan 中的 DeMuon 工作一致：DeMuon: A Decentralized Muon for Matrix Optimization over Graphs (2025)。"
+          }
+        ],
+        "highly_relevant": 2,
+        "weakly_relevant": 11,
+        "irrelevant": 2,
+        "details": [
+          {
+            "key": "shen2025convergence",
+            "title": "On the Convergence Analysis of Muon",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中在 Section 1 明确列出的 Key Reference（“Convergence of Muon (Shen et al., 2025)”），聚焦于单节点 Muon 的收敛性分析，直接对应 Plan 所强调的“当前理论仅限于集中式/单机设置”的关键背景限制，因此属于核心、强相关工作。"
+          },
+          {
+            "key": "shazeer2018adafactor",
+            "title": "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost",
+            "relevance": 1,
+            "reason": "Adafactor 是一种节省内存的自适应矩阵参数优化器，与 Plan 中“矩阵结构参数”“矩阵感知优化器”在技术上存在一定交集，因此可作为更广泛背景下的相邻工作；但它并未涉及 Muon 的矩阵极化/矩阵符号算子、也不涉及去中心化优化或异质性校正，更不是 Plan 中列出的关键文献或直接动机，因此只能算弱相关。"
+          },
+          {
+            "key": "duchi2011dual",
+            "title": "Dual Averaging for Distributed Optimization: Convergence Analysis and Network Scaling",
+            "relevance": 1,
+            "reason": "该文是去中心化/分布式优化的经典工作，分析了双平均法在网络规模和拓扑下的收敛与扩展性，对“去中心化 SGD 与网络拓扑/线性加速”这类问题提供了早期理论基础，因此作为更广泛的分布式优化背景文献是合理的。但 Plan 中关注的是非凸深度学习场景下的现代 DPSGD、EXTRA、Exact Diffusion、SUDA 等以及与 Muon 结合的框架，该文既不在 Key References 列表中，也不代表 Plan 所强调的几条主线（SUDA 风格的统一视角、异质性校正、矩阵极化/Muon）。因此与核心论述为相邻方向，适合作为背景引用而非核心支撑文献。"
+          },
+          {
+            "key": "Robert2024LDAdamAO",
+            "title": "LDAdam: Adaptive Optimization from Low-Dimensional Gradient Statistics",
+            "relevance": 1,
+            "reason": "LDAdam 研究的是利用低维梯度统计的自适应优化算法，属于广义上的优化器设计，与 Plan 中的“现代深度学习优化方法”大背景有一定交集。但该工作既不涉及矩阵结构感知（如 Muon 的矩阵符号算子）、也不涉及去中心化/分布式训练或异质性修正，更没有与 SUDA 或去中心化 Muon 的理论与通信结构直接关联。因此，它可作为更广泛优化文献中的旁支引用，但不属于本 Plan 所强调的核心代表性工作或直接动机来源，故评为弱相关。"
+          },
+          {
+            "key": "Zhao2024GaLoreML",
+            "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+            "relevance": 1,
+            "reason": "GaLore 主要关注通过对梯度进行低秩投影来降低大模型训练的显存开销，属于“矩阵结构感知的优化/训练技巧”这一相邻方向，与 Plan 中的矩阵结构（Muon 的 matrix sign / 极化）在思想上都有利用梯度或参数的低秩/结构特性，但 GaLore 并不涉及 Muon、矩阵极化算子、去中心化优化、SUDA、或线性加速等核心议题，因此不是核心代表性工作，只能作为更广泛背景下的弱相关引用。"
+          },
+          {
+            "key": "liu2025muon",
+            "title": "Muon is Scalable for LLM Training",
+            "relevance": 1,
+            "reason": "该论文聚焦于 Muon 在大模型训练中的可扩展性，属于 Muon 优化器应用与工程层面的工作，与 Plan 中第 1 节“Muon and Matrix-Aware Optimizers”的主题有一定关联。但 Plan 重点在于 Muon 的理论收敛性质及其与矩阵几何的关系，以及向去中心化场景的推广，而该文并非 Plan 中列出的关键理论参考，也未涉及去中心化优化、SUDA 统一框架或 DeMuon 等内容。因此可作为更广泛背景下的 Muon 实践工作被简要提及，但不是核心代表性或直接动机文献。"
+          },
+          {
+            "key": "Pan2023TowardUW",
+            "title": "Toward Understanding Why Adam Converges Faster Than SGD for Transformers",
+            "relevance": 1,
+            "reason": "该文聚焦于解释在 Transformer 上 Adam 相比 SGD 收敛更快的原因，属于针对特定架构的优化器经验与理论分析工作。它与 Plan 中“Muon 及矩阵感知优化器”在广义上同属优化方法研究，提供了关于一阶自适应方法与模型结构（Transformer）的交互理解，因此可以作为更宽泛优化背景的相邻技术引用。但该文既不涉及矩阵极化 / Muon，也不研究去中心化优化、SUDA 框架或线性加速等核心问题，与 Plan 的三大核心方向均非直接对应或关键代表性工作，故判为弱相关。"
+          },
+          {
+            "key": "adam2014method",
+            "title": "Adam: A Method for Stochastic Optimization",
+            "relevance": 1,
+            "reason": "Adam 是最典型的欧几里得自适应优化器之一，与 Plan 中第一部分对“传统 Euclidean optimizers (SGD, Adam) 忽视矩阵几何”的对比高度契合，可作为背景反衬 Muon 和矩阵感知优化器的动机。但它既不在 Key References 列表中，也不是去中心化或 Muon/SUDA 方向的代表性工作，因此属于合理但非核心的背景引用。"
+          },
+          {
+            "key": "mohammadabadi2024communication",
+            "title": "Communication-Efficient Training Workload Balancing for Decentralized Multi-Agent Learning",
+            "relevance": 1,
+            "reason": "该文聚焦于去中心化多智能体学习中的通信高效训练与负载均衡，属于更广义的去中心化/分布式学习与系统优化范畴，与 Plan 中第二部分“去中心化优化”在问题场景上有一定交集。但其主要贡献是通信与工作量调度层面的系统方法，并未针对非欧式/矩阵感知优化器（如 Muon）、异质性校正理论框架（EXTRA/Exact Diffusion/GT/SUDA），也未涉及去中心化 Muon 的极化算子或线性加速分析。因此可作为去中心化训练背景的外围参考，但不属于 Plan 所要求的核心代表性工作或直接动机来源，评为弱相关。"
+          },
+          {
+            "key": "wu2018group",
+            "title": "Group Normalization",
+            "relevance": 0,
+            "reason": "Group Normalization 主要研究卷积神经网络中的归一化策略，与本 Plan 聚焦的矩阵感知优化器（Muon）、去中心化优化、SUDA 统一框架以及去中心化 Muon 的通信与收敛分析没有直接关联，也未涉及分布式/去中心化训练的优化算法设计或理论分析，因此不属于该 Related Works 计划中的核心或紧邻方向。"
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "relevance": 1,
+            "reason": "Shampoo 是一种矩阵/张量感知的预条件优化器，关注利用参数矩阵结构进行缩放，与 Plan 中第 1 节“Muon and Matrix-Aware Optimizers”的主题存在技术相邻性，因此可作为广义矩阵感知优化方法的背景引用。但它既非 Plan 指定的关键文献，也不涉及去中心化或 Muon 的矩阵极化结构，对 SUDA 或 DeMuon 等去中心化矩阵优化框架没有直接贡献，故评为弱相关。"
+          },
+          {
+            "key": "wang2025conda",
+            "title": "Conda: Column-Normalized Adam for Training Large Language Models Faster",
+            "relevance": 1,
+            "reason": "该论文提出的 Conda 是一种对 Adam 进行列归一化的矩阵感知型优化方法，用于更高效地训练大模型，在概念上与 Plan 第 1 部分“Muon and Matrix-Aware Optimizers”存在一定交叉：都是针对矩阵结构参数设计的非标准梯度/缩放规则，强调列/谱层面的几何与尺度不变性。不过，Conda 并非 Muon 系列，也未涉及去中心化优化、异质性校正或 SUDA/DeMuon 等核心主题，更没有触及 Plan 第 2、3 部分强调的去中心化通信结构与线性加速问题。因此它可作为更宽泛“矩阵感知优化器”的背景工作，属于相邻技术，适合作为补充引用，但并非本 Plan 核心脉络中的代表性或关键动机工作。"
+          },
+          {
+            "key": "Vogels2019PowerSGDPL",
+            "title": "",
+            "relevance": 1,
+            "reason": "该论文（Vogels, Karimireddy, Jaggi, NeurIPS 2019）是关于联邦/分布式训练中针对客户端异质性与通信效率的优化方法（如SCAFFOLD 相关思路的前驱/相邻工作），与 Plan 中第二部分的“Decentralized Optimization & Heterogeneity Correction”在处理 non-IID 数据和客户端漂移等问题上有一定交叉，因此可作为更广泛去中心化/联邦优化背景下的参考。但它既不在 Plan 的 Key References 列表中，也不涉及矩阵感知优化器（Muon、msgn）或 SUDA 式统一框架与拓扑分离分析，因此不构成核心代表工作，仅属相邻技术，故评为弱相关（1）。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中第 3 部分“Decentralized Muon (The Gap)”所指出的代表性初始尝试工作（DeMuon），并且已在 Key References 中被点名，是当前将 Muon 扩展到分布式/去中心化图上的直接前驱。Plan 明确以其算法与理论局限作为本文工作动机来源，因此属于强相关核心引用。"
+          },
+          {
+            "key": "zhu2024apollo",
+            "title": "APOLLO: SGD-like Memory, AdamW-level Performance",
+            "relevance": 0,
+            "reason": "APOLLO 主要是面向单机、集中式训练场景下的一种标量/向量型自适应一阶优化器，关注在保持 SGD 级别内存占用的同时逼近 AdamW 的训练性能。它既不涉及矩阵算子几何或矩阵符号函数（如 Muon 中的 msgn），也不讨论去中心化/分布式通信结构、异质性修正、SUDA 框架，或线性加速与拓扑分离等问题。因此与 Plan 中强调的“矩阵感知优化器 + 去中心化优化 + 去中心化 Muon”三条主线没有实质交集，放在本篇 Related Work 中会显得跑题。"
+          }
+        ]
+      }
+    },
+    "reasflow_sonnet4.6": {
+      "content_accuracy": {
+        "article_name": "reasflow_sonnet4.6",
+        "score": 7.49,
+        "total_citations": 22,
+        "verified_citations": 15,
+        "fulltext_verified": 15,
+        "semantic_scholar_verified": 0,
+        "failed_count": 0,
+        "hallucination_count": 8,
+        "hallucinations": [
+          {
+            "key": "pethick2025training",
+            "title": "Training Deep Learning Models with Norm-Constrained LMOs",
+            "arxiv_id": "2502.07529",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "从给出的正文摘录可以确认：\n1）论文确实是围绕线性最小化 oracle（LMO）在某个范数球上的优化框架展开，并声称可以统一/涵盖多种现有优化方法，这与“formalize this perspective through the unified stochastic conditional gradient (uSCG) framework”这一类表述在整体旨趣上是基本一致的（统一视角下的随机条件梯度框架）。\n2）但摘录中并未出现“unified stochastic conditional gradient (uSCG)”这一具体名称，也未明确把他们的方法命名为“uSCG framework”；给定信息不足以支持该专名的准确性，因此这一点存在轻微错配或过度具象化命名的问题。\n3）摘录中只是说明他们提出“一种新的随机算法族”，利用 LMO、可以应用于无约束问题并统一若干已有方法，并未在已给出的部分中明确指出“在谱范数下 LMO 给出 msgn(G)=UV^T”以及“这正好对应 Muon 的 Newton–Schulz 更新”，这些更像是作者在本文中对 SSD/Muon 相关工作的讨论逻辑，但目前在给定片段中看不到直接表述。考虑到上下文（SSD、Shampoo、Muon 都被提及）这一推断是合理的，但严格从提供的文本证据出发，描述中把这一精确等价关系直接归因给该论文，有一定程度的推演成分。\n综合来看，引用对论文的整体定位（基于 LMO 的统一几何/条件梯度框架）是大体正确的，但在具体命名（uSCG）和“精确等价关系”层面略有超出文本的明确表述，因此评为轻微偏差而非完全准确。"
+          },
+          {
+            "key": "Hu2025ABD",
+            "title": "A Bias-Correction Decentralized Stochastic Gradient Algorithm with Momentum Acceleration",
+            "arxiv_id": "2501.19082",
+            "accuracy_level": 2,
+            "type": "exaggeration",
+            "mode": "fulltext",
+            "details": "描述中将 Hu2025 这篇论文归入“EXTRA, Exact Diffusion, D^2”等 exact-convergence 方法的同类，并暗示其在固定步长下也达到精确收敛到全局最优点；而原文摘要明确说明 EDM 在非凸情形只收敛到最优解邻域、在 PL 条件下也只是线性收敛到目标区域（邻域），并未声称 exact convergence 到真全局最优点。因此，把该论文作为“exact-convergence methods … converge to the true global minimizer under fixed step sizes”的支撑存在一定夸大。不过，描述的后半句——‘introduce Exact-Diffusion with Momentum (EDM), the first momentum-augmented bias-correction method’——与论文实际贡献是吻合的：论文确实提出了基于 Exact Diffusion 框架并加入动量的偏差校正分布式随机梯度方法。因此整体属于有轻微夸大但不至于完全误导。"
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "arxiv_id": "1802.09568",
+            "accuracy_level": 1,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该描述将 Shampoo 表述为在“Old Optimizer, New Norm”框架下、可被解释为某种算子范数下的最速下降方法的一员。但 2018 年的 Shampoo 论文本身并未以非欧几里得几何或算子范数下的最速下降视角来统一或解释自身，也没有把自己放入一个与 Adam、Prodigy 同一的“新范数下最速下降”框架中。原文只是提出了一种结构化预条件的随机优化算法（利用张量结构，通过按维度的预条件矩阵近似全矩阵预条件），并从收敛性和实践性能上进行分析，背景中虽与 AdaGrad 等预条件方法关联，但没有采用“steepest descent under a specific operator norm”的表述或理论框架。因此，把“Shampoo 对应于特定算子范数下的最速下降”这一统一视角归因于 Shampoo 论文本身，是对该论文贡献和表述方式的实质性误读。"
+          },
+          {
+            "key": "Kong2024DecentralizedBO",
+            "title": "Decentralized Bilevel Optimization: A Perspective from Transient Iteration Complexity",
+            "arxiv_id": "2402.03167",
+            "accuracy_level": 0,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "被引论文 Kong2024DecentralizedBO（“Decentralized Bilevel Optimization: A Perspective from Transient Iteration Complexity”）研究的是去中心化随机双层优化问题，提出 D-SOBA 框架，并从非渐近和 transient iteration complexity 角度分析网络拓扑、数据异质性与双层结构的影响。相关工作中的两处引用都将该文描述为：\n1）分析去中心化并行 SGD（D-PSGD）的线性加速率 O(σ/√(nT)) 及其由谱间隙 1−λ₂(W) 控制的拓扑相关 transient 阶段；\n2）提出在单一参数化通信模板下、用多项式 mixing matrix 统一梯度跟踪，得到将谱间隙影响与优化器偏差“干净分离”的拓扑分离收敛界，用于拓扑选择与算法比较。\n原论文并未聚焦 D-PSGD，也未提出“单一参数化通信模板”“polynomial mixing matrices”“topology-separated convergence bounds”等概念，其核心是去中心化双层优化算法 D-SOBA 的收敛性与 transient 复杂度分析。因此这些描述与论文内容实质性不符，属于将另一类关于去中心化 SGD/梯度跟踪的工作误指到该文上。"
+          },
+          {
+            "key": "loshchilov2017decoupled",
+            "title": "Decoupled Weight Decay Regularization",
+            "arxiv_id": "1711.05101",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文提出并系统分析的是“解耦权重衰减”（AdamW/SGDW）这一优化与正则化方式，重点在于说明 L2 正则与权重衰减对自适应优化器并不等价，并展示其在图像分类等任务中提升 Adam 泛化性能。描述中将其泛化为“weight decay regularization 仍是集中式和分布式训练中的标准稳定化工具”，属于将后续社区广泛实践与该论文本身的贡献、结论混为一谈。论文确实表明权重衰减是一种重要且有效的正则化/稳定手段，但并未讨论分布式/去中心化训练，也未将其表述为跨多种训练范式中的‘标准’工具，因此存在轻微夸大与语境外延伸。不过整体方向（权重衰减作为稳定训练的常用工具）与论文精神并不根本冲突，误导程度有限。"
+          },
+          {
+            "key": "Goyal2017AccurateLM",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour",
+            "arxiv_id": "1706.02677",
+            "accuracy_level": 0,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "Goyal et al. (2017) 研究的是在集中式、同步数据并行设置下如何用大批量 SGD 高效训练 ImageNet（包括线性学习率缩放、warmup 等），并未涉及去中心化优化、移除参数服务器或仅与图邻居通信的算法；文中也没有提出或分析 Decentralized Parallel SGD (D-PSGD)。将该文用作“去中心化优化消除中心参数服务器，仅与图邻居通信”的引用，与论文实际内容不符，属于实质性误述。"
+          },
+          {
+            "key": "zhu2024apollo",
+            "title": "APOLLO: SGD-like Memory, AdamW-level Performance",
+            "arxiv_id": "2412.05270",
+            "accuracy_level": 2,
+            "type": "exaggeration",
+            "mode": "fulltext",
+            "details": "描述中说 APOLLO 通过低秩随机投影在 “SGD-level memory” 下近似 AdamW 的自适应性。原文中确实提出用纯随机投影的低秩辅助状态近似 AdamW 的通道/张量级学习率缩放，并且有一个极致版本 APOLLO-Mini 能达到 SGD-level memory。主线方法 APOLLO 本身的显存开销虽比 AdamW 小、甚至比 GaLore 更小，但并未声称等同于 SGD 的优化器显存成本；达到 SGD-level memory 的是 APOLLO-Mini。因此将“SGD-level memory”直接归给 APOLLO 略有夸大，但对其核心思想（低秩随机投影近似 AdamW 的自适应性）描述是准确的。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "arxiv_id": "2510.01377",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述有两点基本准确：1）将 DeMuon 作为“第一个去中心化的 Muon 算法”，与原文“the first direct extension of Muon to decentralized optimization over graphs with provable complexity guarantees”基本一致；2）确实是将 Muon 的 Newton–Schulz 正交化与去中心化算法（带梯度跟踪）结合。存在偏差的部分在于：\n- 该相关工作声称 DeMuon 的收敛界“将谱隙 1-λ₂(W) 与 Newton–Schulz 近似误差糅合在一起，从而阻碍了拓扑可分离分析和对图选择的可操作指导”。在给定摘录（摘要和引言）中，作者只强调在重尾噪声下得到了与集中式算法相同容差依赖的迭代复杂度，并未提到谱隙与 Newton–Schulz 误差如何在界中出现，也未给出类似自我批评式的表述。这个评价更像是对技术细节的外部解读，而不是论文中明确陈述的事实，因此属于带解释性的概括，其中“预cluding topology-separated analysis and actionable guidance for graph selection”这一说法并未在论文中直接支持，有夸大/再诠释之嫌。\n- 对于“DeMuon 是否在 agent 数 n 上实现线性加速完全未解决”的说法，原文摘录中只说他们给出迭代复杂度，与集中式最优依赖相匹配，没有声称或分析关于 n 的线性 speedup，也没有讨论这是一个开放问题。因此，说“remains entirely unresolved”虽然与事实（论文没有证明显式线性加速）在结果上吻合，但这种表述把作者未讨论的性质提升为论文明确留下的“关键未解问题”，带有一定主观判断。\n综合来看，主要方法与贡献被大体准确描述，但对复杂度结果的结构和未解决问题的表述有一定程度的再诠释和放大，可能影响读者对论文技术细节和作者立场的理解，故评为轻微偏差。"
+          }
+        ],
+        "details": [
+          {
+            "key": "Takezawa2025FedMuonFL",
+            "title": "FedMuon: Federated Learning with Bias-corrected LMO-based Optimization",
+            "arxiv_id": "2509.26337",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "pethick2025training",
+            "title": "Training Deep Learning Models with Norm-Constrained LMOs",
+            "arxiv_id": "2502.07529",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "从给出的正文摘录可以确认：\n1）论文确实是围绕线性最小化 oracle（LMO）在某个范数球上的优化框架展开，并声称可以统一/涵盖多种现有优化方法，这与“formalize this perspective through the unified stochastic conditional gradient (uSCG) framework”这一类表述在整体旨趣上是基本一致的（统一视角下的随机条件梯度框架）。\n2）但摘录中并未出现“unified stochastic conditional gradient (uSCG)”这一具体名称，也未明确把他们的方法命名为“uSCG framework”；给定信息不足以支持该专名的准确性，因此这一点存在轻微错配或过度具象化命名的问题。\n3）摘录中只是说明他们提出“一种新的随机算法族”，利用 LMO、可以应用于无约束问题并统一若干已有方法，并未在已给出的部分中明确指出“在谱范数下 LMO 给出 msgn(G)=UV^T”以及“这正好对应 Muon 的 Newton–Schulz 更新”，这些更像是作者在本文中对 SSD/Muon 相关工作的讨论逻辑，但目前在给定片段中看不到直接表述。考虑到上下文（SSD、Shampoo、Muon 都被提及）这一推断是合理的，但严格从提供的文本证据出发，描述中把这一精确等价关系直接归因给该论文，有一定程度的推演成分。\n综合来看，引用对论文的整体定位（基于 LMO 的统一几何/条件梯度框架）是大体正确的，但在具体命名（uSCG）和“精确等价关系”层面略有超出文本的明确表述，因此评为轻微偏差而非完全准确。"
+          },
+          {
+            "key": "bernstein2024old",
+            "title": "Old Optimizer, New Norm: An Anthology",
+            "arxiv_id": "2409.20325",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "pan2025unbiased",
+            "title": "Unbiased Gradient Low-Rank Projection",
+            "arxiv_id": "2510.17802",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Robert2024LDAdamAO",
+            "title": "LDAdam: Adaptive Optimization from Low-Dimensional Gradient Statistics",
+            "arxiv_id": "2410.16103",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Hu2025ABD",
+            "title": "A Bias-Correction Decentralized Stochastic Gradient Algorithm with Momentum Acceleration",
+            "arxiv_id": "2501.19082",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "exaggeration",
+            "mode": "fulltext",
+            "details": "描述中将 Hu2025 这篇论文归入“EXTRA, Exact Diffusion, D^2”等 exact-convergence 方法的同类，并暗示其在固定步长下也达到精确收敛到全局最优点；而原文摘要明确说明 EDM 在非凸情形只收敛到最优解邻域、在 PL 条件下也只是线性收敛到目标区域（邻域），并未声称 exact convergence 到真全局最优点。因此，把该论文作为“exact-convergence methods … converge to the true global minimizer under fixed step sizes”的支撑存在一定夸大。不过，描述的后半句——‘introduce Exact-Diffusion with Momentum (EDM), the first momentum-augmented bias-correction method’——与论文实际贡献是吻合的：论文确实提出了基于 Exact Diffusion 框架并加入动量的偏差校正分布式随机梯度方法。因此整体属于有轻微夸大但不至于完全误导。"
+          },
+          {
+            "key": "shen2025convergence",
+            "title": "On the Convergence Analysis of Muon",
+            "arxiv_id": "2505.23737",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "abreu2025potential",
+            "title": "The Potential of Second-Order Optimization for LLMs: A Study with Full Gauss-Newton",
+            "arxiv_id": "2510.09378",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "arxiv_id": "1802.09568",
+            "accuracy_level": 1,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该描述将 Shampoo 表述为在“Old Optimizer, New Norm”框架下、可被解释为某种算子范数下的最速下降方法的一员。但 2018 年的 Shampoo 论文本身并未以非欧几里得几何或算子范数下的最速下降视角来统一或解释自身，也没有把自己放入一个与 Adam、Prodigy 同一的“新范数下最速下降”框架中。原文只是提出了一种结构化预条件的随机优化算法（利用张量结构，通过按维度的预条件矩阵近似全矩阵预条件），并从收敛性和实践性能上进行分析，背景中虽与 AdaGrad 等预条件方法关联，但没有采用“steepest descent under a specific operator norm”的表述或理论框架。因此，把“Shampoo 对应于特定算子范数下的最速下降”这一统一视角归因于 Shampoo 论文本身，是对该论文贡献和表述方式的实质性误读。"
+          },
+          {
+            "key": "wang2025muon",
+            "title": "Muon Outperforms Adam in Tail-End Associative Memory Learning",
+            "arxiv_id": "2509.26030",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Kong2024DecentralizedBO",
+            "title": "Decentralized Bilevel Optimization: A Perspective from Transient Iteration Complexity",
+            "arxiv_id": "2402.03167",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "被引论文 Kong2024DecentralizedBO（“Decentralized Bilevel Optimization: A Perspective from Transient Iteration Complexity”）研究的是去中心化随机双层优化问题，提出 D-SOBA 框架，并从非渐近和 transient iteration complexity 角度分析网络拓扑、数据异质性与双层结构的影响。相关工作中的两处引用都将该文描述为：\n1）分析去中心化并行 SGD（D-PSGD）的线性加速率 O(σ/√(nT)) 及其由谱间隙 1−λ₂(W) 控制的拓扑相关 transient 阶段；\n2）提出在单一参数化通信模板下、用多项式 mixing matrix 统一梯度跟踪，得到将谱间隙影响与优化器偏差“干净分离”的拓扑分离收敛界，用于拓扑选择与算法比较。\n原论文并未聚焦 D-PSGD，也未提出“单一参数化通信模板”“polynomial mixing matrices”“topology-separated convergence bounds”等概念，其核心是去中心化双层优化算法 D-SOBA 的收敛性与 transient 复杂度分析。因此这些描述与论文内容实质性不符，属于将另一类关于去中心化 SGD/梯度跟踪的工作误指到该文上。"
+          },
+          {
+            "key": "loshchilov2017decoupled",
+            "title": "Decoupled Weight Decay Regularization",
+            "arxiv_id": "1711.05101",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文提出并系统分析的是“解耦权重衰减”（AdamW/SGDW）这一优化与正则化方式，重点在于说明 L2 正则与权重衰减对自适应优化器并不等价，并展示其在图像分类等任务中提升 Adam 泛化性能。描述中将其泛化为“weight decay regularization 仍是集中式和分布式训练中的标准稳定化工具”，属于将后续社区广泛实践与该论文本身的贡献、结论混为一谈。论文确实表明权重衰减是一种重要且有效的正则化/稳定手段，但并未讨论分布式/去中心化训练，也未将其表述为跨多种训练范式中的‘标准’工具，因此存在轻微夸大与语境外延伸。不过整体方向（权重衰减作为稳定训练的常用工具）与论文精神并不根本冲突，误导程度有限。"
+          },
+          {
+            "key": "Goyal2017AccurateLM",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour",
+            "arxiv_id": "1706.02677",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "Goyal et al. (2017) 研究的是在集中式、同步数据并行设置下如何用大批量 SGD 高效训练 ImageNet（包括线性学习率缩放、warmup 等），并未涉及去中心化优化、移除参数服务器或仅与图邻居通信的算法；文中也没有提出或分析 Decentralized Parallel SGD (D-PSGD)。将该文用作“去中心化优化消除中心参数服务器，仅与图邻居通信”的引用，与论文实际内容不符，属于实质性误述。"
+          },
+          {
+            "key": "zhu2024apollo",
+            "title": "APOLLO: SGD-like Memory, AdamW-level Performance",
+            "arxiv_id": "2412.05270",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "exaggeration",
+            "mode": "fulltext",
+            "details": "描述中说 APOLLO 通过低秩随机投影在 “SGD-level memory” 下近似 AdamW 的自适应性。原文中确实提出用纯随机投影的低秩辅助状态近似 AdamW 的通道/张量级学习率缩放，并且有一个极致版本 APOLLO-Mini 能达到 SGD-level memory。主线方法 APOLLO 本身的显存开销虽比 AdamW 小、甚至比 GaLore 更小，但并未声称等同于 SGD 的优化器显存成本；达到 SGD-level memory 的是 APOLLO-Mini。因此将“SGD-level memory”直接归给 APOLLO 略有夸大，但对其核心思想（低秩随机投影近似 AdamW 的自适应性）描述是准确的。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "arxiv_id": "2510.01377",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述有两点基本准确：1）将 DeMuon 作为“第一个去中心化的 Muon 算法”，与原文“the first direct extension of Muon to decentralized optimization over graphs with provable complexity guarantees”基本一致；2）确实是将 Muon 的 Newton–Schulz 正交化与去中心化算法（带梯度跟踪）结合。存在偏差的部分在于：\n- 该相关工作声称 DeMuon 的收敛界“将谱隙 1-λ₂(W) 与 Newton–Schulz 近似误差糅合在一起，从而阻碍了拓扑可分离分析和对图选择的可操作指导”。在给定摘录（摘要和引言）中，作者只强调在重尾噪声下得到了与集中式算法相同容差依赖的迭代复杂度，并未提到谱隙与 Newton–Schulz 误差如何在界中出现，也未给出类似自我批评式的表述。这个评价更像是对技术细节的外部解读，而不是论文中明确陈述的事实，因此属于带解释性的概括，其中“预cluding topology-separated analysis and actionable guidance for graph selection”这一说法并未在论文中直接支持，有夸大/再诠释之嫌。\n- 对于“DeMuon 是否在 agent 数 n 上实现线性加速完全未解决”的说法，原文摘录中只说他们给出迭代复杂度，与集中式最优依赖相匹配，没有声称或分析关于 n 的线性 speedup，也没有讨论这是一个开放问题。因此，说“remains entirely unresolved”虽然与事实（论文没有证明显式线性加速）在结果上吻合，但这种表述把作者未讨论的性质提升为论文明确留下的“关键未解问题”，带有一定主观判断。\n综合来看，主要方法与贡献被大体准确描述，但对复杂度结果的结构和未解决问题的表述有一定程度的再诠释和放大，可能影响读者对论文技术细节和作者立场的理解，故评为轻微偏差。"
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_sonnet4.6",
+        "score": 3.6,
+        "total_citations": 20,
+        "evaluated_citations": 15,
+        "fabricated_count": 2,
+        "key_refs_total": 7,
+        "key_refs_covered": 2,
+        "coverage_rate": 0.286,
+        "citation_count_bonus": 1.5,
+        "key_coverage": [
+          {
+            "key_ref": "Muon Optimizer (Jordan et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中没有标明为 Muon 原始提出者（Jordan et al., 2024）的论文；虽有多篇关于 Muon 的后续工作（liu2025muon, wang2025muon, Gruntkowska2025ErrorFF 等），但都不是原始 Muon 优化器提出论文或其等价版本。"
+          },
+          {
+            "key_ref": "Convergence of Muon (Shen et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "shen2025convergence",
+            "note": "shen2025convergence: On the Convergence Analysis of Muon (2025) 与计划中的描述一致，属于同一工作。"
+          },
+          {
+            "key_ref": "Decentralized Parallel SGD (Lian et al., NeurIPS 2017)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未出现 Lian et al., 2017 的 Decentralized Parallel SGD 或明显等价的前身/扩展版本。"
+          },
+          {
+            "key_ref": "EXTRA (Shi et al., SIAM 2015)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中无 Shi et al. EXTRA 相关条目，也未见以 EXTRA 命名或明显等价的工作。"
+          },
+          {
+            "key_ref": "Exact Diffusion / D$^2$ (Yuan et al., 2017 / Tang et al., 2018)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "未找到 Yuan et al. 或 Tang et al. 关于 Exact Diffusion / D^2 的引用，也没有标题或作者可视为该线工作。"
+          },
+          {
+            "key_ref": "A Unified and Refined Convergence Analysis for Non-Convex Decentralized Learning (Alghunaim et al., IEEE TAC 2022)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中没有 Alghunaim 等人的统一分析工作或类似标题的统一 SUDA 式分析论文。"
+          },
+          {
+            "key_ref": "DeMuon (He et al., 2025)",
+            "covered": true,
+            "matched_cite_key": "he2025demuon",
+            "note": "he2025demuon: DeMuon: A Decentralized Muon for Matrix Optimization over Graphs (2025) 与计划中 DeMuon 工作完全对应。"
+          }
+        ],
+        "highly_relevant": 2,
+        "weakly_relevant": 9,
+        "irrelevant": 4,
+        "details": [
+          {
+            "key": "Takezawa2025FedMuonFL",
+            "title": "FedMuon: Federated Learning with Bias-corrected LMO-based Optimization",
+            "relevance": 1,
+            "reason": "该文以 Muon / LMO 类优化方法为基础，关注联邦学习（带参数服务器的中心化 FL）中的偏差校正，与 Plan 中的“Muon 和矩阵感知优化器”方向有直接交集，因此与方法论核心（矩阵结构 + Muon 型优化）相关。但 Plan 的重点在于去中心化（无服务器）优化、SUDA 统一框架以及 DeMuon 这类去中心化 Muon 的初步尝试，讨论的是图上节点间对等通信与线性加速等问题，而 FedMuon 仍处于联邦 / 中心化范式，未涉及 SUDA 或无服务器去中心化拓扑与通信模板。因此它更像是相邻领域的扩展工作，可在 Related Work 中作为“Muon 在分布式/联邦场景中的另一条线”的补充引用，但并非 Plan 所强调的核心代表性文献。"
+          },
+          {
+            "key": "pethick2025training",
+            "title": "Training Deep Learning Models with Norm-Constrained LMOs",
+            "relevance": 0,
+            "reason": "该论文围绕带范数约束的线性最优化 oracle (LMO) 训练深度模型，属于约束优化/投影‑free 类方法，与 Plan 中强调的矩阵极化 Muon 优化器、去中心化 SGD/EXTRA/Exact Diffusion/SUDA 框架以及去中心化 Muon 的通信‑校正结构和线性加速分析等核心方向均不存在明确对应关系，也未在 Plan 中被提及，因此不属于本工作 Related Work 的核心或紧邻技术背景。"
+          },
+          {
+            "key": "bernstein2024old",
+            "title": "Old Optimizer, New Norm: An Anthology",
+            "relevance": 1,
+            "reason": "该文讨论的是在不同参数范数（如不同矩阵/向量范数、归一化方式等）下对已有优化器进行系统化重释与比较，属于对优化方法几何性质的更广泛综述，与“矩阵结构参数的几何”“尺度不变更新”“非欧式/矩阵感知优化”的主题有一定交集，因此可作为更广义优化背景的补充引用。但它既不是 Plan 中列出的关键参考文献，也并非专门研究 Muon、SUDA 或去中心化 Muon/分布式非凸收敛的代表性工作，对 Plan 所强调的三大主线（Muon 优化器、去中心化异质性校正、去中心化 Muon 及线性加速分析）没有直接针对性贡献，因此评为弱相关。"
+          },
+          {
+            "key": "pan2025unbiased",
+            "title": "Unbiased Gradient Low-Rank Projection",
+            "relevance": 1,
+            "reason": "该文研究的是梯度的低秩投影（low-rank projection），与矩阵结构参数和矩阵运算相关，在广义上属于“矩阵结构感知”的优化方法，对应 Plan 中第 1 部分的宽泛背景。但它既不是 Muon / matrix sign 这类极化优化器，也与去中心化优化、SUDA 框架、异质性修正及 DeMuon 等工作没有直接关系，Plan 中也未提及，因此最多作为相邻技术的背景文献，属于弱相关而非核心。"
+          },
+          {
+            "key": "Robert2024LDAdamAO",
+            "title": "LDAdam: Adaptive Optimization from Low-Dimensional Gradient Statistics",
+            "relevance": 0,
+            "reason": "LDAdam 关注的是在单机/集中式场景下利用低维梯度统计改进 Adam 式自适应优化，与 Plan 中的矩阵几何感知优化器（Muon 的矩阵极化 / 矩阵符号算子）、去中心化优化（DPSGD、EXTRA、Exact Diffusion、SUDA 框架）以及去中心化 Muon（DeMuon 及其通信结构与线性加速性分析）等核心方向均无直接联系，也未涉及矩阵结构参数的算子几何或去中心化通信-校正结构，因此不属于本工作动机和技术线上的代表性或相邻工作。"
+          },
+          {
+            "key": "Hu2025ABD",
+            "title": "A Bias-Correction Decentralized Stochastic Gradient Algorithm with Momentum Acceleration",
+            "relevance": 1,
+            "reason": "该文属于去中心化随机梯度方法中带偏差校正与动量加速的一类工作，属于“Decentralized Optimization & Heterogeneity Correction”这一大方向的相邻技术；它与D-PSGD、EXTRA、Exact Diffusion、Gradient Tracking等同属解决非IID与收敛/加速问题的去中心化算法谱系，因此可作为更广泛背景下的补充引用。但Plan中强调的关键是SUDA式统一框架、矩阵感知优化器(Muon)以及其去中心化扩展(如DeMuon)，而该文并不涉及矩阵极化/msgn，也未被Plan列为代表性或激发动机的核心工作，因此归为弱相关而非强相关。"
+          },
+          {
+            "key": "shen2025convergence",
+            "title": "On the Convergence Analysis of Muon",
+            "relevance": 2,
+            "reason": "该论文正是 Plan 中在 Section 1 明确点名的 Key Reference 之一（Shen et al., 2025），提供了单机 Muon 的非凸收敛理论分析。Plan 中将其作为“当前理论现状”的代表性工作，并以其仅限单节点/集中式场景作为核心动机之一来引出去中心化 Muon 的研究空白，因此与本文的 Related Work 核心主题强相关。"
+          },
+          {
+            "key": "abreu2025potential",
+            "title": "The Potential of Second-Order Optimization for LLMs: A Study with Full Gauss-Newton",
+            "relevance": 1,
+            "reason": "该工作讨论的是大模型训练中的二阶优化（Full Gauss-Newton），与本 Plan 中关注的矩阵极化/Muon、去中心化 SGD、SUDA 统一框架及去中心化 Muon 线性加速等核心问题并不直接对应，因此不是核心代表性工作。但其作为“矩阵结构参数在优化中被显式利用”的相邻方向，与 Plan 中强调的 matrix-aware optimizers 在理念上有一定交叉，可以作为更广泛背景下的相邻技术引用，因此评为弱相关。"
+          },
+          {
+            "key": "gupta2018shampoo",
+            "title": "Shampoo: Preconditioned Stochastic Tensor Optimization",
+            "relevance": 1,
+            "reason": "Shampoo 是一种利用张量/矩阵结构进行预条件的自适应优化器，属于“matrix-aware optimizers”的相邻工作，与 Plan 中对矩阵结构参数和非欧几里得几何感知优化的讨论在理念上相关。但 Plan 核心聚焦于 Muon 的矩阵极化（msgn）及其在去中心化环境中的扩展和理论分析，而 Shampoo 既非关键参考文献，也不涉及去中心化或 Muon 相关的非线性矩阵正交化，因此更适合作为更广义矩阵感知优化背景的补充引用，相关性为弱相关。"
+          },
+          {
+            "key": "wang2025muon",
+            "title": "Muon Outperforms Adam in Tail-End Associative Memory Learning",
+            "relevance": 1,
+            "reason": "该文是关于 Muon 在特定任务（联想记忆尾段学习）上性能表现的应用性工作，属于“Muon 及其应用”的相邻方向，但 Plan 中关注的是 Muon 的优化原理、理论收敛性质以及其在去中心化框架中的扩展与统一分析。该引用既不在 Key References 列表中，也不是去中心化 / SUDA / DeMuon 等核心理论或算法工作，对 Plan 中强调的理论与系统性空缺仅提供间接背景，因此适合作为补充性应用案例，相关性为弱相关。"
+          },
+          {
+            "key": "Kong2024DecentralizedBO",
+            "title": "Decentralized Bilevel Optimization: A Perspective from Transient Iteration Complexity",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "loshchilov2017decoupled",
+            "title": "Decoupled Weight Decay Regularization",
+            "relevance": 1,
+            "reason": "该文提出 decoupled weight decay（AdamW），属于优化算法及正则化的相邻技术，与深度学习训练和参数更新规则相关，因此在广义优化背景下有一定关联。但它既不涉及矩阵几何或矩阵极化（如 Muon）、也不涉及去中心化优化、异质性校正或 SUDA/DeMuon 框架，未触及 Plan 所强调的三大核心方向，仅能作为一般优化背景的边缘性参考，故评为弱相关。"
+          },
+          {
+            "key": "Goyal2017AccurateLM",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "zhu2024apollo",
+            "title": "APOLLO: SGD-like Memory, AdamW-level Performance",
+            "relevance": 1,
+            "reason": "APOLLO 是一种改进的一阶深度学习优化器，关注训练稳定性、收敛和泛化，与 Plan 中讨论的优化器主题在“优化算法设计”这一大类上有相邻关系。但它既不涉及矩阵几何（matrix-aware/msgn）、也不涉及去中心化或图通信结构，更没有与 Muon、SUDA 或去中心化 Muon 的特定问题（非线性矩阵极化、拓扑分离、线性加速）形成直接呼应。因此，它最多作为更广泛上下文中 ‘现代一阶优化器’ 的旁枝背景被顺带提及，属于弱相关。"
+          },
+          {
+            "key": "he2025demuon",
+            "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+            "relevance": 2,
+            "reason": "该文正是 Plan 中第三部分“Decentralized Muon (The Gap)”里点名的关键工作（DeMuon），也是列在 Key References 中的代表性前作。Plan 明确以其为直接研究对象和动机来源，用其局限性来引出 SUDA-Muon 的贡献，因此与 Related Work 的核心叙述强相关。"
+          }
+        ]
+      }
+    }
+  },
+  "comparative_results": {},
+  "summary": {
+    "objective_rankings": {
+      "content_accuracy": [
+        [
+          "reasflow_dpsk",
+          10.0
+        ],
+        [
+          "reasflow_gpt54",
+          9.83
+        ],
+        [
+          "reasflow_gpt51",
+          9.33
+        ],
+        [
+          "base_sonnet4.6",
+          9.2
+        ],
+        [
+          "base_gpt54",
+          8.63
+        ],
+        [
+          "base_dpsk",
+          7.96
+        ],
+        [
+          "reasflow_sonnet4.6",
+          7.49
+        ],
+        [
+          "base_gpt51",
+          5.0
+        ]
+      ],
+      "citation_relevance": [
+        [
+          "base_sonnet4.6",
+          8.68
+        ],
+        [
+          "reasflow_dpsk",
+          8.53
+        ],
+        [
+          "base_gpt54",
+          8.5
+        ],
+        [
+          "reasflow_gpt51",
+          7.27
+        ],
+        [
+          "reasflow_gpt54",
+          5.27
+        ],
+        [
+          "base_dpsk",
+          4.77
+        ],
+        [
+          "reasflow_sonnet4.6",
+          3.6
+        ],
+        [
+          "base_gpt51",
+          1.0
+        ]
+      ]
+    },
+    "comparative_results": {},
+    "total_scores": {}
+  }
+}

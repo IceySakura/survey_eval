@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Communication-Efficient Federated Learning}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Foundations of Federated Learning and Data Heterogeneity}
+
+Federated learning was introduced by \citet{mcmahan2017communication}, who proposed FedAvg: clients perform multiple local SGD steps before transmitting model updates to a central server, achieving 10--100$\times$ reductions in communication rounds. Early theoretical analyses established $\mathcal{O}(1/T)$ convergence for strongly convex objectives \citep{li2019convergence}, linear speedup across convex and overparameterized regimes \citep{qu2023unified}, and linear speedup under non-IID data with partial participation in non-convex settings \citep{Yang2021AchievingLS}. Beyond optimization, \citet{collins2022fedavg} showed formally that local updates enable clients to collaboratively learn a shared representation, explaining strong post-fine-tuning generalization. A non-parametric RKHS analysis of both FedAvg and FedProx \citep{su2023non} introduced the notion of \emph{federation gain} and demonstrated that severe heterogeneity substantially erodes its benefits.
+
+The central pathology of FedAvg under non-IID data is \emph{client drift}: local models increasingly specialize to idiosyncratic client distributions across multiple local steps, causing destructive interference upon aggregation \citep{karimireddy2020scaffold}. The severity of drift grows with heterogeneity, as confirmed empirically using Dirichlet-parameterized data splits \citep{reguieg2023comparative} and analyzed through the lens of catastrophic forgetting \citep{shoham2019overcoming}. Overparameterization can partially mitigate heterogeneity's impact \citep{jian2025widening}, though this comes at the cost of larger models and thus greater memory pressure. \citet{karimireddy2020scaffold} proposed SCAFFOLD, which corrects drift via per-client control variates $c_i \in \mathbb{R}^d$ that estimate the discrepancy between local and global gradient directions, yielding convergence entirely independent of data heterogeneity. Momentum-augmented variants of SCAFFOLD further accelerate convergence under partial participation \citep{Cheng2023MomentumBN}. FedProx \citep{su2023non} offers a lighter alternative via proximal regularization, but provides weaker guarantees under severe heterogeneity. Control variates have also been incorporated into composite non-convex objectives \citep{Zhou2025FedCanonNC} and rank-aware LoRA fine-tuning \citep{Zhou2025ILoRAFL}, underscoring their broad applicability. The critical limitation shared by all SCAFFOLD-style methods is that each client must persistently store a full-dimensional control variate vector, incurring an $\mathcal{O}(d)$ memory overhead that becomes prohibitive as model sizes grow---a bottleneck that directly motivates subspace-based approaches.
+
+\subsection{Communication Compression Techniques in Federated Learning}
+
+Reducing per-round communication volume is a complementary axis of efficiency. Gradient sparsification \citep{stich2018sparsified} and low-rank compression \citep{Vogels2019PowerSGDPL} are two principal strategies. Sparsification operators such as Top-$k$ are contractive but biased, discarding gradient coordinates that accumulate as systematic error unless explicitly corrected. The \emph{error feedback} (EF) paradigm \citep{stich2018sparsified} addresses this by maintaining a residual buffer $e_t \in \mathbb{R}^d$ that carries uncompressed information forward, and \citet{Qian2020ErrorCD} demonstrated that error-compensated methods can be accelerated for strongly convex objectives. \citet{chen2025greedy} introduced GreedyLore, the first greedy low-rank compressor with rigorous convergence guarantees, using a semi-lazy subspace update to preserve contractiveness across iterations. Combining local training with compression, \citet{Haddadpour2020FederatedLW} proposed FedCOM and FedCOMGATE, achieving communication complexity matching uncompressed rates via gradient tracking---though the tracking variable itself remains full-dimensional. \citet{Condat2024LoCoDLCD} unified local training and unbiased compression in a primal--dual framework (LoCoDL) for strongly convex objectives. Integrating SCAFFOLD with compression, \citet{Huang2023StochasticCA} derived SCALLION and SCAFCOM, which halve uplink cost by transmitting a single increment variable while tolerating arbitrary heterogeneity and partial participation. Computationally heterogeneous clients are addressed by \citet{Zhang2022CCFedAvgCC}. Despite these advances, all EF and SCAFFOLD-compression methods maintain full-dimensional auxiliary states per client, and---critically---all convergence analyses assume a \emph{stationary} compressor. When the compression subspace evolves dynamically across rounds, error buffers and control variates computed under a previous basis become misaligned with the current update direction, a structural incompatibility that none of these works resolves.
+
+\subsection{Subspace and Low-Rank Optimization for Communication-Efficient Federated Learning}
+
+Gradient matrices in deep networks exhibit pronounced low-rank structure \citep{Vogels2019PowerSGDPL}, motivating methods that confine updates to low-dimensional subspaces to simultaneously reduce communication, computation, and optimizer-state memory. \citet{Park2024CommunicationEfficientFL} proposed FedLoRU, which enforces rank-$r$ client updates and accumulates them on the server to reconstruct a higher-rank global model, achieving convergence rates matching FedAvg with implicit regularization benefits---but without any mechanism to correct client drift within the low-rank regime. \citet{zhang2025efficient} introduced FedSub, a primal--dual subspace algorithm that augments low-dimensional projection with dual variables to mitigate drift, providing a non-convex convergence analysis that recovers full-rank rates as a special case; however, the dual-variable correction is tailored to a fixed subspace and does not extend to aggressive subspace rotation across rounds. \citet{Zhou2025ILoRAFL} proposed ILoRA for federated LoRA fine-tuning, addressing initialization misalignment via QR-based orthonormal initialization, rank-heterogeneous aggregation via concatenated QR decomposition, and client drift via rank-aware control variates operating in the low-rank adapter space---reducing variate memory from $\mathcal{O}(d)$ to $\mathcal{O}(r)$. Yet ILoRA's variates are designed for rank compatibility across heterogeneous clients rather than for maintaining variate validity across subspace transitions. The core unresolved challenge across FedLoRU, FedSub, and ILoRA is identical: when the projection basis is periodically re-estimated to track the evolving gradient geometry \citep{chen2025greedy, Vogels2019PowerSGDPL}, control variates and dual variables accumulated under the previous basis become directionally stale, reintroducing the very drift bias that variance reduction was designed to eliminate \citep{karimireddy2020scaffold, Huang2023StochasticCA}. This incompatibility between dynamic subspace switching and SCAFFOLD-style correction---unaddressed by any existing method---is the precise gap that Subspace-SCAFFOLD is designed to close.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

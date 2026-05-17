@@ -1,0 +1,27 @@
+{
+  "evaluation_time": "2026-04-25T14:29:04.172247",
+  "task": "cuttingplane",
+  "eval_model": "gpt54",
+  "articles": [],
+  "dimensions_evaluated": [
+    1,
+    2
+  ],
+  "objective_scores": {},
+  "comparative_results": {},
+  "summary": {
+    "objective_rankings": {
+      "content_accuracy": [],
+      "citation_relevance": []
+    },
+    "comparative_results": {},
+    "total_scores": {}
+  },
+  "aggregate": {
+    "run_mean_total": null,
+    "per_article_max_total": null,
+    "per_article_total_scores": {},
+    "run_mean_content_accuracy": null,
+    "run_mean_citation_relevance": null
+  }
+}

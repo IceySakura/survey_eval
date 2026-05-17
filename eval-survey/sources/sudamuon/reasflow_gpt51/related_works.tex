@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Decentralized Optimization and Matrix-Aware Optimizers (with focus on Muon and SUDA-Muon, following writing_plan.md)}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Introduction and Problem Landscape}
+
+Scaling deep learning across many workers has motivated a rich line of decentralized SGD and gossip schemes that remove the parameter server and reduce the busiest-node communication load \citep{lian2017can, Lian2017AsynchronousDP, Assran2018StochasticGP, blot2016gossip, Blot2018GoSGDDO, daily2018gossipgrad}. These methods can outperform centralized baselines in bandwidth-limited regimes, but their convergence rates and final error depend strongly on graph spectra and consensus errors. Communication-efficient collectives and sparse/quantized gradients alleviate bandwidth pressure in centralized settings \citep{Renggli2018SparCMLHS, Bernstein2018signSGDCO, stich2018sparsified, Vogels2019PowerSGDPL}, yet largely assume vector-valued, Euclidean updates.
+
+In federated learning, FedAvg and its analyses expose fundamental limitations under non-IID data and partial participation \citep{li2019convergence, Haddadpour2020FederatedLW, su2023non}. Even when widened models mitigate heterogeneity effects \citep{jian2025widening}, client drift remains a core issue. Related perspectives from sparse subspace clustering and local-training formulations \citep{Yang2015LearningW, Hinton2022TheFA} and from decentralized control in cooperative systems \citep{goldman2004decentralized} emphasize that realistic deployments must tolerate heterogeneous objectives, constraints, and dynamics, far beyond the homogeneous, synchronous regimes assumed in early work.
+
+These strands motivate decentralized frameworks that are both communication-aware and heterogeneity-robust, and that move beyond purely coordinate-wise SGD/Adam. The next two subsections discuss how matrix- and geometry-aware optimizers and modern heterogeneity-correction methods address these gaps, and why existing combinations still fall short of a SUDA-style decentralized Muon.
+
+\subsection{Matrix- and Geometry-Aware Optimizers for Deep Learning}
+
+Muon exemplifies matrix-aware optimization: it applies layer-wise LMOs and orthogonalization to weight matrices, improving spectra, tail-class learning, and grokking dynamics relative to AdamW \citep{wang2025muon, liu2025muon, tveit2025muon, shen2025convergence}. \citet{liu2025muon} and \citet{shen2025convergence} provide the first general convergence analyses for Muon under various smoothness assumptions, while \citet{wang2025muon} tie its gains to associative-memory structure. Conda and APOLLO coarsen AdamWâs coordinate-wise adaptivity into column- or low-rankâstructured preconditioners, alleviating spectral pathologies and memory overhead \citep{wang2025conda, zhu2024apollo}. REG replaces Muonâs matrix sign with RACS-based equilibration for more stable dynamics \citep{liu2025reg}, and Lie-group preconditioners offer related curvature-aware matrix updates via Hessianâvector products \citep{Li2022BlackBL}. These methods fit naturally into the âold optimizer, new normââ view that reinterprets first-order methods as steepest descent under tailored norms \citep{bernstein2024old}, and into recent LMO-based formulations for deep learning \citep{pethick2025training}.
+
+Classical tensor-aware preconditioners such as Shampoo and memory-efficient Adafactor already exploit matrix/tensor structure \citep{gupta2018shampoo, shazeer2018adafactor}, while LDAdam and APOLLO perform adaptive updates in dynamically learned low-dimensional subspaces \citep{Robert2024LDAdamAO, zhu2024apollo}. Low-rank and LoRA-style parameterizations further constrain updates to compact subspaces \citep{bensaid2025singlora, ren2024low}. GUM shows that unbiased low-rank projection can preserve Muonâs convergence guarantees while reducing memory and improving spectral regularization \citep{pan2025unbiased}, and GreedyLore gives the first low-rank compressor with formal linear-speedup guarantees for momentum SGD/Adam \citep{chen2025greedy}. Works on group normalization, implicit associative-memory regularization, and grokking dynamics underscore the importance of geometry and spectrum for representation learning and generalization \citep{wu2018group, Rogozin2021AnAM, tian2025provable}. Non-Euclidean error-feedback methods such as EF21-Muon extend communication-efficient LMOs to matrix-aware settings \citep{Gruntkowska2025ErrorFF}, while MuLoCo uses Muon as a highly compressible inner optimizer in DiLoCo-style schemes \citep{Th'erien2025MuLoCoMI}. Finally, decoupled weight decay \citep{loshchilov2017decoupled} and learning-to-optimize frameworks \citep{He2024AML} are complementary ingredients for practical matrix-aware training, but none of these works yet address decentralized, graph-coupled dynamics.
+
+\subsection{Decentralized Optimization over Networks}
+
+Decentralized SGD and gossip methods without heterogeneity correction suffer from topology-dependent bias and suboptimal network scaling \citep{lian2017can, Lian2017AsynchronousDP, Assran2018StochasticGP, blot2016gossip, Blot2018GoSGDDO, daily2018gossipgrad}. EXTRA, dual averaging, and decentralized ADMM achieve exact consensus for convex problems by modifying gradient and mixing operators \citep{shi2015extra, duchi2011dual, Shi2013OnTL}, while PushâPull, accelerated methods over time-varying graphs, and DSGD-CECA refine spectral dependence and communication complexity \citep{Pu2018PushPullGM, Rogozin2021AnAM, Ding2023DSGDCECADS, Rogozin2021AnAM, gupta2018shampoo}. Riemannian EXTRA and Exact Subspace Diffusion extend exactness to manifolds and multitask subspaces \citep{Wu2025RiemannianEC, Wadehra2023ExactSD}. Gradient-tracking variants (including local-step K-GT) and SUDA-style abstractions unify these ideas and formalize when linear speedup and near-optimal eigengap dependence are achievable \citep{Liu2023DecentralizedGT, Li2025UnveilingTP, Rogozin2021AnAM}.
+
+Communication-efficient decentralized methods integrate compression and topology design. CHOCO-SGD and quantization under subspace constraints analyze contractive compressors and differential quantizers \citep{Koloskova2019DecentralizedSO, Nassif2022QuantizationFD}, while workload-balancing and dynamic-graph schemes such as ComDML and AL-DSGD optimize communicationâcompute trade-offs \citep{mohammadabadi2024communication, He2024AdjacentLD}. Multi-gossip and teleportation-style designs tighten stability-based generalization bounds and decouple performance from poor topologies \citep{chen2021accelerating, Ying2021ExponentialGI, Takezawa2025ScalableDL, Li2025UnveilingTP}. Decentralized bilevel and MARL formulations further extend this toolbox \citep{Wen2024ACA, Kong2024DecentralizedBO, zhao2021distributed, Zhou2025FedCanonNC}.
+
+On top of this, federated and decentralized Muon explicitly tackle matrix-aware updates. FedMuon corrects LMO bias and uses momentum aggregation and localâglobal alignment to achieve nonconvex linear-speedup guarantees under non-IID data \citep{Takezawa2025FedMuonFL, liu2025fedmuon}. DeMuon marries Muonâs NewtonâSchulz orthogonalization with gradient tracking over graphs and proves heavy-tailed robustness, but still assumes static, doubly-stochastic mixing and uncompressed communication \citep{he2025demuon}. EF21-Muon brings error-feedback compression to LMO-based optimizers \citep{Gruntkowska2025ErrorFF}, while federated compression frameworks and refined FedAvg analyses characterize complementary regimes \citep{Haddadpour2020FederatedLW, su2023non, li2019convergence, Renggli2018SparCMLHS}. Despite progress, existing methods either treat decentralization in Euclidean geometry without matrix-aware steps, or study Muon/LMOs with limited topology and heterogeneity modeling. None yet provide a unified, SUDA-style theory for decentralized Muon with exactness, near-optimal network dependence, and communication-efficient matrix updates, which is precisely the gap addressed by SUDA-Muon.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

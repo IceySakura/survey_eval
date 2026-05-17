@@ -1,0 +1,58 @@
+{
+  "runs": [
+    {
+      "task": "sudamuon",
+      "eval_model": "gpt51",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_sudamuon_gpt51_20260321_120335.json",
+      "skipped": true
+    },
+    {
+      "task": "sudamuon",
+      "eval_model": "sonnet4.6",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_sudamuon_sonnet4.6_20260321_124317.json",
+      "skipped": true
+    },
+    {
+      "task": "sudamuon",
+      "eval_model": "dpsk",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_sudamuon_dpsk_20260321_130523.json",
+      "skipped": true
+    },
+    {
+      "task": "sfedavg",
+      "eval_model": "gpt51",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_sfedavg_gpt51_20260321_132455.json",
+      "skipped": true
+    },
+    {
+      "task": "sfedavg",
+      "eval_model": "sonnet4.6",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_sfedavg_sonnet4.6_20260321_140053.json",
+      "skipped": true
+    },
+    {
+      "task": "sfedavg",
+      "eval_model": "dpsk",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_sfedavg_dpsk_20260321_142436.json",
+      "skipped": true
+    },
+    {
+      "task": "subspacescaffold",
+      "eval_model": "gpt51",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_subspacescaffold_gpt51_20260321_141829.json",
+      "skipped": true
+    },
+    {
+      "task": "subspacescaffold",
+      "eval_model": "sonnet4.6",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_subspacescaffold_sonnet4.6_20260321_143556.json",
+      "skipped": true
+    },
+    {
+      "task": "subspacescaffold",
+      "eval_model": "dpsk",
+      "result_json": "/home/iceysakura/1/pylab/paper_gen/eval-survey/eval/results/eval_result_subspacescaffold_dpsk_20260321_142619.json",
+      "skipped": true
+    }
+  ]
+}

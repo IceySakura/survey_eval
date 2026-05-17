@@ -1,0 +1,83 @@
+\section{Related Work}
+\label{sec:related}
+
+Our work addresses the critical gap between memory-efficient and communication-efficient federated learning (FL) under heterogeneous data distributions. We review the literature in three key areas: (i) federated learning with heterogeneous data, (ii) communication-efficient methods, and (iii) memory-efficient approaches. We highlight the fundamental limitations of existing methods that motivate our proposed algorithm for joint memory and communication efficiency.
+
+\subsection{Federated Learning with Heterogeneous Data}
+
+Federated Learning (FL) enables collaborative model training on decentralized data without sharing raw data \cite{mcmahan2016communication}. The seminal FedAvg algorithm \cite{mcmahan2017fedavg} establishes the standard workflow of local SGD updates followed by server aggregation. However, realistic non-IID (non-independent and identically distributed) data distributions cause significant challenges.
+
+\paragraph{Client Drift and Correction Methods}
+Non-IID data leads to \textit{client drift}, where local updates diverge from the global optimum due to data heterogeneity. FedProx \cite{li2020fedprox} introduces a proximal term to regularize local updates, while SCAFFOLD \cite{karimireddy2020scaffold} employs control variates to correct drift and provably matches centralized SGD rates under extreme heterogeneity. The analysis in \cite{karimireddy2020scaffold} demonstrates that variance reduction techniques are essential for convergence under non-IID conditions.
+
+\paragraph{Convergence Theory and Linear Speedup}
+Recent theoretical advances establish linear speedup in the number of clients for FedAvg under simultaneous non-IID data and partial participation \cite{li2019fedavg, yang2021fedavg, qu2020fedavg}. These analyses show that despite heterogeneity, proper algorithm design can achieve convergence rates comparable to centralized training. Notably, \cite{jian2025heterogeneity} demonstrates that the impact of heterogeneity diminishes with model width in overparameterized networks, suggesting architectural solutions to heterogeneity challenges.
+
+\paragraph{System Heterogeneity}
+Beyond data heterogeneity, FL must handle system heterogeneity including non-uniform client participation \cite{xiang2023partial}, computational heterogeneity via lightweight local updates \cite{zhang2022lightweight}, and composite/non-smooth objectives via primal-dual frameworks like FedDR \cite{lu2020feddr} and FedCanon \cite{han2021fedcanon}. These methods adapt FL to practical constraints but often introduce additional complexity.
+
+\paragraph{Personalization}
+Personalized FL methods mitigate heterogeneity at the cost of extra overhead. Meta-learning approaches like Per-FedAvg \cite{fallah2020perfedavg}, distillation-based methods \cite{yao2021localglobal}, and feature-alignment techniques \cite{wang2025fedep} aim to adapt models to individual clients. However, these methods typically require additional communication rounds or memory for personalized components.
+
+\paragraph{Key Issue}
+Existing methods primarily focus on convergence under data heterogeneity but largely ignore \textbf{memory constraints} on client devices. While they address statistical and system challenges, they assume clients can store and compute full gradients and optimizer states, leaving a critical resource-efficiency gap.
+
+\subsection{Communication-Efficient Methods}
+
+Communication cost is a primary bottleneck in FL \cite{konecný2016strategies}. Gradient compression (quantization, sparsification) and local SGD reduce per-round communication requirements.
+
+\paragraph{Compression Taxonomy}
+Compression methods fall into two categories: unbiased compressors (QSGD \cite{alistarh2017qsgd}, unbiased sparsification) and biased/contractive compressors (top-k \cite{stich2018sparsification}, sign-based \cite{bernstein2018signsgd}). Algorithm-agnostic lower bounds \cite{he2023lowerbounds, safaryan2020uncertainty} establish fundamental limits for distributed optimization with compression, showing trade-offs between compression ratio and convergence rate.
+
+\paragraph{Error Feedback Mechanisms}
+Biased compressors must be paired with error feedback (EF) mechanisms to guarantee convergence \cite{karimireddy2019errorfeedback, stich2019errorfeedback}. EF21 \cite{richtarik2021ef21} provides a unified framework for error compensation. Recent variants like EF-BV \cite{condat2022efbv} unify error feedback with variance reduction, while EFSkip \cite{bao2025efskip} achieves linear speedup with arbitrary data heterogeneity. Momentum-enhanced EF methods \cite{cheng2023momentum} further improve performance in heterogeneous settings.
+
+\paragraph{Decentralized Federated Learning}
+Decentralized protocols (D-PSGD \cite{lian2017decentralized}) eliminate the parameter server. D² and variance-reduced extensions \cite{tang2018d2, yuan2021decentralized} achieve rates matching centralized SGD by removing data heterogeneity influence. Gradient tracking yields network-agnostic guarantees \cite{koloskova2020gradienttracking}. These methods reduce communication overhead but introduce coordination complexity.
+
+\paragraph{Practical Unification Frameworks}
+Several frameworks combine multiple efficiency techniques: Qsparse-local-SGD \cite{zhou2020qsparse} integrates local SGD with sparsification and quantization; DoubleSqueeze \cite{sun2020doublesqueeze} applies error compensation to both upload and download; LoCoDL \cite{zhang2022locodl} unifies local training with unbiased compression in a primal-dual framework. These approaches demonstrate the benefits of combining techniques but lack theoretical guarantees for joint constraints.
+
+\paragraph{Near-Optimal Algorithms}
+ADIANA \cite{li2021adiana} and NEOLITHIC \cite{huang2022neolithic} approach the lower bounds for communication-efficient distributed optimization. Asynchronous decentralized training \cite{lian2017async} further alleviates synchronization bottlenecks. These algorithms provide near-optimal communication efficiency but do not address memory constraints.
+
+\paragraph{Key Issue}
+Communication-efficient methods optimize bandwidth usage but do not address the \textbf{memory overhead} of full gradient computation and optimizer state storage on resource-constrained clients. Combining compression with memory efficiency in a principled framework remains an open problem.
+
+\subsection{Memory-Efficient Methods (The Gap)}
+
+Memory constraints on edge devices necessitate novel optimization approaches that reduce storage requirements for gradients and optimizer states.
+
+\paragraph{Subspace and Low-Rank Training}
+GaLore \cite{zhao2024galore} reduces optimizer state memory by training in a low-rank gradient subspace, projecting gradients onto a dynamically updated low-rank basis. However, rigorous analysis \cite{he2024golore} shows that subspace methods can fail to converge under stochastic noise; GoLore provides provably convergent variants with proper regularization. Other low-rank approaches include MLorc \cite{shen2025mlorc} with momentum compression and SLTrain \cite{han2024sltrain} combining sparse and low-rank structures.
+
+\paragraph{Geometric Foundation}
+Subspace optimization connects to the geometric convergence theory of preconditioned steepest descent \cite{neymeyer2012geometric}, providing a principled basis for low-rank approximations. This theory establishes conditions for convergence when optimizing in constrained subspaces, informing memory-efficient algorithm design.
+
+\paragraph{Federated Learning with Memory Efficiency}
+FedMuon \cite{liu2025fedmuon} applies local matrix orthogonalization in FL, but requires explicit drift correction due to client-side non-linear operations — demonstrating that naively combining memory-efficient local steps with FL aggregation breaks standard convergence. Other FL-specific memory methods include $\mu$-Fed \cite{li2025mufed} for microcontrollers, FedKRSO \cite{yang2026fedkrso} for LLM fine-tuning, and TinyFEL \cite{chen2025tinyfel} via model sparse updates.
+
+\paragraph{Low-Rank Adaptation (LoRA) in FL}
+Parameter-efficient fine-tuning via LoRA \cite{hu2021lora} has been adapted to FL settings. FLoCoRA \cite{ribeiro2024flocora} applies LoRA to train vision models from scratch, while FLoRA \cite{nguyen2024flora} enhances vision-language models. Fed-pilot \cite{zhang2024fedpilot} optimizes LoRA allocation for heterogeneous clients, and Ravan \cite{raje2025ravan} employs multi-head LoRA for federated fine-tuning. However, these methods focus on parameter efficiency rather than optimizer state reduction.
+
+\paragraph{Activation and State Reduction}
+Additional techniques reduce memory footprint: gradient checkpointing \cite{chen2016checkpointing}, PEFT methods like LoRA \cite{hu2021lora}, and architectural innovations like DeepSeek-V2 MLA \cite{deepseek2024mla}. Layer-wise importance sampling \cite{pan2024lisa} and progressive layer freezing \citewu2024heterogeneity} further reduce memory requirements during training.
+
+\paragraph{Dynamic Topology Approaches}
+AL-DSGD \cite{he2024aldsgd} weights neighbors by performance in decentralized settings; TELEPORTATION \cite{takezawa2025teleportation} activates only a subset of nodes per round, reducing both activation and communication costs. These approaches address resource constraints but lack theoretical guarantees for joint memory and communication efficiency.
+
+\subsection{The Gap — Motivating Our Work}
+
+Our analysis reveals three critical gaps in the literature:
+
+\paragraph{1. No Unified Framework}
+Existing methods address memory efficiency (subspace/low-rank) or communication efficiency (compression/local SGD) in isolation. There is no algorithm that provably achieves \textbf{both simultaneously} in heterogeneous FL. CoCo-Fed \cite{guo2026cocofed} proposes a unified framework but lacks theoretical guarantees for non-IID data. Our work bridges this gap by designing an algorithm with joint efficiency guarantees.
+
+\paragraph{2. Missing Drift Correction Theory}
+When clients perform non-Euclidean or subspace-constrained local steps, the standard drift correction analysis (as in SCAFFOLD) breaks down. FedMuon \cite{liu2025fedmuon} demonstrates this issue, requiring ad-hoc corrections. The correct correction mechanism for memory-efficient local updates in FL remains uncharacterized. We develop a novel drift correction theory for subspace-constrained optimization.
+
+\paragraph{3. Convergence under Joint Constraints}
+The theoretical limits of jointly memory- and communication-constrained FL — particularly under non-IID data, partial participation, and nonconvex objectives — remain an open problem. While lower bounds exist for communication compression \cite{he2023lowerbounds} and memory reduction \cite{zhao2024galore}, their combination lacks analysis. We establish convergence rates for our algorithm under these joint constraints.
+
+\paragraph{Our Contribution}
+We propose the first federated learning algorithm that achieves provable convergence under \textbf{joint memory and communication constraints} with heterogeneous data. Our method combines subspace projection for memory efficiency with compressed communication via error feedback, while introducing a novel drift correction mechanism for subspace-constrained local updates. We provide theoretical guarantees matching state-of-the-art rates for both efficiency dimensions simultaneously.

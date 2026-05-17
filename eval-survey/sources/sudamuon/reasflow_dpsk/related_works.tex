@@ -1,0 +1,36 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Decentralized Optimization and Matrix-Aware Optimizers}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Foundational Algorithms: Centralized Matrix-Aware Optimizers and Their Evolution}
+The paradigm of matrix-aware preconditioning exploits the geometric structure of neural network parameters to accelerate optimization. A seminal approach is \citet{gupta2018shampoo}, which introduces a Kronecker-factored preconditioner, drastically reducing memory while improving conditioning. Building on this, \citet{shen2025convergence} provides a comprehensive convergence analysis for the Muon optimizer, which orthogonalizes updates via the matrix sign function, theoretically outperforming Gradient Descent under low-rank Hessian structures. Empirical studies confirm these benefits: \citet{tveit2025muon} shows Muon accelerates phenomena like grokking, and \citet{liu2025muon} demonstrates its scalability to billion-parameter LLMs with significant compute efficiency gains. Variants like REG \citep{liu2025reg} and Conda \citep{wang2025conda} offer more stable or faster alternatives, while \citet{bernstein2024old} provides a unifying steepest-descent framework viewing these optimizers as specific norm choices. Other advances include AdEMAMix \citep{Pagliardini2024TheAO} and black-box Lie group preconditioners \citep{Li2022BlackBL}. However, these centralized methods face critical limitations: their theoretical guarantees often assume convexity or specific structures \citep{shen2025convergence, neymeyr2012geometric}, empirical validation is limited to moderate scales \citep{abreu2025potential, wang2025muon}, and they incur significant computational overhead \citep{chen2025AME}. Most importantly, they are designed for centralized settings and do not address the communication bottlenecks, data heterogeneity, or topology constraints inherent in decentralized training, creating a gap for their distributed deployment.
+
+\subsection{Decentralized Optimization: Addressing Topology, Heterogeneity, and Communication Challenges}
+Decentralized optimization enables collaborative learning over networks without a central server. The baseline Decentralized SGD (D-SGD) suffers from slow convergence under data heterogeneity and is sensitive to network topology \citep{alghunaim2022unified}. To mitigate client drift, advanced algorithms incorporate gradient tracking \citep{Tang2018D2DT, Liu2023DecentralizedGT, xin2021improved} and variance reduction \citep{Condat2024LoCoDLCD}. Robustness to system heterogeneity is addressed by asynchronous protocols like AD-PSGD \citep{Lian2017AsynchronousDP}, elastic training methods \citep{lin2019dynamic}, and federated algorithms supporting partial participation \citep{Wang2022FedADMMAF}. Communication efficiency is paramount, leading to techniques like quantization and sparsification with error feedback \citep{basu2019qsparse, Richtárik2021EF21AN, stich2018sparsified, Qian2020ErrorCD, Fatkhullin2023MomentumPI}, low-rank compression \citep{chen2025greedy}, and unified analyses of compression in federated learning \citep{Haddadpour2020FederatedLW}. Topology design, such as using exponential graphs \citep{Ying2021ExponentialGI} or teleportation schemes \citep{Takezawa2025ScalableDL}, improves mixing efficiency. Frameworks like SUDA \citep{alghunaim2022unified} and CHOCO-SGD \citep{Koloskova2019DecentralizedSO} provide unified convergence analyses integrating these components. However, these decentralized methods are primarily first-order and vector-based. They lack the geometric acceleration offered by matrix-aware preconditioners, which is crucial for modern matrix-structured models like transformers. Furthermore, while they handle heterogeneity and communication well, their convergence rates can still be limited by network condition, and integrating them with complex preconditioner updates remains an open challenge \citep{He2023UnbiasedCS, Huang2023StochasticCA, He2023LowerBA, Sato2020NetworkDensityControlledDP, He2024AdjacentLD, Carnevale2020GTAdamGT, Song2021OptimalGT}.
+
+\subsection{The Intersection: Decentralized Matrix-Aware Optimizers and Emerging Hybrid Frameworks}
+Recent works attempt to bridge the two domains by integrating matrix-aware preconditioning into decentralized frameworks. \citet{he2025demuon} introduces DeMuon, a decentralized extension of Muon that uses gradient tracking over arbitrary graphs. In federated settings, \citet{liu2025fedmuon} and \citet{Takezawa2025FedMuonFL} propose FedMuon, applying Muon's matrix orthogonalization locally while correcting for non-IID data via momentum aggregation and bias-correction mechanisms. Communication-efficient distributed variants also emerge: EF21-Muon \citep{Gruntkowska2025ErrorFF} extends error feedback to non-Euclidean LMO-based optimization, and MuLoCo \citep{Th'erien2025MuLoCoMI} combines Muon with the DiLoCo framework and aggressive compression. Memory-efficient optimizers like LDAdam \citep{Robert2024LDAdamAO} perform adaptive updates in low-dimensional subspaces, a concept relevant for reducing communication. These hybrids demonstrate that matrix preconditioning can accelerate convergence in distributed settings \citep{blot2016gossip, Alghunaim2023LocalEF, li2019convergence}. However, they exhibit critical limitations that motivate our work. Their empirical evaluations are preliminary, often limited to small models or single datasets \citep{he2025demuon, Takezawa2025FedMuonFL, Gruntkowska2025ErrorFF}. They suffer from amplified client drift under severe data heterogeneity \citep{liu2025fedmuon}, and their communication overhead remains high due to the transmission of matrix-valued preconditioner states \citep{Renggli2018SparCMLHS}. They lack deep integration with robust decentralized mechanisms like topology-aware averaging and advanced compression tailored for matrix updates. Furthermore, their theoretical analyses often rely on strong assumptions (e.g., IID data, specific mixing matrices) and do not fully address the compounded challenges of non-IID data, dynamic topologies, and resource heterogeneity \citep{he2025demuon}. This leaves a significant gap for a unified framework that coherently combines the geometric acceleration of matrix-aware preconditioning with the robustness and communication efficiency of advanced decentralized protocols.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

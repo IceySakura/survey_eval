@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Decentralized Optimization and Matrix-Aware Optimizers (SUDA-Muon)}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Muon and Matrix-Aware Optimizers}
+
+A growing body of work has established that updating weight matrices according to non-Euclidean geometries can substantially outperform standard gradient descent. The foundational insight, articulated in the ``Old Optimizer, New Norm'' framework \citep{bernstein2024old}, is that Adam, Shampoo \citep{gupta2018shampoo}, and Prodigy each correspond to steepest descent under a specific operator norm, unifying them within a single geometric family. Under the spectral norm, the linear minimization oracle (LMO) recovers the matrix sign operator $\mathrm{msgn}(G) = UV^\top$, which is precisely the update rule implemented by Muon via Newton--Schulz iterations \citep{liu2025muon}. \citet{pethick2025training} formalize this perspective through the unified stochastic conditional gradient (uSCG) framework, subsuming Muon, signSGD, and normalized SGD under a single norm-parameterized template and establishing $\mathcal{O}(T^{-1/4})$ nonconvex convergence rates with hyperparameter transferability across model scales. \citet{shen2025convergence} provide the first comprehensive convergence analysis of Muon under generalized $\Lambda$-smoothness, proving provable superiority over gradient descent when the Hessian exhibits low-rank or approximate blockwise diagonal structure. Scaling Muon to billion-parameter language models requires weight decay and per-parameter update scaling \citep{liu2025muon}, enabling approximately $2\times$ compute efficiency over AdamW. The REG optimizer \citep{liu2025reg} replaces the aggressive matrix sign with a Row-and-Column-Scaling (RACS) operator grounded in matrix balancing, improving fine-tuning stability at the cost of incomplete theoretical coverage. Memory-efficient alternatives include APOLLO \citep{zhu2024apollo}, which approximates AdamW's adaptivity via low-rank random projection at SGD-level memory, and LDAdam \citep{Robert2024LDAdamAO}, which performs adaptive updates in dynamically evolving low-dimensional subspaces. \citet{pan2025unbiased} introduce GUM, combining unbiased low-rank gradient projection with Muon's orthogonalization to preserve convergence guarantees while maintaining memory efficiency. \citet{wang2025conda} propose Conda, integrating orthogonal subspace projection with column-wise second-moment normalization to achieve $2$--$2.5\times$ faster convergence than AdamW. Mechanistically, \citet{wang2025muon} demonstrate that Muon's gains are localized in associative memory components (value/output attention and FFNs) and provide provably balanced learning across heavy-tailed class distributions. \citet{abreu2025potential} establish an empirical upper bound showing that full Gauss-Newton preconditioning yields up to $5.4\times$ iteration reduction over Muon, contextualizing the remaining gap to idealized second-order methods. Communication-efficient distributed extensions are addressed by \citet{Gruntkowska2025ErrorFF}, who introduce EF21-Muon with bidirectional compression and error feedback, providing the first rigorous convergence guarantees for distributed non-Euclidean LMO-based optimizers, though their analysis targets centralized or near-centralized topologies.
+
+\subsection{Decentralized Optimization and Heterogeneity Correction}
+
+Decentralized optimization eliminates the central parameter server by restricting each agent to communicate only with graph neighbors \citep{Goyal2017AccurateLM}. Decentralized Parallel SGD (D-PSGD) achieves linear speedup $\mathcal{O}(\sigma/\sqrt{nT})$ but suffers a topology-dependent transient stage governed by the spectral gap $1-\lambda_2(W)$ \citep{Kong2024DecentralizedBO}. Gradient compression via quantization \citep{Alistarh2016QSGDCS} and atomic sparsification \citep{Wang2018ATOMOCL} reduce communication overhead but introduce additional variance. Under data heterogeneity, independent local updates cause client drift—a systematic bias that simple gossip averaging cannot eliminate. Exact-convergence methods correct this bias through gradient differencing: EXTRA, Exact Diffusion, and D$^2$ employ double-mixing and gradient correction mechanisms to converge to the true global minimizer under fixed step sizes \citep{Hu2025ABD}. Gradient tracking \citep{Hu2025ABD} maintains a running estimate of the global average gradient via an auxiliary variable, achieving exact convergence without storing two consecutive parameter iterates. \citet{Hu2025ABD} introduce Exact-Diffusion with Momentum (EDM), the first momentum-augmented bias-correction method with improved spectral gap dependence under both nonconvex and PL-condition settings. The SUDA framework unifies EXTRA, Exact Diffusion/D$^2$, and gradient tracking under a single parameterized communication template indexed by polynomial mixing matrices, delivering topology-separated convergence bounds that cleanly isolate the spectral gap contribution from optimizer bias—enabling principled topology selection and algorithm comparison \citep{Kong2024DecentralizedBO}. Weight decay regularization \citep{loshchilov2017decoupled} remains a standard stabilization tool across both centralized and decentralized training pipelines.
+
+\subsection{Decentralized Muon --- The Gap and Open Problems}
+
+Extending Muon to fully decentralized peer-to-peer settings introduces challenges absent from both centralized Muon and standard decentralized SGD. \citet{he2025demuon} introduce DeMuon, the first decentralized Muon algorithm, coupling Newton--Schulz orthogonalization with gradient tracking over arbitrary graphs and establishing iteration complexity matching centralized benchmarks under heavy-tailed noise. However, DeMuon commits to a single gradient-tracking communication template, providing no unified parameterized structure analogous to SUDA that would subsume EXTRA-style or Exact Diffusion/D$^2$-style heterogeneity correction. Its convergence bounds conflate the spectral gap $1-\lambda_2(W)$ with Newton--Schulz approximation error, precluding topology-separated analysis and actionable guidance for graph selection. Critically, whether DeMuon achieves linear speedup in the number of agents $n$ remains entirely unresolved \citep{he2025demuon}. In the federated (star-topology) setting, \citet{Takezawa2025FedMuonFL} and \citet{liu2025fedmuon} independently propose FedMuon variants that introduce momentum aggregation and local-global alignment corrections to eliminate the aggregation bias arising from the nonlinearity of $\mathrm{msgn}(\cdot)$; \citet{Takezawa2025FedMuonFL} further establish robustness to inexact Newton--Schulz approximations. Nevertheless, both works rely fundamentally on a central server for global aggregation and do not generalize to arbitrary peer-to-peer graphs. These three gaps—the absence of a unified communication template for matrix-aware decentralized methods, the missing topology-separated convergence analysis, and the unresolved linear speedup question—are mutually reinforcing: without a unified template there is no scaffold for topology-separated analysis, and without such separation the clean asymptotic decomposition required to establish linear speedup is unavailable. SUDA-Muon is designed to address all three simultaneously by embedding Newton--Schulz orthogonalization within the SUDA polynomial mixing-matrix template, recovering topology-separated bounds and a provable linear speedup guarantee across arbitrary network topologies.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

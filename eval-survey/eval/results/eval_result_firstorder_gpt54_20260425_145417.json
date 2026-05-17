@@ -1,0 +1,976 @@
+{
+  "evaluation_time": "2026-04-25T14:50:58.481758",
+  "task": "firstorder",
+  "eval_model": "gpt54",
+  "articles": [
+    "reasflow_basic_gpt54",
+    "reasflow_enhanced_gpt54"
+  ],
+  "dimensions_evaluated": [
+    1,
+    2
+  ],
+  "objective_scores": {
+    "reasflow_basic_gpt54": {
+      "content_accuracy": {
+        "article_name": "reasflow_basic_gpt54",
+        "score": 4.19,
+        "total_citations": 22,
+        "verified_citations": 15,
+        "fulltext_verified": 1,
+        "semantic_scholar_verified": 14,
+        "failed_count": 0,
+        "hallucination_count": 8,
+        "hallucinations": [
+          {
+            "key": "sun2019worstcase",
+            "title": "",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选中没有与 2019 年、作者为 Ruoyu Sun 和 Yinyu Ye 的论文相符的条目。仅候选 0 同时包含两位作者，但年份为 2024，明显不符；其余候选要么作者不符，要么缺少 Yinyu Ye。"
+          },
+          {
+            "key": "kiwiel1983aggregate",
+            "title": "An aggregate subgradient method for nonsmooth convex minimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 3 条，LLM 判定无与 Bib 对应的论文。理由: 候选中没有与题名“An aggregate subgradient method for nonsmooth convex minimization”足够一致的记录。最接近的 0 号虽同作者同年份，但标题多了“Descent”“Large Convex Nonsmooth Multiobjective”且主题变为多目标最小化，明显不是同一篇。"
+          },
+          {
+            "key": "held1974validation",
+            "title": "Validation of subgradient optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Validation of subgradient optimization。LLM: 候选0的标题与Bib完全一致，作者（Held/Wolfe/Crowder）和年份1974也一致，可确定为同一篇论文。"
+          },
+          {
+            "key": "burke1985descent",
+            "title": "Descent methods for composite nondifferentiable optimization problems",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Descent methods for composite nondifferentiable optimization problems。LLM: 候选0与Bib条目的标题、作者（J. Burke/James V. Burke）和年份1985完全对应，应为同一篇论文。"
+          },
+          {
+            "key": "renegar2019faster",
+            "title": "Faster subgradient methods for functions with H\"olderian growth",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "nedic2009noise",
+            "title": "The effect of deterministic noise in subgradient methods",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "nedic2007primaldual",
+            "title": "Primal-dual subgradient methods for convex problems",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选中没有与 Bib 条目作者、标题、年份同时高度一致的记录。候选[3]标题完全相同，但作者是 Y. Nesterov，与 Bib 的 Nedic 和 Ozdaglar 不符，因此不能视为同一篇。其余候选是相关但不同论文。"
+          },
+          {
+            "key": "eckstein2007projective",
+            "title": "A family of projective splitting methods for the sum of two maximal monotone operators",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: A family of projective splitting methods for the sum of two maximal monotone operators。LLM: 候选 0 的标题、作者与年份与 Bib 条目一致，应为同一篇论文；候选未提供 ArXiv ID。"
+          },
+          {
+            "key": "alber1998projected",
+            "title": "On the projected subgradient method for nonsmooth convex optimization in a Hilbert space",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "eckstein1992douglas",
+            "title": "On the Douglas--Rachford splitting method and the proximal point algorithm for maximal monotone operators",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: On the Douglas—Rachford splitting method and the proximal point algorithm for maximal monotone operators。LLM: 候选 0 的标题、作者和年份与 Bib 条目一致，仅有破折号字符和作者名缩写差异，可视为同一篇论文。"
+          },
+          {
+            "key": "attouch2013convergence",
+            "title": "Convergence of descent methods for semi-algebraic and tame problems: proximal algorithms, forward-backward splitting, and regularized Gauss-Seidel methods",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #1（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Convergence of descent methods for semi-algebraic and tame problems: proximal algorithms, forward–backward splitting, and regularized Gauss–Seidel methods。LLM: 候选 1 与 Bib 条目的标题完全一致，作者一致，年份也为 2013，显然是同一篇论文。候选 0 标题作者相同但年份为 2011，更像早期版本。"
+          },
+          {
+            "key": "nesterov2007accelerating",
+            "title": "Accelerating the cubic regularization of Newton's method on convex problems",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Accelerating the cubic regularization of Newton’s method on convex problems。LLM: 候选 0 的标题与作者、年份与 Bib 条目一致，仅引号/撇号格式不同，可视为同一篇论文。"
+          },
+          {
+            "key": "necoara2021block",
+            "title": "Block-coordinate and incremental aggregated proximal gradient methods for nonsmooth nonconvex problems",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 1 条，LLM 判定无与 Bib 对应的论文。理由: 候选虽与 Bib 标题完全一致，但作者完全不符（Bib 为 Necoara/Patrascu/Tran-Dinh，候选为 Latafat/Themelis/Patrinos），年份也不一致（2021 vs 2019），因此不应视为同一篇论文。"
+          },
+          {
+            "key": "kiwiel2001quasiconvex",
+            "title": "Convergence and efficiency of subgradient methods for quasiconvex minimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          }
+        ],
+        "details": [
+          {
+            "key": "sun2019worstcase",
+            "title": "",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选中没有与 2019 年、作者为 Ruoyu Sun 和 Yinyu Ye 的论文相符的条目。仅候选 0 同时包含两位作者，但年份为 2024，明显不符；其余候选要么作者不符，要么缺少 Yinyu Ye。"
+          },
+          {
+            "key": "kiwiel1983aggregate",
+            "title": "An aggregate subgradient method for nonsmooth convex minimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 3 条，LLM 判定无与 Bib 对应的论文。理由: 候选中没有与题名“An aggregate subgradient method for nonsmooth convex minimization”足够一致的记录。最接近的 0 号虽同作者同年份，但标题多了“Descent”“Large Convex Nonsmooth Multiobjective”且主题变为多目标最小化，明显不是同一篇。"
+          },
+          {
+            "key": "held1974validation",
+            "title": "Validation of subgradient optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Validation of subgradient optimization。LLM: 候选0的标题与Bib完全一致，作者（Held/Wolfe/Crowder）和年份1974也一致，可确定为同一篇论文。"
+          },
+          {
+            "key": "burke1985descent",
+            "title": "Descent methods for composite nondifferentiable optimization problems",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Descent methods for composite nondifferentiable optimization problems。LLM: 候选0与Bib条目的标题、作者（J. Burke/James V. Burke）和年份1985完全对应，应为同一篇论文。"
+          },
+          {
+            "key": "renegar2019faster",
+            "title": "Faster subgradient methods for functions with H\"olderian growth",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "nedic2009noise",
+            "title": "The effect of deterministic noise in subgradient methods",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "nedic2007primaldual",
+            "title": "Primal-dual subgradient methods for convex problems",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选中没有与 Bib 条目作者、标题、年份同时高度一致的记录。候选[3]标题完全相同，但作者是 Y. Nesterov，与 Bib 的 Nedic 和 Ozdaglar 不符，因此不能视为同一篇。其余候选是相关但不同论文。"
+          },
+          {
+            "key": "eckstein2007projective",
+            "title": "A family of projective splitting methods for the sum of two maximal monotone operators",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: A family of projective splitting methods for the sum of two maximal monotone operators。LLM: 候选 0 的标题、作者与年份与 Bib 条目一致，应为同一篇论文；候选未提供 ArXiv ID。"
+          },
+          {
+            "key": "alber1998projected",
+            "title": "On the projected subgradient method for nonsmooth convex optimization in a Hilbert space",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "eckstein1992douglas",
+            "title": "On the Douglas--Rachford splitting method and the proximal point algorithm for maximal monotone operators",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: On the Douglas—Rachford splitting method and the proximal point algorithm for maximal monotone operators。LLM: 候选 0 的标题、作者和年份与 Bib 条目一致，仅有破折号字符和作者名缩写差异，可视为同一篇论文。"
+          },
+          {
+            "key": "attouch2013convergence",
+            "title": "Convergence of descent methods for semi-algebraic and tame problems: proximal algorithms, forward-backward splitting, and regularized Gauss-Seidel methods",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #1（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Convergence of descent methods for semi-algebraic and tame problems: proximal algorithms, forward–backward splitting, and regularized Gauss–Seidel methods。LLM: 候选 1 与 Bib 条目的标题完全一致，作者一致，年份也为 2013，显然是同一篇论文。候选 0 标题作者相同但年份为 2011，更像早期版本。"
+          },
+          {
+            "key": "nesterov2007accelerating",
+            "title": "Accelerating the cubic regularization of Newton's method on convex problems",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Accelerating the cubic regularization of Newton’s method on convex problems。LLM: 候选 0 的标题与作者、年份与 Bib 条目一致，仅引号/撇号格式不同，可视为同一篇论文。"
+          },
+          {
+            "key": "necoara2021block",
+            "title": "Block-coordinate and incremental aggregated proximal gradient methods for nonsmooth nonconvex problems",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 1 条，LLM 判定无与 Bib 对应的论文。理由: 候选虽与 Bib 标题完全一致，但作者完全不符（Bib 为 Necoara/Patrascu/Tran-Dinh，候选为 Latafat/Themelis/Patrinos），年份也不一致（2021 vs 2019），因此不应视为同一篇论文。"
+          },
+          {
+            "key": "kiwiel2001quasiconvex",
+            "title": "Convergence and efficiency of subgradient methods for quasiconvex minimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "not_found",
+            "mode": "semantic_scholar",
+            "details": "Semantic Scholar 检索无结果，视为无法对应真实论文（按捏造处理）"
+          },
+          {
+            "key": "hong2016iteration",
+            "title": "Iteration complexity analysis of block coordinate descent methods",
+            "arxiv_id": "1310.6957",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_basic_gpt54",
+        "score": 6.05,
+        "total_citations": 14,
+        "evaluated_citations": 15,
+        "fabricated_count": 8,
+        "key_refs_total": 10,
+        "key_refs_covered": 7,
+        "coverage_rate": 0.7,
+        "citation_count_bonus": 1.05,
+        "key_coverage": [
+          {
+            "key_ref": "Validation of subgradient optimization (Held, Wolfe, Crowder, 1973)",
+            "covered": true,
+            "matched_cite_key": "held1974validation",
+            "note": "标题一致；年份在计划中写为 1973、引用列表为 1974，应视为同一文献记录差异。"
+          },
+          {
+            "key_ref": "An aggregate subgradient method for nonsmooth convex minimization (Kiwiel, 1985)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未见 Kiwiel 1985 的 aggregate subgradient 方法，现有 subgradient 相关文献不能视为该文的等价替代。"
+          },
+          {
+            "key_ref": "Descent methods for composite nondifferentiable optimization (Fletcher, 1985)",
+            "covered": true,
+            "matched_cite_key": "burke1985descent",
+            "note": "标题与计划中的关键文献一致；cite key 作者字段虽为 burke，但对应题名匹配该文。"
+          },
+          {
+            "key_ref": "Finite termination of the proximal point algorithm (1988)",
+            "covered": true,
+            "matched_cite_key": "ferris1991finite",
+            "note": "标题高度一致，应为同一主题/文献版本；年份有差异（计划写 1988，列表为 1991），可视为等价覆盖。"
+          },
+          {
+            "key_ref": "Douglas-Rachford splitting and proximal point algorithm for monotone operators (Eckstein, Bertsekas, 1992)",
+            "covered": true,
+            "matched_cite_key": "eckstein1992douglas",
+            "note": "标题一致，为直接覆盖。"
+          },
+          {
+            "key_ref": "Primal-dual subgradient methods for convex problems (Nesterov, 2007)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中没有 Nesterov 2007 关于 primal-dual subgradient methods 的论文；其他 Nesterov 条目是 cubic regularization，不是等价替代。"
+          },
+          {
+            "key_ref": "Accelerating cubic regularization of Newton's method (Nesterov, 2008)",
+            "covered": true,
+            "matched_cite_key": "nesterov2007accelerating",
+            "note": "标题基本一致；年份在计划中为 2008、引用列表为 2007，属于版本/年份差异，可视为同一文献。"
+          },
+          {
+            "key_ref": "The effect of deterministic noise in subgradient methods (d'Aspremont, 2008)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 d'Aspremont 2008 关于 deterministic noise in subgradient methods 的文献。"
+          },
+          {
+            "key_ref": "Convergence of descent methods for semi-algebraic and tame problems (Attouch, Bolte, Svaiter, 2013)",
+            "covered": true,
+            "matched_cite_key": "attouch2013convergence",
+            "note": "标题一致，为直接覆盖。"
+          },
+          {
+            "key_ref": "From error bounds to complexity of first-order descent methods (Bolte et al., 2016)",
+            "covered": true,
+            "matched_cite_key": "bolte2016errorbounds",
+            "note": "标题一致，为直接覆盖。"
+          }
+        ],
+        "highly_relevant": 7,
+        "weakly_relevant": 0,
+        "irrelevant": 8,
+        "details": [
+          {
+            "key": "sun2019worstcase",
+            "title": "",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "kiwiel1983aggregate",
+            "title": "An aggregate subgradient method for nonsmooth convex minimization",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "held1974validation",
+            "title": "Validation of subgradient optimization",
+            "relevance": 2,
+            "reason": "该文献被 Plan 明确列为 Key References，并且在 Section 1 中被点名为验证次梯度优化方法实际可行性的奠基性工作，直接属于经典次梯度方法与收敛理论的核心相关文献。"
+          },
+          {
+            "key": "burke1985descent",
+            "title": "Descent methods for composite nondifferentiable optimization problems",
+            "relevance": 2,
+            "reason": "该文献是 Plan 的 Key References 中明确列出的工作，并且属于 Section 2“Proximal and Splitting Methods”中关于复合非光滑优化下降方法的代表性研究，直接服务于相关工作叙述。"
+          },
+          {
+            "key": "renegar2019faster",
+            "title": "Faster subgradient methods for functions with H\"olderian growth",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "nedic2009noise",
+            "title": "The effect of deterministic noise in subgradient methods",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "nedic2007primaldual",
+            "title": "Primal-dual subgradient methods for convex problems",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "eckstein2007projective",
+            "title": "A family of projective splitting methods for the sum of two maximal monotone operators",
+            "relevance": 2,
+            "reason": "该文属于 Plan 第2部分“Proximal and Splitting Methods”的核心代表性工作，研究两个极大单调算子求和的 projective splitting 方法，与 Douglas-Rachford/PPA 一脉相承，直接契合结构化优化与算子分裂的收敛理论背景。虽未在 Key References 中逐字列出，但与 Eckstein、Bertsekas 1992 所代表的核心方向高度一致，适合作为该部分的重要补充引用。"
+          },
+          {
+            "key": "alber1998projected",
+            "title": "On the projected subgradient method for nonsmooth convex optimization in a Hilbert space",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "eckstein1992douglas",
+            "title": "On the Douglas--Rachford splitting method and the proximal point algorithm for maximal monotone operators",
+            "relevance": 2,
+            "reason": "该文献是 Plan 的 Key References 中明确列出的核心文献，并且正对应第 2 部分“Proximal and Splitting Methods”中关于 Douglas-Rachford splitting 与 proximal point algorithm 统一分析的关键背景工作，因此属于强相关。"
+          },
+          {
+            "key": "attouch2013convergence",
+            "title": "Convergence of descent methods for semi-algebraic and tame problems: proximal algorithms, forward-backward splitting, and regularized Gauss-Seidel methods",
+            "relevance": 2,
+            "reason": "该论文是 Plan 的 Key References 中明确列出的文献，并且正对应第2部分“Proximal and Splitting Methods”的核心代表工作。它研究 proximal algorithms、forward-backward splitting 等方法在 semi-algebraic/tame 结构下的收敛性，恰好支撑 Plan 中关于‘现有近端方法常依赖强结构假设（如 semi-algebraicity, KL property）’这一关键论述。"
+          },
+          {
+            "key": "nesterov2007accelerating",
+            "title": "Accelerating the cubic regularization of Newton's method on convex problems",
+            "relevance": 2,
+            "reason": "该文献在 Plan 的 Key References 中被明确列出（虽年份写作 2008，与给定条目 2007 存在轻微出入），且属于第 3 部分“Modern Complexity and Acceleration”的代表性工作，用于说明一阶/高阶方法的加速与复杂度分析进展，因此与 Related Work 叙述高度相关。"
+          },
+          {
+            "key": "necoara2021block",
+            "title": "Block-coordinate and incremental aggregated proximal gradient methods for nonsmooth nonconvex problems",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "kiwiel2001quasiconvex",
+            "title": "Convergence and efficiency of subgradient methods for quasiconvex minimization",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "hong2016iteration",
+            "title": "Iteration complexity analysis of block coordinate descent methods",
+            "relevance": 2,
+            "reason": "该文与 Plan 第3部分“Modern Complexity and Acceleration”高度相关。Plan 明确提到 2016/2019 年的 coordinate descent complexity analysis 作为现代一阶方法复杂度研究的重要代表，用于说明复杂度上界、方法设计与速率理解的进展；Hong 等 2016 正是这一方向的直接代表性工作。虽未列入 Key References 清单，但与所需叙述的核心研究方向直接契合。"
+          }
+        ]
+      }
+    },
+    "reasflow_enhanced_gpt54": {
+      "content_accuracy": {
+        "article_name": "reasflow_enhanced_gpt54",
+        "score": 7.82,
+        "total_citations": 58,
+        "verified_citations": 15,
+        "fulltext_verified": 2,
+        "semantic_scholar_verified": 13,
+        "failed_count": 0,
+        "hallucination_count": 1,
+        "hallucinations": [
+          {
+            "key": "Kiwiel_1983",
+            "title": "An aggregate subgradient method for nonsmooth convex minimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: An aggregate subgradient method for nonsmooth convex minimization。LLM: 候选 0 与 Bib 标题完全一致，作者也对应 K. Kiwiel。年份有 1985 vs 1983 的差异，但其余信息高度吻合，最可能是同一论文的不同记录版本。"
+          },
+          {
+            "key": "Kim_1991",
+            "title": "Convergence of a generalized subgradient method for nondifferentiable convex optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Convergence of a generalized subgradient method for nondifferentiable convex optimization。LLM: 候选 0 的标题与 Bib 条目完全一致，年份仅相差 3 年，可能是数据库记录误差或不同版本；在仅有一个候选且标题完全一致的情况下，可视为同一篇论文。"
+          },
+          {
+            "key": "Panier_1987",
+            "title": "An active set method for solving linearly constrained nonsmooth optimization problems",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: An active set method for solving linearly constrained nonsmooth optimization problems。LLM: 候选 0 的标题与 Bib 条目完全一致，仅年份相差 1 年（1986 vs 1987），这在文献数据库中常见于技术报告/期刊出版年份差异，因此可视为同一篇论文。"
+          },
+          {
+            "key": "Kiwiel_1995",
+            "title": "Proximal level bundle methods for convex nondifferentiable optimization, saddle-point problems and variational inequalities",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Proximal level bundle methods for convex nondifferentiable optimization, saddle-point problems and variational inequalities。LLM: 候选0与Bib条目的标题完全一致，年份同为1995，作者K. Kiwiel，显然是同一篇论文；该候选未提供ArXiv ID。"
+          },
+          {
+            "key": "unknown1998bundle",
+            "title": "A bundle Bregman proximal method for convex nondifferentiable minimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: A bundle Bregman proximal method for convex nondifferentiable minimization\n。LLM: 候选 0 的标题与 Bib 条目完全一致，作者 K. Kiwiel 也符合该论文；年份 1998 vs 1999 很可能是预印本/期刊出版时间差异，因此可视为同一篇论文。"
+          },
+          {
+            "key": "unknown1998convergence",
+            "title": "Convergence of a simple subgradient level method",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Convergence of a simple subgradient level method。LLM: 候选 0 的标题与 Bib 条目完全一致，仅年份相差 1（可能是预发表/正式发表年份差异）；作者 J. Goffin、K. Kiwiel 也与该经典论文相符，因此可判定为同一篇论文。"
+          },
+          {
+            "key": "Cartis_2010",
+            "title": "Adaptive cubic regularisation methods for unconstrained optimization. Part II: worst-case function- and derivative-evaluation complexity",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Adaptive cubic regularisation methods for unconstrained optimization. Part II: worst-case function- and derivative-evaluation complexity。LLM: 候选0与Bib条目的标题完全一致，作者一致；年份2010与2011应是预印本/正式发表年份差异，属于同一篇论文。"
+          },
+          {
+            "key": "unknown1996primal",
+            "title": "A primal-dual approach to inexact subgradient methods",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: A primal-dual approach to inexact subgradient methods。LLM: 候选[0]的标题与Bib条目完全一致，年份同为1996，可判定为同一篇论文。"
+          },
+          {
+            "key": "Zheng_2009",
+            "title": "Strong KKT conditions and weak sharp solutions in convex-composite optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Strong KKT conditions and weak sharp solutions in convex-composite optimization。LLM: 候选 0 与 Bib 条目标题完全一致，虽年份为 2011 而非 2009，但很可能是同一论文的正式发表版本或数据库年份差异；其余候选标题明显不符。"
+          },
+          {
+            "key": "_nnheim_2016",
+            "title": "Ergodic, primal convergence in dual subgradient schemes for convex programming, II: the case of inconsistent primal problems",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Ergodic, primal convergence in dual subgradient schemes for convex programming, II: the case of inconsistent primal problems。LLM: 候选 0 的标题与 Bib 条目完全一致，年份同为 2016，可判定为同一篇论文；该候选未提供 ArXiv ID。"
+          },
+          {
+            "key": "Auslender_2007",
+            "title": "Projected subgradient methods with non-Euclidean distances for non-differentiable convex minimization and variational inequalities",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Projected subgradient methods with non-Euclidean distances for non-differentiable convex minimization and variational inequalities。LLM: 候选 0 与 Bib 条目标题完全一致，作者也匹配；年份 2009 与 Bib 的 2007 很可能是预印本/正式发表年份差异，因此可视为同一篇论文。"
+          },
+          {
+            "key": "unknown1999strong",
+            "title": "Strong conical hull intersection property, bounded linear regularity, Jameson's property (G), and error bounds in convex optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Strong conical hull intersection property, bounded linear regularity, Jameson’s property (G), and error bounds in convex optimization。LLM: 候选0的标题与Bib条目基本完全一致，仅标点/撇号形式略有差异，且年份同为1999，因此可确定为同一篇论文。"
+          },
+          {
+            "key": "Miller_2005",
+            "title": "",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #1（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: A Robust Gradient Sampling Algorithm for Nonsmooth, Nonconvex Optimization。LLM: 候选[1]与Bib条目的作者高度重合（Lewis, Overton，且年份同为2005），并且是该作者组合在该年份最合理的论文匹配。虽然候选作者列表中还有J. Burke、Wright未出现，但整体上应为同一篇相关论文记录或数据库作者信息差异。"
+          }
+        ],
+        "details": [
+          {
+            "key": "unknown2019new",
+            "title": "New analysis of linear convergence of gradient-type methods via unifying error bound conditions",
+            "arxiv_id": "1606.00269",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Kiwiel_1983",
+            "title": "An aggregate subgradient method for nonsmooth convex minimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: An aggregate subgradient method for nonsmooth convex minimization。LLM: 候选 0 与 Bib 标题完全一致，作者也对应 K. Kiwiel。年份有 1985 vs 1983 的差异，但其余信息高度吻合，最可能是同一论文的不同记录版本。"
+          },
+          {
+            "key": "Kim_1991",
+            "title": "Convergence of a generalized subgradient method for nondifferentiable convex optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Convergence of a generalized subgradient method for nondifferentiable convex optimization。LLM: 候选 0 的标题与 Bib 条目完全一致，年份仅相差 3 年，可能是数据库记录误差或不同版本；在仅有一个候选且标题完全一致的情况下，可视为同一篇论文。"
+          },
+          {
+            "key": "unknown2026lyapunov",
+            "title": "A Lyapunov analysis of Korpelevich's extragradient method with fast and flexible extensions",
+            "arxiv_id": "2502.00119",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 该描述把本文归入“nonconvex and weakly smooth settings（非凸与弱光滑设置）”下，并称 Lyapunov / dynamical perspectives 澄清了 extragradient、inertial、ODE-inspired 方法的 stationarity 和 stability。当前论文确实以 Lyapunov 分析为核心，研究的是 Korpelevich extragradient method 及其灵活扩展，并给出收敛与稳定相关结论，因此支持其中“Lyapunov perspectives clarified extragradient method”这一合理部分。但论文原文针对的是单调算子/凸复合包含问题，假设 F 为 monotone 且 Lipschitz，g 为 proper convex lsc；并未研究非凸或弱光滑 setting，也不以 dynamical/ODE-inspired 或 inertial 方法为主要对象。因此该引用在联合表述中仅部分成立，存在场景归类上的偏差，但不至于完全错误。"
+          },
+          {
+            "key": "Panier_1987",
+            "title": "An active set method for solving linearly constrained nonsmooth optimization problems",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: An active set method for solving linearly constrained nonsmooth optimization problems。LLM: 候选 0 的标题与 Bib 条目完全一致，仅年份相差 1 年（1986 vs 1987），这在文献数据库中常见于技术报告/期刊出版年份差异，因此可视为同一篇论文。"
+          },
+          {
+            "key": "Kiwiel_1995",
+            "title": "Proximal level bundle methods for convex nondifferentiable optimization, saddle-point problems and variational inequalities",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Proximal level bundle methods for convex nondifferentiable optimization, saddle-point problems and variational inequalities。LLM: 候选0与Bib条目的标题完全一致，年份同为1995，作者K. Kiwiel，显然是同一篇论文；该候选未提供ArXiv ID。"
+          },
+          {
+            "key": "unknown1998bundle",
+            "title": "A bundle Bregman proximal method for convex nondifferentiable minimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: A bundle Bregman proximal method for convex nondifferentiable minimization\n。LLM: 候选 0 的标题与 Bib 条目完全一致，作者 K. Kiwiel 也符合该论文；年份 1998 vs 1999 很可能是预印本/期刊出版时间差异，因此可视为同一篇论文。"
+          },
+          {
+            "key": "unknown1998convergence",
+            "title": "Convergence of a simple subgradient level method",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Convergence of a simple subgradient level method。LLM: 候选 0 的标题与 Bib 条目完全一致，仅年份相差 1（可能是预发表/正式发表年份差异）；作者 J. Goffin、K. Kiwiel 也与该经典论文相符，因此可判定为同一篇论文。"
+          },
+          {
+            "key": "Cartis_2010",
+            "title": "Adaptive cubic regularisation methods for unconstrained optimization. Part II: worst-case function- and derivative-evaluation complexity",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Adaptive cubic regularisation methods for unconstrained optimization. Part II: worst-case function- and derivative-evaluation complexity。LLM: 候选0与Bib条目的标题完全一致，作者一致；年份2010与2011应是预印本/正式发表年份差异，属于同一篇论文。"
+          },
+          {
+            "key": "unknown1996primal",
+            "title": "A primal-dual approach to inexact subgradient methods",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: A primal-dual approach to inexact subgradient methods。LLM: 候选[0]的标题与Bib条目完全一致，年份同为1996，可判定为同一篇论文。"
+          },
+          {
+            "key": "Zheng_2009",
+            "title": "Strong KKT conditions and weak sharp solutions in convex-composite optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Strong KKT conditions and weak sharp solutions in convex-composite optimization。LLM: 候选 0 与 Bib 条目标题完全一致，虽年份为 2011 而非 2009，但很可能是同一论文的正式发表版本或数据库年份差异；其余候选标题明显不符。"
+          },
+          {
+            "key": "_nnheim_2016",
+            "title": "Ergodic, primal convergence in dual subgradient schemes for convex programming, II: the case of inconsistent primal problems",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Ergodic, primal convergence in dual subgradient schemes for convex programming, II: the case of inconsistent primal problems。LLM: 候选 0 的标题与 Bib 条目完全一致，年份同为 2016，可判定为同一篇论文；该候选未提供 ArXiv ID。"
+          },
+          {
+            "key": "Auslender_2007",
+            "title": "Projected subgradient methods with non-Euclidean distances for non-differentiable convex minimization and variational inequalities",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Projected subgradient methods with non-Euclidean distances for non-differentiable convex minimization and variational inequalities。LLM: 候选 0 与 Bib 条目标题完全一致，作者也匹配；年份 2009 与 Bib 的 2007 很可能是预印本/正式发表年份差异，因此可视为同一篇论文。"
+          },
+          {
+            "key": "unknown1999strong",
+            "title": "Strong conical hull intersection property, bounded linear regularity, Jameson's property (G), and error bounds in convex optimization",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #0（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: Strong conical hull intersection property, bounded linear regularity, Jameson’s property (G), and error bounds in convex optimization。LLM: 候选0的标题与Bib条目基本完全一致，仅标点/撇号形式略有差异，且年份同为1999，因此可确定为同一篇论文。"
+          },
+          {
+            "key": "Miller_2005",
+            "title": "",
+            "arxiv_id": "",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": null,
+            "mode": "semantic_scholar",
+            "details": "S2 消歧命中候选 #1（无 arXiv，未做全文核对），固定 accuracy_level=2。 匹配题: A Robust Gradient Sampling Algorithm for Nonsmooth, Nonconvex Optimization。LLM: 候选[1]与Bib条目的作者高度重合（Lewis, Overton，且年份同为2005），并且是该作者组合在该年份最合理的论文匹配。虽然候选作者列表中还有J. Burke、Wright未出现，但整体上应为同一篇相关论文记录或数据库作者信息差异。"
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_enhanced_gpt54",
+        "score": 5.2,
+        "total_citations": 58,
+        "evaluated_citations": 15,
+        "fabricated_count": 0,
+        "key_refs_total": 10,
+        "key_refs_covered": 2,
+        "coverage_rate": 0.2,
+        "citation_count_bonus": 3.0,
+        "key_coverage": [
+          {
+            "key_ref": "Validation of subgradient optimization (Held, Wolfe, Crowder, 1973)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未发现 Held/Wolfe/Crowder 1973 论文或明显等价版本。"
+          },
+          {
+            "key_ref": "An aggregate subgradient method for nonsmooth convex minimization (Kiwiel, 1985)",
+            "covered": true,
+            "matched_cite_key": "Kiwiel_1983",
+            "note": "标题完全对应，仅 cite key 年份与正式发表年份不一致；应为同一篇 Kiwiel 论文。"
+          },
+          {
+            "key_ref": "Descent methods for composite nondifferentiable optimization (Fletcher, 1985)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未发现 Fletcher 1985 这篇关于 composite nondifferentiable optimization 的文献。"
+          },
+          {
+            "key_ref": "Finite termination of the proximal point algorithm (1988)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未发现标题或主题明显对应“Finite termination of the proximal point algorithm (1988)”的论文。"
+          },
+          {
+            "key_ref": "Douglas-Rachford splitting and proximal point algorithm for monotone operators (Eckstein, Bertsekas, 1992)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "列表中有 Eckstein_1998（Bregman-function-based proximal algorithms），但不是 1992 年 Eckstein–Bertsekas 这篇 Douglas-Rachford/proximal point 经典论文。"
+          },
+          {
+            "key_ref": "Primal-dual subgradient methods for convex problems (Nesterov, 2007)",
+            "covered": true,
+            "matched_cite_key": "Nesterov_2007",
+            "note": "标题完全匹配。"
+          },
+          {
+            "key_ref": "Accelerating cubic regularization of Newton's method (Nesterov, 2008)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "列表中有 Cartis_2010 的 adaptive cubic regularisation，但不是 Nesterov 2008 这篇加速三次正则化文献。"
+          },
+          {
+            "key_ref": "The effect of deterministic noise in subgradient methods (d'Aspremont, 2008)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未发现 d'Aspremont 2008 这篇论文或明显等价版本。"
+          },
+          {
+            "key_ref": "Convergence of descent methods for semi-algebraic and tame problems (Attouch, Bolte, Svaiter, 2013)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "列表中有 Attouch_2007，但不是 Attouch–Bolte–Svaiter 2013 这篇关于 semi-algebraic/tame 问题收敛性的经典论文。"
+          },
+          {
+            "key_ref": "From error bounds to complexity of first-order descent methods (Bolte et al., 2016)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中没有发现 Bolte 等 2016 这篇从 error bounds 到一阶下降法复杂度分析的论文。"
+          }
+        ],
+        "highly_relevant": 6,
+        "weakly_relevant": 9,
+        "irrelevant": 0,
+        "details": [
+          {
+            "key": "unknown2019new",
+            "title": "New analysis of linear convergence of gradient-type methods via unifying error bound conditions",
+            "relevance": 2,
+            "reason": "该文与 Plan 第3部分“Modern Complexity and Acceleration”高度契合，特别是围绕 error bound 条件统一分析梯度类方法线性收敛，直接对应 Plan 中提到的‘From error bounds to complexity of first-order descent methods (Bolte et al., 2016)’这一脉络，也服务于所强调的统一收敛框架与复杂度分析动机。虽未在 Key References 中明确列出，但属于该核心研究方向的直接代表性后续工作。"
+          },
+          {
+            "key": "Kiwiel_1983",
+            "title": "An aggregate subgradient method for nonsmooth convex minimization",
+            "relevance": 2,
+            "reason": "该文献被明确列为 Plan 的 Key References，并且在 Section 1“Subgradient Methods and Classical Convergence Theory”中直接提到 aggregate subgradient methods（Kiwiel, 1985）作为经典次梯度方法发展的代表工作，因此与 Related Work 的核心叙述高度相关。"
+          },
+          {
+            "key": "Kim_1991",
+            "title": "Convergence of a generalized subgradient method for nondifferentiable convex optimization",
+            "relevance": 2,
+            "reason": "该文与 Plan 的第一部分“Subgradient Methods and Classical Convergence Theory”高度契合，属于经典次梯度法在不可微凸优化中的直接代表性收敛分析工作。虽然未被明确列入 Key References，但其主题与方法核心完全一致，可作为该脉络中的重要背景文献。"
+          },
+          {
+            "key": "unknown2026lyapunov",
+            "title": "A Lyapunov analysis of Korpelevich's extragradient method with fast and flexible extensions",
+            "relevance": 1,
+            "reason": "该文讨论的是外梯度法的 Lyapunov 收敛分析及其扩展，属于一阶方法的现代收敛分析范畴，与 Plan 第3部分中“构造性复杂度分析/统一收敛框架”的大方向有交叉；但它既不在 Key References 中，也不直接对应 Plan 强调的子梯度、复合 proximal/splitting 方法或在放松光滑性假设下的统一复合优化框架，因此仅属相邻背景，相关性偏弱。"
+          },
+          {
+            "key": "Panier_1987",
+            "title": "An active set method for solving linearly constrained nonsmooth optimization problems",
+            "relevance": 1,
+            "reason": "该文讨论线性约束下的非光滑优化主动集方法，与 Plan 中的非光滑/复合优化背景有一定交叉，也可视为早期算法设计的相关上下文；但它不在 Key References 中，且并非 Plan 强调的子梯度、近端/分裂或统一复杂度分析主线上的代表性工作，因此仅属弱相关。"
+          },
+          {
+            "key": "Kiwiel_1995",
+            "title": "Proximal level bundle methods for convex nondifferentiable optimization, saddle-point problems and variational inequalities",
+            "relevance": 2,
+            "reason": "该文属于凸非光滑优化中的束方法/近端方法，直接关联 Plan 第1部分的非光滑凸优化收敛理论与第2部分的近端方法框架。虽未在 Key References 中显式列出，但它是处理凸非可微优化、鞍点问题和变分不等式的代表性工作，能够作为相关工作中近端与结构化非光滑方法的重要背景引用。"
+          },
+          {
+            "key": "unknown1998bundle",
+            "title": "A bundle Bregman proximal method for convex nondifferentiable minimization",
+            "relevance": 1,
+            "reason": "该文属于凸非光滑优化中的 proximal/bundle 类方法，与 Plan 第2部分“Proximal and Splitting Methods”及第1部分非光滑优化背景有一定交叉；但它不在 Key References 中，也不是 Plan 明确强调的代表性文献，且与第3部分统一复杂度框架和放宽光滑性假设的动机联系较间接，因此判为弱相关。"
+          },
+          {
+            "key": "unknown1998convergence",
+            "title": "Convergence of a simple subgradient level method",
+            "relevance": 2,
+            "reason": "该文研究次梯度/level 方法的收敛性，属于 Plan 第一部分“Subgradient Methods and Classical Convergence Theory”的核心方向。虽未在 Key References 中被明确列出，但它是经典次梯度收敛分析的代表性工作之一，与论文聚焦的一阶方法收敛理论高度契合。"
+          },
+          {
+            "key": "Cartis_2010",
+            "title": "Adaptive cubic regularisation methods for unconstrained optimization. Part II: worst-case function- and derivative-evaluation complexity",
+            "relevance": 1,
+            "reason": "该文研究自适应三次正则化方法的最坏情形复杂度，属于 Plan 第3部分“现代复杂度与加速”的相邻背景；且 Plan 明确提到 Nesterov 2008 的 cubic regularization 作为相关脉络。但此文关注的是二阶/牛顿型方法的评价复杂度，而非本文核心的一阶复合优化统一收敛框架，因此只能算弱相关。"
+          },
+          {
+            "key": "unknown1996primal",
+            "title": "A primal-dual approach to inexact subgradient methods",
+            "relevance": 1,
+            "reason": "该文属于次梯度方法与原始-对偶分析的相关工作，与 Plan 第1部分“Subgradient Methods and Classical Convergence Theory”有明显交叉，且与 Nesterov(2007) 的原始-对偶次梯度脉络相邻。但它不在 Key References 中，也不是 Plan 明确强调的代表性基础文献或第3部分所突出的统一框架/放松光滑性假设的直接来源，因此判为弱相关。"
+          },
+          {
+            "key": "Zheng_2009",
+            "title": "Strong KKT conditions and weak sharp solutions in convex-composite optimization",
+            "relevance": 1,
+            "reason": "该文聚焦于凸-复合优化中的强KKT条件与weak sharp解性质，和Plan中的“composite structure”及误差界/收敛性质有一定交叉，尤其可与现代复杂度分析中的regularity条件相联系。但它不在Key References中，也不是Plan三大主线（次梯度法、近端/分裂方法、统一复杂度框架）的代表性方法论文，因此仅属弱相关背景文献。"
+          },
+          {
+            "key": "_nnheim_2016",
+            "title": "Ergodic, primal convergence in dual subgradient schemes for convex programming, II: the case of inconsistent primal problems",
+            "relevance": 1,
+            "reason": "该文讨论凸规划中的对偶次梯度方案及其原始收敛性，和 Plan 第1部分的次梯度方法、尤其是 primal-dual/subgradient 背景有一定交叉；但它不在 Key References 中，也不是 Plan 强调的统一收敛框架、复合一阶方法或放松光滑性假设下复杂度分析的代表性工作，因此仅属弱相关。"
+          },
+          {
+            "key": "Auslender_2007",
+            "title": "Projected subgradient methods with non-Euclidean distances for non-differentiable convex minimization and variational inequalities",
+            "relevance": 2,
+            "reason": "该文属于一阶非光滑凸优化中的投影/镜像式次梯度方法，直接对应 Plan 第1部分的次梯度方法与收敛理论，并与 Nesterov 2007 的 primal-dual subgradient、非欧距离下的复杂度分析高度同类；同时也与第3部分关于在弱平滑或非欧几里得几何下的一阶方法复杂度框架相关，因此是核心方向的代表性工作。"
+          },
+          {
+            "key": "unknown1999strong",
+            "title": "Strong conical hull intersection property, bounded linear regularity, Jameson's property (G), and error bounds in convex optimization",
+            "relevance": 1,
+            "reason": "该文讨论凸优化中的误差界、线性正则性等性质，与 Plan 第3部分提到的基于 error bounds 的复杂度分析存在背景关联，也可视为收敛理论中的相关数学工具；但它既不在 Key References 中，也不是一阶复合优化方法或统一收敛框架的直接代表性工作，因此仅属弱相关。"
+          },
+          {
+            "key": "Miller_2005",
+            "title": "",
+            "relevance": 1,
+            "reason": "该文发表于 Mathematical Programming，作者组合 Lewis/Overton/Wright 常见于非光滑优化与一阶/梯度类方法分析，和 Plan 的“非光滑优化、复合问题、收敛理论”大方向有交叉；但题目缺失，且它不在 Plan 明确列出的 Key References 中，也无法确认其是否是三大核心板块中的代表性文献，因此最多判为弱相关。"
+          }
+        ]
+      }
+    }
+  },
+  "comparative_results": {},
+  "summary": {
+    "objective_rankings": {
+      "content_accuracy": [
+        [
+          "reasflow_enhanced_gpt54",
+          7.82
+        ],
+        [
+          "reasflow_basic_gpt54",
+          4.19
+        ]
+      ],
+      "citation_relevance": [
+        [
+          "reasflow_basic_gpt54",
+          6.05
+        ],
+        [
+          "reasflow_enhanced_gpt54",
+          5.2
+        ]
+      ]
+    },
+    "comparative_results": {},
+    "total_scores": {
+      "reasflow_basic_gpt54": 10.24,
+      "reasflow_enhanced_gpt54": 13.02
+    },
+    "per_article_total_scores": {
+      "reasflow_basic_gpt54": 10.24,
+      "reasflow_enhanced_gpt54": 13.02
+    },
+    "run_mean_total": 11.63,
+    "run_max_article_total": 13.02,
+    "run_min_article_total": 10.24,
+    "per_article_max_total": 20.0,
+    "run_mean_content_accuracy": 6.005,
+    "run_mean_citation_relevance": 5.625
+  },
+  "aggregate": {
+    "run_mean_total": 11.63,
+    "per_article_max_total": 20.0,
+    "per_article_total_scores": {
+      "reasflow_basic_gpt54": 10.24,
+      "reasflow_enhanced_gpt54": 13.02
+    },
+    "run_mean_content_accuracy": 6.005,
+    "run_mean_citation_relevance": 5.625
+  }
+}

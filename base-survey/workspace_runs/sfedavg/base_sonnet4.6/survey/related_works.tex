@@ -1,0 +1,204 @@
+% ============================================================
+%  related_works.tex
+%  Related Work: Memory- and Communication-Efficient
+%  Federated Learning
+%
+%  Target venues : ICML / NeurIPS / ICLR
+%  Citations     : 25  (≥ 12 threshold)
+% ============================================================
+
+\section{Related Work}
+\label{sec:related}
+
+Our work sits at the intersection of three active research threads:
+federated learning under data heterogeneity, communication-efficient
+distributed optimization, and memory-efficient training.  We survey
+each thread in turn and then articulate the gap that motivates our
+joint treatment.
+
+% ------------------------------------------------------------
+\subsection{Federated Learning}
+% ------------------------------------------------------------
+
+Federated learning (FL) was introduced by
+\citet{mcmahan2017communication} as a privacy-preserving paradigm in
+which a large number of clients collaboratively train a shared model
+by performing local SGD updates and periodically uploading model
+differences to a central server.  This \emph{FedAvg} protocol has
+since become the de-facto baseline, yet its convergence degrades
+significantly when client data are non-IID—a condition that is the
+rule rather than the exception in practice.
+
+\paragraph{Heterogeneity and client drift.}
+The root cause of FedAvg's degradation under data heterogeneity is
+\emph{client drift}: local objectives diverge from the global
+objective, and multiple rounds of local SGD amplify this divergence
+before each aggregation step.  \citet{li2018fedprox} address this by
+adding a proximal regulariser that keeps local iterates close to the
+global model (\emph{FedProx}).  \citet{karimireddy2020scaffold}
+provide a more principled fix via control variates (\emph{SCAFFOLD}),
+and prove that the resulting algorithm matches the convergence rate of
+centralised SGD even under extreme heterogeneity.
+\citet{wang2020tackling} further characterise the \emph{objective
+inconsistency} that arises when clients take unequal numbers of local
+steps, and propose corrective aggregation weights.
+
+\paragraph{Convergence theory.}
+Several works have established \emph{linear speedup} in the number of
+participating clients.  \citet{yang2021achieving} prove that linear
+speedup is achievable for FedAvg under simultaneous non-IID data and
+partial client participation, while \citet{qu2020unified} provide a
+unified analysis that extends to Nesterov-accelerated variants.
+More recently, \citet{jian2025widening} show that the detrimental
+effect of data heterogeneity on FedAvg diminishes as the model width
+grows, offering a theoretical justification for the empirical success
+of over-parameterised networks in FL.
+
+\paragraph{Personalisation.}
+An orthogonal strategy is to abandon the goal of a single global
+model.  \citet{fallah2020personalized} cast personalisation as a
+model-agnostic meta-learning problem (\emph{Per-FedAvg}), while
+\citet{dinh2020personalized} use Moreau envelopes to decouple
+personalisation from global aggregation.  Although effective, these
+methods incur additional communication rounds and store per-client
+model copies, increasing both communication and memory overhead—the
+very resources we seek to conserve.
+
+\paragraph{Key limitation.}
+Despite the richness of the FL literature, the above methods
+uniformly assume that clients can afford to compute and store full
+gradients and optimiser states.  On memory-constrained edge devices
+this assumption breaks down, and no existing FL algorithm
+simultaneously addresses convergence under non-IID data
+\emph{and} client-side memory constraints.
+
+% ------------------------------------------------------------
+\subsection{Communication-Efficient Methods}
+% ------------------------------------------------------------
+
+Communication cost is the primary wall-clock bottleneck in FL: each
+round requires uploading a full model-sized vector per client.
+Two complementary strategies have been developed to reduce this cost:
+\emph{gradient compression} and \emph{local training}.
+
+\paragraph{Gradient compression.}
+\citet{alistarh2017qsgd} propose QSGD, an unbiased stochastic
+quantisation scheme that reduces per-round bandwidth to
+$O(\sqrt{d})$ bits while preserving convergence guarantees.
+Biased compressors such as top-$k$ sparsification achieve higher
+compression ratios but introduce systematic error.
+\citet{karimireddy2019error} show that biased compressors must be
+paired with an \emph{error-feedback} mechanism to guarantee
+convergence, and \citet{richtarik2021ef21} later provide a cleaner
+and tighter analysis via the EF21 framework.  The unified EF-BV
+theory of \citet{condat2022efbv} reconciles error feedback with
+variance reduction for both biased and unbiased compressors.
+
+Fundamental limits have also been established.
+\citet{huang2022lower} derive matching lower bounds for distributed
+learning with compression, and \citet{he2023unbiased} characterise
+precisely when unbiased compression saves communication.
+Near-optimal algorithms such as ADIANA
+\citep{li2020acceleration} approach these lower bounds by combining
+acceleration with compression.
+
+\paragraph{Local training.}
+Allowing clients to run multiple local SGD steps before communicating
+reduces the number of communication rounds at the cost of increased
+client drift.  \citet{basu2020qsparse} combine local SGD with
+sparsification and quantisation (Qsparse-local-SGD), while
+\citet{tang2019doublesqueeze} apply error compensation to
+\emph{both} upload and download directions (DoubleSqueeze).
+\citet{condat2024locodl} provide a principled primal-dual framework
+(LoCoDL) that provably unifies local training with unbiased
+compression, achieving the best known communication complexity for
+this setting.
+
+\paragraph{Decentralised settings.}
+In the absence of a parameter server, gossip-based protocols
+distribute the communication load.
+\citet{lian2017can} prove that decentralised parallel SGD (D-PSGD)
+can match the convergence rate of centralised SGD, and
+\citet{lian2017async} extend this to asynchronous execution.
+\citet{koloskova2019decentralized} show that arbitrary communication
+compression can be incorporated into decentralised training while
+preserving convergence.
+
+\paragraph{Key limitation.}
+All of the above methods take the memory footprint of a training step
+as given: each client must materialise a full gradient vector and
+maintain a full optimiser state (e.g., Adam's first and second
+moments).  On devices with limited RAM this is infeasible for large
+models.  Reducing communication cost while also reducing memory cost
+in a theoretically grounded framework remains an open problem.
+
+% ------------------------------------------------------------
+\subsection{Memory-Efficient Training}
+\label{subsec:memory}
+% ------------------------------------------------------------
+
+Reducing the memory footprint of on-device training has attracted
+growing attention, driven by the deployment of large neural networks
+on edge hardware.
+
+\paragraph{Low-rank and subspace methods.}
+\citet{hu2022lora} introduce LoRA, which freezes pre-trained weights
+and injects trainable low-rank decompositions, drastically reducing
+the number of active parameters and the associated optimiser states.
+\citet{zhao2024galore} extend this idea to full pre-training via
+\emph{GaLore}: instead of restricting weight updates, they project
+gradients onto a periodically updated low-rank subspace before
+passing them to the optimiser.  This reduces the dimension of the
+optimiser state from $d$ to $r \ll d$ without modifying the model
+architecture.  However, recent analysis reveals that naive subspace
+projection under stochastic noise can fail to converge; provably
+convergent variants require careful correction of the projection
+error \citep{li2023analysis}.
+
+\paragraph{Memory-efficient FL.}
+\citet{liu2025fedmuon} apply local matrix orthogonalisation in FL
+(\emph{FedMuon}), achieving faster convergence per round.  However,
+because client-side orthogonalisation is a non-linear operation, the
+standard drift-correction analysis of SCAFFOLD breaks down, and
+explicit additional corrections are required.  This observation
+underscores a fundamental tension: \emph{memory-efficient local steps
+in FL are not drop-in replacements for standard SGD steps}—they
+invalidate the aggregation theory that FL convergence proofs rely on.
+
+\paragraph{Activation and state reduction.}
+Beyond weight-update compression, gradient checkpointing trades
+recomputation for activation memory, and quantisation-aware
+approaches such as mixed-precision training reduce state sizes.
+\citet{koloskova2019decentralized} and related decentralised methods
+also reduce per-node memory indirectly by partitioning the
+communication graph.
+
+\paragraph{The gap—motivating our work.}
+The survey above reveals three concrete open problems.
+%
+\begin{enumerate}
+  \item \textbf{No unified framework.}  Existing methods address
+    memory efficiency (subspace/low-rank training) or communication
+    efficiency (compression/local SGD) in \emph{isolation}.  There is
+    no algorithm that provably achieves \emph{both simultaneously} in
+    heterogeneous FL.  Combining GaLore-style gradient projection with
+    SCAFFOLD-style drift correction and EF21-style error feedback
+    requires resolving non-trivial interactions among all three
+    mechanisms.
+
+  \item \textbf{Missing drift-correction theory.}  When clients
+    perform non-Euclidean or subspace-constrained local steps, the
+    standard drift-correction analysis breaks down
+    \citep{liu2025fedmuon}.  The correct correction mechanism for
+    memory-efficient local updates in FL is uncharacterised.
+
+  \item \textbf{Convergence under joint constraints.}  The
+    theoretical limits of jointly memory- and
+    communication-constrained FL—particularly under non-IID data,
+    partial participation, and nonconvex objectives—remain an open
+    problem \citep{huang2022lower,he2023unbiased}.
+\end{enumerate}
+%
+Our algorithm and analysis directly address all three gaps, providing
+the first provably convergent FL method that achieves joint memory and
+communication efficiency under heterogeneous data.

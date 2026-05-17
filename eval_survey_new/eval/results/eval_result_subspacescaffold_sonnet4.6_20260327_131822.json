@@ -1,0 +1,3049 @@
+{
+  "evaluation_time": "2026-03-27T12:44:37.381612",
+  "task": "subspacescaffold",
+  "eval_model": "sonnet4.6",
+  "articles": [
+    "base_dpsk",
+    "base_gpt51",
+    "base_gpt54",
+    "base_sonnet4.6",
+    "reasflow_dpsk",
+    "reasflow_gpt51",
+    "reasflow_gpt54",
+    "reasflow_sonnet4.6"
+  ],
+  "dimensions_evaluated": [
+    1,
+    2
+  ],
+  "objective_scores": {
+    "base_dpsk": {
+      "content_accuracy": {
+        "article_name": "base_dpsk",
+        "score": 5.6,
+        "total_citations": 30,
+        "verified_citations": 15,
+        "fulltext_verified": 7,
+        "semantic_scholar_verified": 6,
+        "failed_count": 2,
+        "hallucination_count": 7,
+        "hallucinations": [
+          {
+            "key": "li2019challenges",
+            "title": "Federated Learning: Challenges, Methods, and Future Directions",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Federated Learning: Challenges, Methods, and Future Directions'（Tian Li et al., 2019）匹配的论文。该论文是 Tian Li 等人发表的综述性文章（arXiv:1908.07873），与列表中所有候选论文均不同。"
+          },
+          {
+            "key": "rodio2025facets",
+            "title": "The Many Facets of Variance Reduction in Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与《The Many Facets of Variance Reduction in Federated Learning》（作者：Angelo Rodio，2025年）相匹配的论文。所有候选论文均为不同主题或不同作者的联邦学习相关工作，无法与该Bib条目对应。"
+          },
+          {
+            "key": "liu2025fedswa",
+            "title": "FedSWA: Improving Generalization in Federated Learning with Highly Heterogeneous Data via Momentum-Based Stochastic Controlled Weight Averaging",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: None of the candidates match 'FedSWA: Improving Generalization in Federated Learning with Highly Heterogeneous Data via Momentum-Based Stochastic Controlled Weight Averaging'. Candidate [3] shares the same first author (Junkang Liu, 2025) but is a different paper (FedMuon). No other candidate matches the title or content of FedSWA."
+          },
+          {
+            "key": "bao2025efskip",
+            "title": "EFSkip: A New Error Feedback with Linear Speedup for Compressed Federated Learning with Arbitrary Data Heterogeneity",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'EFSkip: A New Error Feedback with Linear Speedup for Compressed Federated Learning with Arbitrary Data Heterogeneity'（Hongyan Bao et al., 2025）匹配的论文。虽然候选中有若干关于Error Feedback和Federated Learning的相关工作（如EF21、Momentum EF等），但均不是同一篇论文。"
+          },
+          {
+            "key": "su2023joint",
+            "title": "Joint Sparsification and Quantization for Wireless Federated Learning under Communication Constraints",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Joint Sparsification and Quantization for Wireless Federated Learning under Communication Constraints'（Junshen Su et al., 2023）匹配的论文。候选中虽有涉及量化、稀疏化和联邦学习通信效率的相关工作（如[5] Qsparse-local-SGD），但作者、标题和具体内容均不符合，无法认定为同一篇论文。"
+          },
+          {
+            "key": "zhao2018non-iid",
+            "title": "Federated Learning with Non-IID Data",
+            "arxiv_id": "1806.00582",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文确实展示了非IID数据下联邦学习性能下降的问题，并指出本地模型会偏离全局最优（通过'weight divergence'和EMD来量化）。然而，描述中使用的'client drift'术语及'heterogeneous gradient directions'的表述并非该论文的框架——该论文使用的是'weight divergence'和Earth Mover's Distance来解释性能下降。'Client drift'这一概念通常与后续工作（如SCAFFOLD, 2020）更紧密相关。描述在概念上有一定对应，但将特定术语和机制归因于该论文存在轻微偏差，不会严重误导读者对整体上下文的理解。"
+          },
+          {
+            "key": "sun2024improvinglora",
+            "title": "Improving LoRA in Privacy-preserving Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Improving LoRA in Privacy-preserving Federated Learning'（Youbang Sun et al., 2024）匹配的论文。候选[2]涉及LoRA与联邦学习，但标题、作者均不同，是另一篇论文。"
+          }
+        ],
+        "details": [
+          {
+            "key": "koloskova2019decentralized",
+            "title": "Decentralized Deep Learning with Arbitrary Communication Compression",
+            "arxiv_id": "1907.09356",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "failed",
+            "details": "PDF 下载失败"
+          },
+          {
+            "key": "li2019challenges",
+            "title": "Federated Learning: Challenges, Methods, and Future Directions",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Federated Learning: Challenges, Methods, and Future Directions'（Tian Li et al., 2019）匹配的论文。该论文是 Tian Li 等人发表的综述性文章（arXiv:1908.07873），与列表中所有候选论文均不同。"
+          },
+          {
+            "key": "mcmahan2016fedavg",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "arxiv_id": "1602.05629",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "su2025galore2",
+            "title": "GaLore 2: Large-Scale LLM Pre-Training by Gradient Low-Rank Projection",
+            "arxiv_id": "2504.20437",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "konecný2016communication",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency",
+            "arxiv_id": "1610.05492",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "rodio2025facets",
+            "title": "The Many Facets of Variance Reduction in Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与《The Many Facets of Variance Reduction in Federated Learning》（作者：Angelo Rodio，2025年）相匹配的论文。所有候选论文均为不同主题或不同作者的联邦学习相关工作，无法与该Bib条目对应。"
+          },
+          {
+            "key": "zhang2025fedsub",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "arxiv_id": "2509.05213",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "liu2025fedswa",
+            "title": "FedSWA: Improving Generalization in Federated Learning with Highly Heterogeneous Data via Momentum-Based Stochastic Controlled Weight Averaging",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: None of the candidates match 'FedSWA: Improving Generalization in Federated Learning with Highly Heterogeneous Data via Momentum-Based Stochastic Controlled Weight Averaging'. Candidate [3] shares the same first author (Junkang Liu, 2025) but is a different paper (FedMuon). No other candidate matches the title or content of FedSWA."
+          },
+          {
+            "key": "peng2026subspacealignment",
+            "title": "Rethinking LoRA for Data Heterogeneous Federated Learning: Subspace and State Alignment",
+            "arxiv_id": "2602.01746",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "bao2025efskip",
+            "title": "EFSkip: A New Error Feedback with Linear Speedup for Compressed Federated Learning with Arbitrary Data Heterogeneity",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'EFSkip: A New Error Feedback with Linear Speedup for Compressed Federated Learning with Arbitrary Data Heterogeneity'（Hongyan Bao et al., 2025）匹配的论文。虽然候选中有若干关于Error Feedback和Federated Learning的相关工作（如EF21、Momentum EF等），但均不是同一篇论文。"
+          },
+          {
+            "key": "karimireddy2019scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "arxiv_id": "1910.06378",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "failed",
+            "details": "LLM 评估失败"
+          },
+          {
+            "key": "redie2026sa-pef",
+            "title": "SA-PEF: Step-Ahead Partial Error Feedback for Efficient Federated Learning",
+            "arxiv_id": "2601.20738",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "su2023joint",
+            "title": "Joint Sparsification and Quantization for Wireless Federated Learning under Communication Constraints",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Joint Sparsification and Quantization for Wireless Federated Learning under Communication Constraints'（Junshen Su et al., 2023）匹配的论文。候选中虽有涉及量化、稀疏化和联邦学习通信效率的相关工作（如[5] Qsparse-local-SGD），但作者、标题和具体内容均不符合，无法认定为同一篇论文。"
+          },
+          {
+            "key": "zhao2018non-iid",
+            "title": "Federated Learning with Non-IID Data",
+            "arxiv_id": "1806.00582",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文确实展示了非IID数据下联邦学习性能下降的问题，并指出本地模型会偏离全局最优（通过'weight divergence'和EMD来量化）。然而，描述中使用的'client drift'术语及'heterogeneous gradient directions'的表述并非该论文的框架——该论文使用的是'weight divergence'和Earth Mover's Distance来解释性能下降。'Client drift'这一概念通常与后续工作（如SCAFFOLD, 2020）更紧密相关。描述在概念上有一定对应，但将特定术语和机制归因于该论文存在轻微偏差，不会严重误导读者对整体上下文的理解。"
+          },
+          {
+            "key": "sun2024improvinglora",
+            "title": "Improving LoRA in Privacy-preserving Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Improving LoRA in Privacy-preserving Federated Learning'（Youbang Sun et al., 2024）匹配的论文。候选[2]涉及LoRA与联邦学习，但标题、作者均不同，是另一篇论文。"
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "base_dpsk",
+        "score": 7.44,
+        "total_citations": 24,
+        "evaluated_citations": 15,
+        "fabricated_count": 6,
+        "key_refs_total": 9,
+        "key_refs_covered": 7,
+        "coverage_rate": 0.778,
+        "citation_count_bonus": 1.8,
+        "key_coverage": [
+          {
+            "key_ref": "FedAvg (McMahan et al., AISTATS 2017)",
+            "covered": true,
+            "matched_cite_key": "mcmahan2016fedavg",
+            "note": "引用列表中的 mcmahan2016fedavg 即为 FedAvg 原始论文（arXiv 2016 版，正式发表于 AISTATS 2017），属于同一论文的不同版本，视为等价覆盖。"
+          },
+          {
+            "key_ref": "SCAFFOLD (Karimireddy et al., ICML 2020)",
+            "covered": true,
+            "matched_cite_key": "karimireddy2019scaffold",
+            "note": "引用列表中的 karimireddy2019scaffold 即为 SCAFFOLD 论文（arXiv 2019 版，正式发表于 ICML 2020），属于同一论文的不同版本，视为等价覆盖。"
+          },
+          {
+            "key_ref": "FedProx (Li et al., MLSys 2020)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 FedProx 论文（Li et al., 'Federated Optimization in Heterogeneous Networks', MLSys 2020）或其任何等价替代版本，属于缺失。"
+          },
+          {
+            "key_ref": "Federated Learning with Compression (Haddadpour et al., AISTATS 2021)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Haddadpour et al. 的 'Federated Learning with Compression' (AISTATS 2021) 或其等价替代，属于缺失。"
+          },
+          {
+            "key_ref": "Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)",
+            "covered": true,
+            "matched_cite_key": "valdeira2025vertical",
+            "note": "valdeira2025vertical 的标题为 'Communication-Efficient Vertical Federated Learning via Compressed Error Feedback'，与 Plan 中描述的 Valdeira et al. 论文高度吻合，应为同一工作的不同版本（年份标注差异），视为等价覆盖。"
+          },
+          {
+            "key_ref": "FedSub",
+            "covered": true,
+            "matched_cite_key": "zhang2025fedsub",
+            "note": "zhang2025fedsub 标题为 'An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data'，与 FedSub 高度对应，视为覆盖。"
+          },
+          {
+            "key_ref": "FedLoRU",
+            "covered": true,
+            "matched_cite_key": "park2024fedlru",
+            "note": "park2024fedlru 标题为 'Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization'，FedLoRU 即 Federated Low-Rank Update，视为等价覆盖。"
+          },
+          {
+            "key_ref": "ILoRA",
+            "covered": true,
+            "matched_cite_key": "zhou2025ilora",
+            "note": "zhou2025ilora 标题为 'ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation'，与 Plan 中的 ILoRA 完全匹配。"
+          },
+          {
+            "key_ref": "GaLore (Zhao et al., 2024)",
+            "covered": true,
+            "matched_cite_key": "zhao2024galore",
+            "note": "zhao2024galore 即为 'GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection'，与 Plan 中的 GaLore 完全匹配。"
+          }
+        ],
+        "highly_relevant": 7,
+        "weakly_relevant": 2,
+        "irrelevant": 6,
+        "details": [
+          {
+            "key": "koloskova2019decentralized",
+            "title": "Decentralized Deep Learning with Arbitrary Communication Compression",
+            "relevance": 1,
+            "reason": "该论文研究去中心化深度学习中的通信压缩问题，与Plan中Section 2（通信压缩）的核心方向有交叉，涉及压缩误差和收敛性分析等相关技术。然而，其关注场景是去中心化（decentralized）设置而非联邦学习（federated/centralized）设置，且并非Plan中明确列出的Key References，也未直接涉及Plan强调的Error Feedback内存瓶颈或异构数据下的方差问题。因此属于相邻技术，判定为弱相关。"
+          },
+          {
+            "key": "li2019challenges",
+            "title": "Federated Learning: Challenges, Methods, and Future Directions",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "mcmahan2016fedavg",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "relevance": 2,
+            "reason": "该论文即为 FedAvg 的原始论文（McMahan et al., 2016/2017），在 Plan 的 Key References 中明确列出（FedAvg, McMahan et al., AISTATS 2017），是联邦学习的奠基性工作，也是 Section 1 中作为基础算法重点介绍的核心文献。arXiv 预印本与正式发表版本为同一工作。"
+          },
+          {
+            "key": "su2025galore2",
+            "title": "GaLore 2: Large-Scale LLM Pre-Training by Gradient Low-Rank Projection",
+            "relevance": 1,
+            "reason": "GaLore 2 是 Plan 中明确列出的关键参考文献 GaLore (Zhao et al., 2024) 的后续扩展工作，属于 Section 3 'Subspace Learning' 中 'Low-Rank Gradient Approximation' 方向的相邻工作。然而，Plan 明确列出的是原版 GaLore 而非 GaLore 2，且 GaLore 2 发表于 2025 年（arXiv 预印本），属于更新的衍生工作而非核心奠基性文献。其内容聚焦于大规模 LLM 预训练场景，与联邦学习的结合并非直接，因此定为弱相关而非强相关。"
+          },
+          {
+            "key": "konecný2016communication",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency",
+            "relevance": 2,
+            "reason": "该论文是联邦学习通信效率领域的奠基性工作之一，由Konečný等人提出，直接探讨了量化（quantization）和稀疏化（sparsification）等压缩策略在联邦学习中的应用，与Plan中Section 2（Communication Compression）的核心内容高度契合。尽管未被列入Key References，但该工作是Plan所涵盖的通信压缩方向的直接代表性工作，是激发后续压缩方法研究（如EF、量化、稀疏化）的重要背景文献，在Related Work中引用具有充分的学术合理性。"
+          },
+          {
+            "key": "rodio2025facets",
+            "title": "The Many Facets of Variance Reduction in Federated Learning",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "zhang2025fedsub",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "relevance": 2,
+            "reason": "该论文直接对应 Plan Section 3 中 'Subspace Optimization in FL' 的核心方向，标题明确指向联邦学习中的子空间算法，且针对异构数据（即 Non-IID / Client Drift 问题），与 Plan 中 FedSub、FedLoRU、ILoRA 等同类工作高度契合，是直接激发 Subspace-SCAFFOLD 研究动机的相关工作（即现有子空间方法与 SCAFFOLD 式方差减少不兼容这一 Gap 的具体体现）。"
+          },
+          {
+            "key": "liu2025fedswa",
+            "title": "FedSWA: Improving Generalization in Federated Learning with Highly Heterogeneous Data via Momentum-Based Stochastic Controlled Weight Averaging",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "peng2026subspacealignment",
+            "title": "Rethinking LoRA for Data Heterogeneous Federated Learning: Subspace and State Alignment",
+            "relevance": 2,
+            "reason": "该论文直接针对联邦学习中数据异构（Non-IID）场景下的LoRA/子空间方法，与Plan中Section 3描述的'Subspace Optimization in FL'核心方向高度契合，且其标题明确涉及'子空间'与'状态对齐'（State Alignment），后者与Plan中指出的关键Gap——'子空间切换导致历史控制变量积累失效'——直接相关。该工作很可能是与Subspace-SCAFFOLD动机最直接相关的对比/背景文献之一，属于Plan Section 3中FedSub/FedLoRU/ILoRA同类工作的代表性成果。"
+          },
+          {
+            "key": "bao2025efskip",
+            "title": "EFSkip: A New Error Feedback with Linear Speedup for Compressed Federated Learning with Arbitrary Data Heterogeneity",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "karimireddy2019scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "relevance": 2,
+            "reason": "SCAFFOLD 是 Plan 中 Key References 明确列出的核心文献，也是 Section 1 'Variance Reduction' 部分的直接代表性工作。该论文提出通过控制变量（control variates）纠正梯度方向以解决 Client Drift 问题，正是本研究 Subspace-SCAFFOLD 的直接前驱方法，也是 Section 3 所指出的核心研究缺口（现有子空间方法与 SCAFFOLD 类方差缩减不兼容）的出发点。强相关无疑。"
+          },
+          {
+            "key": "redie2026sa-pef",
+            "title": "SA-PEF: Step-Ahead Partial Error Feedback for Efficient Federated Learning",
+            "relevance": 2,
+            "reason": "该论文直接研究联邦学习中的误差反馈（Error Feedback）机制，提出了'Step-Ahead Partial Error Feedback'方法，与Plan中Section 2明确提及的核心主题高度契合——Plan明确指出EF需要存储误差向量（R^d）带来内存瓶颈，以及压缩在异质性下损害收敛的问题。该论文正是针对这一方向的直接代表性工作，与Plan中列出的Key Reference 'Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)'属于同一核心研究线，是激发Subspace-SCAFFOLD动机的相关背景工作。"
+          },
+          {
+            "key": "su2023joint",
+            "title": "Joint Sparsification and Quantization for Wireless Federated Learning under Communication Constraints",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "zhao2018non-iid",
+            "title": "Federated Learning with Non-IID Data",
+            "relevance": 2,
+            "reason": "该论文是最早系统性实证研究Non-IID数据对联邦学习影响的代表性工作，直接对应Plan Section 1中'Data Heterogeneity Challenge: Non-IID data causes Client Drift'的核心背景描述。它为SCAFFOLD、FedProx等后续方差缩减方法提供了问题动机，是联邦学习异构数据挑战这一核心方向的奠基性引用，在Related Works中引用高度合理且必要。"
+          },
+          {
+            "key": "sun2024improvinglora",
+            "title": "Improving LoRA in Privacy-preserving Federated Learning",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          }
+        ]
+      }
+    },
+    "base_gpt51": {
+      "content_accuracy": {
+        "article_name": "base_gpt51",
+        "score": 8.07,
+        "total_citations": 31,
+        "verified_citations": 15,
+        "fulltext_verified": 11,
+        "semantic_scholar_verified": 3,
+        "failed_count": 1,
+        "hallucination_count": 4,
+        "hallucinations": [
+          {
+            "key": "li2020federated",
+            "title": "Federated Learning: Challenges, Methods, and Future Directions",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Federated Learning: Challenges, Methods, and Future Directions'（Tian Li et al., 2020）匹配的论文。该论文发表于 IEEE Signal Processing Magazine，ArXiv ID 为 1908.07873，但候选列表中未出现此文。"
+          },
+          {
+            "key": "rodio2025variance",
+            "title": "The Many Facets of Variance Reduction in Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与《The Many Facets of Variance Reduction in Federated Learning》（作者Angelo Rodio，2025年）匹配的论文。所有候选论文的标题、作者和内容均与该论文不符。"
+          },
+          {
+            "key": "medjadji2025fedsparq",
+            "title": "FedSparQ: Adaptive Sparse Quantization with Error Feedback for Robust & Efficient Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'FedSparQ: Adaptive Sparse Quantization with Error Feedback for Robust & Efficient Federated Learning'匹配的论文。该论文涉及自适应稀疏量化与错误反馈的联邦学习，而候选中没有任何一篇与此主题和标题相符的论文。"
+          }
+        ],
+        "details": [
+          {
+            "key": "zhao2024galore",
+            "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+            "arxiv_id": "2403.03507",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "li2020federated",
+            "title": "Federated Learning: Challenges, Methods, and Future Directions",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Federated Learning: Challenges, Methods, and Future Directions'（Tian Li et al., 2020）匹配的论文。该论文发表于 IEEE Signal Processing Magazine，ArXiv ID 为 1908.07873，但候选列表中未出现此文。"
+          },
+          {
+            "key": "mcmahan2017communication",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "arxiv_id": "1602.05629",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhang2025fedsub",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "arxiv_id": "2509.05213",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "rodio2025variance",
+            "title": "The Many Facets of Variance Reduction in Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与《The Many Facets of Variance Reduction in Federated Learning》（作者Angelo Rodio，2025年）匹配的论文。所有候选论文的标题、作者和内容均与该论文不符。"
+          },
+          {
+            "key": "wang2025quantizedvr",
+            "title": "Communication-Efficient Federated Learning by Quantized Variance Reduction for Heterogeneous Wireless Edge Networks",
+            "arxiv_id": "2501.11267",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "wang2024flora",
+            "title": "FLoRA: Federated Fine-Tuning Large Language Models with Heterogeneous Low-Rank Adaptations",
+            "arxiv_id": "2402.06158",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "failed",
+            "details": "LLM 评估失败"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "arxiv_id": "1910.06378",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhou2025ilora",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "arxiv_id": "2511.16069",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 第一处引用准确描述了ILoRA解决客户端子空间不对齐导致的不稳定性和秩不兼容问题，与论文内容一致。但第二处将ILoRA归类为'不提供类SCAFFOLD控制变量机制'的方法存在轻微偏差——ILoRA实际上明确使用了'带秩感知控制变量的AdamW优化器'来纠正局部更新并缓解客户端漂移，这本质上是一种SCAFFOLD式的方差减少机制。将ILoRA与未使用控制变量的方法并列可能轻微误导读者，但该描述可能是在强调一个更细微的论点（历史统计量在异构子空间中失对齐的问题），不影响对整体上下文的理解。"
+          },
+          {
+            "key": "han2024peftsurvey",
+            "title": "Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey",
+            "arxiv_id": "2403.15412",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "描述将 Han et al. (2024) 的《Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey》定性为一篇综述低秩与子空间技术如何减少内存和通信开销的 PEFT 综述论文，这与该论文的实际定位和内容高度一致。描述属于多文献联合引用语境，han2024peftsurvey 支持其中关于 PEFT 设计空间和低秩技术综述的部分，无明显事实性错误。（注：提供的摘录内容实为另一篇关于文化表征的论文，疑为数据错误，不影响对引用描述准确性的判断。）"
+          },
+          {
+            "key": "medjadji2025fedsparq",
+            "title": "FedSparQ: Adaptive Sparse Quantization with Error Feedback for Robust & Efficient Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'FedSparQ: Adaptive Sparse Quantization with Error Feedback for Robust & Efficient Federated Learning'匹配的论文。该论文涉及自适应稀疏量化与错误反馈的联邦学习，而候选中没有任何一篇与此主题和标题相符的论文。"
+          },
+          {
+            "key": "li2018federated",
+            "title": "Federated Optimization in Heterogeneous Networks",
+            "arxiv_id": "1812.06127",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhang2025gradient",
+            "title": "Gradient Compression and Correlation Driven Federated Learning for Wireless Traffic Prediction",
+            "arxiv_id": "2501.00732",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "li2024contractiveef",
+            "title": "Contractive error feedback for gradient compression",
+            "arxiv_id": "2312.08538",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "mcmahan2017fedavg",
+            "title": "Federated Learning of Deep Networks using Model Averaging",
+            "arxiv_id": "1602.05629",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "base_gpt51",
+        "score": 7.69,
+        "total_citations": 28,
+        "evaluated_citations": 15,
+        "fabricated_count": 3,
+        "key_refs_total": 9,
+        "key_refs_covered": 6,
+        "coverage_rate": 0.667,
+        "citation_count_bonus": 2.1,
+        "key_coverage": [
+          {
+            "key_ref": "FedAvg (McMahan et al., AISTATS 2017)",
+            "covered": true,
+            "matched_cite_key": "mcmahan2017communication",
+            "note": "mcmahan2017communication 即 FedAvg 的 AISTATS 2017 正式发表版，标题与内容完全匹配。mcmahan2017fedavg 为同一工作的早期版本（2016），两者均在引用列表中。"
+          },
+          {
+            "key_ref": "SCAFFOLD (Karimireddy et al., ICML 2020)",
+            "covered": true,
+            "matched_cite_key": "karimireddy2020scaffold",
+            "note": "引用列表中 karimireddy2020scaffold 标题与作者完全匹配。"
+          },
+          {
+            "key_ref": "FedProx (Li et al., MLSys 2020)",
+            "covered": true,
+            "matched_cite_key": "li2018federated",
+            "note": "li2018federated 即 FedProx 论文（'Federated Optimization in Heterogeneous Networks'），arXiv 版本为 2018 年，正式发表于 MLSys 2020，属于同一论文的不同版本，内容等价。"
+          },
+          {
+            "key_ref": "Federated Learning with Compression (Haddadpour et al., AISTATS 2021)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Haddadpour et al. (AISTATS 2021) 关于 FL with Compression 的论文，也未发现内容高度等价的替代文献。"
+          },
+          {
+            "key_ref": "Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Valdeira et al. (2024) 该论文，也未发现明确等价的替代文献。"
+          },
+          {
+            "key_ref": "FedSub",
+            "covered": true,
+            "matched_cite_key": "zhang2025fedsub",
+            "note": "zhang2025fedsub 标题为 'An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data'，与 FedSub 高度对应。"
+          },
+          {
+            "key_ref": "FedLoRU",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到明确标题为 FedLoRU 的论文，也未发现内容高度等价的替代文献。"
+          },
+          {
+            "key_ref": "ILoRA",
+            "covered": true,
+            "matched_cite_key": "zhou2025ilora",
+            "note": "zhou2025ilora 标题为 'ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation'，与 ILoRA 完全匹配。"
+          },
+          {
+            "key_ref": "GaLore (Zhao et al., 2024)",
+            "covered": true,
+            "matched_cite_key": "zhao2024galore",
+            "note": "zhao2024galore 标题、作者、年份完全匹配。"
+          }
+        ],
+        "highly_relevant": 8,
+        "weakly_relevant": 4,
+        "irrelevant": 3,
+        "details": [
+          {
+            "key": "zhao2024galore",
+            "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+            "relevance": 2,
+            "reason": "GaLore (Zhao et al., 2024) 被 Plan 的 Key References 中明确列出，同时是 Section 3 'Subspace Learning' 中 'Low-Rank Gradient Approximation' 方向的核心代表性工作，直接为 Subspace-SCAFFOLD 的子空间优化思路提供了技术基础和动机背景。"
+          },
+          {
+            "key": "li2020federated",
+            "title": "Federated Learning: Challenges, Methods, and Future Directions",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "mcmahan2017communication",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "relevance": 2,
+            "reason": "该论文即为 FedAvg 的原始论文（McMahan et al., AISTATS 2017），在 Plan 的 Key References 中明确列出，且在 Section 1 'Federated Learning' 中被定位为联邦学习的奠基性算法（foundational algorithm），是整个研究背景的起点，属于强相关。"
+          },
+          {
+            "key": "zhang2025fedsub",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "relevance": 2,
+            "reason": "该论文直接对应 Plan 第三节 'Subspace Learning in FL' 中明确列出的 FedSub（An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data 即为 FedSub 的原始论文），是 Plan Key References 中明确列出的核心文献之一，也是直接激发 Subspace-SCAFFOLD 研究动机的代表性工作——其在异构数据下的子空间方法缺乏 SCAFFOLD 式方差缩减正是本文要填补的关键 Gap。"
+          },
+          {
+            "key": "rodio2025variance",
+            "title": "The Many Facets of Variance Reduction in Federated Learning",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "wang2025quantizedvr",
+            "title": "Communication-Efficient Federated Learning by Quantized Variance Reduction for Heterogeneous Wireless Edge Networks",
+            "relevance": 2,
+            "reason": "该论文直接结合了量化压缩（Communication Compression）与方差缩减（Variance Reduction）两个核心主题，并针对异构无线边缘网络中的数据异质性问题（Client Drift）提出解决方案。这与 Plan 中 Section 1（SCAFFOLD类方差缩减）和 Section 2（量化压缩、EF机制在异质性下的收敛问题）的核心议题高度契合，是直接激发 Subspace-SCAFFOLD 研究动机的同类工作——即现有方差缩减+压缩方法仍存在全维度更新和内存开销问题，正是 Plan 所指出的关键局限性所在。"
+          },
+          {
+            "key": "wang2024flora",
+            "title": "FLoRA: Federated Fine-Tuning Large Language Models with Heterogeneous Low-Rank Adaptations",
+            "relevance": 1,
+            "reason": "FLoRA 研究联邦学习中异构低秩适配（LoRA）的聚合问题，与 Plan 中 Section 3 的子空间学习方向（FedLoRU、ILoRA 等）有一定交叉，属于 FL + 低秩/子空间方法的相邻工作。但该论文聚焦于大语言模型微调场景下的 LoRA 异构性问题，并非直接针对通信压缩或 SCAFFOLD 式方差减少的局限性，也未出现在 Plan 的 Key References 列表中，因此仅为弱相关。"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "relevance": 2,
+            "reason": "SCAFFOLD 是 Plan 中 Key References 明确列出的核心文献，直接对应 Section 1 中 'Variance Reduction' 部分的核心方法。该论文提出利用控制变量（control variates）纠正梯度方向以解决 Client Drift 问题，是本研究 Subspace-SCAFFOLD 的直接前驱工作，也是 Section 3 中所述'现有子空间方法与 SCAFFOLD 类方差缩减不兼容'这一核心研究 Gap 的基础。"
+          },
+          {
+            "key": "zhou2025ilora",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "relevance": 2,
+            "reason": "ILoRA 是 Plan 中 Section 3（Subspace Learning）明确列出的 Key References 之一，属于联邦学习中基于低秩适应的子空间优化方法，直接对应 Plan 中 'Subspace Optimization in FL' 的核心研究方向，也是激发 Subspace-SCAFFOLD 研究动机（现有子空间方法与 SCAFFOLD 式方差缩减不兼容）的直接背景工作。"
+          },
+          {
+            "key": "han2024peftsurvey",
+            "title": "Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey",
+            "relevance": 1,
+            "reason": "该综述涵盖了LoRA等参数高效微调（PEFT）方法，与Plan中Section 3提到的低秩子空间学习（如GaLore、FedLoRU、ILoRA）有技术交叉，可作为子空间/低秩方法的背景上下文。但PEFT本身并非Plan的核心方向，Plan聚焦于联邦学习中的通信效率与方差缩减，该综述并非Plan Key References中列出的文献，也不直接涉及Client Drift、SCAFFOLD或联邦学习场景，因此仅为弱相关。"
+          },
+          {
+            "key": "medjadji2025fedsparq",
+            "title": "FedSparQ: Adaptive Sparse Quantization with Error Feedback for Robust & Efficient Federated Learning",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "li2018federated",
+            "title": "Federated Optimization in Heterogeneous Networks",
+            "relevance": 2,
+            "reason": "该论文即 FedProx（Li et al., MLSys 2020 的前身/同一工作），提出了通过近端正则化（proximal regularization）应对异构网络中联邦优化问题的方法，是 Plan 中 Section 1 明确列出的核心参考文献 'FedProx (Li et al., MLSys 2020)'，直接对应 Plan 中 'FedProx: proximal regularization' 的描述，属于强相关。"
+          },
+          {
+            "key": "zhang2025gradient",
+            "title": "Gradient Compression and Correlation Driven Federated Learning for Wireless Traffic Prediction",
+            "relevance": 1,
+            "reason": "该论文涉及联邦学习中的梯度压缩技术，与Plan第2节（Communication Compression）的核心主题有交叉。然而，其应用场景聚焦于无线流量预测这一特定领域，并非Plan所强调的通用联邦学习压缩框架（如量化、稀疏化、Error Feedback等）。该论文既未出现在Key References列表中，也不是Plan核心方向（Client Drift、SCAFFOLD式方差减少、子空间学习）的直接代表性工作，属于相邻技术领域的应用性工作，在Related Work中提及尚可但并非核心引用。"
+          },
+          {
+            "key": "li2024contractiveef",
+            "title": "Contractive error feedback for gradient compression",
+            "relevance": 1,
+            "reason": "该论文研究梯度压缩中的收缩误差反馈（Contractive Error Feedback），与 Plan 第2节 Communication Compression 中的 Error Feedback (EF) 主题直接相关。EF 是 Plan 明确讨论的核心技术之一，且 Plan 指出 EF 存在需要存储 $\\mathbb{R}^d$ 误差向量的内存瓶颈问题。然而，该论文并非 Plan 的 Key References 中明确列出的文献（Key References 中对应的 EF 工作是 Valdeira et al., 2024），而是同一方向的另一篇相关工作。其研究内容（收缩性误差反馈的理论分析）与 Plan 核心动机有交叉，但并非直接激发 Subspace-SCAFFOLD 研究动机的代表性文献，因此评定为弱相关。"
+          },
+          {
+            "key": "mcmahan2017fedavg",
+            "title": "Federated Learning of Deep Networks using Model Averaging",
+            "relevance": 2,
+            "reason": "该论文即为 FedAvg 的原始论文（McMahan et al., 2016/2017），是 Plan 中 Key References 明确列出的 'FedAvg (McMahan et al., AISTATS 2017)' 对应的工作（arXiv 预印本版本），也是 Section 1 中作为联邦学习基础算法重点介绍的核心文献，强相关。"
+          }
+        ]
+      }
+    },
+    "base_gpt54": {
+      "content_accuracy": {
+        "article_name": "base_gpt54",
+        "score": 6.4,
+        "total_citations": 40,
+        "verified_citations": 15,
+        "fulltext_verified": 9,
+        "semantic_scholar_verified": 6,
+        "failed_count": 0,
+        "hallucination_count": 6,
+        "hallucinations": [
+          {
+            "key": "li2021moon",
+            "title": "Model-Contrastive Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Model-Contrastive Federated Learning'（Qinbin Li, Bingsheng He, Dawn Song, 2021）匹配的论文。该论文对应的arXiv ID为2103.16257，但候选中无此条目。"
+          },
+          {
+            "key": "condat2022efbv",
+            "title": "EF-BV: A Unified Theory of Error Feedback and Variance Reduction Mechanisms for Biased and Unbiased Compression in Distributed Optimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'EF-BV: A Unified Theory of Error Feedback and Variance Reduction Mechanisms for Biased and Unbiased Compression in Distributed Optimization' 匹配的论文。该论文由 Laurent Condat, Kai Yi, Peter Richtárik 于2022年发表，提出了统一的EF-BV框架，但候选中均为不同论文（如EF21、On Biased Compression等），没有任何一条对应EF-BV论文。"
+          },
+          {
+            "key": "khirirat2019memory",
+            "title": "Convergence Bounds for Compressed Gradient Methods with Memory Based Error Compensation",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与目标论文'Convergence Bounds for Compressed Gradient Methods with Memory Based Error Compensation'（作者：Sarit Khirirat, Sindri Magnússon, Mikael Johansson, 2019）匹配的条目。虽然多个候选涉及压缩梯度和误差补偿的相关主题，但没有一篇与该论文的标题、作者组合相符。"
+          },
+          {
+            "key": "acar2021feddyn",
+            "title": "Federated Learning Based on Dynamic Regularization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Federated Learning Based on Dynamic Regularization'（Durmus Alp Emre Acar et al., 2021）匹配的论文。该论文对应的是FedDyn算法，但候选列表中均为其他联邦学习相关论文，无一与之对应。"
+          },
+          {
+            "key": "wang2020fednova",
+            "title": "Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization'（Jianyu Wang et al., 2020）匹配的论文。该论文对应的arXiv ID为2007.07481，但候选中未出现该论文。"
+          },
+          {
+            "key": "sahu2021rethinking",
+            "title": "Rethinking Gradient Sparsification as Total Error Minimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Rethinking Gradient Sparsification as Total Error Minimization'（Atal Narayan Sahu et al., 2021）匹配的论文。该论文有其自己的 arXiv ID（2108.00951），但在给出的候选中未出现。候选中虽有多篇关于梯度稀疏化的论文，但均为不同作者、不同标题的独立工作。"
+          }
+        ],
+        "details": [
+          {
+            "key": "li2021moon",
+            "title": "Model-Contrastive Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Model-Contrastive Federated Learning'（Qinbin Li, Bingsheng He, Dawn Song, 2021）匹配的论文。该论文对应的arXiv ID为2103.16257，但候选中无此条目。"
+          },
+          {
+            "key": "hsu2019measuring",
+            "title": "Measuring the Effects of Non-Identical Data Distribution for Federated Visual Classification",
+            "arxiv_id": "1909.06335",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "condat2022efbv",
+            "title": "EF-BV: A Unified Theory of Error Feedback and Variance Reduction Mechanisms for Biased and Unbiased Compression in Distributed Optimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'EF-BV: A Unified Theory of Error Feedback and Variance Reduction Mechanisms for Biased and Unbiased Compression in Distributed Optimization' 匹配的论文。该论文由 Laurent Condat, Kai Yi, Peter Richtárik 于2022年发表，提出了统一的EF-BV框架，但候选中均为不同论文（如EF21、On Biased Compression等），没有任何一条对应EF-BV论文。"
+          },
+          {
+            "key": "stich2020heterogeneous",
+            "title": "On Communication Compression for Distributed Optimization on Heterogeneous Data",
+            "arxiv_id": "2009.02388",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "khirirat2019memory",
+            "title": "Convergence Bounds for Compressed Gradient Methods with Memory Based Error Compensation",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与目标论文'Convergence Bounds for Compressed Gradient Methods with Memory Based Error Compensation'（作者：Sarit Khirirat, Sindri Magnússon, Mikael Johansson, 2019）匹配的条目。虽然多个候选涉及压缩梯度和误差补偿的相关主题，但没有一篇与该论文的标题、作者组合相符。"
+          },
+          {
+            "key": "alistarh2017qsgd",
+            "title": "QSGD: Communication-Efficient SGD via Gradient Quantization and Encoding",
+            "arxiv_id": "1610.02132",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "acar2021feddyn",
+            "title": "Federated Learning Based on Dynamic Regularization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Federated Learning Based on Dynamic Regularization'（Durmus Alp Emre Acar et al., 2021）匹配的论文。该论文对应的是FedDyn算法，但候选列表中均为其他联邦学习相关论文，无一与之对应。"
+          },
+          {
+            "key": "wang2020fednova",
+            "title": "Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization'（Jianyu Wang et al., 2020）匹配的论文。该论文对应的arXiv ID为2007.07481，但候选中未出现该论文。"
+          },
+          {
+            "key": "zhao2024galore",
+            "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+            "arxiv_id": "2403.03507",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhou2025ilora",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "arxiv_id": "2511.16069",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "mcmahan2017communication",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "arxiv_id": "1602.05629",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "arxiv_id": "1910.06378",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "xia2024chainlora",
+            "title": "Chain of LoRA: Efficient Fine-tuning of Language Models via Residual Learning",
+            "arxiv_id": "2401.04166",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "描述将 xia2024chainlora（Chain of LoRA）归类为 LoRA 风格的低秩更新方法，用于大型模型的结构化低维更新空间，这与该论文的实际主题（通过残差学习进行语言模型高效微调的 LoRA 变体）完全一致。虽然提供的论文摘录内容实为一篇物理学 CFT 论文（可能是数据抓取错误），但根据论文标题和作者信息可确认描述准确。该引用在多文献联合引用中支持'LoRA-style low-rank updates'这一合理部分。"
+          },
+          {
+            "key": "mahla2024exploring",
+            "title": "Exploring Gradient Subspaces: Addressing and Overcoming LoRA's Limitations in Federated Fine-Tuning of Large Language Models",
+            "arxiv_id": "2410.23111",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "sahu2021rethinking",
+            "title": "Rethinking Gradient Sparsification as Total Error Minimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Rethinking Gradient Sparsification as Total Error Minimization'（Atal Narayan Sahu et al., 2021）匹配的论文。该论文有其自己的 arXiv ID（2108.00951），但在给出的候选中未出现。候选中虽有多篇关于梯度稀疏化的论文，但均为不同作者、不同标题的独立工作。"
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "base_gpt54",
+        "score": 7.41,
+        "total_citations": 34,
+        "evaluated_citations": 15,
+        "fabricated_count": 6,
+        "key_refs_total": 9,
+        "key_refs_covered": 6,
+        "coverage_rate": 0.667,
+        "citation_count_bonus": 2.55,
+        "key_coverage": [
+          {
+            "key_ref": "FedAvg (McMahan et al., AISTATS 2017)",
+            "covered": true,
+            "matched_cite_key": "mcmahan2017communication",
+            "note": "完全匹配，标题与作者一致，为 AISTATS 2017 版本。"
+          },
+          {
+            "key_ref": "SCAFFOLD (Karimireddy et al., ICML 2020)",
+            "covered": true,
+            "matched_cite_key": "karimireddy2020scaffold",
+            "note": "完全匹配，标题与作者一致，为 ICML 2020 版本。"
+          },
+          {
+            "key_ref": "FedProx (Li et al., MLSys 2020)",
+            "covered": true,
+            "matched_cite_key": "sahu2020fedprox",
+            "note": "匹配，'Federated Optimization in Heterogeneous Networks' 即 FedProx 论文，Li et al. 为第一作者团队，Sahu 为共同作者，cite key 以 sahu 命名但内容等价。"
+          },
+          {
+            "key_ref": "Federated Learning with Compression (Haddadpour et al., AISTATS 2021)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Haddadpour et al. (AISTATS 2021) 的论文（'Federated Learning with Compression'）。列表中有多篇压缩相关论文，但均非该特定文献。"
+          },
+          {
+            "key_ref": "Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Valdeira et al. (2024) 的论文。bao2025efskip 涉及 Error Feedback 但作者和标题均不匹配，非等价替代。"
+          },
+          {
+            "key_ref": "FedSub",
+            "covered": true,
+            "matched_cite_key": "zhang2025fedsub",
+            "note": "匹配，'An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data' 即 FedSub。"
+          },
+          {
+            "key_ref": "FedLoRU",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 FedLoRU 论文或其等价替代。guo2024selective（Selective Aggregation for Low-Rank Adaptation）与 FedLoRU 不同，zhou2025ilora 为 ILoRA，均非 FedLoRU。"
+          },
+          {
+            "key_ref": "ILoRA",
+            "covered": true,
+            "matched_cite_key": "zhou2025ilora",
+            "note": "完全匹配，'ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation'。"
+          },
+          {
+            "key_ref": "GaLore (Zhao et al., 2024)",
+            "covered": true,
+            "matched_cite_key": "zhao2024galore",
+            "note": "完全匹配，'GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection'，Zhao et al. 2024。"
+          }
+        ],
+        "highly_relevant": 7,
+        "weakly_relevant": 2,
+        "irrelevant": 6,
+        "details": [
+          {
+            "key": "li2021moon",
+            "title": "Model-Contrastive Federated Learning",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "hsu2019measuring",
+            "title": "Measuring the Effects of Non-Identical Data Distribution for Federated Visual Classification",
+            "relevance": 1,
+            "reason": "该论文研究非独立同分布数据对联邦学习视觉分类的影响，与Plan中Section 1提到的'数据异质性挑战'（Non-IID导致Client Drift）有一定交叉，属于联邦学习数据异质性问题的实证研究背景。然而，它并非Plan Key References中列出的核心文献，也不是直接解决Client Drift的方法性工作（如SCAFFOLD、FedProx），更多属于描述和量化问题现象的背景性工作，与本文核心动机（子空间方法与方差缩减的结合）关联较弱，因此判定为弱相关。"
+          },
+          {
+            "key": "condat2022efbv",
+            "title": "EF-BV: A Unified Theory of Error Feedback and Variance Reduction Mechanisms for Biased and Unbiased Compression in Distributed Optimization",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "stich2020heterogeneous",
+            "title": "On Communication Compression for Distributed Optimization on Heterogeneous Data",
+            "relevance": 2,
+            "reason": "该论文直接研究异构数据（Non-IID）场景下分布式优化的通信压缩问题，与Plan中Section 2（Communication Compression）和Section 1（Data Heterogeneity/Client Drift）的核心交叉点高度吻合。Stich (2020) 探讨了压缩在异构数据下对收敛性的影响，正是Plan中指出的'compression introduces variance that hurts convergence under heterogeneity'这一关键问题的直接相关工作，属于激发本研究动机的背景文献，与Plan中明确列出的Haddadpour et al. (AISTATS 2021)和Valdeira et al. (2024)处于同一核心研究方向。"
+          },
+          {
+            "key": "khirirat2019memory",
+            "title": "Convergence Bounds for Compressed Gradient Methods with Memory Based Error Compensation",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "alistarh2017qsgd",
+            "title": "QSGD: Communication-Efficient SGD via Gradient Quantization and Encoding",
+            "relevance": 2,
+            "reason": "QSGD 是梯度量化（Quantization）领域的奠基性工作，直接对应 Plan Section 2 'Communication Compression' 中明确提及的量化方向。该论文提出通过随机量化压缩梯度以降低通信开销，是通信压缩研究的核心代表性文献，与 Plan 所描述的量化方法高度契合，在 Related Work 中作为量化方法的标志性引用具有充分依据。"
+          },
+          {
+            "key": "acar2021feddyn",
+            "title": "Federated Learning Based on Dynamic Regularization",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "wang2020fednova",
+            "title": "Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "zhao2024galore",
+            "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+            "relevance": 2,
+            "reason": "GaLore (Zhao et al., 2024) 被 Plan 的 Key References 中明确列出，同时是 Section 3 'Subspace Learning' 中 'Low-Rank Gradient Approximation' 方向的核心代表性工作，直接支撑了本文引入子空间方法的动机背景。"
+          },
+          {
+            "key": "zhou2025ilora",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "relevance": 2,
+            "reason": "ILoRA 是 Plan 中 Section 3 'Subspace Learning' 里 'Subspace Optimization in FL' 方向的直接代表性工作，且被明确列入 Key References 列表。该论文将低秩适应（LoRA）引入联邦学习以应对客户端异构性聚合问题，与 Plan 所描述的'现有子空间方法与 SCAFFOLD 式方差减少不兼容'这一核心 Gap 高度契合，是直接激发 Subspace-SCAFFOLD 研究动机的背景工作之一。"
+          },
+          {
+            "key": "mcmahan2017communication",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "relevance": 2,
+            "reason": "该论文即 FedAvg（McMahan et al., AISTATS 2017），在 Plan 的 Key References 中明确列出，且在 Section 1 'Federated Learning' 中被定位为联邦学习的奠基性算法（foundational algorithm），是整个 Related Work 的起点性引用，属于强相关。"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "relevance": 2,
+            "reason": "SCAFFOLD (Karimireddy et al., ICML 2020) 在 Plan 的 Key References 中明确列出，同时是 Section 1 'Variance Reduction' 部分的核心代表性工作，直接引入控制变量（control variates）以纠正梯度方向、解决 Client Drift 问题。此外，该方法需要全维度辅助变量存储的局限性正是 Section 3 所描述的研究空白（与子空间方法不兼容）的直接动机来源，是本文 Subspace-SCAFFOLD 工作的最核心背景文献之一。"
+          },
+          {
+            "key": "xia2024chainlora",
+            "title": "Chain of LoRA: Efficient Fine-tuning of Language Models via Residual Learning",
+            "relevance": 1,
+            "reason": "Chain of LoRA 是一种基于残差学习的 LoRA 微调方法，与 Plan 中 Section 3 提到的低秩子空间优化（如 GaLore、FedLoRU、ILoRA）有技术交叉，属于低秩/子空间方法的相邻工作。但它并非 Plan 的 Key References 之一，也不直接针对联邦学习场景，更未涉及 SCAFFOLD 方差缩减或通信压缩问题，因此仅为弱相关。"
+          },
+          {
+            "key": "mahla2024exploring",
+            "title": "Exploring Gradient Subspaces: Addressing and Overcoming LoRA's Limitations in Federated Fine-Tuning of Large Language Models",
+            "relevance": 2,
+            "reason": "该论文直接研究联邦学习中的梯度子空间方法（Gradient Subspaces）与LoRA在大语言模型联邦微调中的局限性，与Plan第3节'Subspace Learning'中明确列出的FedSub、FedLoRU、ILoRA等子空间优化方法高度契合，属于Plan核心研究方向的直接代表性工作。此外，其探讨LoRA在FL中的局限性也与Plan所强调的'现有子空间方法与SCAFFOLD类方差缩减不兼容'这一核心Gap直接相关，是激发本研究动机的重要背景工作。"
+          },
+          {
+            "key": "sahu2021rethinking",
+            "title": "Rethinking Gradient Sparsification as Total Error Minimization",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          }
+        ]
+      }
+    },
+    "base_sonnet4.6": {
+      "content_accuracy": {
+        "article_name": "base_sonnet4.6",
+        "score": 6.07,
+        "total_citations": 27,
+        "verified_citations": 15,
+        "fulltext_verified": 11,
+        "semantic_scholar_verified": 4,
+        "failed_count": 0,
+        "hallucination_count": 9,
+        "hallucinations": [
+          {
+            "key": "azam2022recycling",
+            "title": "Recycling Model Updates in Federated Learning: Are Gradient Subspaces Low-Rank?",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Recycling Model Updates in Federated Learning: Are Gradient Subspaces Low-Rank?' (Sheikh Shams Azam et al., 2022) 匹配的论文。虽然有若干候选涉及联邦学习与低秩/子空间相关主题，但标题、作者和具体内容均不符合，无法认定为同一篇论文。"
+          },
+          {
+            "key": "zhou2025ilora",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "arxiv_id": "2511.16069",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述称ILoRA等方法'do not address this incompatibility; they either ignore client drift entirely or rely on proximal regularization'，但ILoRA论文摘要明确将'rank-aware control variates to correct local updates and mitigate client drift'列为三大核心创新之一。将ILoRA描述为忽视client drift或仅依赖proximal regularization，与论文实际内容严重不符，会实质性误导读者对ILoRA工作的理解。"
+          },
+          {
+            "key": "zhang2025fedsub",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "arxiv_id": "2509.05213",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] The description claims FedSub and other subspace FL methods 'either ignore client drift entirely or rely on proximal regularization,' but the FedSub paper explicitly proposes low-dimensional dual variables to mitigate client drift as a core contribution. While the Related Works author may be making a nuanced argument about subspace misalignment when projection matrices are updated across rounds, characterizing FedSub as ignoring client drift entirely is a substantive misrepresentation that would mislead readers about the paper's actual contributions."
+          },
+          {
+            "key": "wang2020tackling",
+            "title": "Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization'（Jianyu Wang et al., 2020）匹配的论文。该论文对应的是NeurIPS 2020论文（arXiv:2007.07481），但候选中未出现该条目。"
+          },
+          {
+            "key": "guo2024efficient",
+            "title": "Efficient Wireless Federated Learning via Low-Rank Gradient Factorization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Efficient Wireless Federated Learning via Low-Rank Gradient Factorization'（Mingzhao Guo et al., 2024）匹配的论文。候选[0]虽涉及FL低秩更新但作者和标题均不符，其余候选与该论文主题或作者均不匹配。"
+          },
+          {
+            "key": "zhao2021fedpage",
+            "title": "FedPAGE: A Fast Local Stochastic Gradient Method for Communication-Efficient Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'FedPAGE: A Fast Local Stochastic Gradient Method for Communication-Efficient Federated Learning' 匹配的论文。该论文由 Haoyu Zhao, Zhize Li, Peter Richtárik 于2021年发表，涉及基于PAGE估计器的联邦学习方法，但候选列表中均无此论文。"
+          },
+          {
+            "key": "stich2018sparsified",
+            "title": "The Error-Feedback Framework: Better Rates for SGD with Delayed Gradients and Compressed Communication",
+            "arxiv_id": "1909.05350",
+            "accuracy_level": 0,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述中该处引用的是 \\citep{stich2018sparsified}（2018年的sparsified SGD论文），而当前被审查的论文是2019年的'The Error-Feedback Framework'，二者是不同的论文。当前论文并未被该描述所引用，描述内容与当前论文无对应引用关系。虽然当前论文确实涉及error compensation/error feedback机制，但该描述将error feedback的关键洞见归因于stich2018sparsified，而非当前论文，因此当前论文与该描述完全不对应。"
+          },
+          {
+            "key": "konecny2016federated",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency",
+            "arxiv_id": "1610.05492",
+            "accuracy_level": 1,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述称该论文通过 structured updates 来减少'通信轮次数量'（reducing the number of communication rounds），但这是对论文贡献的实质性误描述。该论文的核心目标是减少每轮的上行通信成本（uplink communication costs），即压缩每轮传输的数据量（通过 structured updates 和 sketched updates），而非减少通信轮次。减少通信轮次是 FedAvg（McMahan et al., 2017）的贡献。这一错误会误导读者对该论文工作定位的理解。第二处引用（通信瓶颈描述）是准确的。"
+          }
+        ],
+        "details": [
+          {
+            "key": "azam2022recycling",
+            "title": "Recycling Model Updates in Federated Learning: Are Gradient Subspaces Low-Rank?",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Recycling Model Updates in Federated Learning: Are Gradient Subspaces Low-Rank?' (Sheikh Shams Azam et al., 2022) 匹配的论文。虽然有若干候选涉及联邦学习与低秩/子空间相关主题，但标题、作者和具体内容均不符合，无法认定为同一篇论文。"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "arxiv_id": "1910.06378",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "mcmahan2017communication",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "arxiv_id": "1602.05629",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhou2025ilora",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "arxiv_id": "2511.16069",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述称ILoRA等方法'do not address this incompatibility; they either ignore client drift entirely or rely on proximal regularization'，但ILoRA论文摘要明确将'rank-aware control variates to correct local updates and mitigate client drift'列为三大核心创新之一。将ILoRA描述为忽视client drift或仅依赖proximal regularization，与论文实际内容严重不符，会实质性误导读者对ILoRA工作的理解。"
+          },
+          {
+            "key": "albasyoni2020optimal",
+            "title": "Optimal Gradient Compression for Distributed and Federated Learning",
+            "arxiv_id": "2010.03246",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述称该论文'jointly minimize communication cost and convergence slowdown'，但论文实际关注的是压缩向量比特数与压缩误差之间的基本权衡下界，并设计接近下界的最优压缩算子（Sparse Dithering和Spherical Compression）。'convergence slowdown'的表述不够精确，论文直接优化的是压缩误差而非收敛减慢；'jointly minimize'也略有误导性，论文更侧重于刻画信息论下界并设计最优压缩方案。整体方向描述基本正确，但技术细节有轻微偏差。"
+          },
+          {
+            "key": "bernstein2018signsgd",
+            "title": "Convergence Rate of Sign Stochastic Gradient Descent for Non-Convex Functions",
+            "arxiv_id": "1802.04434",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhang2025fedsub",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "arxiv_id": "2509.05213",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] The description claims FedSub and other subspace FL methods 'either ignore client drift entirely or rely on proximal regularization,' but the FedSub paper explicitly proposes low-dimensional dual variables to mitigate client drift as a core contribution. While the Related Works author may be making a nuanced argument about subspace misalignment when projection matrices are updated across rounds, characterizing FedSub as ignoring client drift entirely is a substantive misrepresentation that would mislead readers about the paper's actual contributions."
+          },
+          {
+            "key": "wang2020tackling",
+            "title": "Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization'（Jianyu Wang et al., 2020）匹配的论文。该论文对应的是NeurIPS 2020论文（arXiv:2007.07481），但候选中未出现该条目。"
+          },
+          {
+            "key": "guo2024efficient",
+            "title": "Efficient Wireless Federated Learning via Low-Rank Gradient Factorization",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与'Efficient Wireless Federated Learning via Low-Rank Gradient Factorization'（Mingzhao Guo et al., 2024）匹配的论文。候选[0]虽涉及FL低秩更新但作者和标题均不符，其余候选与该论文主题或作者均不匹配。"
+          },
+          {
+            "key": "hu2022lora",
+            "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+            "arxiv_id": "2106.09685",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhao2021fedpage",
+            "title": "FedPAGE: A Fast Local Stochastic Gradient Method for Communication-Efficient Federated Learning",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'FedPAGE: A Fast Local Stochastic Gradient Method for Communication-Efficient Federated Learning' 匹配的论文。该论文由 Haoyu Zhao, Zhize Li, Peter Richtárik 于2021年发表，涉及基于PAGE估计器的联邦学习方法，但候选列表中均无此论文。"
+          },
+          {
+            "key": "stich2018sparsified",
+            "title": "The Error-Feedback Framework: Better Rates for SGD with Delayed Gradients and Compressed Communication",
+            "arxiv_id": "1909.05350",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述中该处引用的是 \\citep{stich2018sparsified}（2018年的sparsified SGD论文），而当前被审查的论文是2019年的'The Error-Feedback Framework'，二者是不同的论文。当前论文并未被该描述所引用，描述内容与当前论文无对应引用关系。虽然当前论文确实涉及error compensation/error feedback机制，但该描述将error feedback的关键洞见归因于stich2018sparsified，而非当前论文，因此当前论文与该描述完全不对应。"
+          },
+          {
+            "key": "peng2026rethinking",
+            "title": "Rethinking LoRA for Data Heterogeneous Federated Learning: Subspace and State Alignment",
+            "arxiv_id": "2602.01746",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "richtarik2021ef21",
+            "title": "EF21: A New, Simpler, Theoretically Better, and Practically Faster Error Feedback",
+            "arxiv_id": "2106.05203",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "konecny2016federated",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency",
+            "arxiv_id": "1610.05492",
+            "accuracy_level": 1,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述称该论文通过 structured updates 来减少'通信轮次数量'（reducing the number of communication rounds），但这是对论文贡献的实质性误描述。该论文的核心目标是减少每轮的上行通信成本（uplink communication costs），即压缩每轮传输的数据量（通过 structured updates 和 sketched updates），而非减少通信轮次。减少通信轮次是 FedAvg（McMahan et al., 2017）的贡献。这一错误会误导读者对该论文工作定位的理解。第二处引用（通信瓶颈描述）是准确的。"
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "base_sonnet4.6",
+        "score": 7.36,
+        "total_citations": 22,
+        "evaluated_citations": 15,
+        "fabricated_count": 5,
+        "key_refs_total": 9,
+        "key_refs_covered": 7,
+        "coverage_rate": 0.778,
+        "citation_count_bonus": 1.65,
+        "key_coverage": [
+          {
+            "key_ref": "FedAvg (McMahan et al., AISTATS 2017)",
+            "covered": true,
+            "matched_cite_key": "mcmahan2017communication",
+            "note": "完全匹配，标题与作者一致，为 AISTATS 2017 的 FedAvg 原始论文。"
+          },
+          {
+            "key_ref": "SCAFFOLD (Karimireddy et al., ICML 2020)",
+            "covered": true,
+            "matched_cite_key": "karimireddy2020scaffold",
+            "note": "完全匹配，标题与作者一致，为 ICML 2020 的 SCAFFOLD 原始论文。"
+          },
+          {
+            "key_ref": "FedProx (Li et al., MLSys 2020)",
+            "covered": true,
+            "matched_cite_key": "li2020fedprox",
+            "note": "完全匹配，标题（Federated Optimization in Heterogeneous Networks）与作者一致，为 MLSys 2020 的 FedProx 论文。"
+          },
+          {
+            "key_ref": "Federated Learning with Compression (Haddadpour et al., AISTATS 2021)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Haddadpour et al. (AISTATS 2021) 关于压缩联邦学习的论文，列表中无任何等价替代项。"
+          },
+          {
+            "key_ref": "Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Valdeira et al. (2024) 的论文。bao2025efskip 虽涉及压缩联邦学习与 Error Feedback，但作者和标题均不同，不构成等价替代。"
+          },
+          {
+            "key_ref": "FedSub",
+            "covered": true,
+            "matched_cite_key": "zhang2025fedsub",
+            "note": "完全匹配，标题（An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data）与 FedSub 高度对应。"
+          },
+          {
+            "key_ref": "FedLoRU",
+            "covered": true,
+            "matched_cite_key": "park2024fedloru",
+            "note": "完全匹配，标题（Communication-Efficient Federated Low-Rank Update Algorithm...）与 FedLoRU 高度对应。"
+          },
+          {
+            "key_ref": "ILoRA",
+            "covered": true,
+            "matched_cite_key": "zhou2025ilora",
+            "note": "完全匹配，标题（ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation）与 ILoRA 完全一致。"
+          },
+          {
+            "key_ref": "GaLore (Zhao et al., 2024)",
+            "covered": true,
+            "matched_cite_key": "zhao2024galore",
+            "note": "完全匹配，标题（GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection）与作者一致。"
+          }
+        ],
+        "highly_relevant": 6,
+        "weakly_relevant": 4,
+        "irrelevant": 5,
+        "details": [
+          {
+            "key": "azam2022recycling",
+            "title": "Recycling Model Updates in Federated Learning: Are Gradient Subspaces Low-Rank?",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "relevance": 2,
+            "reason": "SCAFFOLD 是 Plan 中 Key References 明确列出的核心文献，直接对应 Section 1 中 'Variance Reduction' 部分的核心方法。该论文提出通过控制变量（control variates）纠正梯度方向以解决 Client Drift 问题，是本研究 Subspace-SCAFFOLD 的直接前驱工作，也是 Section 3 中所述'现有子空间方法与 SCAFFOLD 类方差缩减不兼容'这一核心研究 Gap 的直接来源。"
+          },
+          {
+            "key": "mcmahan2017communication",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "relevance": 2,
+            "reason": "该论文即为 FedAvg 的原始论文（McMahan et al., AISTATS 2017），在 Plan 的 Key References 中明确列出，同时也是 Section 1 'Federated Learning' 中作为基础算法重点介绍的核心工作，是整个联邦学习领域的奠基性文献，与本研究动机直接相关。"
+          },
+          {
+            "key": "zhou2025ilora",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "relevance": 2,
+            "reason": "ILoRA 是 Plan 中 Section 3 'Subspace Learning' 下 'Subspace Optimization in FL' 方向的直接代表性工作，且在 Plan 的 Key References 中被明确列出（ILoRA）。该论文研究联邦学习中的低秩适配方法，与本文动机高度契合——现有子空间方法与 SCAFFOLD 类方差减少技术不兼容的核心 Gap 正是针对此类工作提出的。"
+          },
+          {
+            "key": "albasyoni2020optimal",
+            "title": "Optimal Gradient Compression for Distributed and Federated Learning",
+            "relevance": 1,
+            "reason": "该论文研究分布式和联邦学习中的最优梯度压缩方法，与Plan中Section 2（Communication Compression）的核心主题高度相关，涉及量化/稀疏化等压缩技术的理论分析。然而，它并未出现在Plan的Key References列表中，也不是Plan中明确点名的核心代表性工作（如Haddadpour et al. 2021或Valdeira et al. 2024）。该论文更侧重于压缩方案的最优性分析，而非Plan重点强调的Error Feedback机制或与异质性/方差缩减的交互问题，因此属于相邻技术背景，归为弱相关。"
+          },
+          {
+            "key": "bernstein2018signsgd",
+            "title": "Convergence Rate of Sign Stochastic Gradient Descent for Non-Convex Functions",
+            "relevance": 1,
+            "reason": "该论文研究符号随机梯度下降（SignSGD）的收敛性，SignSGD本质上是一种极端的1-bit量化/稀疏化压缩方法，与Plan中Section 2（Communication Compression）的量化和稀疏化方向有技术交叉。然而，该论文聚焦于非凸函数的理论收敛分析，并非联邦学习场景，也未涉及Error Feedback、Client Drift或子空间方法等Plan核心议题，且不在Key References列表中。因此属于相邻技术领域，判定为弱相关。"
+          },
+          {
+            "key": "zhang2025fedsub",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "relevance": 2,
+            "reason": "该论文直接对应 Plan Section 3 中 'Subspace Optimization in FL' 的核心方向，标题明确指向联邦学习中的子空间算法，且专门针对异构数据（Non-IID）场景，与 Plan 中 FedSub/FedLoRU/ILoRA 同属一类代表性工作。其研究内容高度契合 Plan 所描述的 '现有子空间方法与 SCAFFOLD 类方差缩减不兼容' 这一核心 Gap 的背景动机，是直接激发 Subspace-SCAFFOLD 研究的同类先驱工作。"
+          },
+          {
+            "key": "wang2020tackling",
+            "title": "Tackling the Objective Inconsistency Problem in Heterogeneous Federated Optimization",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "guo2024efficient",
+            "title": "Efficient Wireless Federated Learning via Low-Rank Gradient Factorization",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "hu2022lora",
+            "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+            "relevance": 1,
+            "reason": "LoRA 是低秩适配的代表性工作，与 Plan Section 3 中的 'Low-Rank Gradient Approximation / Subspace Learning' 方向高度相邻，为子空间方法提供了重要的技术背景和思想来源。然而，LoRA 本身是针对大语言模型微调的参数高效方法，并非联邦学习场景下的子空间优化工作，也未出现在 Plan 的 Key References 列表中。Plan 明确列出的子空间相关核心文献是 GaLore、FedSub、FedLoRU、ILoRA，LoRA 更多作为这些工作的前驱背景而非核心引用，因此判定为弱相关。"
+          },
+          {
+            "key": "zhao2021fedpage",
+            "title": "FedPAGE: A Fast Local Stochastic Gradient Method for Communication-Efficient Federated Learning",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "stich2018sparsified",
+            "title": "The Error-Feedback Framework: Better Rates for SGD with Delayed Gradients and Compressed Communication",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "peng2026rethinking",
+            "title": "Rethinking LoRA for Data Heterogeneous Federated Learning: Subspace and State Alignment",
+            "relevance": 2,
+            "reason": "该论文直接针对联邦学习中数据异构（Non-IID）场景下的LoRA/子空间方法，与Plan中Section 3描述的'Subspace Optimization in FL'核心方向高度契合，且标题明确涉及'子空间'与'状态对齐'，后者与Plan中指出的关键Gap（子空间切换导致历史控制变量失效）直接相关。该工作很可能是FedLoRU/ILoRA同类方法，属于Plan Key References中明确列出的代表性工作范畴，同时其对数据异构问题的处理也与Section 1的核心议题呼应，是直接激发Subspace-SCAFFOLD研究动机的背景工作。"
+          },
+          {
+            "key": "richtarik2021ef21",
+            "title": "EF21: A New, Simpler, Theoretically Better, and Practically Faster Error Feedback",
+            "relevance": 2,
+            "reason": "EF21 是 Error Feedback (EF) 领域的重要代表性工作，直接对应 Plan Section 2 中明确描述的核心方向——'Error Feedback (EF): Accumulating compression error to preserve convergence'。该论文提出了改进的 EF 框架，在理论和实践上均优于经典 EF，是理解 EF 机制及其局限性（如需存储 R^d 误差向量导致内存瓶颈）的关键背景文献，高度契合 Plan 中关于 EF 内存开销问题的动机描述。"
+          },
+          {
+            "key": "konecny2016federated",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency",
+            "relevance": 1,
+            "reason": "该论文（Konečný et al., 2016）是联邦学习通信效率的早期奠基性工作，提出了结构化更新和草图更新等压缩通信思想，与Plan中Section 2（Communication Compression）的核心主题高度相关。然而，它并未被列入Plan的Key References，且其内容早于SCAFFOLD、Error Feedback等Plan重点讨论的方法，属于通信压缩方向的历史背景工作而非核心代表文献，因此判定为弱相关（1分）。"
+          }
+        ]
+      }
+    },
+    "reasflow_dpsk": {
+      "content_accuracy": {
+        "article_name": "reasflow_dpsk",
+        "score": 8.68,
+        "total_citations": 28,
+        "verified_citations": 15,
+        "fulltext_verified": 14,
+        "semantic_scholar_verified": 1,
+        "failed_count": 0,
+        "hallucination_count": 3,
+        "hallucinations": [
+          {
+            "key": "su2023non",
+            "title": "A Non-parametric View of FedAvg and FedProx: Beyond Stationary Points",
+            "arxiv_id": "2106.15216",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "The paper does acknowledge that data heterogeneity causes local updates to diverge from the global objective (a form of client drift), which supports part of the description. However, the paper's primary contribution is actually showing that FedAvg and FedProx *can* achieve optimal error rates in heterogeneous settings and introducing 'federation gain' — a more optimistic framing than 'severely degrades performance and stability.' The description somewhat misrepresents the paper's overall message by using it to support a negative characterization of client drift. That said, since this is a joint citation with li2019convergence, the 'severely degrades' claim is likely primarily attributed to that paper, making the overall citation use acceptable."
+          },
+          {
+            "key": "konevcny2016federated",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency",
+            "arxiv_id": "1610.05492",
+            "accuracy_level": 1,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "第一段描述将 FedAvg 算法（通过多步本地 SGD 摊销通信成本）归因于 Konečný et al. (2016)，这是实质性错误。FedAvg 算法由 McMahan et al. (2017) 提出，而 Konečný et al. (2016) 的核心贡献是提出 structured updates（低秩/随机掩码）和 sketched updates（量化、随机旋转、子采样）来压缩上行通信，两者方法不同。第二段描述将该论文归类为无偏压缩器（随机量化等）有一定合理性，因为论文确实涉及随机子采样和量化技术，作为联合引用可接受。但第一段的错误会严重误导读者对该论文实际贡献的理解。"
+          },
+          {
+            "key": "Qian2020ErrorCD",
+            "title": "Error Compensated Distributed SGD Can Be Accelerated",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Error Compensated Distributed SGD Can Be Accelerated'（Xun Qian, Peter Richtárik, Tong Zhang, 2020）匹配的论文。虽然候选中有若干关于分布式SGD和梯度压缩的相关工作，但没有一篇与该论文标题、作者组合相符。"
+          }
+        ],
+        "details": [
+          {
+            "key": "zhou2021communication",
+            "title": "Communication-Efficient Federated Learning with Compensated Overlap-FedAvg",
+            "arxiv_id": "2012.06706",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "该描述将 zhou2021communication 与 horvath2023stochastic 联合引用，声称这类随机分布式学习方法的分析通常依赖凸性或强凸性假设。该论文确实提供了理论收敛分析（摘要中明确提及），而2020-2021年联邦学习收敛分析论文普遍采用凸性或强凸性假设，这与该论文的理论分析风格一致。描述未歪曲论文主要贡献，仅引用其理论分析的某一特征，属于合理描述。"
+          },
+          {
+            "key": "su2023non",
+            "title": "A Non-parametric View of FedAvg and FedProx: Beyond Stationary Points",
+            "arxiv_id": "2106.15216",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "The paper does acknowledge that data heterogeneity causes local updates to diverge from the global objective (a form of client drift), which supports part of the description. However, the paper's primary contribution is actually showing that FedAvg and FedProx *can* achieve optimal error rates in heterogeneous settings and introducing 'federation gain' — a more optimistic framing than 'severely degrades performance and stability.' The description somewhat misrepresents the paper's overall message by using it to support a negative characterization of client drift. That said, since this is a joint citation with li2019convergence, the 'severely degrades' claim is likely primarily attributed to that paper, making the overall citation use acceptable."
+          },
+          {
+            "key": "konevcny2016federated",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency",
+            "arxiv_id": "1610.05492",
+            "accuracy_level": 1,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "第一段描述将 FedAvg 算法（通过多步本地 SGD 摊销通信成本）归因于 Konečný et al. (2016)，这是实质性错误。FedAvg 算法由 McMahan et al. (2017) 提出，而 Konečný et al. (2016) 的核心贡献是提出 structured updates（低秩/随机掩码）和 sketched updates（量化、随机旋转、子采样）来压缩上行通信，两者方法不同。第二段描述将该论文归类为无偏压缩器（随机量化等）有一定合理性，因为论文确实涉及随机子采样和量化技术，作为联合引用可接受。但第一段的错误会严重误导读者对该论文实际贡献的理解。"
+          },
+          {
+            "key": "Zhou2025ILoRAFL",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "arxiv_id": "2511.16069",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Yu2020HeterogeneousFL",
+            "title": "Heterogeneous Federated Learning",
+            "arxiv_id": "2008.06767",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Zhang2022CCFedAvgCC",
+            "title": "CC-FedAvg: Computationally Customified Federated Averaging",
+            "arxiv_id": "2212.13679",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhang2025efficient",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "arxiv_id": "2509.05213",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "arxiv_id": "1910.06378",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "arxiv_id": "2205.13692",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "He2023LowerBA",
+            "title": "Lower Bounds and Accelerated Algorithms in Distributed Stochastic Optimization with Communication Compression",
+            "arxiv_id": "2305.07612",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Yang2021AchievingLS",
+            "title": "Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning",
+            "arxiv_id": "2101.11203",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Qian2020ErrorCD",
+            "title": "Error Compensated Distributed SGD Can Be Accelerated",
+            "arxiv_id": "",
+            "accuracy_level": 0,
+            "accurate": false,
+            "hallucination_type": "fabricated",
+            "mode": "semantic_scholar",
+            "details": "候选共 10 条，LLM 判定无与 Bib 对应的论文。理由: 候选列表中没有与 'Error Compensated Distributed SGD Can Be Accelerated'（Xun Qian, Peter Richtárik, Tong Zhang, 2020）匹配的论文。虽然候选中有若干关于分布式SGD和梯度压缩的相关工作，但没有一篇与该论文标题、作者组合相符。"
+          },
+          {
+            "key": "li2019convergence",
+            "title": "On the Convergence of FedAvg on Non-IID Data",
+            "arxiv_id": "1907.02189",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Park2024CommunicationEfficientFL",
+            "title": "Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization",
+            "arxiv_id": "2409.12371",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Condat2024LoCoDLCD",
+            "title": "LoCoDL: Communication-Efficient Distributed Learning with Local Training and Compression",
+            "arxiv_id": "2403.04348",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_dpsk",
+        "score": 6.07,
+        "total_citations": 27,
+        "evaluated_citations": 15,
+        "fabricated_count": 1,
+        "key_refs_total": 9,
+        "key_refs_covered": 4,
+        "coverage_rate": 0.444,
+        "citation_count_bonus": 2.025,
+        "key_coverage": [
+          {
+            "key_ref": "FedAvg (McMahan et al., AISTATS 2017)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中没有 McMahan et al. 2017 的原始 FedAvg 论文（Communication-Efficient Learning of Deep Networks from Decentralized Data）。konevcny2016federated 是 Konečný et al. 2016 的通信效率策略论文，li2019convergence 是收敛性分析论文，均不能替代原始 FedAvg 论文。"
+          },
+          {
+            "key_ref": "SCAFFOLD (Karimireddy et al., ICML 2020)",
+            "covered": true,
+            "matched_cite_key": "karimireddy2020scaffold",
+            "note": "karimireddy2020scaffold 对应 SCAFFOLD 论文，arXiv 版本标注为 2019，正式发表于 ICML 2020，属于同一论文的不同版本，视为覆盖。"
+          },
+          {
+            "key_ref": "FedProx (Li et al., MLSys 2020)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Li et al. 的 FedProx 论文（Federated Optimization in Heterogeneous Networks）。su2023non 虽然提到了 FedProx，但其本身是关于非参数视角的分析论文，不能作为 FedProx 原始论文的等价替代。"
+          },
+          {
+            "key_ref": "Federated Learning with Compression (Haddadpour et al., AISTATS 2021)",
+            "covered": true,
+            "matched_cite_key": "Haddadpour2020FederatedLW",
+            "note": "Haddadpour2020FederatedLW 标题为 'Federated Learning with Compression: Unified Analysis and Sharp Guarantees'，与 Plan 中描述的论文高度一致，arXiv 版本标注为 2020，正式发表于 AISTATS 2021，视为覆盖。"
+          },
+          {
+            "key_ref": "Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Valdeira et al. 2024 关于压缩误差反馈的联邦学习论文。列表中虽有多篇误差反馈相关论文（如 Fatkhullin2023MomentumPI、Tang2019DoubleSqueezePS），但均非该特定论文。"
+          },
+          {
+            "key_ref": "FedSub",
+            "covered": true,
+            "matched_cite_key": "zhang2025efficient",
+            "note": "zhang2025efficient 标题为 'An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data'，与 FedSub 的描述高度吻合（面向异构数据的联邦学习子空间算法），视为覆盖。"
+          },
+          {
+            "key_ref": "FedLoRU",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 FedLoRU 论文。Park2024CommunicationEfficientFL 涉及低秩更新但标题不符，Zhou2025ILoRAFL 是 ILoRA 而非 FedLoRU，均不能作为等价替代。"
+          },
+          {
+            "key_ref": "ILoRA",
+            "covered": true,
+            "matched_cite_key": "Zhou2025ILoRAFL",
+            "note": "Zhou2025ILoRAFL 标题为 'ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation'，与 Plan 中的 ILoRA 完全对应。"
+          },
+          {
+            "key_ref": "GaLore (Zhao et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Zhao et al. 2024 的 GaLore 论文（Gradient Low-Rank Projection）。列表中无任何与 GaLore 匹配的条目。"
+          }
+        ],
+        "highly_relevant": 7,
+        "weakly_relevant": 7,
+        "irrelevant": 1,
+        "details": [
+          {
+            "key": "zhou2021communication",
+            "title": "Communication-Efficient Federated Learning with Compensated Overlap-FedAvg",
+            "relevance": 1,
+            "reason": "该论文研究联邦学习中的通信效率问题，与Plan的Section 2（通信压缩）方向有交叉，属于通信高效联邦学习的相邻工作。然而，其核心贡献是基于流水线重叠（Overlap）的通信优化策略，并非Plan重点强调的量化、稀疏化或误差反馈（Error Feedback）机制，也未涉及子空间学习或SCAFFOLD式方差减少。该论文未出现在Key References列表中，与本文核心动机（子空间方法与方差减少的兼容性问题）关联较弱，仅作为通信高效FL的广泛背景工作具有一定参考价值。"
+          },
+          {
+            "key": "su2023non",
+            "title": "A Non-parametric View of FedAvg and FedProx: Beyond Stationary Points",
+            "relevance": 1,
+            "reason": "该论文从非参数视角分析FedAvg和FedProx的收敛性质，超越驻点分析，与Plan中Section 1提及的FedAvg和FedProx相关。然而，其核心贡献是理论分析视角的拓展，并非Plan所强调的客户端漂移、方差缩减、通信压缩或子空间学习等核心方向，也不在Key References列表中。因此属于相邻技术/更广泛背景，判定为弱相关。"
+          },
+          {
+            "key": "konevcny2016federated",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency",
+            "relevance": 2,
+            "reason": "该论文是联邦学习通信效率领域的奠基性工作之一，由Konečný等人提出，系统性地探讨了结构化更新（structured updates）和草图更新（sketched updates）等通信压缩策略，直接对应Plan中Section 2（Communication Compression）所涵盖的量化与稀疏化方向。尽管未被列入Key References，但该论文是Plan核心研究方向（通信高效联邦学习）的直接代表性工作，是激发后续压缩方法（包括本文动机）的重要背景文献，在Related Works中引用高度合理且必要。"
+          },
+          {
+            "key": "Zhou2025ILoRAFL",
+            "title": "ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation",
+            "relevance": 2,
+            "reason": "ILoRA 明确列于 Plan 的 Key References 列表中，且直接对应 Section 3 'Subspace Learning in FL' 中的核心工作之一。该论文将低秩适应（LoRA）引入联邦学习以处理客户端异构性聚合问题，是 Plan 所描述的'现有子空间方法与 SCAFFOLD 类方差减少不兼容'这一研究缺口的直接前驱工作，对论文动机的建立具有核心支撑作用。"
+          },
+          {
+            "key": "Yu2020HeterogeneousFL",
+            "title": "Heterogeneous Federated Learning",
+            "relevance": 1,
+            "reason": "该论文研究异构联邦学习（Heterogeneous FL），与Plan中Section 1提到的'数据异构性挑战（Non-IID/Client Drift）'主题相关，属于联邦学习中数据/系统异构性的背景工作。然而，该论文并未出现在Plan的Key References列表中，也不是Plan重点强调的核心方法（如SCAFFOLD的方差缩减、通信压缩或子空间学习），更多属于联邦学习异构性问题的广泛背景上下文，因此评定为弱相关。"
+          },
+          {
+            "key": "Zhang2022CCFedAvgCC",
+            "title": "CC-FedAvg: Computationally Customified Federated Averaging",
+            "relevance": 1,
+            "reason": "CC-FedAvg 关注联邦学习中客户端计算资源异构性（Computationally Customized），允许不同客户端执行不同计算量的本地更新，属于联邦学习系统效率优化的相邻方向。它与 Plan 中 Section 1 的 FedAvg 基础框架有关联，也涉及通信/计算效率问题，但其核心贡献是计算异构适配，而非 Plan 重点强调的 Client Drift / Variance Reduction、通信压缩（量化/稀疏化/EF）或子空间学习。因此与本文核心动机（Subspace-SCAFFOLD）的直接关联较弱，属于相邻背景工作。"
+          },
+          {
+            "key": "zhang2025efficient",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "relevance": 2,
+            "reason": "该论文标题明确为'子空间算法用于异构数据上的联邦学习'，直接对应Plan第3节'Subspace Learning in FL'中提及的FedSub/FedLoRU/ILoRA等子空间FL方法，且发表于2025年，极可能就是Plan中列出的FedSub核心参考文献之一（作者与子空间FL领域高度吻合）。其研究内容——在异构数据（Non-IID）场景下的高效子空间FL算法——正是Subspace-SCAFFOLD所要解决的核心gap的直接前驱工作，属于Plan明确强调的'现有子空间方法与SCAFFOLD类方差缩减不兼容'这一动机的直接来源。"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "relevance": 2,
+            "reason": "SCAFFOLD 是 Plan 中 Key References 明确列出的核心文献（Karimireddy et al., ICML 2020），也是本研究 Subspace-SCAFFOLD 的直接方法基础。Plan 在 Section 1 中明确将其列为通过控制变量（control variates）解决 Client Drift 问题的代表性方法，同时其全维度更新和辅助变量带来的内存开销正是本研究所要解决的核心问题之一。该论文与 Plan 的核心动机高度契合。"
+          },
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "relevance": 1,
+            "reason": "该论文研究FedAvg中本地更新与表示学习的关系，与Plan中FedAvg基础算法和数据异质性（Non-IID）挑战有一定交叉，属于联邦学习的相邻研究方向。然而，它并非Plan中Key References明确列出的文献，也不直接涉及Plan核心关注的通信压缩、子空间优化或SCAFFOLD式方差减少等主题。其关于表示学习的视角与Section 3中子空间学习有间接联系，但并非直接代表性工作，因此判定为弱相关。"
+          },
+          {
+            "key": "He2023LowerBA",
+            "title": "Lower Bounds and Accelerated Algorithms in Distributed Stochastic Optimization with Communication Compression",
+            "relevance": 1,
+            "reason": "该论文研究分布式随机优化中通信压缩的下界与加速算法，与Plan中Section 2（通信压缩）的核心主题有交叉，属于压缩通信FL的理论背景工作。然而，它并非Plan中明确列出的Key References，也不直接针对Plan强调的核心问题（EF内存开销、异构数据下压缩方差、子空间方法与SCAFFOLD不兼容性），更偏向理论下界分析而非Plan所关注的实践动机。因此判定为弱相关。"
+          },
+          {
+            "key": "Yang2021AchievingLS",
+            "title": "Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning",
+            "relevance": 1,
+            "reason": "该论文研究非IID联邦学习中部分客户端参与下的线性加速收敛性，与Plan中Section 1涉及的数据异质性（Non-IID）和联邦学习基础算法相关，属于FL理论分析的相邻工作。然而，它并未出现在Key References列表中，也不直接针对Plan强调的核心问题（Client Drift的方差缩减、通信压缩的内存开销、子空间方法与SCAFFOLD的兼容性），因此属于研究背景的更广泛上下文，相关性较弱。"
+          },
+          {
+            "key": "Qian2020ErrorCD",
+            "title": "Error Compensated Distributed SGD Can Be Accelerated",
+            "relevance": 0,
+            "reason": "维度1 内容准确性检测：完全捏造论文（accuracy_level=0），直接计为不相关"
+          },
+          {
+            "key": "li2019convergence",
+            "title": "On the Convergence of FedAvg on Non-IID Data",
+            "relevance": 2,
+            "reason": "该论文直接分析了FedAvg在Non-IID数据下的收敛性，是Plan Section 1中'数据异质性挑战'与'Client Drift'问题的核心背景文献。虽未列入Key References，但它是理论上支撑'非IID数据导致FedAvg性能下降'这一核心动机的直接代表性工作，与SCAFFOLD等方差缩减方法的提出背景高度契合，在Related Work中引用具有强必要性。"
+          },
+          {
+            "key": "Park2024CommunicationEfficientFL",
+            "title": "Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization",
+            "relevance": 2,
+            "reason": "该论文直接研究联邦学习中的低秩更新算法（Communication-Efficient Federated Low-Rank Update），与Plan第3节'Subspace Learning in FL'中明确列出的FedLoRU高度契合（FedLoRU即Federated Low-Rank Update），且同时涉及通信效率问题（Plan第2节核心主题）。该工作是Plan所描述的'现有子空间方法'的直接代表性工作，属于本研究动机中需要指出局限性（与SCAFFOLD类方差缩减不兼容）的目标方法之一，相关性极强。"
+          },
+          {
+            "key": "Condat2024LoCoDLCD",
+            "title": "LoCoDL: Communication-Efficient Distributed Learning with Local Training and Compression",
+            "relevance": 2,
+            "reason": "LoCoDL 直接结合了本地训练（Local Training，对应 FedAvg/SCAFFOLD 框架下的客户端本地步骤）与通信压缩（Communication Compression），并针对异构数据场景下的收敛问题提出了方差控制机制，与 Plan 中 Section 1（联邦学习中的 Client Drift 与方差缩减）和 Section 2（通信压缩与 Error Feedback 的内存/收敛问题）高度契合。该工作属于 Plan 核心研究方向——通信高效联邦学习中压缩与方差缩减结合——的直接代表性工作，是激发 Subspace-SCAFFOLD 动机的重要背景文献（展示了在全维度下结合压缩与控制变量的方法，从而反衬出子空间方法的必要性）。"
+          }
+        ]
+      }
+    },
+    "reasflow_gpt51": {
+      "content_accuracy": {
+        "article_name": "reasflow_gpt51",
+        "score": 9.37,
+        "total_citations": 54,
+        "verified_citations": 15,
+        "fulltext_verified": 15,
+        "semantic_scholar_verified": 0,
+        "failed_count": 0,
+        "hallucination_count": 6,
+        "hallucinations": [
+          {
+            "key": "Zhang2022CCFedAvgCC",
+            "title": "CC-FedAvg: Computationally Customized Federated Averaging",
+            "arxiv_id": "2212.13679",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述称 CC-FedAvg 展示了'计算和参与不平衡如何加剧漂移（drift）'，但实际上 CC-FedAvg 是一个解决计算异构性问题的方法论文，其核心贡献是提出模型估计策略以在有限计算资源下保持与 FedAvg 相当的收敛性能。该论文是提出解决方案，而非展示漂移被加剧的研究。将其定性为'加剧漂移'的证据严重误导了读者对该论文工作性质的理解。"
+          },
+          {
+            "key": "daning2017weighted",
+            "title": "Weighted Parallel SGD for Distributed Unbalanced-Workload Training System",
+            "arxiv_id": "1708.04801",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述将 WP-SGD 置于联邦学习（FedAvg、FedProx）的语境下，讨论其如何'加剧 drift'，但该论文实际上是针对异构分布式计算环境中不均衡工作负载的训练问题，提出了一种加权并行 SGD 解决方案，而非展示计算不平衡如何加剧 drift。论文的核心贡献是通过加权模型参数组合来缓解节点性能不一致带来的负面影响，而非联邦学习中的 client drift 问题。描述实质性地歪曲了该论文的方法与贡献，会误导读者认为该论文是联邦学习领域研究 drift 问题的工作。"
+          },
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "arxiv_id": "2205.13692",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 第一处描述称 collins2022fedavg 指出 FedAvg '可能收敛到有偏的驻点（biased stationary points）'，这与论文实际内容相悖。该论文的核心论点恰恰是 FedAvg 通过本地更新能有效学习客户端间的公共数据表示，强调其有效性，而非收敛偏差问题。将该论文与'收敛到有偏驻点'挂钩会严重误导读者对其贡献的理解。第二处描述（全局模型在低维特征子空间中运行）与论文在线性表示设置下的工作基本吻合，属于合理概括。"
+          }
+        ],
+        "details": [
+          {
+            "key": "chen2024enhancing",
+            "title": "Enhancing Zeroth-order Fine-tuning for Language Models with Low-rank Structures",
+            "arxiv_id": "2410.07698",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Zhang2022CCFedAvgCC",
+            "title": "CC-FedAvg: Computationally Customized Federated Averaging",
+            "arxiv_id": "2212.13679",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述称 CC-FedAvg 展示了'计算和参与不平衡如何加剧漂移（drift）'，但实际上 CC-FedAvg 是一个解决计算异构性问题的方法论文，其核心贡献是提出模型估计策略以在有限计算资源下保持与 FedAvg 相当的收敛性能。该论文是提出解决方案，而非展示漂移被加剧的研究。将其定性为'加剧漂移'的证据严重误导了读者对该论文工作性质的理解。"
+          },
+          {
+            "key": "li2019convergence",
+            "title": "On the Convergence of FedAvg on Non-IID Data",
+            "arxiv_id": "1907.02189",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Ma2017ImplicitRI",
+            "title": "Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution",
+            "arxiv_id": "1711.10467",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述将该论文归入'许多问题具有有效低维结构'的证据，但论文真正的核心贡献是证明梯度下降在非凸统计估计中具有隐式正则化效果（无需显式正则化即可线性收敛）。虽然论文确实涉及低秩矩阵补全等低维结构问题，但将其主要贡献概括为'problems admit effective low-dimensional structure'是对论文重点的轻微偏移。描述中'implicit-regularization analyses for nonconvex estimation'部分是准确的，整体偏差较轻，不至于严重误导读者。"
+          },
+          {
+            "key": "zhang2025convex",
+            "title": "Non-convex composite federated learning with heterogeneous data",
+            "arxiv_id": "2502.03958",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] The description partially mischaracterizes this paper by grouping it with methods that use 'full-dimensional control or dual variables.' In contrast, this paper's key contribution is explicitly decoupling proximal operator evaluation from communication and sending only a single d-dimensional vector per round—avoiding the extra dual variables or doubled communication dimensions that the description implies. The broader characterization of extending drift correction to non-smooth/composite objectives is accurate, and since this is a multi-citation context, the overall description is only mildly misleading for this specific paper."
+          },
+          {
+            "key": "Zhou2025FedCanonNC",
+            "title": "FedCanon: Non-Convex Composite Federated Learning with Efficient Proximal Operation on Heterogeneous Data",
+            "arxiv_id": "2504.11903",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Huang2023StochasticCA",
+            "title": "Stochastic Controlled Averaging for Federated Learning with Communication Compression",
+            "arxiv_id": "2308.08165",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "daning2017weighted",
+            "title": "Weighted Parallel SGD for Distributed Unbalanced-Workload Training System",
+            "arxiv_id": "1708.04801",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述将 WP-SGD 置于联邦学习（FedAvg、FedProx）的语境下，讨论其如何'加剧 drift'，但该论文实际上是针对异构分布式计算环境中不均衡工作负载的训练问题，提出了一种加权并行 SGD 解决方案，而非展示计算不平衡如何加剧 drift。论文的核心贡献是通过加权模型参数组合来缓解节点性能不一致带来的负面影响，而非联邦学习中的 client drift 问题。描述实质性地歪曲了该论文的方法与贡献，会误导读者认为该论文是联邦学习领域研究 drift 问题的工作。"
+          },
+          {
+            "key": "reguieg2023comparative",
+            "title": "A Comparative Evaluation of FedAvg and Per-FedAvg Algorithms for Dirichlet Distributed Heterogeneous Data",
+            "arxiv_id": "2309.01275",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "描述将该论文定性为「Dirichlet异质性下的实证研究」，与论文实际内容高度吻合：该论文确实使用Dirichlet分布建模Non-IID数据异质性，并对FedAvg与Per-FedAvg进行实证比较。「computation and participation imbalances」部分更可能指向同组引用中的CC-FedAvg和WP-SGD等工作，在多文献联合引用语境下不构成对本文的错误归因。整体描述准确。"
+          },
+          {
+            "key": "Hinton2022TheFA",
+            "title": "The Forward-Forward Algorithm: Some Preliminary Investigations",
+            "arxiv_id": "2212.13345",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 描述将Hinton的Forward-Forward算法归类为支持'优化可限制在精心选择子空间'的证据，并与'subspace methods'并列。FF算法的核心贡献是层局部学习（layer-local learning）和用两次前向传播替代反向传播，其动机是生物合理性，而非子空间约束优化。'layer-local learning'部分描述准确，但将其纳入'subspace methods'框架是概念上的牵强类比，可能轻微误导读者对该论文贡献的理解，但不构成严重错误。"
+          },
+          {
+            "key": "Wen2024ACA",
+            "title": "A Communication and Computation Efficient Fully First-order Method for Decentralized Bilevel Optimization",
+            "arxiv_id": "2410.14115",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "arxiv_id": "2205.13692",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "[multi-cite保护] 第一处描述称 collins2022fedavg 指出 FedAvg '可能收敛到有偏的驻点（biased stationary points）'，这与论文实际内容相悖。该论文的核心论点恰恰是 FedAvg 通过本地更新能有效学习客户端间的公共数据表示，强调其有效性，而非收敛偏差问题。将该论文与'收敛到有偏驻点'挂钩会严重误导读者对其贡献的理解。第二处描述（全局模型在低维特征子空间中运行）与论文在线性表示设置下的工作基本吻合，属于合理概括。"
+          },
+          {
+            "key": "pan2025unbiased",
+            "title": "Unbiased Gradient Low-Rank Projection",
+            "arxiv_id": "2510.17802",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Zhu2024SPARKLEAU",
+            "title": "SPARKLE: A Unified Single-Loop Primal-Dual Framework for Decentralized Bilevel Optimization",
+            "arxiv_id": "2411.14166",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "描述准确。SPARKLE确实是去中心化双层优化的原始对偶框架，研究异质性和拓扑对收敛的影响，且在全维度下工作。'workload balancing'虽未在SPARKLE中体现，但属于多文献联合引用，可由同组其他文献支持。整体描述对SPARKLE论文的定性归类（decentralized bilevel + primal-dual corrections + full dimension）是准确的。"
+          },
+          {
+            "key": "Yang2021AchievingLS",
+            "title": "Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning",
+            "arxiv_id": "2101.11203",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_gpt51",
+        "score": 7.53,
+        "total_citations": 54,
+        "evaluated_citations": 15,
+        "fabricated_count": 0,
+        "key_refs_total": 9,
+        "key_refs_covered": 6,
+        "coverage_rate": 0.667,
+        "citation_count_bonus": 3.0,
+        "key_coverage": [
+          {
+            "key_ref": "FedAvg (McMahan et al., AISTATS 2017)",
+            "covered": true,
+            "matched_cite_key": "mcmahan2017communication",
+            "note": "mcmahan2017communication 对应 'Communication-Efficient Learning of Deep Networks from Decentralized Data'，即 FedAvg 原始论文（arXiv 2016，发表于 AISTATS 2017），完全匹配。"
+          },
+          {
+            "key_ref": "SCAFFOLD (Karimireddy et al., ICML 2020)",
+            "covered": true,
+            "matched_cite_key": "karimireddy2020scaffold",
+            "note": "karimireddy2020scaffold 对应 'SCAFFOLD: Stochastic Controlled Averaging for Federated Learning'，与 Plan 中要求的 SCAFFOLD 论文完全匹配（arXiv 2019，发表于 ICML 2020）。"
+          },
+          {
+            "key_ref": "FedProx (Li et al., MLSys 2020)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 FedProx 原始论文（'Federated Optimization in Heterogeneous Networks'，Li et al., MLSys 2020）。su2023non 虽提及 FedProx 但并非该论文本身，不构成等价替代。"
+          },
+          {
+            "key_ref": "Federated Learning with Compression (Haddadpour et al., AISTATS 2021)",
+            "covered": true,
+            "matched_cite_key": "Haddadpour2020FederatedLW",
+            "note": "Haddadpour2020FederatedLW 对应 'Federated Learning with Compression: Unified Analysis and Sharp Guarantees'，即 Plan 中要求的论文（arXiv 2020，发表于 AISTATS 2021），完全匹配。"
+          },
+          {
+            "key_ref": "Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Valdeira et al. (2024) 关于 Compressed Error Feedback 的论文。Huang2023StochasticCA、stich2019error、Fatkhullin2023MomentumPI 等均为相关但不同的论文，不构成等价替代。"
+          },
+          {
+            "key_ref": "FedSub",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到明确标题为 'FedSub' 的论文。zhang2025efficient（'An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data'）可能与之相关，但无法确认为同一论文，存疑，保守判定为 missing。"
+          },
+          {
+            "key_ref": "FedLoRU",
+            "covered": true,
+            "matched_cite_key": "Park2024CommunicationEfficientFL",
+            "note": "Park2024CommunicationEfficientFL 对应 'Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization'，标题中含 'Federated Low-Rank Update'，高度对应 FedLoRU，判定为等价匹配。"
+          },
+          {
+            "key_ref": "ILoRA",
+            "covered": true,
+            "matched_cite_key": "Zhou2025ILoRAFL",
+            "note": "Zhou2025ILoRAFL 对应 'ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation'，与 Plan 中要求的 ILoRA 完全匹配。"
+          },
+          {
+            "key_ref": "GaLore (Zhao et al., 2024)",
+            "covered": true,
+            "matched_cite_key": "Zhao2024GaLoreML",
+            "note": "Zhao2024GaLoreML 对应 'GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection'，与 Plan 中要求的 GaLore 论文完全匹配。"
+          }
+        ],
+        "highly_relevant": 3,
+        "weakly_relevant": 7,
+        "irrelevant": 5,
+        "details": [
+          {
+            "key": "chen2024enhancing",
+            "title": "Enhancing Zeroth-order Fine-tuning for Language Models with Low-rank Structures",
+            "relevance": 1,
+            "reason": "该论文研究低秩结构在语言模型零阶微调中的应用，与Plan中Section 3提到的低秩梯度近似方向（如GaLore）有一定交叉，属于子空间/低秩方法的相邻工作。然而，该论文聚焦于零阶优化（zeroth-order fine-tuning）而非联邦学习场景，也不涉及通信压缩或方差减少等核心主题，并未出现在Key References列表中，与Subspace-SCAFFOLD的核心动机（子空间方法与SCAFFOLD类方差减少的兼容性问题）关联较弱，因此判定为弱相关。"
+          },
+          {
+            "key": "Zhang2022CCFedAvgCC",
+            "title": "CC-FedAvg: Computationally Customized Federated Averaging",
+            "relevance": 1,
+            "reason": "CC-FedAvg 关注联邦学习中客户端的计算异构性（允许不同客户端执行不同计算量的本地更新），与 Plan 的核心方向（通信压缩、子空间学习、SCAFFOLD方差减少）有一定交叉，属于联邦学习系统效率优化的相邻方向。但它并非 Plan 明确列出的 Key References，也不直接针对 client drift、通信压缩误差反馈或子空间方法与方差减少的兼容性问题，因此仅为弱相关。"
+          },
+          {
+            "key": "li2019convergence",
+            "title": "On the Convergence of FedAvg on Non-IID Data",
+            "relevance": 2,
+            "reason": "该论文直接分析了FedAvg在Non-IID数据下的收敛性，是Plan中Section 1明确提及的'Data Heterogeneity Challenge'和'Client Drift'问题的核心理论支撑工作。虽然未列入Key References，但它是FedAvg在异构数据场景下收敛分析的奠基性文献，与SCAFFOLD等方差缩减方法的动机直接相关，高度契合Plan的核心研究背景。"
+          },
+          {
+            "key": "Ma2017ImplicitRI",
+            "title": "Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution",
+            "relevance": 0,
+            "reason": "该论文研究的是非凸统计估计中梯度下降的隐式正则化性质，具体针对相位恢复、矩阵补全和盲解卷积等问题的线性收敛性分析。这与Plan所描述的联邦学习通信效率、客户端漂移、压缩误差反馈或子空间优化等核心方向均无直接关联。尽管矩阵补全涉及低秩结构，但该论文的研究重点是优化理论中的收敛性证明，而非Plan所关注的联邦学习子空间方法或SCAFFOLD类方差缩减技术，难以在Related Work中找到合理的引用动机。"
+          },
+          {
+            "key": "zhang2025convex",
+            "title": "Non-convex composite federated learning with heterogeneous data",
+            "relevance": 1,
+            "reason": "该论文研究联邦学习中非凸复合优化与数据异构性问题，与Plan中关于数据异构性（Client Drift）和方差减少的核心方向有一定交叉。然而，它并非Plan明确列出的Key References之一，也不直接针对通信压缩或子空间学习这两个核心方向。其关注点（非凸复合目标函数）与Subspace-SCAFFOLD的核心动机（子空间方法与SCAFFOLD方差减少的兼容性）并无直接关联，属于联邦学习优化的相邻研究方向，在Related Works中提及尚属合理但并非核心支撑文献。"
+          },
+          {
+            "key": "Zhou2025FedCanonNC",
+            "title": "FedCanon: Non-Convex Composite Federated Learning with Efficient Proximal Operation on Heterogeneous Data",
+            "relevance": 1,
+            "reason": "FedCanon 研究联邦学习中异构数据下的复合优化问题，涉及近端操作（proximal operation），与 Plan 中 FedProx 的近端正则化方向有一定交叉，属于处理数据异质性（client drift）的相邻技术路线。但该论文聚焦于复合非凸优化结构，并非 Plan 核心强调的方差缩减（SCAFFOLD类）、通信压缩或子空间学习方向，也未出现在 Key References 中，因此判定为弱相关。"
+          },
+          {
+            "key": "Huang2023StochasticCA",
+            "title": "Stochastic Controlled Averaging for Federated Learning with Communication Compression",
+            "relevance": 2,
+            "reason": "该论文直接结合了 SCAFFOLD 的方差减少机制与通信压缩技术，恰好横跨 Plan 中 Section 1（SCAFFOLD 变体）和 Section 2（通信压缩与误差反馈）两个核心方向。其研究内容与 Plan 中 Key References 列出的 'Federated Learning with Compression (Haddadpour et al.)' 和 'Communication-Efficient FL via Compressed Error Feedback (Valdeira et al.)' 高度同类，且直接构成 Subspace-SCAFFOLD 的动机背景——即现有方法在压缩+方差减少组合下仍需全维度辅助变量，存在内存瓶颈。该论文是 Plan 核心研究问题的直接前驱工作，相关性极强。"
+          },
+          {
+            "key": "daning2017weighted",
+            "title": "Weighted Parallel SGD for Distributed Unbalanced-Workload Training System",
+            "relevance": 0,
+            "reason": "该论文关注的是分布式训练中不均衡工作负载下的加权并行SGD方法，与Plan所涵盖的三个核心方向（联邦学习中的数据异质性/方差缩减、通信压缩、子空间学习）均无明显关联。它既不在Key References列表中，也不涉及Client Drift、SCAFFOLD控制变量、通信压缩误差反馈或低秩子空间优化等核心议题，属于不同的研究问题（负载均衡的分布式训练），难以在该Related Work框架中找到合理的引用位置。"
+          },
+          {
+            "key": "reguieg2023comparative",
+            "title": "A Comparative Evaluation of FedAvg and Per-FedAvg Algorithms for Dirichlet Distributed Heterogeneous Data",
+            "relevance": 1,
+            "reason": "该论文涉及FedAvg与Per-FedAvg在Dirichlet分布异构数据下的比较评估，与Plan中Section 1提到的FedAvg基础算法和数据异构性（Non-IID/Client Drift）挑战有一定交叉。然而，该论文并非Plan中明确列出的Key References，其核心贡献是对现有算法的比较评估，而非提出新的方差减少、压缩或子空间方法。此外，发表于无线网络会议而非顶级ML会议，与本文目标场景契合度有限。属于联邦学习数据异构性背景的相邻工作，可作为补充引用但并非核心参考。"
+          },
+          {
+            "key": "Hinton2022TheFA",
+            "title": "The Forward-Forward Algorithm: Some Preliminary Investigations",
+            "relevance": 0,
+            "reason": "该论文提出了一种基于正向-正向传播的替代反向传播的训练算法，与联邦学习、通信压缩、子空间学习均无直接关联，也不在 Plan 的 Key References 列表中，与本文研究动机（Subspace-SCAFFOLD）毫无交叉。"
+          },
+          {
+            "key": "Wen2024ACA",
+            "title": "A Communication and Computation Efficient Fully First-order Method for Decentralized Bilevel Optimization",
+            "relevance": 0,
+            "reason": "该论文研究的是去中心化双层优化（decentralized bilevel optimization）中的一阶方法，与本文的核心主题——联邦学习中的通信效率、客户端漂移（Client Drift）、方差缩减（SCAFFOLD）以及子空间学习——均无直接关联。尽管标题中包含'Communication and Computation Efficient'字样，但其技术内容聚焦于双层优化问题结构，而非Plan中描述的任何核心方向（FedAvg/SCAFFOLD类方差缩减、压缩通信/误差反馈、低秩子空间方法）。"
+          },
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "relevance": 1,
+            "reason": "该论文研究FedAvg中本地更新与表示学习的关系，与Plan中Section 1的核心主题（FedAvg、数据异质性）有一定交叉，属于联邦学习基础方向的相邻工作。然而，它并非Plan中明确列出的Key References，其核心贡献在于分析本地更新如何促进表示学习，而非直接针对Client Drift、通信压缩或子空间方法等Plan重点关注的问题。因此归为弱相关。"
+          },
+          {
+            "key": "pan2025unbiased",
+            "title": "Unbiased Gradient Low-Rank Projection",
+            "relevance": 2,
+            "reason": "该论文提出无偏梯度低秩投影方法，直接属于 Plan Section 3 'Subspace Learning' 中 'Low-Rank Gradient Approximation' 的核心研究方向，与 GaLore 等工作高度同类。其'无偏'特性与 Plan 中提到的子空间方法和方差缩减兼容性问题（控制变量在子空间切换时失效）直接相关，是激发 Subspace-SCAFFOLD 研究动机的典型背景工作，属于强相关文献。"
+          },
+          {
+            "key": "Zhu2024SPARKLEAU",
+            "title": "SPARKLE: A Unified Single-Loop Primal-Dual Framework for Decentralized Bilevel Optimization",
+            "relevance": 0,
+            "reason": "该论文研究的是去中心化双层优化（decentralized bilevel optimization）的原始-对偶框架，与本文的核心主题——联邦学习中的通信效率、客户端漂移（client drift）、方差缩减及子空间学习——均无直接关联。Plan中涉及的三个核心方向（联邦学习、通信压缩、子空间学习）均未涵盖双层优化或去中心化原始-对偶方法，该引用无法为Subspace-SCAFFOLD的动机提供支撑。"
+          },
+          {
+            "key": "Yang2021AchievingLS",
+            "title": "Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning",
+            "relevance": 1,
+            "reason": "该论文研究非IID联邦学习中部分客户端参与下的线性加速收敛性，与Plan中Section 1涉及的数据异质性（Non-IID）和联邦学习基础算法相关，属于FL理论分析的相邻工作。然而，它并非Plan明确列出的Key References，也不直接针对Client Drift的方差缩减、通信压缩或子空间学习这三个核心方向，与Subspace-SCAFFOLD的核心动机（SCAFFOLD类方差缩减与子空间方法的兼容性问题）关联较弱，因此判定为弱相关。"
+          }
+        ]
+      }
+    },
+    "reasflow_gpt54": {
+      "content_accuracy": {
+        "article_name": "reasflow_gpt54",
+        "score": 9.23,
+        "total_citations": 38,
+        "verified_citations": 15,
+        "fulltext_verified": 14,
+        "semantic_scholar_verified": 0,
+        "failed_count": 1,
+        "hallucination_count": 2,
+        "hallucinations": [
+          {
+            "key": "su2023non",
+            "title": "A Non-parametric View of FedAvg and FedProx: Beyond Stationary Points",
+            "arxiv_id": "2106.15216",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文确实分析了FedProx在异构数据分布和不平衡数据集下的表现，这与描述中'imbalance and distribution shift'有对应。但描述将论文定性为'proximal objectives can improve robustness'存在偏差：论文的核心贡献是基于RKHS的非参数回归框架下对FedAvg和FedProx的统计效率和收敛性分析，且两种算法被对称地分析（均可达到最优误差率），并非专门论证近端目标函数提升鲁棒性。描述对论文贡献的刻画有所简化和偏移，但不至于严重误导读者。"
+          },
+          {
+            "key": "koloskova2021improved",
+            "title": "An Improved Analysis of Gradient Tracking for Decentralized Machine Learning",
+            "arxiv_id": "2202.03836",
+            "accuracy_level": 1,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文的核心贡献是改进梯度跟踪（Gradient Tracking）方法在去中心化机器学习中的收敛性分析（改进对混合参数p的依赖），并提出新的证明技术。描述将其定性为'motivate historical correction when communication is lossy'（激励有损通信时的历史校正），但该论文并不专注于有损通信场景，也未提出'历史校正'机制，这会实质性地误导读者对该论文工作的理解。"
+          }
+        ],
+        "details": [
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "arxiv_id": "2205.13692",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "li2019convergence",
+            "title": "On the Convergence of FedAvg on Non-IID Data",
+            "arxiv_id": "1907.02189",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Condat2024LoCoDLCD",
+            "title": "LoCoDL: Communication-Efficient Distributed Learning with Local Training and Compression",
+            "arxiv_id": "2403.04348",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Cheng2023MomentumBN",
+            "title": "Momentum Benefits Non-IID Federated Learning Simply and Provably",
+            "arxiv_id": "2306.16504",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Huang2023StochasticCA",
+            "title": "Stochastic Controlled Averaging for Federated Learning with Communication Compression",
+            "arxiv_id": "2308.08165",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "su2023non",
+            "title": "A Non-parametric View of FedAvg and FedProx: Beyond Stationary Points",
+            "arxiv_id": "2106.15216",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文确实分析了FedProx在异构数据分布和不平衡数据集下的表现，这与描述中'imbalance and distribution shift'有对应。但描述将论文定性为'proximal objectives can improve robustness'存在偏差：论文的核心贡献是基于RKHS的非参数回归框架下对FedAvg和FedProx的统计效率和收敛性分析，且两种算法被对称地分析（均可达到最优误差率），并非专门论证近端目标函数提升鲁棒性。描述对论文贡献的刻画有所简化和偏移，但不至于严重误导读者。"
+          },
+          {
+            "key": "reguieg2023comparative",
+            "title": "A Comparative Evaluation of FedAvg and Per-FedAvg Algorithms for Dirichlet Distributed Heterogeneous Data",
+            "arxiv_id": "2309.01275",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "horvath2023stochastic",
+            "title": "Stochastic Distributed Learning with Gradient Quantization and Variance Reduction",
+            "arxiv_id": "1904.05115",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "描述将该论文称为「DIANA-style quantized variance reduction」，准确反映了该论文的核心贡献：将梯度量化（压缩）与方差缩减技术结合用于分布式学习，这正是 DIANA 方法的本质。引用键中的年份为 2023，而 arXiv 版本为 2019，可能对应该论文的期刊发表版本，不构成实质性错误。整体描述与论文内容一致。"
+          },
+          {
+            "key": "koloskova2021improved",
+            "title": "An Improved Analysis of Gradient Tracking for Decentralized Machine Learning",
+            "arxiv_id": "2202.03836",
+            "accuracy_level": 1,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "该论文的核心贡献是改进梯度跟踪（Gradient Tracking）方法在去中心化机器学习中的收敛性分析（改进对混合参数p的依赖），并提出新的证明技术。描述将其定性为'motivate historical correction when communication is lossy'（激励有损通信时的历史校正），但该论文并不专注于有损通信场景，也未提出'历史校正'机制，这会实质性地误导读者对该论文工作的理解。"
+          },
+          {
+            "key": "Rajbhandari2019ZeROMO",
+            "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+            "arxiv_id": "1910.02054",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhu2024apollo",
+            "title": "APOLLO: SGD-like Memory, AdamW-level Performance",
+            "arxiv_id": "2412.05270",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Yang2021AchievingLS",
+            "title": "Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning",
+            "arxiv_id": "2101.11203",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "failed",
+            "details": "LLM 评估失败"
+          },
+          {
+            "key": "Koloskova2019DecentralizedSO",
+            "title": "Decentralized Stochastic Optimization and Gossip Algorithms with Compressed Communication",
+            "arxiv_id": "1902.00340",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "arxiv_id": "1910.06378",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "两处引用均准确。第一处描述SCAFFOLD通过客户端和服务器控制变量（control variates）来纠正异质数据和客户端采样下的局部更新偏差，与论文内容完全一致。第二处称'控制变量需要跨轮次稳定的坐标系'，虽然论文未明确使用'稳定坐标系'这一表述，但这是对SCAFFOLD机制的合理技术推断——控制变量ci和c存储历史梯度方向信息，若坐标系动态变化则这些历史状态会失去意义，属于对论文方法隐含性质的合理阐释，并非捏造或歪曲。"
+          },
+          {
+            "key": "Robert2024LDAdamAO",
+            "title": "LDAdam: Adaptive Optimization from Low-Dimensional Gradient Statistics",
+            "arxiv_id": "2410.16103",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_gpt54",
+        "score": 7.92,
+        "total_citations": 38,
+        "evaluated_citations": 15,
+        "fabricated_count": 0,
+        "key_refs_total": 9,
+        "key_refs_covered": 6,
+        "coverage_rate": 0.667,
+        "citation_count_bonus": 2.85,
+        "key_coverage": [
+          {
+            "key_ref": "FedAvg (McMahan et al., AISTATS 2017)",
+            "covered": true,
+            "matched_cite_key": "mcmahan2017communication",
+            "note": "mcmahan2017communication 对应 'Communication-Efficient Learning of Deep Networks from Decentralized Data'，即 FedAvg 原始论文（arXiv 2016，AISTATS 2017 发表），完全匹配。"
+          },
+          {
+            "key_ref": "SCAFFOLD (Karimireddy et al., ICML 2020)",
+            "covered": true,
+            "matched_cite_key": "karimireddy2020scaffold",
+            "note": "karimireddy2020scaffold 对应 'SCAFFOLD: Stochastic Controlled Averaging for Federated Learning'，即 SCAFFOLD 原始论文，完全匹配。"
+          },
+          {
+            "key_ref": "FedProx (Li et al., MLSys 2020)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 FedProx 论文（'Federated Optimization in Heterogeneous Networks', Li et al., MLSys 2020）。su2023non 提及 FedProx 但并非该论文本身，不构成等价替代。"
+          },
+          {
+            "key_ref": "Federated Learning with Compression (Haddadpour et al., AISTATS 2021)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Haddadpour et al. AISTATS 2021 关于压缩联邦学习的论文，也无明显等价替代。"
+          },
+          {
+            "key_ref": "Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Valdeira et al. 2024 该论文，也无明显等价替代。"
+          },
+          {
+            "key_ref": "FedSub",
+            "covered": true,
+            "matched_cite_key": "zhang2025efficient",
+            "note": "zhang2025efficient 对应 'An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data (2025)'，内容高度吻合 FedSub 的描述，可视为等价匹配。"
+          },
+          {
+            "key_ref": "FedLoRU",
+            "covered": true,
+            "matched_cite_key": "Park2024CommunicationEfficientFL",
+            "note": "Park2024CommunicationEfficientFL 对应 'Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization (2024)'，与 FedLoRU（Federated Low-Rank Update）高度吻合，可视为等价匹配。"
+          },
+          {
+            "key_ref": "ILoRA",
+            "covered": true,
+            "matched_cite_key": "Zhou2025ILoRAFL",
+            "note": "Zhou2025ILoRAFL 对应 'ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation (2025)'，完全匹配。"
+          },
+          {
+            "key_ref": "GaLore (Zhao et al., 2024)",
+            "covered": true,
+            "matched_cite_key": "Zhao2024GaLoreML",
+            "note": "Zhao2024GaLoreML 对应 'GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection (2024)'，完全匹配。"
+          }
+        ],
+        "highly_relevant": 3,
+        "weakly_relevant": 12,
+        "irrelevant": 0,
+        "details": [
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "relevance": 1,
+            "reason": "该论文研究FedAvg中本地更新与表示学习的关系，与Plan中FedAvg基础算法及数据异质性（Non-IID）挑战有一定交叉，属于联邦学习的相邻研究方向。然而，它并非Plan中明确列出的Key References，也不直接涉及Plan的三个核心方向（方差缩减、通信压缩、子空间学习），更多是从表示学习角度分析FedAvg的局部更新行为，与Subspace-SCAFFOLD的核心动机（子空间方法与SCAFFOLD兼容性问题）关联较弱。"
+          },
+          {
+            "key": "li2019convergence",
+            "title": "On the Convergence of FedAvg on Non-IID Data",
+            "relevance": 2,
+            "reason": "该论文直接分析了FedAvg在Non-IID数据下的收敛性，是Plan中Section 1核心议题'数据异质性导致Client Drift'的直接理论支撑工作。虽未列入Key References，但它是FedAvg在非IID设置下收敛分析的奠基性文献之一，与Plan中'数据异质性挑战'和SCAFFOLD等方差减少方法的动机高度契合，属于直接激发本研究背景的代表性工作。"
+          },
+          {
+            "key": "Condat2024LoCoDLCD",
+            "title": "LoCoDL: Communication-Efficient Distributed Learning with Local Training and Compression",
+            "relevance": 1,
+            "reason": "LoCoDL 结合了本地训练（Local SGD/FedAvg 范式）与通信压缩两个方向，与 Plan 的 Section 1（联邦学习基础）和 Section 2（通信压缩）均有交叉。然而，它并未出现在 Plan 的 Key References 列表中，也不是 Plan 重点强调的 Error Feedback、SCAFFOLD 式方差减少或子空间学习等核心方向的直接代表性工作。其贡献更偏向于将压缩与本地步骤结合的收敛分析，属于 Plan 核心方向的相邻技术，在 Related Work 中提及合理但并非必要引用。"
+          },
+          {
+            "key": "Cheng2023MomentumBN",
+            "title": "Momentum Benefits Non-IID Federated Learning Simply and Provably",
+            "relevance": 1,
+            "reason": "该论文研究动量方法在非IID联邦学习中的作用，与Plan中'数据异质性/Client Drift'和'方差减少'方向有交叉，属于解决Non-IID问题的相邻技术路线。但它既不在Key References列表中，也不是Plan明确强调的核心方法（SCAFFOLD控制变量、FedProx近端正则化、子空间学习），动量机制与本文核心贡献（Subspace-SCAFFOLD）的直接关联较弱，因此判定为弱相关。"
+          },
+          {
+            "key": "Huang2023StochasticCA",
+            "title": "Stochastic Controlled Averaging for Federated Learning with Communication Compression",
+            "relevance": 2,
+            "reason": "该论文直接结合了SCAFFOLD式方差减少与通信压缩两个核心主题，与Plan中Section 1（SCAFFOLD控制变量）和Section 2（压缩+误差反馈）高度契合，是激发Subspace-SCAFFOLD研究动机的直接相关工作——即在全维度下解决压缩与方差减少的兼容性问题，而本文工作正是在此基础上进一步引入子空间以解决内存瓶颈。属于Plan核心研究方向的直接代表性工作。"
+          },
+          {
+            "key": "su2023non",
+            "title": "A Non-parametric View of FedAvg and FedProx: Beyond Stationary Points",
+            "relevance": 1,
+            "reason": "该论文从非参数视角分析了FedAvg和FedProx的收敛性质，超越了驻点分析，与Plan中Section 1提及的FedAvg和FedProx有直接关联。然而，该论文并非Plan中明确列出的Key References，其核心贡献在于理论分析视角的拓展，而非Plan所强调的Client Drift、方差减少、通信压缩或子空间学习等核心研究方向。因此属于相邻技术/更广泛背景，判定为弱相关。"
+          },
+          {
+            "key": "reguieg2023comparative",
+            "title": "A Comparative Evaluation of FedAvg and Per-FedAvg Algorithms for Dirichlet Distributed Heterogeneous Data",
+            "relevance": 1,
+            "reason": "该论文涉及FedAvg与Per-FedAvg在Dirichlet分布异构数据下的比较评估，与Plan中Section 1提到的FedAvg基础算法和数据异构性（Non-IID/Client Drift）挑战有一定交叉。然而，它并非Plan Key References中明确列出的文献，也不是核心方向的直接代表性工作；其重点在于个性化联邦学习（Per-FedAvg）的实验比较，而非Plan所强调的方差减少（SCAFFOLD）、通信压缩或子空间学习等核心主题。因此属于相邻/背景性工作，相关性较弱。"
+          },
+          {
+            "key": "horvath2023stochastic",
+            "title": "Stochastic Distributed Learning with Gradient Quantization and Variance Reduction",
+            "relevance": 2,
+            "reason": "该论文直接研究了分布式学习中梯度量化（Quantization）与方差缩减（Variance Reduction）的结合，与 Plan 中 Section 2（Communication Compression）和 Section 1（Variance Reduction）的核心主题高度契合。Plan 明确指出压缩引入的方差在异构环境下会损害收敛性，而该论文正是针对量化压缩与方差缩减协同设计的代表性工作，直接构成 Subspace-SCAFFOLD 研究动机的背景之一。虽未列入 Key References，但其内容与 Plan 核心方向直接对应，属于强相关文献。"
+          },
+          {
+            "key": "koloskova2021improved",
+            "title": "An Improved Analysis of Gradient Tracking for Decentralized Machine Learning",
+            "relevance": 1,
+            "reason": "该论文研究去中心化机器学习中的梯度追踪（Gradient Tracking）技术，与SCAFFOLD中的控制变量（control variates）思想在方差减少和纠正梯度偏差方面有技术相似性，属于相邻研究方向。然而，该工作聚焦于去中心化（decentralized）拓扑下的分析，而非联邦学习（中心化服务器-客户端）场景，且不在Plan明确列出的Key References之中，也未直接涉及通信压缩或子空间学习。因此判定为弱相关。"
+          },
+          {
+            "key": "Rajbhandari2019ZeROMO",
+            "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+            "relevance": 1,
+            "reason": "ZeRO 是大规模模型训练中内存优化的代表性工作，与 Plan 中反复强调的'内存瓶颈'动机（full-dimension updates、error feedback 向量存储导致的内存开销）在背景上有一定关联，可作为说明内存问题严重性的参考背景。但 ZeRO 针对的是数据并行分布式训练中的显存分片优化，并非联邦学习、通信压缩或子空间学习的直接相关工作，Plan 的 Key References 中也未列出，因此仅属于相邻技术背景，判定为弱相关。"
+          },
+          {
+            "key": "zhu2024apollo",
+            "title": "APOLLO: SGD-like Memory, AdamW-level Performance",
+            "relevance": 1,
+            "reason": "APOLLO 是一种基于随机子空间投影的内存高效优化器，通过在低秩子空间中近似二阶动量来实现 AdamW 级别的性能，与 Plan 中 Section 3 的子空间学习方向（GaLore 等低秩梯度近似方法）存在技术交叉。然而，APOLLO 主要针对单机训练场景下的内存优化，并非联邦学习方法，也不在 Plan 的 Key References 列表中，与 FL 通信压缩、Client Drift 校正等核心动机的关联较为间接。可作为子空间优化方法的相邻背景工作提及，但并非 Plan 强调的核心引用。"
+          },
+          {
+            "key": "Yang2021AchievingLS",
+            "title": "Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning",
+            "relevance": 1,
+            "reason": "该论文研究非IID联邦学习中部分客户端参与下的线性加速收敛性，与Plan中Section 1涉及的数据异质性（Non-IID）和联邦学习基础算法相关，属于FL理论分析的相邻工作。然而，它并非Plan明确列出的Key References，也不直接针对Client Drift的方差减少（SCAFFOLD/FedProx）、通信压缩或子空间学习这三个核心方向，更多属于FL收敛性分析的广泛背景，因此判定为弱相关。"
+          },
+          {
+            "key": "Koloskova2019DecentralizedSO",
+            "title": "Decentralized Stochastic Optimization and Gossip Algorithms with Compressed Communication",
+            "relevance": 1,
+            "reason": "该论文研究去中心化随机优化中的压缩通信（量化/稀疏化）与Gossip算法，与Plan中Section 2（Communication Compression）的核心主题有交叉。然而，该工作聚焦于去中心化（P2P/Gossip）场景，而非联邦学习的中心化服务器-客户端架构；且其不在Plan的Key References列表中，也未直接涉及Error Feedback在异构数据下的内存瓶颈问题，或Subspace方法与SCAFFOLD兼容性的核心动机。因此属于相邻技术领域，判定为弱相关。"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "relevance": 1,
+            "reason": "评估失败，默认弱相关"
+          },
+          {
+            "key": "Robert2024LDAdamAO",
+            "title": "LDAdam: Adaptive Optimization from Low-Dimensional Gradient Statistics",
+            "relevance": 1,
+            "reason": "LDAdam 是一种基于低维梯度统计的自适应优化方法，与 Plan 第3节'Subspace Learning'中的低秩梯度近似方向（如 GaLore）高度相邻，属于同一技术族群。但它并非 Plan 明确列出的 Key References，也不是联邦学习场景下的子空间方法（FedSub/FedLoRU/ILoRA），其核心贡献在于集中式训练的内存高效优化器设计，而非联邦学习通信效率或 SCAFFOLD 式方差减少。因此判定为弱相关：可作为低维/低秩优化方法的背景参考，但并非 Plan 的核心引用。"
+          }
+        ]
+      }
+    },
+    "reasflow_sonnet4.6": {
+      "content_accuracy": {
+        "article_name": "reasflow_sonnet4.6",
+        "score": 9.78,
+        "total_citations": 23,
+        "verified_citations": 15,
+        "fulltext_verified": 14,
+        "semantic_scholar_verified": 0,
+        "failed_count": 1,
+        "hallucination_count": 1,
+        "hallucinations": [
+          {
+            "key": "jian2025widening",
+            "title": "Widening the Network Mitigates the Impact of Data Heterogeneity on FedAvg",
+            "arxiv_id": "2508.12576",
+            "accuracy_level": 2,
+            "type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述使用'partially mitigate'（部分缓解）来概括该论文的贡献，但论文实际证明的是随网络宽度增加，数据异质性的影响会逐渐消失（diminishes...ultimately vanishing），在无限宽度下FedAvg可达到与集中式学习相同的泛化性能，是理论上的完全消除而非部分缓解。此外，'greater memory pressure'作为代价在论文中并未被明确讨论，属于描述者的额外推断。整体方向正确，但'partially'一词低估了论文的理论贡献，存在轻微偏差。"
+          }
+        ],
+        "details": [
+          {
+            "key": "Zhang2022CCFedAvgCC",
+            "title": "CC-FedAvg: Computationally Customized Federated Averaging",
+            "arxiv_id": "2212.13679",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Yang2021AchievingLS",
+            "title": "Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning",
+            "arxiv_id": "2101.11203",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "mcmahan2017communication",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "arxiv_id": "1602.05629",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "描述准确。论文确实提出了联邦学习概念和 FedAvg 算法，核心机制为客户端在本地执行多步 SGD 后再将模型更新传输至服务器。引用年份 2017 对应 AISTATS 2017 发表版本，属于正常学术引用惯例，无实质性错误。"
+          },
+          {
+            "key": "shoham2019overcoming",
+            "title": "Overcoming Forgetting in Federated Learning on Non-IID Data",
+            "arxiv_id": "1910.07796",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "reguieg2023comparative",
+            "title": "A Comparative Evaluation of FedAvg and Per-FedAvg Algorithms for Dirichlet Distributed Heterogeneous Data",
+            "arxiv_id": "2309.01275",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "failed",
+            "details": "LLM 评估失败"
+          },
+          {
+            "key": "Condat2024LoCoDLCD",
+            "title": "LoCoDL: Communication-Efficient Distributed Learning with Local Training and Compression",
+            "arxiv_id": "2403.04348",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "arxiv_id": "2205.13692",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Park2024CommunicationEfficientFL",
+            "title": "Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization",
+            "arxiv_id": "2409.12371",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Cheng2023MomentumBN",
+            "title": "Momentum Benefits Non-IID Federated Learning Simply and Provably",
+            "arxiv_id": "2306.16504",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Zhou2025FedCanonNC",
+            "title": "FedCanon: Non-Convex Composite Federated Learning with Efficient Proximal Operation on Heterogeneous Data",
+            "arxiv_id": "2504.11903",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "Huang2023StochasticCA",
+            "title": "Stochastic Controlled Averaging for Federated Learning with Communication Compression",
+            "arxiv_id": "2308.08165",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "li2019convergence",
+            "title": "On the Convergence of FedAvg on Non-IID Data",
+            "arxiv_id": "1907.02189",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "jian2025widening",
+            "title": "Widening the Network Mitigates the Impact of Data Heterogeneity on FedAvg",
+            "arxiv_id": "2508.12576",
+            "accuracy_level": 2,
+            "accurate": false,
+            "hallucination_type": "misrepresentation",
+            "mode": "fulltext",
+            "details": "描述使用'partially mitigate'（部分缓解）来概括该论文的贡献，但论文实际证明的是随网络宽度增加，数据异质性的影响会逐渐消失（diminishes...ultimately vanishing），在无限宽度下FedAvg可达到与集中式学习相同的泛化性能，是理论上的完全消除而非部分缓解。此外，'greater memory pressure'作为代价在论文中并未被明确讨论，属于描述者的额外推断。整体方向正确，但'partially'一词低估了论文的理论贡献，存在轻微偏差。"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "arxiv_id": "1910.06378",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": ""
+          },
+          {
+            "key": "zhang2025efficient",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "arxiv_id": "2509.05213",
+            "accuracy_level": 3,
+            "accurate": true,
+            "hallucination_type": null,
+            "mode": "fulltext",
+            "details": "描述准确反映了论文内容：FedSub 确实是一种结合低维子空间投影与对偶变量（primal-dual 结构）的联邦学习算法，用于缓解客户端漂移问题。描述虽被截断，但已呈现的部分与论文内容一致，无事实性错误。"
+          }
+        ]
+      },
+      "citation_relevance": {
+        "article_name": "reasflow_sonnet4.6",
+        "score": 5.64,
+        "total_citations": 23,
+        "evaluated_citations": 15,
+        "fabricated_count": 0,
+        "key_refs_total": 9,
+        "key_refs_covered": 4,
+        "coverage_rate": 0.444,
+        "citation_count_bonus": 1.725,
+        "key_coverage": [
+          {
+            "key_ref": "FedAvg (McMahan et al., AISTATS 2017)",
+            "covered": true,
+            "matched_cite_key": "mcmahan2017communication",
+            "note": "arXiv 2016版与AISTATS 2017正式发表版为同一论文，内容完全一致，视为等价覆盖。"
+          },
+          {
+            "key_ref": "SCAFFOLD (Karimireddy et al., ICML 2020)",
+            "covered": true,
+            "matched_cite_key": "karimireddy2020scaffold",
+            "note": "arXiv 2019版与ICML 2020正式发表版为同一论文，内容完全一致，视为等价覆盖。"
+          },
+          {
+            "key_ref": "FedProx (Li et al., MLSys 2020)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 FedProx 原始论文（Li et al., 'Federated Optimization in Heterogeneous Networks', MLSys 2020）。su2023non 虽提及 FedProx 但并非原始论文，不构成等价替代。"
+          },
+          {
+            "key_ref": "Federated Learning with Compression (Haddadpour et al., AISTATS 2021)",
+            "covered": true,
+            "matched_cite_key": "Haddadpour2020FederatedLW",
+            "note": "arXiv/早期版本标注为2020，AISTATS 2021正式发表版为同一论文，视为等价覆盖。"
+          },
+          {
+            "key_ref": "Communication-Efficient FL via Compressed Error Feedback (Valdeira et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 Valdeira et al. 2024 关于 Compressed Error Feedback 的论文，无等价替代。"
+          },
+          {
+            "key_ref": "FedSub",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到明确标注为 FedSub 的论文。zhang2025efficient（'An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data'）可能是其对应文献，但无法确认 cite key 与 FedSub 完全对应，存疑，暂标记为未覆盖。"
+          },
+          {
+            "key_ref": "FedLoRU",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到明确标注为 FedLoRU 的论文，无等价替代。"
+          },
+          {
+            "key_ref": "ILoRA",
+            "covered": true,
+            "matched_cite_key": "Zhou2025ILoRAFL",
+            "note": "Zhou2025ILoRAFL 标题为 'ILoRA: Federated Learning with Low-Rank Adaptation for Heterogeneous Client Aggregation'，与 Plan 中 ILoRA 完全对应。"
+          },
+          {
+            "key_ref": "GaLore (Zhao et al., 2024)",
+            "covered": false,
+            "matched_cite_key": null,
+            "note": "引用列表中未找到 GaLore（Zhao et al., 'GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection', 2024）或其等价替代。"
+          }
+        ],
+        "highly_relevant": 6,
+        "weakly_relevant": 9,
+        "irrelevant": 0,
+        "details": [
+          {
+            "key": "Zhang2022CCFedAvgCC",
+            "title": "CC-FedAvg: Computationally Customized Federated Averaging",
+            "relevance": 1,
+            "reason": "CC-FedAvg 关注联邦学习中客户端的计算异构性（Computationally Customized），允许不同客户端执行不同计算量的本地更新，与 Plan 的核心方向（通信压缩、子空间学习、SCAFFOLD方差减少）存在一定交叉，属于联邦学习系统效率优化的相邻方向。但该工作并非 Plan 中 Key References 明确列出的文献，也不直接针对 Plan 强调的三个核心问题（Client Drift、Error Feedback内存瓶颈、子空间方法与方差减少的不兼容性），因此判定为弱相关。"
+          },
+          {
+            "key": "Yang2021AchievingLS",
+            "title": "Achieving Linear Speedup with Partial Worker Participation in Non-IID Federated Learning",
+            "relevance": 1,
+            "reason": "该论文研究非IID联邦学习中部分客户端参与下的线性加速收敛性，与Plan中Section 1涉及的数据异质性（Non-IID）和联邦学习基础算法相关，属于FL理论分析的相邻工作。然而，它既不在Key References列表中，也不直接针对Plan强调的核心问题（Client Drift的方差缩减、通信压缩的内存开销、子空间方法与SCAFFOLD的兼容性），更多属于FL收敛性分析的广泛背景，因此判定为弱相关。"
+          },
+          {
+            "key": "mcmahan2017communication",
+            "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+            "relevance": 2,
+            "reason": "该论文即为FedAvg的原始论文（McMahan et al., AISTATS 2017），是Plan中Section 1明确列出的基础性算法文献，也出现在Key References列表中。FedAvg作为联邦学习的奠基性工作，是整个Related Work的起点，与本研究高度直接相关。"
+          },
+          {
+            "key": "shoham2019overcoming",
+            "title": "Overcoming Forgetting in Federated Learning on Non-IID Data",
+            "relevance": 1,
+            "reason": "该论文关注联邦学习中Non-IID数据下的'遗忘'问题，与Plan中Section 1提到的数据异质性（Client Drift）挑战有一定交叉，属于FL在非IID场景下的相邻研究方向。然而，它并非Plan明确列出的Key References，也不直接针对方差缩减（SCAFFOLD/FedProx）、通信压缩或子空间学习等核心方向，与Subspace-SCAFFOLD的直接动机关联较弱，因此判定为弱相关。"
+          },
+          {
+            "key": "reguieg2023comparative",
+            "title": "A Comparative Evaluation of FedAvg and Per-FedAvg Algorithms for Dirichlet Distributed Heterogeneous Data",
+            "relevance": 1,
+            "reason": "该论文涉及FedAvg与数据异质性（Dirichlet分布的Non-IID数据）的评估，与Plan中Section 1提到的FedAvg基础算法及数据异质性挑战有一定交叉。然而，它并非Plan中明确列出的Key References，也不是核心方向的直接代表性工作；其主要贡献是对FedAvg与Per-FedAvg的比较评估，属于个性化联邦学习范畴，与本文核心动机（通信压缩、子空间学习、SCAFFOLD方差缩减）关联较弱，仅作为更广泛背景可提及。"
+          },
+          {
+            "key": "Condat2024LoCoDLCD",
+            "title": "LoCoDL: Communication-Efficient Distributed Learning with Local Training and Compression",
+            "relevance": 1,
+            "reason": "LoCoDL 结合了本地训练（Local SGD/FedAvg 范式）与通信压缩两个方向，与 Plan 中 Section 1（联邦学习基础）和 Section 2（通信压缩）均有交叉。然而，该论文并未出现在 Plan 的 Key References 列表中，也未直接涉及 Plan 重点强调的核心问题：Client Drift 的方差缩减（SCAFFOLD 类方法）或子空间学习。其贡献属于压缩+本地训练的收敛分析范畴，是 Plan 核心方向的相邻工作，在 Related Work 中提及合理，但并非直接激发 Subspace-SCAFFOLD 动机的关键背景文献。"
+          },
+          {
+            "key": "collins2022fedavg",
+            "title": "FedAvg with Fine Tuning: Local Updates Lead to Representation Learning",
+            "relevance": 1,
+            "reason": "该论文研究FedAvg中本地更新与表示学习的关系，与Plan中FedAvg基础算法及数据异质性（Non-IID）挑战有一定交叉，也与子空间/低秩结构学习方向有间接联系（表示学习本质上涉及低维结构）。但它并非Plan明确列出的Key References，也不直接针对通信压缩、variance reduction（SCAFFOLD类方法）或subspace FL优化等核心主题，属于相邻但非核心的背景工作。"
+          },
+          {
+            "key": "Park2024CommunicationEfficientFL",
+            "title": "Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization",
+            "relevance": 2,
+            "reason": "该论文直接研究联邦学习中的低秩更新算法（FedLoRU），与Plan第3节'Subspace Learning in FL'中明确列出的FedLoRU高度吻合，是Plan Key References中FedLoRU的对应文献。其核心内容——通信高效的低秩更新——同时覆盖了Plan第1节（联邦学习）和第3节（子空间学习）的核心主题，且与本研究动机（现有子空间方法缺乏SCAFFOLD式方差缩减）直接相关，属于需要被指出局限性的代表性工作。"
+          },
+          {
+            "key": "Cheng2023MomentumBN",
+            "title": "Momentum Benefits Non-IID Federated Learning Simply and Provably",
+            "relevance": 1,
+            "reason": "该论文研究动量方法在非IID联邦学习中的作用，与Plan中Section 1涉及的数据异质性（Client Drift）和方差减少方向有交叉，属于解决非IID问题的相邻技术路线。然而，它并非Plan明确列出的Key References，也不是SCAFFOLD控制变量、压缩通信或子空间学习等核心方向的直接代表性工作，与Subspace-SCAFFOLD的核心动机（子空间方法与方差减少的兼容性问题）关联较弱，因此判定为弱相关。"
+          },
+          {
+            "key": "Zhou2025FedCanonNC",
+            "title": "FedCanon: Non-Convex Composite Federated Learning with Efficient Proximal Operation on Heterogeneous Data",
+            "relevance": 1,
+            "reason": "FedCanon 研究联邦学习中的复合优化问题，涉及异构数据（Non-IID）下的近端操作，与 Plan 中 Section 1 提到的 FedProx（近端正则化应对数据异构）方向有一定交叉。然而，该论文聚焦于复合目标函数的近端算子设计，并非 Plan 核心关注的通信压缩、子空间学习或 SCAFFOLD 式方差减少方法，也未出现在 Key References 列表中。其与本文动机（Subspace-SCAFFOLD）的直接关联较弱，属于联邦学习异构数据处理的相邻工作，在 Related Works 中提及尚可但并非必要。"
+          },
+          {
+            "key": "Huang2023StochasticCA",
+            "title": "Stochastic Controlled Averaging for Federated Learning with Communication Compression",
+            "relevance": 2,
+            "reason": "该论文直接结合了 SCAFFOLD 的方差减少机制与通信压缩技术，精确对应 Plan 中 Section 1（SCAFFOLD 控制变量）与 Section 2（通信压缩及其在异构数据下的收敛问题）的核心交叉点。其研究内容——在压缩通信下保持 SCAFFOLD 类方差减少的有效性——正是 Subspace-SCAFFOLD 所要解决问题的直接前驱工作，高度契合 Plan 中 'Key Issue' 所描述的动机背景（压缩引入的方差在异构性下损害收敛），属于直接激发本研究动机的背景工作。"
+          },
+          {
+            "key": "li2019convergence",
+            "title": "On the Convergence of FedAvg on Non-IID Data",
+            "relevance": 2,
+            "reason": "该论文直接分析了FedAvg在Non-IID数据下的收敛性，是Plan中Section 1核心议题'数据异质性导致Client Drift'的直接理论支撑工作。虽未列入Key References，但它是FedAvg在非IID设置下收敛分析的奠基性文献之一，与SCAFFOLD、FedProx等方差减少方法的动机高度契合，属于Plan核心研究方向的直接代表性工作。"
+          },
+          {
+            "key": "jian2025widening",
+            "title": "Widening the Network Mitigates the Impact of Data Heterogeneity on FedAvg",
+            "relevance": 1,
+            "reason": "该论文研究网络宽度对FedAvg在数据异质性（Non-IID）下性能影响，与Plan中Section 1提到的'Client Drift'和数据异质性挑战有一定交叉。然而，其核心贡献是从模型架构角度（网络宽度）缓解异质性问题，而非Plan所强调的方差减少（SCAFFOLD/FedProx）、通信压缩或子空间学习等核心方向。该论文不在Key References列表中，也不直接激发Subspace-SCAFFOLD的研究动机，属于联邦学习数据异质性问题的相邻研究视角，在Related Works中提及尚可但并非核心引用。"
+          },
+          {
+            "key": "karimireddy2020scaffold",
+            "title": "SCAFFOLD: Stochastic Controlled Averaging for Federated Learning",
+            "relevance": 2,
+            "reason": "SCAFFOLD 是 Plan 中 'Key References' 明确列出的核心文献（Karimireddy et al., ICML 2020），也是 Section 1 'Variance Reduction' 部分的直接代表性工作。该论文提出通过控制变量（control variates）纠正梯度方向以解决 Client Drift 问题，正是本研究 Subspace-SCAFFOLD 的直接前驱方法，也是 Section 3 所述'现有子空间方法与 SCAFFOLD 类方差缩减不兼容'这一核心研究动机的来源。注：此处 arXiv 预印本版本（2019）与 Plan 中列出的 ICML 2020 正式发表版本为同一工作，相关性不受影响。"
+          },
+          {
+            "key": "zhang2025efficient",
+            "title": "An Efficient Subspace Algorithm for Federated Learning on Heterogeneous Data",
+            "relevance": 2,
+            "reason": "该论文直接对应 Plan Section 3 中 'Subspace Optimization in FL' 的核心方向，标题明确指向联邦学习中的子空间算法，且针对异构数据（Non-IID）场景，与 Plan 中 FedSub、FedLoRU、ILoRA 等同类工作高度契合。该工作极可能正是 Plan 中列出的 'FedSub' 引用之一，或与之直接相关，是激发 Subspace-SCAFFOLD 研究动机（现有子空间方法与 SCAFFOLD 类方差减少不兼容）的直接背景工作，属于强相关文献。"
+          }
+        ]
+      }
+    }
+  },
+  "comparative_results": {},
+  "summary": {
+    "objective_rankings": {
+      "content_accuracy": [
+        [
+          "reasflow_sonnet4.6",
+          9.78
+        ],
+        [
+          "reasflow_gpt51",
+          9.37
+        ],
+        [
+          "reasflow_gpt54",
+          9.23
+        ],
+        [
+          "reasflow_dpsk",
+          8.68
+        ],
+        [
+          "base_gpt51",
+          8.07
+        ],
+        [
+          "base_gpt54",
+          6.4
+        ],
+        [
+          "base_sonnet4.6",
+          6.07
+        ],
+        [
+          "base_dpsk",
+          5.6
+        ]
+      ],
+      "citation_relevance": [
+        [
+          "reasflow_gpt54",
+          7.92
+        ],
+        [
+          "base_gpt51",
+          7.69
+        ],
+        [
+          "reasflow_gpt51",
+          7.53
+        ],
+        [
+          "base_dpsk",
+          7.44
+        ],
+        [
+          "base_gpt54",
+          7.41
+        ],
+        [
+          "base_sonnet4.6",
+          7.36
+        ],
+        [
+          "reasflow_dpsk",
+          6.07
+        ],
+        [
+          "reasflow_sonnet4.6",
+          5.64
+        ]
+      ]
+    },
+    "comparative_results": {},
+    "total_scores": {},
+    "per_article_total_scores": {
+      "base_dpsk": 13.04,
+      "base_gpt51": 15.76,
+      "base_gpt54": 13.81,
+      "base_sonnet4.6": 13.43,
+      "reasflow_dpsk": 14.75,
+      "reasflow_gpt51": 16.9,
+      "reasflow_gpt54": 17.15,
+      "reasflow_sonnet4.6": 15.42
+    },
+    "run_mean_total": 15.032,
+    "run_max_article_total": 17.15,
+    "run_min_article_total": 13.04,
+    "per_article_max_total": 20.0,
+    "run_mean_content_accuracy": 7.9,
+    "run_mean_citation_relevance": 7.133
+  },
+  "aggregate": {
+    "run_mean_total": 15.032,
+    "per_article_max_total": 20.0,
+    "per_article_total_scores": {
+      "base_dpsk": 13.04,
+      "base_gpt51": 15.76,
+      "base_gpt54": 13.81,
+      "base_sonnet4.6": 13.43,
+      "reasflow_dpsk": 14.75,
+      "reasflow_gpt51": 16.9,
+      "reasflow_gpt54": 17.15,
+      "reasflow_sonnet4.6": 15.42
+    },
+    "run_mean_content_accuracy": 7.9,
+    "run_mean_citation_relevance": 7.133
+  }
+}

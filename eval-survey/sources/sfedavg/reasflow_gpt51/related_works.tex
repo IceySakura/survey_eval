@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Memory-Efficient and Communication-Efficient Federated Learning}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Introduction and Background on Federated Learning}
+
+Federated learning (FL) was introduced to train deep models over decentralized user data with communication as the primary bottleneck \citep{mcmahan2017communication}, and has since been deployed at scale in production mobile systems \citep{bonawitz2019towards}. Threat analyses show that FL must also contend with privacy, poisoning, and leakage risks \citep{Hallaji2022FederatedAT,wei2024data}. Early work on communication-efficient structured and sketched updates already highlighted the need to reduce both rounds and payloads \citep{konevcny2016federated}, while applications in edge recommendation and caching \citep{feng2024leveraging}, vertical FL across institutions \citep{chen2020vafl}, federated reinforcement learning for smart eyewear \citep{sedghani2025federated}, and decentralized multi-agent workload balancing \citep{mohammadabadi2024communication} emphasize that bandwidth, memory, and compute are all heterogeneous across devices.
+
+On the optimization side, analyses of FedAvg and FedProx under non-IID data and partial participation characterize how client drift slows convergence \citep{li2019convergence,su2023non}, and empirical studies using Dirichlet splits compare global and personalized variants such as Per-FedAvg \citep{reguieg2023comparative}. Corrections include curvature-aware FedCurv \citep{shoham2019overcoming}, momentum-based variants that relax bounded-heterogeneity assumptions \citep{Cheng2023MomentumBN}, widening-based analyses showing that overparameterization mitigates heterogeneity \citep{jian2025widening}, weighted parallel SGD for unbalanced workloads \citep{daning2017weighted}, and superquantile-based objectives that explicitly optimize tail client performance \citep{pillutla2024federated}. Heterogeneous architectures and models are addressed by feature-aligned \(\Psi\)-Net \citep{Yu2020HeterogeneousFL}, low-rank heterogeneous aggregation via ILoRA \citep{Zhou2025ILoRAFL}, and subspace-constrained FedSub \citep{zhang2025efficient}. System heterogeneity motivates computation-customized CC-FedAvg \citep{Zhang2022CCFedAvgCC}, linear-speedup analyses with partial participation \citep{Yang2021AchievingLS,qu2023unified}, primal--dual schemes like FedADMM for composite objectives and partial participation \citep{Wang2022FedADMMAF}, and sharpness-aware server-side schemes such as FedGloSS \citep{caldarola2025beyond}. Composite and constrained formulations further broaden the FL setting \citep{yuan2020federated}.
+
+Orthogonal centralized advances---subspace-sparse representations \citep{Yang2015LearningW}, forward-forward local learning \citep{Hinton2022TheFA}, optimal noise subspace selection \citep{xu2023determine}, group normalization \citep{wu2018group}, and large-minibatch SGD scaling \citep{Goyal2017AccurateLM}---provide structural and systems insights but do not directly resolve joint memory--communication constraints in heterogeneous FL.
+
+\subsection{Communication-Efficient Federated and Decentralized Training}
+
+Communication-efficient FL has developed along three main axes: local updates, compression, and network topology. Local-SGD-type methods show that multiple local steps can reduce rounds while preserving rates in convex regimes \citep{Stich2018LocalSC,qu2023unified}, and linear speedup with partial participation is achievable under suitable conditions \citep{Yang2021AchievingLS}. SCAFFOLD uses control variates to correct client drift \citep{karimireddy2020scaffold}, LED extends exact diffusion to local multi-step decentralized updates \citep{Alghunaim2023LocalEF}, and momentum variants further improve robustness under non-IID data \citep{Cheng2023MomentumBN}. Bias from non-uniform, time-varying links is analyzed in FedPBC, which modifies the broadcast protocol to restore correctness \citep{xiang2023towards}.
+
+Compression-centric frameworks such as FedCOM/FedCOMGATE \citep{Haddadpour2020FederatedLW}, LoCoDL \citep{Condat2024LoCoDLCD}, and SCALLION/SCAFCOM \citep{Huang2023StochasticCA} combine local updates with (un)biased quantization and sparsification, while CHOCO-type decentralized schemes analyze compressed gossip over general graphs \citep{Koloskova2019DecentralizedSO}. Lower-bound work shows that unbiased compression reduces total communication only under specific conditions \citep{He2023UnbiasedCS,He2023LowerBA}, and momentum-augmented error-feedback (EF21-SGDM) provides sharp nonconvex guarantees under contractive compressors \citep{Fatkhullin2023MomentumPI}. Error-feedback compression has also been specialized to vertical FL \citep{Valdeira2024CommunicationefficientVF}. Network- and system-level layers---SparCML for sparse collectives \citep{Renggli2018SparCMLHS}, Gossip-PGA for mixed gossip/all-reduce \citep{chen2021accelerating}, quantized decentralized learning under subspace constraints \citep{Nassif2022QuantizationFD}, wireless-aware density-controlled D-PSGD \citep{Sato2020NetworkDensityControlledDP}, AD-PSGD \citep{Lian2017AsynchronousDP}, and adjacent-leader DSGD and bilevel methods \citep{He2024AdjacentLD,Wen2024ACA}---optimize topology and runtime but assume ample local memory.
+
+Decentralized and hierarchical FL variants replace the parameter server with segmented gossip \citep{hu2019decentralized}, GossipGraD-style partner rotation \citep{daily2018gossipgrad}, gossip-based actor--learner architectures \citep{Assran2019GossipbasedAA}, or trusted decentralized averaging in DeFTA \citep{zhou2022defta}. Vertical/asynchronous FL exchanges perturbed embeddings \citep{chen2020vafl}, while edge/cloud systems for recommendation and multi-agent training jointly optimize communication and computation \citep{feng2024leveraging,mohammadabadi2024communication}. Yet all of these methods assume clients can store full models and optimizer states; none enforce per-device memory budgets while providing communication guarantees and drift correction under non-IID data.
+
+\subsection{Memory-Efficient Methods and the Gap to Joint Memory--Communication Efficient FL}
+
+In contrast, memory-efficient optimization has largely been developed outside FL. Gradient low-rank projection (GaLore) \citep{Zhao2024GaLoreML} and its unbiased refinement GUM \citep{pan2025unbiased} project gradients into low-dimensional subspaces, while LDAdam \citep{Robert2024LDAdamAO} and APOLLO \citep{zhu2024apollo} compress adaptive statistics. ZeRO partitions optimizer states and parameters across devices \citep{Rajbhandari2019ZeROMO}, and MeZO enables forward-only fine-tuning with inference-level memory \citep{Malladi2023FineTuningLM}. Parameter-efficient adaptation methods such as LoRA \citep{Hu2021LoRALA}, Chain-of-LoRA \citep{xia2024chain}, LoRA-FA \citep{zhang2023lora}, SingLoRA \citep{bensaid2025singlora}, and Tied-LoRA \citep{renduchintala2024tied}, as well as low-rank prune-and-factorize \citep{ren2024low} and low-rank zeroth-order estimators \citep{chen2024enhancing}, reduce trainable parameters, while prompt tuning \citep{Lester2021ThePO} moves adaptation into small prompt vectors. Greedy low-rank gradient compression with convergence guarantees \citep{chen2025greedy} and Muon-based optimizers \citep{wang2025muon} further exploit low-rank and heavy-tailed structure. These works show that optimizer and model memory can be cut dramatically, but they assume centralized, homogeneous hardware and ignore communication and client sampling.
+
+Only a few FL works begin to touch both axes. FedLoRU constrains client updates to low-rank subspaces and accumulates them into a high-rank global model, improving communication and implicitly regularizing under heterogeneity \citep{Park2024CommunicationEfficientFL}. ILoRA \citep{Zhou2025ILoRAFL} and FedSub \citep{zhang2025efficient} use low-rank adapters or subspaces to reduce both per-round payload and local state, and heterogeneous low-rank personalization relates closely to centralized LoRA variants \citep{Hu2021LoRALA,zhang2023lora,bensaid2025singlora,renduchintala2024tied}. FedMuon introduces matrix-orthogonalized local updates for faster convergence \citep{liu2025fedmuon}. However, these methods still instantiate full backbones on every client, do not treat memory as a hard constraint, and lack convergence guarantees that couple non-IID drift correction (as in \citealp{karimireddy2020scaffold,Cheng2023MomentumBN}) with both communication compression and memory-limited optimizers.
+
+In summary, prior work either focuses on communication efficiency in FL while assuming generous client memory \citep{mcmahan2017communication,konevcny2016federated,Haddadpour2020FederatedLW,Condat2024LoCoDLCD,Huang2023StochasticCA,He2023UnbiasedCS,He2023LowerBA,Fatkhullin2023MomentumPI}, or on memory-efficient training in centralized settings while ignoring federated communication and heterogeneity \citep{Zhao2024GaLoreML,Robert2024LDAdamAO,zhu2024apollo,Rajbhandari2019ZeROMO,Malladi2023FineTuningLM}. To our knowledge, there is no FL framework that jointly enforces per-client memory and communication budgets, incorporates drift-correction mechanisms compatible with non-IID data and partial participation, and comes with end-to-end convergence guarantees. Our work fills precisely this gap.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

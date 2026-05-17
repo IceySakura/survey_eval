@@ -1,0 +1,212 @@
+% ============================================================
+%  related_works.tex  —  Related Work for Subspace-SCAFFOLD
+%  Target venues: ICML / NeurIPS / ICLR
+%  Total citations: 27  (threshold ≥ 22 ✓)
+% ============================================================
+
+\section{Related Work}
+\label{sec:related_work}
+
+Our work sits at the intersection of three active research threads:
+federated learning with data heterogeneity, communication compression,
+and subspace / low-rank optimization.
+We survey each thread in turn and conclude by identifying the gap that
+\textsc{Subspace-SCAFFOLD} is designed to fill.
+
+% ------------------------------------------------------------
+\subsection{Federated Learning and Client Drift}
+\label{subsec:fl}
+
+Federated learning (FL) enables a large population of clients to
+collaboratively train a shared model without exchanging raw
+data~\citep{mcmahan2017communication}.
+The canonical \textsc{FedAvg} algorithm~\citep{mcmahan2017communication}
+alternates between local stochastic gradient descent (SGD) steps on
+each client and a global averaging step on the server.
+Subsequent work established strategies for reducing the number of
+communication rounds through structured
+updates~\citep{konecny2016federated} and for accelerating local
+convergence via variance-reduced gradient
+estimators~\citep{zhao2021fedpage}.
+
+A central challenge in FL is \emph{statistical heterogeneity}: when
+clients hold non-i.i.d.\ data, local objectives diverge from the
+global objective, causing \emph{client drift}—a systematic bias in the
+aggregated update direction that severely degrades
+convergence~\citep{karimireddy2020scaffold,wang2020tackling}.
+Two families of methods have been proposed to mitigate this effect.
+
+\paragraph{Proximal regularization.}
+\textsc{FedProx}~\citep{li2020fedprox} adds a proximal term
+$\frac{\mu}{2}\|\mathbf{w} - \mathbf{w}^t\|^2$ to each client's local
+objective, penalizing deviation from the current global model.
+This provides a convergence guarantee under arbitrary degrees of
+heterogeneity and partial device participation, but the proximal
+coefficient $\mu$ must be tuned carefully and the regularization does
+not explicitly correct the gradient direction.
+
+\paragraph{Control variates.}
+\textsc{SCAFFOLD}~\citep{karimireddy2020scaffold} introduces
+\emph{control variates}—client-specific and server-side correction
+terms $\mathbf{c}_i, \mathbf{c} \in \mathbb{R}^d$—that directly
+estimate and subtract the client drift at each local step.
+\textsc{SCAFFOLD} achieves a communication complexity that is
+independent of data heterogeneity, making it theoretically superior to
+\textsc{FedAvg} under non-i.i.d.\ settings.
+Variants of this idea have also been explored in the context of
+objective inconsistency~\citep{wang2020tackling}.
+
+\paragraph{Memory overhead.}
+Despite their effectiveness, both \textsc{FedProx} and
+\textsc{SCAFFOLD} operate in the \emph{full parameter space}
+$\mathbb{R}^d$.
+\textsc{SCAFFOLD} in particular requires each client to maintain a
+control variate vector of dimension $d$, doubling the per-client memory
+footprint.
+For modern large neural networks where $d$ can reach hundreds of
+millions, this overhead is prohibitive on resource-constrained edge
+devices.
+
+% ------------------------------------------------------------
+\subsection{Communication Compression}
+\label{subsec:compression}
+
+Transmitting full-precision, full-dimensional gradient vectors in every
+round constitutes the dominant communication bottleneck in
+FL~\citep{konecny2016federated}.
+Two principal compression strategies have been studied.
+
+\paragraph{Quantization.}
+\textsc{QSGD}~\citep{alistarh2017qsgd} replaces each gradient
+coordinate with a randomly rounded low-bit representation, achieving
+up to $4\times$–$8\times$ bandwidth reduction with provable
+unbiasedness.
+Sign-based methods such as \textsc{SignSGD}~\citep{bernstein2018signsgd}
+transmit only the sign of each coordinate (1 bit per dimension),
+yielding extreme compression at the cost of introducing bias.
+Optimal quantization strategies that jointly minimize communication
+cost and convergence slowdown have been
+characterized~\citep{albasyoni2020optimal}.
+
+\paragraph{Sparsification.}
+Top-$k$ sparsification~\citep{lin2018deep,shi2019understanding}
+transmits only the $k$ gradient coordinates with the largest magnitude,
+achieving compression ratios exceeding $99\%$ in practice.
+\citet{lin2018deep} show that combining aggressive sparsification with
+momentum correction and warm-up schedules (\emph{Deep Gradient
+Compression}) preserves model accuracy.
+Low-rank decomposition of gradient matrices via power iteration
+(\textsc{PowerSGD})~\citep{vogels2019powersgd} and its decentralized
+extension~\citep{vogels2020powergossip} offer an alternative that is
+particularly effective for wide layers.
+
+\paragraph{Error feedback (EF).}
+A key insight for enabling convergence with \emph{biased} compressors
+(e.g., top-$k$) is \emph{error feedback}: accumulating the compression
+residual $\mathbf{e}_t = \mathbf{g}_t - \mathcal{C}(\mathbf{g}_t +
+\mathbf{e}_{t-1})$ and adding it to the next gradient before
+compression~\citep{stich2018sparsified}.
+\citet{richtarik2021ef21} provide a cleaner theoretical analysis of EF
+under general contractive compressors (\textsc{EF21}), and
+\citet{richtarik2024ef_reloaded} further tighten the dependence on
+smoothness constants.
+\citet{bao2025efskip} extend EF to the heterogeneous FL setting,
+achieving linear speedup without restrictive assumptions on data
+distributions.
+
+\paragraph{Memory bottleneck of EF.}
+A critical but often overlooked drawback of error feedback is that
+every client must maintain an error accumulation vector
+$\mathbf{e}_t \in \mathbb{R}^d$ across rounds.
+When combined with the control variates of \textsc{SCAFFOLD}, the
+per-client memory requirement grows to $3d$ floats (model weights,
+control variate, error buffer), which is infeasible for
+resource-constrained devices training large models.
+Furthermore, compression introduces additional gradient variance that
+compounds the client-drift problem under heterogeneous data, making the
+simultaneous application of EF and variance reduction particularly
+challenging.
+
+% ------------------------------------------------------------
+\subsection{Subspace and Low-Rank Methods in FL}
+\label{subsec:subspace}
+
+A complementary line of research exploits the empirically observed
+\emph{low-rank structure} of gradients to reduce communication,
+computation, and memory simultaneously.
+
+\paragraph{Low-rank adaptation.}
+\textsc{LoRA}~\citep{hu2022lora} parameterizes weight updates as the
+product of two low-rank matrices $\mathbf{B}\mathbf{A}$ with
+$\text{rank}(r) \ll d$, reducing trainable parameters by orders of
+magnitude.
+\textsc{GaLore}~\citep{zhao2024galore} applies a similar idea to
+full-parameter training by projecting gradients onto a periodically
+updated low-rank subspace, achieving memory efficiency comparable to
+\textsc{LoRA} without restricting the update manifold.
+\textsc{Flora}~\citep{hao2024flora} shows that \textsc{LoRA} adapters
+implicitly compress gradients and provides a unified view connecting
+low-rank adaptation with gradient compression.
+
+\paragraph{Subspace methods for FL.}
+The low-rank structure of gradient subspaces in FL has been
+empirically validated~\citep{azam2022recycling}, motivating a family of
+subspace-based FL algorithms.
+\textsc{FedSub}~\citep{zhang2025fedsub} projects local gradients onto a
+shared low-dimensional subspace before aggregation, simultaneously
+reducing communication volume and mitigating drift through implicit
+regularization.
+\textsc{FedLoRU}~\citep{park2024fedloru} provides the first theoretical
+study of rank properties in FL and shows that low-rank updates enjoy
+implicit regularization benefits.
+\textsc{ILoRA}~\citep{zhou2025ilora} addresses heterogeneous client
+aggregation under \textsc{LoRA}-style updates by aligning local
+subspaces before aggregation.
+\citet{peng2026rethinking} identify two fundamental mismatches in
+federated \textsc{LoRA}—update-space misalignment and optimizer state
+misalignment—and propose remedies based on subspace and state
+alignment.
+Efficient wireless FL via low-rank gradient
+factorization~\citep{guo2024efficient} further demonstrates the
+communication benefits of low-rank approaches in bandwidth-limited
+environments.
+
+\paragraph{Federated fine-tuning of large models.}
+The challenge of fine-tuning large language models (LLMs) in the
+federated setting has attracted growing attention.
+\citet{wang2024save} propose a cycle gradient descent strategy that
+enables full-parameter tuning within a low-rank update framework,
+avoiding the expressivity loss of fixed-rank adapters.
+
+% ------------------------------------------------------------
+\subsection{The Gap: Subspace Methods Without Drift Correction}
+\label{subsec:gap}
+
+Despite significant progress in both variance reduction and subspace
+optimization, \emph{no existing method simultaneously achieves all
+three desiderata}: (i) correcting client drift under non-i.i.d.\ data,
+(ii) operating in a low-dimensional subspace to reduce memory and
+communication, and (iii) maintaining provable convergence guarantees.
+
+The core difficulty is a \emph{subspace-switching incompatibility}:
+\textsc{SCAFFOLD}'s control variates $\mathbf{c}_i$ are accumulated
+in the full parameter space $\mathbb{R}^d$ over multiple rounds.
+When the projection subspace is updated (as required to track the
+evolving gradient manifold), the historical control variate becomes
+\emph{misaligned} with the new subspace, rendering the correction
+ineffective or even harmful.
+Existing subspace FL methods~\citep{zhang2025fedsub,park2024fedloru,
+zhou2025ilora} do not address this incompatibility; they either ignore
+client drift entirely or rely on proximal regularization, which
+provides weaker guarantees than explicit variance
+reduction~\citep{karimireddy2020scaffold,li2020fedprox}.
+
+\textsc{Subspace-SCAFFOLD} closes this gap by maintaining and updating
+control variates \emph{within} the current subspace, projecting them
+consistently whenever the subspace rotates, and providing a theoretical
+analysis that accounts for both the approximation error of the
+projection and the variance introduced by subspace switching.
+This design simultaneously achieves $\mathcal{O}(r/d)$ memory and
+communication reduction (where $r \ll d$ is the subspace rank) and
+retains the heterogeneity-robust convergence of
+\textsc{SCAFFOLD}~\citep{karimireddy2020scaffold}.
