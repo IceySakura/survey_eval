@@ -1,0 +1,20 @@
+\documentclass{article}
+
+\usepackage[margin=0.6in]{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{multirow}
+
+% Standalone aliases for the paper macros used by the table.
+\newcommand{\Paperone}{\textsc{S-FedAvg}}
+\newcommand{\Papertwo}{\textsc{Subspace-SCAFFOLD}}
+\newcommand{\Paperthree}{\textsc{SUDA-Muon}}
+
+% The original paper source uses extendedtable*. Keep the environment name so
+% the table body can be copied back without edits.
+\newenvironment{extendedtable*}[1][]{\begin{table}[#1]}{\end{table}}
+
+\begin{document}
+\input{survey_summary_table}
+\end{document}

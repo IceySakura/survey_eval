@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Communication-Efficient Federated Learning with Subspace-SCAFFOLD}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Federated Learning under Heterogeneity and Control-Variate Methods}
+
+Classical FL algorithms such as FedAvg and its variants address heterogeneous client data via local SGD and global averaging \citep{mcmahan2017communication}. Convergence analyses under non-IID data and partial participation characterize the drift induced by multiple local steps and show its dependence on gradient dissimilarity and client sampling \citep{li2019convergence, Yang2021AchievingLS, qu2023unified}. Beyond finite-dimensional convex models, non-parametric RKHS analyses \citep{su2023non} and representation-learning views \citep{collins2022fedavg} highlight that FedAvg can still be statistically effective but may converge to biased stationary points. Empirical studies under Dirichlet heterogeneity \citep{reguieg2023comparative} and systems-aware variants like CC-FedAvg and WP-SGD show how computation and participation imbalances exacerbate drift \citep{Zhang2022CCFedAvgCC, daning2017weighted}, while FedProx- and FedCurv-type proximal and curvature-aware regularization partially stabilize local updates \citep{yuan2020federated, shoham2019overcoming}. Over-parameterization can mitigate some heterogeneity effects in theory \citep{jian2025widening}, but at significant model cost.
+
+Control-variate methods explicitly correct client drift at the gradient level. \citet{karimireddy2020scaffold} introduce SCAFFOLD, which maintains full-dimensional client and server control variates and obtains heterogeneity-robust rates. Momentum-enhanced variants further relax bounded-heterogeneity assumptions \citep{Cheng2023MomentumBN}. Uplink-efficient formulations and communication-compressed controlled averaging still keep control states in the ambient parameter space \citep{Huang2023StochasticCA}. Composite and proximal FL methods such as FedCanon, FedDualAvg, Fast-FedDA, non-convex composite FL, FedDR, and FedADMM extend drift correction to non-smooth or constrained objectives via server-side proximal or primalâdual steps, again with full-dimensional control or dual variables \citep{Zhou2025FedCanonNC, yuan2020federated, Bao2022FastCO, zhang2025convex, Tran-Dinh2021FedDRR, Wang2022FedADMMAF}. Server-side sharpness-aware and geometry-aware optimizers (FedGloSS, FedMuon) use ADMM-style alignment and matrix orthogonalization to reduce heterogeneity-induced bias \citep{caldarola2025beyond, liu2025fedmuon}. Personalized FL and representation-focused methods combine global sharing with client-specific heads or experts \citep{wang2024federated, Yu2020HeterogeneousFL, liuflex}. Decentralized and bilevel formulations with workload balancing and primalâdual corrections further expose how heterogeneity and topology shape drift, but still work in full dimension \citep{mohammadabadi2024communication, Kong2024DecentralizedBO, Zhu2024SPARKLEAU, Carnevale2020GTAdamGT, Hu2025ABD}. None of these approaches design SCAFFOLD-style control variates that are intrinsically low-dimensional or compatible with subspace-constrained updates, which is the central gap Subspace-SCAFFOLD targets.
+
+\subsection{Communication-Efficient Federated and Decentralized Optimization via Compression}
+
+Communication-efficient FL combines local updates with lossy or structured communication. Unified analyses of compressed local-SGD (FedCOM/FedCOMGATE) show that unbiased quantization or sparsification with gradient tracking can match uncompressed rates under heterogeneity \citep{Haddadpour2020FederatedLW}. Error-feedback provides a generic way to compensate biased compression and delayed gradients, yielding near-SGD rates for compressed and local SGD \citep{stich2019error}. Qsparse-local-SGD combines local computation, sparsification, quantization, and error compensation in distributed settings \citep{basu2019qsparse}, while momentum-enhanced error-feedback (EF21-SGDM) improves communication and sample complexity under contractive compressors \citep{Fatkhullin2023MomentumPI}. Decentralized bilevel methods such as C\(^2\)DFB and LoCoDL combine compressed residuals with gradient or dual tracking to obtain first-order, communication-efficient convergence guarantees \citep{Wen2024ACA, Condat2024LoCoDLCD}. Improved analyses of gradient tracking in decentralized networks clarify how compression and topology jointly affect iteration complexity \citep{koloskova2021improved}. Centralized low-rank and subspace optimizers such as unbiased gradient low-rank projection, LDAdam, GaLore, low-rank zeroth-order estimators, and Chain-of-LoRA demonstrate that low-dimensional gradient or moment subspaces can dramatically reduce memory and effective communication while retaining convergence guarantees in homogeneous settings \citep{pan2025unbiased, Robert2024LDAdamAO, Zhao2024GaLoreML, chen2024enhancing, xia2024chain}. Classical subspace methods and layer-local learning provide further evidence that optimization can be restricted to carefully chosen subspaces \citep{Yang2015LearningW, Hinton2022TheFA}. Orthogonal lines of work on normalization and data curation \citep{wu2018group, Cobbe2021TrainingVT} are complementary but not communication-focused.
+
+Existing compressed SCAFFOLD-like methods and error-feedback FL algorithms all operate on full-dimensional control or tracking states \citep{Huang2023StochasticCA, Haddadpour2020FederatedLW}. They do not exploit that, in many FL deployments, only structured or low-rank components are updated, nor do they align compression and error-feedback mechanisms with an explicit learned subspace. Subspace-SCAFFOLD instead aims to combine control variates and error-feedback directly in low-dimensional coordinates.
+
+\subsection{Subspace Learning and Low-Rank Optimization for Communication-Efficient FL}
+
+Subspace and low-rank methods constrain updates to low-dimensional manifolds to save communication and computation. Classical sparse and spectral subspace methods \citep{Yang2015LearningW, xu2023determine} and implicit-regularization analyses for nonconvex estimation \citep{Ma2017ImplicitRI} show that many problems admit effective low-dimensional structure. Low-rank and subspace optimizers for large models, including GaLore, unbiased low-rank projection, randomized subspace training, LDAdam, low-rank zeroth-order estimators, and Chain-of-LoRA, provide convergence guarantees and strong empirical performance when gradients and moments are projected into adaptive subspaces \citep{Zhao2024GaLoreML, pan2025unbiased, he2024subspace, Chen2025AME, Robert2024LDAdamAO, chen2024enhancing, chen2024enhancing, xia2024chain}. Nested subspace learning on flag manifolds and related geometric views formalize hierarchies of subspaces that can be expanded over time \citep{szwagier2025nested}. In FL, FedLoRU accumulates low-rank client updates to reconstruct a high-rank global model, reducing communication while preserving FedAvg-like convergence \citep{Park2024CommunicationEfficientFL}. FedSub constrains client updates to a fixed low-dimensional projection and uses low-dimensional dual variables for drift correction \citep{zhang2025efficient}. ILoRA addresses initialization, rank-heterogeneous aggregation, and drift for LoRA adapters via QR-based subspace alignment and rank-aware control variates embedded in AdamW \citep{Zhou2025ILoRAFL}. Over-parameterization and representation-learning analyses suggest that global models often effectively operate in low-dimensional feature subspaces \citep{collins2022fedavg, su2023non}.
+
+However, existing FL subspace methods either use FedAvg-style aggregation without explicit variance reduction \citep{Park2024CommunicationEfficientFL}, employ fixed random projections with dual variables that are not analyzed as SCAFFOLD-type control variates \citep{zhang2025efficient}, or introduce optimizer- and architecture-specific control heuristics without a general variance-reduction theory \citep{Zhou2025ILoRAFL}. Conversely, full-dimensional SCAFFOLD and its composite or momentum variants \citep{karimireddy2020scaffold, Zhou2025FedCanonNC, Cheng2023MomentumBN} do not model heterogeneous client subspaces or rank, and cannot be naively combined with low-rank updates without inflating memory and communication. This incompatibility between existing subspace FL methods and SCAFFOLD-style variance reductionâespecially under compressionâis precisely the gap that Subspace-SCAFFOLD addresses by designing control variates, error-feedback, and communication schemes that are intrinsically defined in low-dimensional, possibly heterogeneous client subspaces.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

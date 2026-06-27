@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Memory-Efficient and Communication-Efficient Federated Learning under Data and System Heterogeneity}
+\author{ReasFlow Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Federated Learning under Heterogeneity}
+
+Federated learning was popularized by FedAvg, where clients perform multiple local SGD steps and periodically average models on a central server \citep{mcmahan2016communication}. While FedAvg demonstrates that simple model averaging can be communication-efficient and robust in practical deployments, its analysis and design primarily target relatively benign settings and do not fully characterize behavior under strong data and system heterogeneity. Subsequent work has focused on understanding and mitigating client drift induced by non-IID data. \citet{karimireddy2019scaffold} introduce SCAFFOLD, which uses control variates to correct local updates and provably matches or improves FedAvg convergence rates under heterogeneous data. However, SCAFFOLD’s sharper guarantees rely on restrictive assumptions such as bounded gradient or Hessian dissimilarity and, in some cases, quadratic losses, which may not capture modern deep models.
+
+From a theoretical perspective, \citet{li2019convergence} provide the first non-asymptotic convergence guarantees for FedAvg under non-IID data and partial participation, establishing an \(\mathcal{O}(1/T)\) rate in strongly convex settings. \citet{qu2023unified} further present a unified linear-speedup analysis of FedAvg across several convex and overparameterized regimes with heterogeneous clients. These works clarify when local updates remain statistically efficient, but they largely restrict attention to convex or overparameterized strongly convex objectives and do not address memory constraints or communication compression. Overall, existing methods for heterogeneous FL focus on algorithmic and convergence aspects of local training, leaving open how to jointly incorporate memory-efficient parameterizations and communication-efficient update representations while retaining robustness to heterogeneity.
+
+\subsection{Communication-Efficient Federated Optimization}
+
+A complementary line of work targets the communication bottleneck via gradient compression. \citet{alistarh2016qsgd} propose QSGD, an unbiased stochastic quantization scheme with tight variance–precision trade-offs, providing foundational guarantees for quantized SGD in distributed settings. Building on error-feedback ideas, \citet{richtárik2021simpler} introduce EF21, a simpler and theoretically stronger error-feedback mechanism for biased compressors that stabilizes compressed optimization without requiring auxiliary unbiased estimators. These methods significantly reduce communication but typically assume centralized or homogeneous distributed environments and do not consider client memory budgets or system heterogeneity in depth.
+
+Bridging local training and compression, \citet{condat2024locodl} propose LoCoDL, a variance-reduced primal–dual method that unifies local updates with generic unbiased compression under strongly convex, smooth objectives. LoCoDL provides a more holistic view of communication-efficient federated optimization, yet its analysis is limited to full-batch gradients and does not cover nonconvex deep models or resource-constrained clients. Moreover, existing communication-efficient FL algorithms generally operate in the full-parameter space, maintaining dense optimizer states and model replicas on each client. As a result, they do not directly address the memory footprint of training large models on edge devices, nor do they provide a principled way to couple compressed communication with low-memory local optimization.
+
+\subsection{Memory-Efficient Training and the Joint Gap}
+
+Orthogonal to communication compression, memory-efficient training methods reduce optimizer and activation footprints via low-rank or subspace approximations. \citet{zhao2024galore} introduce GaLore, which projects gradients into low-rank subspaces to cut optimizer memory while preserving full-parameter training. Although GaLore demonstrates substantial memory savings for large language models, it is developed in a centralized setting and does not account for client drift or partial participation. In federated learning, \citet{liu2025fedmuon} propose FedMuon, a structure-aware optimizer that applies matrix orthogonalization to local updates and explicitly corrects non-IID-induced bias. FedMuon shows that matrix-structured local optimization can accelerate FL, but its reliance on SVD/Newton–Schulz operations increases per-step computation and it does not systematically integrate communication compression or low-rank communication.
+
+Low-rank update schemes have also been explored for communication efficiency. \citet{park2024communication} propose FedLoRU, which accumulates low-rank client updates to reconstruct a high-rank global model, yielding reduced communication and parameter movement. Theoretical guarantees, however, rely on asymptotic random-matrix assumptions and large-model limits, and the method does not explicitly optimize client memory usage or provide robustness guarantees under strong heterogeneity. Across GaLore, FedMuon, and FedLoRU, memory efficiency, communication efficiency, and heterogeneity robustness are addressed in isolation or pairwise. None of these works offer a unified framework that jointly (i) constrains optimizer and model memory on clients, (ii) compresses communicated updates, and (iii) maintains provable convergence under heterogeneous data and system conditions, which is the gap our work aims to fill.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

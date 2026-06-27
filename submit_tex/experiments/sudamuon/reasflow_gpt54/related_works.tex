@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Decentralized Optimization and Matrix-Aware Optimizers}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Matrix-Aware Optimizers and the Muon Family}
+
+Matrix-aware optimization departs from coordinate-wise adaptivity by exploiting row--column structure in weight matrices. Classical structured optimizers such as Shampoo and Adafactor preserve tensor geometry through mode-wise or factored second-moment statistics rather than flat per-parameter scaling \citep{gupta2018shampoo, shazeer2018adafactor}. More recent large-model optimizers pursue stronger geometry control: Conda combines orthogonal subspace projection with adaptive normalization, while REG replaces hard orthogonalization by softer row/column balancing to improve robustness \citep{wang2025conda, liu2025reg}. This line is also supported by norm-based reinterpretations of first-order methods, which cast Adam-like and structured updates as steepest descent under different geometries rather than minor variants of Euclidean SGD \citep{bernstein2024old, adam2014method}. Related evidence on directional sharpness further suggests that optimizer performance depends on alignment with anisotropic directions, motivating matrix-sensitive updates beyond diagonal metrics \citep{Pan2023TowardUW}.
+
+Within this landscape, Muon is distinctive in using the matrix sign / orthogonalization operator to flatten singular values while preserving singular directions. Recent work provides the first centralized convergence analysis of Muon, showing advantages over gradient descent under low-rank or approximately block-structured curvature \citep{shen2025convergence}. Large-scale studies also show that Muon can be stabilized for LLM pretraining through decoupled weight decay and shape-aware scaling \citep{liu2025muon, loshchilov2017decoupled}, with complementary evidence on associative-memory layers and grokking-style tasks \citep{wang2025muon, tveit2025muon}. At the same time, Muon is not classical second-order optimization: its geometry differs from Hessian- or Gauss--Newton-based methods \citep{Li2022BlackBL, abreu2025potential}. Broader structured alternatives, including low-rank gradient or statistic parameterizations, further indicate that useful optimizer geometry may live in low-dimensional subspaces rather than elementwise coordinates \citep{Zhao2024GaLoreML, Robert2024LDAdamAO, zhu2024apollo}. These results motivate matrix-aware descent, but existing theory remains predominantly single-node and only partially covers inexact orthogonalization used in practice.
+
+\subsection{Decentralized Optimization under Topology Constraints and Data Heterogeneity}
+
+Decentralized optimization couples optimization error with topology-induced disagreement. Early analyses established how network connectivity enters convergence through mixing quality, e.g., in distributed dual averaging and related consensus-based methods \citep{duchi2011dual}. Subsequent nonconvex decentralized frameworks extended this view to richer objectives and time-varying communication \citep{di2016next}. For directed networks, recent theory shows that topology cannot always be summarized by a single spectral gap, and introduces refined graph metrics beyond the undirected setting \citep{Liang2023UnderstandingTI}. Communication efficiency adds another layer: quantization and sign-based compression reduce bandwidth but introduce distortion that must be controlled algorithmically \citep{Alistarh2016QSGDCS, Bernstein2018signSGDCO}. 
+
+Under heterogeneous data, plain DGD/DSGD suffers client drift, which motivates exact-correction mechanisms such as EXTRA-, Exact-Diffusion/\(D^2\)-, and especially gradient-tracking-type ideas. This correction principle has since been generalized to compressed tracking, constrained/subspace decentralized learning, and broader design frameworks \citep{Song2021CompressedGT, Nassif2022QuantizationFD, He2024AML}. The same theme appears beyond supervised ERM, including decentralized reinforcement learning and communication-efficient actor--critic methods \citep{jiang2022mdpgt, Ren2025ACD}. Systems-oriented work likewise highlights that decentralized learning must jointly account for statistical heterogeneity, communication limits, and workload imbalance \citep{mohammadabadi2024communication}. In this sense, SUDA is best viewed as a unifying primal--dual perspective that separates optimization, heterogeneity, and topology contributions more cleanly than coarse worst-case analyses. That refined decomposition is particularly relevant once the local optimizer is itself structured or non-Euclidean, because communication error, drift, and optimizer bias no longer coincide.
+
+\subsection{Decentralized Muon and the Motivation for SUDA-Muon}
+
+Extending Muon to distributed environments is nontrivial because orthogonalization is nonlinear: averaging local gradients before or after the matrix-sign transform is generally inequivalent. This issue already appears in client--server federated learning. \citet{Takezawa2025FedMuonFL} show that naive Local Muon is biased from an LMO perspective and propose bias correction with guarantees that explicitly account for approximate Newton--Schulz solves. A complementary federated line attributes failure under non-IID data to misaligned local orthogonalization and momentum states, and proposes local--global alignment plus momentum aggregation \citep{liu2025fedmuon}. Communication-efficient non-Euclidean training further shows that Muon-family methods can be combined with compression and error feedback without collapsing to standard Euclidean SGD \citep{Gruntkowska2025ErrorFF}; related low-communication outer-loop training and pseudo-gradient acceleration provide useful systems templates, but remain tied to specific communication patterns \citep{Th'erien2025MuLoCoMI, kallusky2025snoo}. Low-rank compression methods such as PowerSGD and GreedyLore, as well as heterogeneous low-rank federated adaptation, suggest additional avenues for structured communication, though not a complete decentralized Muon solution \citep{Vogels2019PowerSGDPL, chen2025greedy, Zhou2025ILoRAFL}. Empirical contexts ranging from transformer architectures to downstream reasoning or normalization-sensitive transfer have also been used to probe optimizer behavior \citep{Vaswani2017AttentionIA, Cobbe2021TrainingVT, wu2018group}.
+
+The first direct graph-based decentralized Muon method is DeMuon, which combines Muon-style orthogonalization with gradient tracking and proves stochastic nonconvex convergence over graphs \citep{he2025demuon}. While important, DeMuon still inherits three limitations that motivate our setting: it is tied to a single communication/correction template, it lacks a SUDA-style topology-separated refined analysis that disentangles topology, heterogeneity, and orthogonalization error, and it leaves unresolved whether decentralized Muon attains asymptotic linear speedup under heterogeneous data and sparse communication. Our work is positioned precisely at this gap, connecting matrix-aware optimization with the broader exact-correction literature through a unified SUDA-Muon perspective.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

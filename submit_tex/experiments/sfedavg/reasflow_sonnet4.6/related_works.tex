@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+% 基础包
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% 标题
+\title{Memory-Efficient and Communication-Efficient Federated Learning}
+\author{AutoSurvey Generated}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Related Work}
+
+\subsection{Federated Learning: Foundations, Heterogeneity, and Convergence Theory}
+
+Federated learning was introduced by \citet{mcmahan2017communication} as a communication-efficient paradigm for training deep networks from decentralized data, with FedAvg performing multiple local SGD steps before aggregation. Its production-scale deployment was demonstrated by \citet{bonawitz2019towards}, who addressed system-level challenges including partial participation and device heterogeneity. Early convergence theory was established by \citet{li2019convergence}, who proved $\mathcal{O}(1/T)$ rates for FedAvg under non-IID data and partial participation, revealing a fundamental trade-off between local step count and convergence bias. \citet{Yang2021AchievingLS} subsequently achieved the first linear speedup guarantees under simultaneous non-IID data and partial worker participation in non-convex settings, while \citet{qu2023unified} provided a unified analysis across strongly convex, convex, and overparameterized regimes, including the first linear speedup for Nesterov-accelerated FedAvg. \citet{Yuan2020FederatedAS} further demonstrated that acceleration reduces synchronization rounds to $\mathcal{O}(M^{1/3})$ via a potential-based perturbed iterate analysis. Non-parametric analyses in RKHS \citep{su2023non} and NTK-based studies of overparameterized networks \citep{jian2025widening} extended convergence understanding beyond classical parametric settings.
+
+A central obstacle in federated optimization is client drift, wherein local updates diverge from the global objective under heterogeneous data. \citet{karimireddy2020scaffold} introduced SCAFFOLD, using per-client control variates to provably eliminate drift, while \citet{Cheng2023MomentumBN} showed that momentum alone enables convergence without bounded heterogeneity assumptions. \citet{xiang2023towards} identified bias in FedAvg under non-uniform time-varying participation and proposed a postponed broadcast correction. Regularization-based drift mitigation includes FedCurv \citep{shoham2019overcoming}, which adapts elastic weight consolidation to federated settings, and proximal composite frameworks \citep{yuan2020federated, Zhou2025FedCanonNC}. Personalization strategies such as meta-learning \citep{reguieg2023comparative} and representation learning \citep{collins2022fedavg} address statistical heterogeneity, while architectural heterogeneity is handled via feature-level alignment \citep{Yu2020HeterogeneousFL} and computation-customized variants \citep{Zhang2022CCFedAvgCC}. Despite these advances, all methods assume full-rank local gradient computation, leaving memory constraints entirely unaddressed.
+
+\subsection{Communication-Efficient Methods: Compression, Local Updates, and Decentralized Protocols}
+
+Reducing communication overhead has been pursued through quantization, sparsification, and structured compression. Unbiased quantization schemes such as natural compression \citep{horvoth2022natural} and sign-based methods \citep{Bernstein2018signSGDCO} reduce per-round bit cost, while sparsification approaches including sparsified SGD with memory \citep{stich2018sparsified} and SparCML \citep{Renggli2018SparCMLHS} transmit only high-magnitude coordinates. Biased compressors require error feedback for convergence: \citet{Tang2019DoubleSqueezePS} extended error compensation to bidirectional compression, and \citet{beznosikov2023biased} provided a unified theoretical framework for biased compressors. EF21-style analysis \citep{He2023UnbiasedCS} established that unbiased compression alone cannot reduce total communication, motivating accelerated algorithms. Low-rank gradient compression via \citet{Vogels2019PowerSGDPL} (PowerSGD) and \citet{chen2025greedy} (GreedyLore, with the first linear speedup guarantees for greedy low-rank compression) exploit gradient matrix structure. Adaptive compression is addressed by \citet{Tyagi2023GraVACAC} (GraVAC), which dynamically adjusts compression ratios online.
+
+Combining compression with local updates, \citet{Haddadpour2020FederatedLW} provided unified sharp guarantees for federated learning with compression under both biased and unbiased compressors. \citet{basu2019qsparse} jointly applied quantization, sparsification, and local SGD with error compensation. Near-optimal communication complexity is achieved by \citet{He2023LowerBA} (NEOLITHIC), which established algorithm-agnostic lower bounds and near-matching algorithms for both compressor classes, and \citet{Condat2024LoCoDLCD} (LoCoDL), which achieved doubly accelerated rates by unifying local training with compression via a primal-dual framework. Compressed drift correction is addressed by \citet{Huang2023StochasticCA}, who extended SCAFFOLD to the compressed communication regime. Decentralized protocols, including segmented gossip \citep{hu2019decentralized} and plug-and-play decentralized aggregation \citep{zhou2022defta}, eliminate the central server but introduce topology-dependent convergence penalties. Critically, none of these methods reduces the on-device memory footprint of gradient computation, optimizer states, or activation storage during local training.
+
+\subsection{Memory-Efficient Methods and the Open Challenge of Joint Optimization in Federated Learning}
+
+Memory-efficient training has been pursued through low-rank gradient projection, parameter-efficient fine-tuning, and activation reduction. GaLore \citep{Zhao2024GaLoreML} projects gradients onto periodically refreshed SVD bases to reduce optimizer state memory, while GoLore \citep{Zhao2024GoLoreGL} replaces deterministic projection with unbiased random projection, establishing formal convergence guarantees for non-convex objectives. Subspace-based federated optimization is addressed by \citet{zhang2025efficient} (FedSub), which simultaneously reduces communication, computation, and memory via low-dimensional primal-dual projection. LoRA-style parameter-efficient fine-tuning \citep{Hu2021LoRALA} constrains updates to low-rank adapter matrices, reducing trainable parameter count; however, federated LoRA suffers from subspace misalignment and aggregation errors under heterogeneity, which \citet{Zhou2025ILoRAFL} (ILoRA) addresses through QR-based initialization, concatenated QR aggregation, and rank-aware control variates. \citet{Park2024CommunicationEfficientFL} (FedLoRU) accumulates low-rank client updates server-side to reconstruct higher-rank global models with convergence matching FedAvg. Gradient checkpointing \citep{Chen2016TrainingDN} reduces activation memory by recomputing intermediate tensors during backpropagation, and loss landscape teleportation \citep{Zhao2023TeleportationAL} relocates iterates to better-conditioned regions. Decentralized memory-aware protocols such as AL-DSGD \citep{Cheng2021ALDSGDAL} integrate augmented Lagrangian penalties into gossip-style updates. Geometry-aware federated optimization is advanced by \citet{liu2025fedmuon} (FedMuon), which applies Muon-style matrix orthogonalization with momentum aggregation and local-global gradient alignment to correct drift, achieving linear speedup without bounded heterogeneity assumptions.
+
+Despite this progress, a critical gap persists: no existing method simultaneously achieves memory efficiency in optimizer states and activations, communication efficiency through gradient compression, and provable convergence under non-IID data with partial participation. Communication-efficient methods \citep{Haddadpour2020FederatedLW, Condat2024LoCoDLCD, He2023LowerBA} leave local memory footprints unaddressed; memory-efficient methods \citep{Zhao2024GaLoreML, Zhao2024GoLoreGL} are designed for centralized training without drift correction; and federated adaptations \citep{Zhou2025ILoRAFL, Park2024CommunicationEfficientFL, liu2025fedmuon} address at most two of the three desiderata. Furthermore, drift-correction theory for algorithms performing local steps within a low-rank subspace remains entirely undeveloped, and the interaction between subspace rotation schedules, error feedback buffers, and client drift accumulation under heterogeneous participation \citep{li2019convergence, karimireddy2020scaffold, xiang2023towards} is uncharacterized. These three compounding gaps motivate a unified algorithm that jointly constrains optimizer-state memory through subspace projection, reduces per-round communication through structured compression, and provably corrects client drift in the projected subspace under realistic heterogeneous federated conditions.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
